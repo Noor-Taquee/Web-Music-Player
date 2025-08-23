@@ -234,6 +234,10 @@ body {
   padding: 0;
   gap: 2%;
 }
+.secondaryControls::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
 #secondaryControls button {
   display: flex;
   justify-content: center;
