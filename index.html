@@ -7,8 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-    <div id="outerPlayerPanel">
+  <body id="mainBody">
+    <div id="blurLayer">
       <div id="playerPanel">
         <div id="toggleDiv">
           <button id="togglePic">PICTURE</button>
@@ -19,10 +19,42 @@
         </div>
         <div id="infoDiv">
           <p id="trackName">NOVA MARE</p>
-          <p id="artistName">SOMEONEreally</p>
+          <button id="bnArtist">
+            <i class="fa-solid fa-user"></i>
+            <p id="artistName">SOMEONE</p>
+          </button>
         </div>
         <div id="controlDiv">
-          <div id="secondaryControls"></div>
+          <div id="secondaryControls">
+            <button id="bnLike">
+              <i class="fa-solid fa-heart"></i>
+              LIKE
+            </button>
+            <button id="bnFavourite">
+              <i class="fa-solid fa-star"></i>
+              FAVOURITE
+            </button>
+            <button id="bnDownload">
+              <i class="fa-solid fa-download"></i>
+              DOWNLOAD
+            </button>
+            <button id="bnSave">
+              <i class="fa-solid fa-bookmark"></i>
+              SAVE
+            </button>
+            <button id="bnShare">
+              <i class="fa-solid fa-share"></i>
+              SHARE
+            </button>
+            <button id="bnAdd">
+              <i class="fa-solid fa-add"></i>
+              ADD TO PLAYLIST
+            </button>
+            <button id="bnMore">
+              <i class="fa-solid fa-more"></i>
+              MORE
+            </button>
+          </div>
           <div id="primaryControls">
             <div id="runtimeInfo">
               <p id="time1">0:00</p>
@@ -41,7 +73,9 @@
               </button>
             </div>
             <div id="volumeDiv">
+              <i class="fa-solid fa-volume-low"></i>
               <input id="volumeSlider" type="range" min="0" max="100" value="60">
+              <i class="fa-solid fa-volume-high"></i>
             </div>
           </div>
         </div>
