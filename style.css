@@ -56,45 +56,49 @@
 }
 body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   font-family: sans-serif;
-  background: rgb(0,0,0);
+  background-image: url('https://i.pinimg.com/736x/c5/76/bf/c576bfea6f51fc98cc611d84439d1245.jpg');
+  background-size: contain;
   min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  transition: all 1.0s ease-in-out;
 }
-#outerPlayerPanel {
+#blurLayer {
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-image: url('https://i.pinimg.com/736x/c5/76/bf/c576bfea6f51fc98cc611d84439d1245.jpg');
-  background-size: cover;
+  align-items: stretch;
+  backdrop-filter: blur(60px);
+  background-color: rgba(0,0,0,0.3);
   width: 100%;
+  height: 100vh;
+  margin: 0;
   border: none;
-  border-radius: 5rem;
-  transition: all 1.5s ease-in-out;
 }
 #playerPanel {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  backdrop-filter: blur(60px);
-  background-color: rgba(0,0,0,0.3);
-  width: 100%;
+  background: transparent;
+  width: 90%;
+  height: 95%;
   margin: 0;
+  padding: 0;
   border: none;
-  border-radius: 4rem;
-  box-shadow: 0 0 5px black;
 }
 #toggleDiv {
   display: flex;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(50px);
-  background-color: rgba(0,0,0,0.01);
+  background-color: rgba(0,0,0,0.1);
+  height: 5%;
   width: 40%;
-  margin: 1rem;
+  margin: 5%;
   padding: 0;
   gap: 0;
   border: none;
@@ -106,7 +110,7 @@ body {
   color: rgba(255,255,255,0.7);
   background: transparent;
   width: 50%;
-  height: 2rem;
+  height: 100%;
   border: none;
   border-radius: 1.5rem;
   transition: all 0.4s ease-in-out;
@@ -115,18 +119,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 50%;
   width: 100%;
   margin: 0;
+  padding: 0;
 }
 #albumArt {
   background-image: url('https://i.pinimg.com/736x/c5/76/bf/c576bfea6f51fc98cc611d84439d1245.jpg');
   background-size: cover;
-  height: 25rem;
-  width: 25rem;
-  margin-bottom: 1rem;
+  height: 100%;
+  width: 100%;
+  margin: 0;
   border: none;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 5%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   transform: scale(0.9);
   transition: transform 0.3s ease-in-out;
 }
@@ -139,7 +145,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   background: transparent;
-  height: 25rem;
+  height: 100%;
   width: 100%;
   margin-bottom: 0.5rem;
   padding: 0.5rem;
@@ -165,71 +171,121 @@ body {
 #infoDiv {
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-items: center;
-  margin: 0;
-  margin-right: auto;
-  gap: 0;
-  padding-left: 0.5rem;
-}
-#trackName,
-#artistName {
+  justify-content: center;
+  align-items: flex-start;
+  background: transparent;
   font: sans-serif;
-  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  height: 10%;
+  width: 100%;
+  margin: 0;
+  gap: 0;
+}
+#trackName {
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 900;
+  height: 50%;
+  margin: 0;
+}
+#bnArtist {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 100%;
+  color: rgba(255,255,255,0.7);
+  background: transparent;
+  height: 50%;
+  gap: 10%;
+  border: none;
+}
+#bnArtist i {
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+}
+#artistName {
   font-weight: 500;
   color: rgba(255,255,255,0.7);
   margin: 0;
-  margin-right: auto;
-}
-#trackName {
-  font-size: 1.5rem;
-  font-weight: 900;
 }
 #controlDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 30%;
   width: 100%;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  padding: 0;
+  margin: 0;
+  padding-left: 1%;
+  padding-right: 1%;
   gap: 0;
+}
+#secondaryControls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: transparent;
+  height: 20%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 2%;
+}
+#secondaryControls button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100%;
+  color: rgba(255,255,255,0.7);
+  backdrop-filter: blur(50px);
+  background-color: rgba(0,0,0,0.1);
+  height: 80%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  gap: 10%;
+  border: none;
+  border-radius: 1rem;
 }
 #primaryControls {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 80%;
   width: 100%;
-  gap: 1rem;
 }
 #runtimeInfo {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
+  height: 20%;
   width: 100%;
-  gap: 0.5rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  gap: 2%;
 }
 #time1,
 #time2 {
+  text-align: center;
   font: Arial;
-  font-size: 1rem;
   font-weight: 500;
   color: rgba(255,255,255,0.7);
+  height: 100%;
 }
 #timeSlider {
   display: flex;
   accent-color: white;
-  width: 90%;
+  width: 85%;
 }
 #playbackControls {
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
+  height: 60%;
   width: 100%;
-  gap: 10%;
 }
 #bnPrev,
 #bnPlay,
@@ -238,34 +294,42 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'Courier New',Courier,Monospace;
-  font-size: 4rem;
+  font-size: 200%;
   font-weight: 900;
   color: rgba(255,255,255,0.7);
   background: transparent;
+  height: 100%;
+  width: 33%;
   border: none;
   transition: all 0.2s ease-in-out;
 }
 #bnPrev:active {
-  transform: translateX(-5px);
+  transform: translateX(-5%);
 }
 #bnPlay:active {
   transform: scale(0.9);
 }
 #bnNext:active {
-  transform: translateX(5px);
+  transform: translateX(5%);
 }
 #volumeDiv {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   background: transparent;
+  height: 20%;
   width: 100%;
-  margin: 1rem;
+  gap: 5%;
 }
-#volumeSlider {
+#volumeDiv i {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 100%;
+  font-weight: 900;
+  color: rgba(255,255,255,0.7);
+}
+#volumeSlider {
   accent-color: white;
   width: 60%;
   margin: 0;
