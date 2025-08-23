@@ -106,7 +106,7 @@ body {
 }
 #togglePic,
 #toggleLyr {
-  font-family: Arial;
+  font-family: Nunito,Montserrat medium;
   color: rgba(255,255,255,0.7);
   background: transparent;
   width: 50%;
@@ -183,6 +183,7 @@ body {
 }
 #trackName {
   display: flex;
+  font-family: SF Pro display;
   font-size: 1.5rem;
   font-weight: 900;
   height: 50%;
