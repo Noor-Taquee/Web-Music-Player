@@ -1,5 +1,5 @@
 //ELEMENTS
-let outerPlayerPanel = document.getElementById("outerPlayerPanel");
+let main = document.getElementById("mainBody");
 let togglePic = document.getElementById("togglePic");
 let toggleLyr = document.getElementById("toggleLyr");
 let pictureDiv = document.getElementById("pictureDiv");
@@ -9,11 +9,10 @@ let artistName = document.getElementById("artistName");
 let bnPrev = document.getElementById("bnPrev");
 let bnPlay = document.getElementById("bnPlay");
 let bnNext = document.getElementById("bnNext");
-let playIcon = document.createElement("i");
+let playIcon = document.querySelector(".fa-solid.fa-play");
 let pauseIcon = document.createElement("i");
 let lyricsDiv = document.createElement("div");
 let lyrics = document.createElement("p");
-playIcon.className = "fa-solid fa-play";
 pauseIcon.className = "fa-solid fa-pause";
 lyricsDiv.className = "lyricsDiv";
 lyrics.className = "lyrics";
@@ -100,8 +99,7 @@ function removeFocus() {
 }
 function stopMusic() {
   albumArt.style.transform = "scale(0.9)";
-  bnPlay.removeChild(pauseIcon);
-  bnPlay.appendChild(playIcon);
+  bnPlay.replaceChild(playIcon,pauseIcon);
   bnPlay.removeEventListener("click", stopMusic);
   bnPlay.addEventListener("click", startMusic);
   musicPlaying = false;
@@ -194,9 +192,10 @@ function changeSong(order) {
       }
     }
   }
+  focusOn("picture");
   trackName.textContent = songList[currentSongIndex];
   artistName.textContent = artistList[currentSongIndex];
-  outerPlayerPanel.style.backgroundImage = `url(${artList[currentSongIndex]})`;
+  main.style.backgroundImage = `url(${artList[currentSongIndex]})`;
 }
 
 
@@ -220,8 +219,8 @@ document.addEventListener("keydown", (event) => {
 
 
 //INITIALIZATION
+main.style.backgroundImage = `url(${artList[currentSongIndex]})`;
 albumArt.style.backgroundImage = `url(${artList[currentSongIndex]})`;
-outerPlayerPanel.style.backgroundImage = `url(${artList[currentSongIndex]})`;
 trackName.textContent = songList[currentSongIndex];
 artistName.textContent = artistList[currentSongIndex];
 togglePic.style.backgroundColor = "rgba(255,255,255,0.3)";
