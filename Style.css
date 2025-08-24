@@ -1,3 +1,11 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes fadeInBehind {
   0% {
     transform: translateX(-100%) scale(0.9);
@@ -86,7 +94,6 @@ body {
   margin: 0;
   border: none;
 }
-
 #switchDiv {
   display: flex;
   justify-content: center;
@@ -100,12 +107,12 @@ body {
 }
 
 #switchDiv button {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 100%;
   background: transparent;
   height: 100%;
   width: 25%;
@@ -118,10 +125,11 @@ body {
 }
 
 #switchDiv i {
+  font-size: 4vh;
   margin: 0;
 }
 
 #switchDiv p {
-  font-size: 70%;
-  margin: 10%;
+  font-size: 1.8vh;
+  margin: 0.5vh;
 }
