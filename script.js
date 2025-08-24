@@ -1,5 +1,5 @@
 //ELEMENTS==========================
-let main = document.getElementById("mainBody");
+let main = document.getElementById("main");
 let blurLayer = document.getElementById("blurLayer");
 let switchDiv = document.getElementById("switchDiv");
 let bnHomePanel = document.getElementById("bnHomePanel");
@@ -10,10 +10,13 @@ let bnAccountPanel = document.getElementById("bnAccountPanel");
 
 let currentTab = null;
 
-function createScreen(defaultTab) {
+function createScreen(defaultTab,btn) {
   blurLayer.removeChild(switchDiv);
   blurLayer.appendChild(defaultTab);
   blurLayer.appendChild(switchDiv);
+  btn.style.backgroundColor = "rgba(255,255,255,0.3)";
+  btn.style.fontSize = "120%";
+  btn.style.fontWeight = "700";
 }
 function switchTo(destination) {
   if (blurLayer.contains(homePanel)) {
