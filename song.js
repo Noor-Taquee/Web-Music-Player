@@ -20,7 +20,7 @@ let currentSongIndex = 0;
 let musicPlaying = false;
 let coveredTime = 0;
 let totalTime = 0;
-let currentAlbumArt = albumArtList[currentSongIndex];
+let currentAlbumArt = `url(${albumArtList[currentSongIndex]})`;
 let currentTrackName = trackNameList[currentSongIndex];
 let currentArtistName = artistNameList[currentSongIndex];
 song.src = songList[currentSongIndex];
@@ -45,7 +45,7 @@ function stopMusic() {
 function nextSong() {
   if (currentSongIndex < songList.length - 1) {
     currentSongIndex++;
-    currentAlbumArt = albumArtList[currentSongIndex];
+    currentAlbumArt = `url(${albumArtList[currentSongIndex]})`;
     currentTrackName = trackNameList[currentSongIndex];
     currentArtistName = artistNameList[currentSongIndex];
     song.src = songList[currentSongIndex];
@@ -57,7 +57,7 @@ function nextSong() {
 function prevSong() {
   if (currentSongIndex > 0) {
     currentSongIndex--;
-    currentAlbumArt = albumArtList[currentSongIndex];
+    currentAlbumArt = `url(${albumArtList[currentSongIndex]})`;
     currentTrackName = trackNameList[currentSongIndex];
     currentArtistName = artistNameList[currentSongIndex];
     song.src = songList[currentSongIndex];
@@ -80,4 +80,5 @@ song.addEventListener("loadedmetadata",() => {
     initPlayer();
     main.style.backgroundImage = currentAlbumArt;
   }
+
 });
