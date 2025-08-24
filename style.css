@@ -271,12 +271,6 @@ body {
   border: none;
   border-radius: 1rem;
 }
-
-#secondaryControls:-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-}
-
 #secondaryControls button {
   display: flex;
   justify-content: center;
