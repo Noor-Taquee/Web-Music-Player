@@ -30,6 +30,7 @@
 
 #togglePic,
 #toggleLyr {
+  cursor: pointer;
   font-family: Arial;
   color: rgba(255, 255, 255, 0.7);
   background: transparent;
@@ -174,7 +175,12 @@
   border: none;
   border-radius: 1rem;
 }
+#secondaryControls::-webkit-scrollbar {
+  height: 0;
+  background: transparent;
+}
 #secondaryControls button {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,6 +225,7 @@
 
 #time1,
 #time2 {
+  cursor: default;
   text-align: center;
   font: Arial;
   font-weight: 500;
@@ -227,6 +234,7 @@
 }
 
 #timeSlider {
+  cursor: pointer;
   display: flex;
   accent-color: white;
   width: 85%;
@@ -244,11 +252,12 @@
 #bnPrev,
 #bnPlay,
 #bnNext {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Courier New', Courier, Monospace;
-  font-size: 200%;
+  font-size: 5vmin;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.7);
   background: transparent;
@@ -285,6 +294,7 @@
 }
 
 #volumeDiv i {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -294,6 +304,7 @@
 }
 
 #volumeSlider {
+  cursor: pointer;
   accent-color: white;
   width: 60%;
   margin: 0;
