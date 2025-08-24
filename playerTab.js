@@ -255,12 +255,12 @@ function changeSong(order) {
         albumArt.style.animationDuration = "0.2s";
         albumArt.addEventListener("animationend",function animateNext() {
           albumArt.removeEventListener("animationend",animateNext);
-          albumArt.style.backgroundImage = currentAlbumArt;
+          albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
           albumArt.style.animation = "fadeInAhead";
           albumArt.style.animationDuration = "0.2s";
         });
       } else {
-        albumArt.style.backgroundImage = currentAlbumArt;
+        albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
       }
     }
   } else {
@@ -270,12 +270,12 @@ function changeSong(order) {
         albumArt.style.animationDuration = "0.2s";
         albumArt.addEventListener("animationend",function animatePrev() {
           albumArt.removeEventListener("animationend",animatePrev);
-          albumArt.style.backgroundImage = currentAlbumArt;
+          albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
           albumArt.style.animation = "fadeInBehind";
           albumArt.style.animationDuration = "0.2s";
         });
       } else {
-        albumArt.style.backgroundImage = currentAlbumArt;
+        albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
       }
     }
   }
@@ -288,7 +288,7 @@ function initPlayer() {
   timeSlider.max = totalTime;
   time1.textContent = "0:00";
   time2.textContent = totalTime;
-  albumArt.style.backgroundImage = currentAlbumArt;
+  albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
   trackName.textContent = currentTrackName;
   artistName.textContent = currentArtistName;
   if (bnPlay.contains(loadingIcon)) {
@@ -320,6 +320,10 @@ volumeLowIcon.addEventListener("click",() => {
   volumeDiv.replaceChild(volumeMuteIcon,volumeLowIcon);
   volumeSlider.value = 0;
   setVolumeTo(0);
+});
+volumeHighIcon.addEventListener("click",() => {
+  volumeSlider.value = 1;
+  setVolumeTo(1);
 });
 
 
