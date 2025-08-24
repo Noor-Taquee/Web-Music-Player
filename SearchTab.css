@@ -3,12 +3,18 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: transparent;
   width: 90%;
   height: 90%;
   margin: 0;
   padding: 0;
   border: none;
+}
+#searchPanel::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 #searchBar {
@@ -41,6 +47,7 @@
 }
 
 #bnSearch {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,6 +89,7 @@
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.1);
   height: 85%;
+  min-height: 10vw;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -144,6 +152,7 @@
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.1);
   height: 85%;
+  min-height: 20vw;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -165,7 +174,7 @@
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.2);
   height: 95%;
-  width: 40%;
+  width: 25%;
   margin: 0;
   padding: 0;
   padding-top: 5%;
