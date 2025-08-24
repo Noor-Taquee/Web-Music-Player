@@ -1,0 +1,205 @@
+#searchPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: transparent;
+  width: 90%;
+  height: 90%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+#searchPanel::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+#searchBar {
+  display: flex;
+  justify-content: center;
+  height: 5%;
+  width: 100%;
+  margin: 0;
+  padding: 2%;
+}
+
+#searchBox {
+  font-size: 100%;
+  backdrop-filter: blur(50px);
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 75%;
+  margin: 0;
+  padding: 0;
+  padding-left: 2%;
+  border: none;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+
+#searchBox::placeholder {
+  font-size: 100%;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#bnSearch {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(50px);
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  gap: 5%;
+  border: none;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+#searchHistoryNameDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: transparent;
+  height: 40%;
+  width: 100%;
+}
+
+#recentSearches {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 15%;
+}
+
+#searchedSongNameDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 85%;
+  min-height: 10vw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 1%;
+  border: none;
+  border-radius: 1.5rem;
+}
+
+#searchedSongNameDiv::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+#searchedNameSong {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 25%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-left: 5%;
+  padding-right: 5%;
+  border: none;
+  border-radius: 2rem;
+}
+
+#searchedNameSong p {
+  font-size: 120%;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#searchedNameSong i {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#searchHistoryPicDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: transparent;
+  height: 40%;
+  width: 100%;
+}
+
+#recentSongs {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 15%;
+}
+
+#searchedSongPicDiv {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 85%;
+  min-height: 20vw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 1%;
+  border: none;
+  border-radius: 1.5rem;
+}
+
+#searchedSongPicDiv::-webkit-scrollbar {
+  height: 0;
+  background: transparent;
+}
+
+#searchedPicSong {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 95%;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 2rem;
+}
+
+#searchedPicSong p {
+  font-size: 120%;
+  background-image: url('');
+  background-size: cover;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  padding: 0;
+}
+
+#searchedSongPic {
+  display: flex;
+  height: 80%;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0.5rem;
+}
