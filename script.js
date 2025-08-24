@@ -382,6 +382,7 @@ togglePic.style.fontWeight = "500";
 
 
 
+
 //HOMETAB=================================
 //CREATING ELEMENTS
 let homePanel = document.createElement("div");
