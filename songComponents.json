@@ -1,0 +1,38 @@
+{
+    "mi gente":{
+        "name":"MI GENTE",
+        "artist":"J BALVIN, WILLY WILLIAM",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL2oNEeUrJkjcsTDLxn9BmmDF4e7i6dSW7cZUalpfE1zPjv7p_h-8Ehac&s=10",
+        "audio":"https://www.dropbox.com/scl/fi/t3pm0e0jpbycg53vx6p5t/Mi-Gente-PagalNew.Com.Se.mp3?rlkey=w83aus2efhqlxkr2oio1zilph&st=zooao9af&raw=1"
+        },
+    "saiyyara":{
+        "name":"SAIYYARA",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/3rgzib8lggazt29y0jj75/Saiyaara.mp3?rlkey=6af3eqb7v11qgm0apq37p6iwj&st=kh1a6cag&raw=1"
+    },
+    "sahiba":{
+        "name":"SAHIBA",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/9gzq12g0owdmj7qdq1coo/Aavan-Jaavan.mp3?rlkey=uq4hv2unb37fueed8pwr39oox&st=9zbrietz&raw=1"
+    },
+    "tere sang ishq hua":{
+        "name":"TERE SANG ISHQ HUA",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/8xuakduln3q37pn4c0z9h/Tere-Sang-Ishq-Hua.mp3?rlkey=340kkhanspkimpruh2kc9wah8&st=y2ira7ox&raw=1"
+    },
+    "aavan jaavan":{
+        "name":"AAVAN JAAVAN",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/9gzq12g0owdmj7qdq1coo/Aavan-Jaavan.mp3?rlkey=uq4hv2unb37fueed8pwr39oox&st=iqh2ypbj&raw=1"
+    },
+    "eeyuh! x fluxxwave":{
+        "name":"EEYUH! x FLUXXWAVE",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/08ksa4fd57ssauj12zgho/EEYUH-x-Fluxxwave.m4a?rlkey=rc9oyca5vnbc3m4d9k2fd3ip6&st=79ntkuk1&dl=0"
+    }
+}
