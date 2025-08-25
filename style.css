@@ -125,11 +125,12 @@ body {
 }
 
 #switchDiv i {
-  font-size: 4vh;
+  font-size: 3vmin;
   margin: 0;
 }
 
 #switchDiv p {
   font-size: 1.8vh;
   margin: 0.5vh;
+
 }
