@@ -248,6 +248,7 @@ function changeState() {
 }
 
 function changeSong(order) {
+  bnPlay.replaceChild(loadingIcon, playIcon);
   if (order == "next") {
     if (nextSong()) {
       if (pictureDiv.contains(albumArt)) {
@@ -285,7 +286,7 @@ function changeSong(order) {
 }
 
 function initPlayer() {
-  timeSlider.max = totalTime;
+  timeSlider.max = song.duration;
   time1.textContent = "0:00";
   time2.textContent = totalTime;
   albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
@@ -348,4 +349,5 @@ setInterval(() => {
 
 //INITIALIZATION
 togglePic.style.backgroundColor = "rgba(255,255,255,0.3)";
+
 togglePic.style.fontWeight = "500";
