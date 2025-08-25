@@ -6,10 +6,14 @@
   overflow-x: hidden;
   overflow-y: hidden;
   background: transparent;
-  width: 90%;
+  width: 95%;
   height: 90%;
   margin: 0;
-  padding: 0;
+  padding-top: 0.3vh;
+  padding-bottom: 0.3vh;
+  padding-left: 0.3vh;
+  padding-right: 0.3vh;
+  gap: 0;
   border: none;
 }
 
