@@ -1,0 +1,14 @@
+#homePanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: transparent;
+  width: 90%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
