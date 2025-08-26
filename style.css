@@ -177,6 +177,7 @@ body::-webkit-scrollbar {
   cursor: default;
   white-space: pre;
   overflow: hidden;
+  text-align: bottom;
   text-overflow: ellipsis;
   font-size: 3.5vmin;
   font-weight: 700;
@@ -186,6 +187,7 @@ body::-webkit-scrollbar {
 }
 #miniArtistName {
   cursor: default;
+  text-align: top;
   font-size: 2.5vmin;
   font-weight: 300;
   height: 30%;
@@ -259,4 +261,5 @@ body::-webkit-scrollbar {
   margin: 0.5vh;
 
 }
+
 
