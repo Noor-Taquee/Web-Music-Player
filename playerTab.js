@@ -284,55 +284,29 @@ function focusOn(part) {
   currentFocus = part;
 }
 
+function showLoading() {
+  if (bnPlay.contains(playIcon)) {
+    bnPlay.replaceChild(loadingIcon,playIcon);
+    miniBnPlay.replaceChild(miniLoadingIcon, miniPlayIcon)
+  } else if (bnPlay.contains(pauseIcon)) {
+    bnPlay.replaceChild(loadingIcon,pauseIcon)
+    miniBnPlay.replaceChild(miniLoadingIcon, miniPauseIcon)
+  }
+}
+
 function changeState() {
   if (musicPlaying) {
     stopMusic();
-    bnPlay.replaceChild(playIcon,pauseIcon);
-    albumArt.style.transform = "scale(0.9)";
-    miniBnPlay.replaceChild(miniPlayIcon,miniPauseIcon);
   } else {
     startMusic();
-    bnPlay.replaceChild(pauseIcon,playIcon);
-    albumArt.style.transform = "scale(1)";
-    miniBnPlay.replaceChild(miniPauseIcon,miniPlayIcon);
   }
 }
 
 function changeSong(order) {
-  bnPlay.replaceChild(loadingIcon, playIcon);
-  miniBnPlay.replaceChild(miniLoadingIcon, miniPlayIcon);
   if (order == "next") {
-    if (nextSong()) {
-      miniAlbumArt.style.backgroundImage = "";
-      if (pictureDiv.contains(albumArt)) {
-        albumArt.style.animation = "fadeOutBehind";
-        albumArt.style.animationDuration = "0.2s";
-        albumArt.addEventListener("animationend",function animateNext() {
-          albumArt.removeEventListener("animationend",animateNext);
-          albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
-          albumArt.style.animation = "fadeInAhead";
-          albumArt.style.animationDuration = "0.2s";
-        });
-      } else {
-        albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
-      }
-    }
+    nextSong();
   } else {
-    if (prevSong()) {
-      miniAlbumArt.style.backgroundImage = "";
-      if (pictureDiv.contains(albumArt)) {
-        albumArt.style.animation = "fadeOutAhead";
-        albumArt.style.animationDuration = "0.2s";
-        albumArt.addEventListener("animationend",function animatePrev() {
-          albumArt.removeEventListener("animationend",animatePrev);
-          albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
-          albumArt.style.animation = "fadeInBehind";
-          albumArt.style.animationDuration = "0.2s";
-        });
-      } else {
-        albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
-      }
-    }
+    prevSong();
   }
   focusOn("picture");
   trackName.textContent = currentTrackName;
