@@ -175,13 +175,21 @@ body::-webkit-scrollbar {
 }
 #miniTrackName {
   cursor: default;
+  white-space: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 3.5vmin;
   font-weight: 700;
+  width: 100%;
+  height: 70%;
   margin: 0;
 }
 #miniArtistName {
   cursor: default;
   font-size: 2.5vmin;
+  font-weight: 300;
+  height: 30%;
+  width: 100%;
   margin: 0;
 }
 #miniPlaybackControlsDiv {
@@ -251,3 +259,4 @@ body::-webkit-scrollbar {
   margin: 0.5vh;
 
 }
+
