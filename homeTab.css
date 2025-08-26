@@ -283,8 +283,8 @@
   align-items: center;
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.2);
-  height: 100%;
-  width: 25%;
+  height: 15vh;
+  width: 15vh;
   margin: 0;
   padding: 0;
   padding-top: 0.5vh;
@@ -309,3 +309,4 @@
   margin: 0;
   padding: 0;
 }
+
