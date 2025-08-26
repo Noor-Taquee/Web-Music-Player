@@ -9,8 +9,8 @@ let HindiTitles = null;
 let PunjabiTitles = null;
 let EnglishTitles = null;
 let PhonkTitles = null;
-let SpanishSongs = null;
-let Tunes = null;
+let SpanishTitles = null;
+let TunesTitles = null;
 let titleNames = [];
 let currentSongIndex = 0;
 let currentSong = null;
@@ -126,6 +126,7 @@ song.addEventListener("loadedmetadata",() => {
   initPlayer();
   initMiniPlayer();
 });
+
 
 
 
