@@ -125,9 +125,11 @@ song.addEventListener("loadedmetadata",() => {
   totalTime = formatTime(song.duration);
   initPlayer();
   initMiniPlayer();
+  loadHomeSongs();
 });
 
 
 
 
 attend();
+
