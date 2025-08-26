@@ -64,7 +64,7 @@
   border-bottom-right-radius: 2rem;
 }
 
-#searchHistoryNameDiv {
+#searchHistoryTextDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -81,7 +81,7 @@
   height: 15%;
 }
 
-#searchedSongNameDiv {
+#searchedTextDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,12 +99,12 @@
   border-radius: 1.5rem;
 }
 
-#searchedSongNameDiv::-webkit-scrollbar {
+#searchedTextDiv::-webkit-scrollbar {
   width: 0;
   background: transparent;
 }
 
-#searchedNameSong {
+#searchedText {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -122,16 +122,16 @@
   border-radius: 2rem;
 }
 
-#searchedNameSong p {
+#searchedText p {
   font-size: 120%;
   color: rgba(255, 255, 255, 0.7);
 }
 
-#searchedNameSong i {
+#searchedText i {
   color: rgba(255, 255, 255, 0.7);
 }
 
-#searchHistoryPicDiv {
+#searchHistorySongDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -148,7 +148,7 @@
   height: 15%;
 }
 
-#searchedSongPicDiv {
+#searchedSongDiv {
   display: flex;
   align-items: center;
   overflow-x: auto;
@@ -165,12 +165,12 @@
   border-radius: 1.5rem;
 }
 
-#searchedSongPicDiv::-webkit-scrollbar {
+#searchedSongDiv::-webkit-scrollbar {
   height: 0;
   background: transparent;
 }
 
-#searchedPicSong {
+#searchedSong {
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -188,23 +188,19 @@
   border: none;
   border-radius: 1rem;
 }
-
-#searchedPicSong p {
-  font-size: 120%;
-  background-image: url('');
-  background-size: cover;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-  padding: 0;
-}
-
 #searchedSongPic {
   display: flex;
+  background-size: cover;
   height: 80%;
   width: 90%;
-  background-color: rgba(255, 255, 255, 0.7);
   margin: 0;
   padding: 0;
   border: none;
   border-radius: 0.5rem;
+}
+#searchedSongName {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  padding: 0;
 }
