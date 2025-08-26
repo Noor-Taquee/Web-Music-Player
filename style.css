@@ -175,13 +175,13 @@ body::-webkit-scrollbar {
 }
 #miniTrackName {
   cursor: default;
-  font-size: 3.5vh;
+  font-size: 3.5vmin;
   font-weight: 700;
   margin: 0;
 }
 #miniArtistName {
   cursor: default;
-  font-size: 2.5vh;
+  font-size: 2.5vmin;
   margin: 0;
 }
 #miniPlaybackControlsDiv {
@@ -249,4 +249,5 @@ body::-webkit-scrollbar {
 #switchDiv p {
   font-size: 1.8vh;
   margin: 0.5vh;
+
 }
