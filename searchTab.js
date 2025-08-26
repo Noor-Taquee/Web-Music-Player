@@ -25,57 +25,57 @@ bnSearch.appendChild(searchP);
 searchP.textContent = "SEARCH";
 
 
-let searchHistoryNameDiv = document.createElement("div");
-searchPanel.appendChild(searchHistoryNameDiv);
-searchHistoryNameDiv.id = "searchHistoryNameDiv";
+let searchHistoryTextDiv = document.createElement("div");
+searchPanel.appendChild(searchHistoryTextDiv);
+searchHistoryTextDiv.id = "searchHistoryTextDiv";
 let recentSearches = document.createElement("p");
-searchHistoryNameDiv.appendChild(recentSearches);
+searchHistoryTextDiv.appendChild(recentSearches);
 recentSearches.id = "recentSearches";
 recentSearches.textContent = "RECENT SEARCHES";
-let searchedSongNameDiv = document.createElement("div");
-searchHistoryNameDiv.appendChild(searchedSongNameDiv);
-searchedSongNameDiv.id = "searchedSongNameDiv";
+let searchedTextDiv = document.createElement("div");
+searchHistoryTextDiv.appendChild(searchedTextDiv);
+searchedTextDiv.id = "searchedTextDiv";
 
-let searchHistoryPicDiv = document.createElement("div");
-searchPanel.appendChild(searchHistoryPicDiv);
-searchHistoryPicDiv.id = "searchHistoryPicDiv";
+let searchHistorySongDiv = document.createElement("div");
+searchPanel.appendChild(searchHistorySongDiv);
+searchHistorySongDiv.id = "searchHistorySongDiv";
 let recentSongs = document.createElement("p");
-searchHistoryPicDiv.appendChild(recentSongs);
+searchHistorySongDiv.appendChild(recentSongs);
 recentSongs.id = "recentSongs";
 recentSongs.textContent = "RECENT SONGS";
-let searchedSongPicDiv = document.createElement("div");
-searchHistoryPicDiv.appendChild(searchedSongPicDiv);
-searchedSongPicDiv.id = "searchedSongPicDiv";
+let searchedSongDiv = document.createElement("div");
+searchHistorySongDiv.appendChild(searchedSongDiv);
+searchedSongDiv.id = "searchedSongDiv";
 
 function loadSearchTextHistory() {
   for (let songs of songNameHistory) {
-    let searchedNameSong = document.createElement("button");
-    searchedSongNameDiv.appendChild(searchedNameSong);
-    searchedNameSong.id = "searchedNameSong";
+    let searchedText = document.createElement("button");
+    searchedTextDiv.appendChild(searchedText);
+    searchedText.id = "searchedText";
     
-    let searchedNameP = document.createElement("p");
-    searchedNameSong.appendChild(searchedNameP);
-    searchedNameP.textContent = songs;
+    let searchedTextP = document.createElement("p");
+    searchedText.appendChild(searchedTextP);
+    searchedTextP.textContent = songs;
     
-    let searchedNameIcon = document.createElement("i");
-    searchedNameSong.appendChild(searchedNameIcon);
-    searchedNameIcon.className = "fa-solid fa-search";
+    let searchedIcon = document.createElement("i");
+    searchedText.appendChild(searchedIcon);
+    searchedIcon.className = "fa-solid fa-search";
   }
 }
 
-function loadSearchPicHistory() {
+function loadSearchSongHistory() {
   for (let songs of songPicHistory) {
-    let searchedPicSong = document.createElement("button");
-    searchedSongPicDiv.appendChild(searchedPicSong);
-    searchedPicSong.id = "searchedPicSong";
+    let searchedSong = document.createElement("button");
+    searchedSongDiv.appendChild(searchedSong);
+    searchedSong.id = "searchedSong";
     
     let searchedSongPic = document.createElement("p");
-    searchedPicSong.appendChild(searchedSongPic);
+    searchedSong.appendChild(searchedSongPic);
     searchedSongPic.id = "searchedSongPic";
     searchedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
     
     let searchedSongName = document.createElement("p");
-    searchedPicSong.appendChild(searchedSongName);
+    searchedSong.appendChild(searchedSongName);
     searchedSongName.id = "searchedSongName";
     searchedSongName.textContent = songData[songs].name;
   }
@@ -83,7 +83,7 @@ function loadSearchPicHistory() {
 
 function loadSearchHistory() {
   loadSearchTextHistory();
-  loadSearchPicHistory();
+  loadSearchSongHistory();
 }
 
 
