@@ -13,11 +13,11 @@ let bnAccountPanel = document.getElementById("bnAccountPanel");
 //CREATING ELEMENTS===================
 let miniPlayer = document.createElement("div");
 miniPlayer.id = "miniPlayer";
-miniPlayer.addEventListener("click",expandToplayer);
 
 let miniInfoDiv = document.createElement("div");
 miniPlayer.appendChild(miniInfoDiv);
 miniInfoDiv.id = "miniInfoDiv";
+miniInfoDiv.addEventListener("click",expandToplayer);
 let miniAlbumArt = document.createElement("p");
 miniInfoDiv.appendChild(miniAlbumArt);
 miniAlbumArt.id = "miniAlbumArt";
@@ -206,3 +206,4 @@ bnPlayerPanel.addEventListener("click",() => switchTo("playerPanel"));
 bnSearchPanel.addEventListener("click",() => switchTo("searchPanel"));
 bnLibraryPanel.addEventListener("click",() => switchTo("libraryPanel"));
 bnAccountPanel.addEventListener("click",() => switchTo("accountPanel"));
+
