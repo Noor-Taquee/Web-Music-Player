@@ -43,37 +43,6 @@ let libraryContent = document.createElement("div");
 libraryPanel.appendChild(libraryContent);
 libraryContent.id = "libraryContent";
 
-function loadPlaylists() {
-  for (let playlists of playlistList) {
-    let playlist = document.createElement("div");
-    libraryContent.appendChild(playlist);
-    playlist.id = "playlist";
-  
-    let playlistInfo = document.createElement("div");
-    playlist.appendChild(playlistInfo);
-    playlistInfo.id = "playlistInfo";
-  
-    let playlistPic = document.createElement("p");
-    playlistInfo.appendChild(playlistPic);
-    playlistPic.id = "playlistPic";
-    playlistPic.style.backgroundImage = `url(${playlist.image})`;
-  
-    let playlistName = document.createElement("p");
-    playlistInfo.appendChild(playlistName);
-    playlistName.id = "playlistName";
-    playlistName.textContent = playlists.name;
-  
-    let bnOptions = document.createElement("button");
-    playlist.appendChild(bnOptions);
-    bnOptions.id = "bnOptions";
-    bnOptions.addEventListener("click",() => f_options(playlist.name))
-  
-    let optionsIcon = document.createElement("i");
-    bnOptions.appendChild(optionsIcon);
-    optionsIcon.className = "fa-solid fa-ellipsis";
-  }
-}
-
 let optionPanel = document.createElement("div");
 optionPanel.id = "optionPanel";
 
@@ -136,17 +105,56 @@ let playlistInFocus = null;
 
 
 //FUNCTIONS
+function loadPlaylists() {
+  for (let playlists of playlistList) {
+    let playlist = document.createElement("div");
+    libraryContent.appendChild(playlist);
+    playlist.id = "playlist";
+  
+    let playlistInfo = document.createElement("div");
+    playlist.appendChild(playlistInfo);
+    playlistInfo.id = "playlistInfo";
+  
+    let playlistPic = document.createElement("p");
+    playlistInfo.appendChild(playlistPic);
+    playlistPic.id = "playlistPic";
+    let playlistIcon = document.createElement("i");
+    playlistIcon.className = "fa-solid fa-book";
+    if (playlists.image.length > 0) {
+      playlistPic.style.backgroundImage = `url(${playlists.image})`;
+    } else {
+      playlistPic.appendChild(playlistIcon);
+    }
+  
+    let playlistName = document.createElement("p");
+    playlistInfo.appendChild(playlistName);
+    playlistName.id = "playlistName";
+    playlistName.textContent = playlists.name;
+  
+    let bnOptions = document.createElement("button");
+    playlist.appendChild(bnOptions);
+    bnOptions.id = "bnOptions";
+    bnOptions.addEventListener("click",() => f_options(playlist.name))
+  
+    let optionsIcon = document.createElement("i");
+    bnOptions.appendChild(optionsIcon);
+    optionsIcon.className = "fa-solid fa-ellipsis";
+  }
+}
+
 function getPlaylistNames() {
   for (playlist of playlistList) {
     playlistNameList.push(playlist.name);
   }
 }
+
 function addPlaylist(nameOfPlaylist,imageOfPlaylist) {
   playlistList.push({
     "name":nameOfPlaylist,
     "image":imageOfPlaylist
   });
 }
+
 function renamePlaylist(newName,oldName) {
 }
 
