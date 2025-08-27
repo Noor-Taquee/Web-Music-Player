@@ -1,211 +1,92 @@
-#searchPanel {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: transparent;
-  width: 90%;
-  height: 80%;
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-#searchPanel::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+let songNameHistory = ["saiyyara","aavan jaavan"];
+let songPicHistory = ["saiyyara","akhiyan gulab","janiye","jalebi baby"];
+
+
+//CREATING ELEMENTS
+let searchPanel = document.createElement("div");
+searchPanel.id = "searchPanel";
+
+let searchBar = document.createElement("div");
+searchPanel.appendChild(searchBar);
+searchBar.id = "searchBar";
+let searchBox = document.createElement("input");
+searchBar.appendChild(searchBox);
+searchBox.id = "searchBox";
+searchBox.type = "search";
+searchBox.placeholder = "Search song";
+let bnSearch = document.createElement("button");
+searchBar.appendChild(bnSearch);
+bnSearch.id = "bnSearch";
+let searchIcon = document.createElement("i");
+bnSearch.appendChild(searchIcon);
+searchIcon.className = "fa-solid fa-search";
+let searchP = document.createElement("p");
+bnSearch.appendChild(searchP);
+searchP.textContent = "SEARCH";
+
+
+let searchHistoryTextDiv = document.createElement("div");
+searchPanel.appendChild(searchHistoryTextDiv);
+searchHistoryTextDiv.id = "searchHistoryTextDiv";
+let recentSearches = document.createElement("p");
+searchHistoryTextDiv.appendChild(recentSearches);
+recentSearches.id = "recentSearches";
+recentSearches.textContent = "RECENT SEARCHES";
+let searchedTextDiv = document.createElement("div");
+searchHistoryTextDiv.appendChild(searchedTextDiv);
+searchedTextDiv.id = "searchedTextDiv";
+
+let searchHistorySongDiv = document.createElement("div");
+searchPanel.appendChild(searchHistorySongDiv);
+searchHistorySongDiv.id = "searchHistorySongDiv";
+let recentSongs = document.createElement("p");
+searchHistorySongDiv.appendChild(recentSongs);
+recentSongs.id = "recentSongs";
+recentSongs.textContent = "RECENT SONGS";
+let searchedSongDiv = document.createElement("div");
+searchHistorySongDiv.appendChild(searchedSongDiv);
+searchedSongDiv.id = "searchedSongDiv";
+
+function loadSearchTextHistory() {
+  for (let songs of songNameHistory) {
+    let searchedText = document.createElement("button");
+    searchedTextDiv.appendChild(searchedText);
+    searchedText.id = "searchedText";
+    
+    let searchedTextP = document.createElement("p");
+    searchedText.appendChild(searchedTextP);
+    searchedTextP.textContent = songs;
+    
+    let searchedIcon = document.createElement("i");
+    searchedText.appendChild(searchedIcon);
+    searchedIcon.className = "fa-solid fa-search";
+  }
 }
 
-#searchBar {
-  display: flex;
-  justify-content: center;
-  height: 10%;
-  width: 100%;
-  margin: 0;
-  padding: 2%;
+function loadSearchSongHistory() {
+  for (let songs of songPicHistory) {
+    let searchedSong = document.createElement("button");
+    searchedSongDiv.appendChild(searchedSong);
+    searchedSong.id = "searchedSong";
+    searchedSong.addEventListener("click",() => playSong(songs));
+    
+    let searchedSongPic = document.createElement("p");
+    searchedSong.appendChild(searchedSongPic);
+    searchedSongPic.id = "searchedSongPic";
+    searchedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    
+    let searchedSongName = document.createElement("p");
+    searchedSong.appendChild(searchedSongName);
+    searchedSongName.id = "searchedSongName";
+    searchedSongName.textContent = songData[songs].name;
+  }
 }
 
-#searchBox {
-  font-size: 100%;
-  backdrop-filter: blur(50px);
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.1);
-  height: 100%;
-  width: 75%;
-  margin: 0;
-  padding: 0;
-  padding-left: 5vw;
-  border: none;
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
+function loadSearchHistory() {
+  loadSearchTextHistory();
+  loadSearchSongHistory();
 }
 
-#searchBox::placeholder {
-  font-size: 100%;
-  color: rgba(255, 255, 255, 0.7);
-}
 
-#bnSearch {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(50px);
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.1);
-  height: 100%;
-  width: 25%;
-  margin: 0;
-  padding: 0;
-  gap: 5%;
-  border: none;
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
 
-#searchHistoryTextDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: transparent;
-  height: 40%;
-  min-height: 10rem;
-  width: 100%;
-}
-
-#searchedTextDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
-  overflow-y: auto;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.1);
-  height: 85%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  gap: 1%;
-  border: none;
-  border-radius: 1.5rem;
-}
-
-#searchedTextDiv::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-}
-
-#searchedText {
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.2);
-  height: 25%;
-  min-height: 2.5rem;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  padding-left: 5%;
-  padding-right: 5%;
-  border: none;
-  border-radius: 2rem;
-}
-
-#searchedText p {
-  font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-#searchedText i {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-#searchHistorySongDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: transparent;
-  height: 50%;
-  min-height: 15rem;
-  width: 100%;
-}
-
-#recentSearches,
-#recentSongs {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  cursor: default;
-  font-size: 5vmin;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.7);
-  height: 15%;
-  width: 100%;
-  margin-top:  1vh;
-  margin-bottom: 1vh;
-}
-
-#searchedSongDiv {
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  overflow-y: hidden;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.1);
-  height: 85%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  gap: 1%;
-  border: none;
-  border-radius: 1.5rem;
-}
-
-#searchedSongDiv::-webkit-scrollbar {
-  height: 0;
-  background: transparent;
-}
-
-#searchedSong {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.2);
-  height: 30vh;
-  width: 30vh;
-  margin: 0;
-  padding: 0;
-  flex-shrink: 0;
-  border: none;
-  border-radius: 1rem;
-}
-#searchedSongPic {
-  display: flex;
-  background-size: cover;
-  height: 85%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0.5rem;
-}
-#searchedSongName {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  white-space: pre;
-  text-overflow: ellipsis;
-  font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
-  height: 15%;
-  width: 90%;
-  margin: 0;
-  padding: 0;
-}
+attend();
