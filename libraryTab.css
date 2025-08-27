@@ -107,8 +107,8 @@
   align-items: center;
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.2);
-  height: 7vh;
-  width: 7vh;
+  height: 6vh;
+  width: 6vh;
   margin: 0;
   margin-left: 1.5vw;
   border: none;
@@ -225,3 +225,4 @@
   color: white;
   width: 40%;
 }
+
