@@ -108,7 +108,13 @@ function loadRecentlyPlayedSongs() {
     let suggestedSongPic = document.createElement("p");
     suggestedSong.appendChild(suggestedSongPic);
     suggestedSongPic.id = "suggestedSongPic";
-    suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    let songIcon = document.createElement("i");
+    songIcon.className = "fa-solid fa-headphones";
+    if (songData[songs].image.length > 0) {
+      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    } else {
+      suggestedSongPic.appendChild(songIcon);
+    }
     
     let suggestedSongName = document.createElement("p");
     suggestedSong.appendChild(suggestedSongName);
@@ -129,6 +135,13 @@ function loadHomeSongs() {
     suggestedSong.appendChild(suggestedSongPic);
     suggestedSongPic.id = "suggestedSongPic";
     suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    let songIcon = document.createElement("i");
+    songIcon.className = "fa-solid fa-headphones";
+    if (songData[songs].image.length > 0) {
+      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    } else {
+      suggestedSongPic.appendChild(songIcon);
+    }
     
     let suggestedSongName = document.createElement("p");
     suggestedSong.appendChild(suggestedSongName);
@@ -144,7 +157,13 @@ function loadHomeSongs() {
     let suggestedSongPic = document.createElement("p");
     suggestedSong.appendChild(suggestedSongPic);
     suggestedSongPic.id = "suggestedSongPic";
-    suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    let songIcon = document.createElement("i");
+    songIcon.className = "fa-solid fa-headphones";
+    if (songData[songs].image.length > 0) {
+      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    } else {
+      suggestedSongPic.appendChild(songIcon);
+    }
     
     let suggestedSongName = document.createElement("p");
     suggestedSong.appendChild(suggestedSongName);
@@ -160,7 +179,13 @@ function loadHomeSongs() {
     let suggestedSongPic = document.createElement("p");
     suggestedSong.appendChild(suggestedSongPic);
     suggestedSongPic.id = "suggestedSongPic";
-    suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    let songIcon = document.createElement("i");
+    songIcon.className = "fa-solid fa-headphones";
+    if (songData[songs].image.length > 0) {
+      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    } else {
+      suggestedSongPic.appendChild(songIcon);
+    }
     
     let suggestedSongName = document.createElement("p");
     suggestedSong.appendChild(suggestedSongName);
@@ -176,7 +201,13 @@ function loadHomeSongs() {
     let suggestedSongPic = document.createElement("p");
     suggestedSong.appendChild(suggestedSongPic);
     suggestedSongPic.id = "suggestedSongPic";
-    suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    let songIcon = document.createElement("i");
+    songIcon.className = "fa-solid fa-headphones";
+    if (songData[songs].image.length > 0) {
+      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    } else {
+      suggestedSongPic.appendChild(songIcon);
+    }
     
     let suggestedSongName = document.createElement("p");
     suggestedSong.appendChild(suggestedSongName);
@@ -192,7 +223,13 @@ function loadHomeSongs() {
     let suggestedSongPic = document.createElement("p");
     suggestedSong.appendChild(suggestedSongPic);
     suggestedSongPic.id = "suggestedSongPic";
-    suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    let songIcon = document.createElement("i");
+    songIcon.className = "fa-solid fa-headphones";
+    if (songData[songs].image.length > 0) {
+      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    } else {
+      suggestedSongPic.appendChild(songIcon);
+    }
     
     let suggestedSongName = document.createElement("p");
     suggestedSong.appendChild(suggestedSongName);
@@ -208,7 +245,13 @@ function loadHomeSongs() {
     let suggestedSongPic = document.createElement("p");
     suggestedSong.appendChild(suggestedSongPic);
     suggestedSongPic.id = "suggestedSongPic";
-    suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    let songIcon = document.createElement("i");
+    songIcon.className = "fa-solid fa-headphones";
+    if (songData[songs].image.length > 0) {
+      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    } else {
+      suggestedSongPic.appendChild(songIcon);
+    }
     
     let suggestedSongName = document.createElement("p");
     suggestedSong.appendChild(suggestedSongName);
