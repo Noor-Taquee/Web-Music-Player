@@ -1,0 +1,62 @@
+{
+    "mi gente":{
+        "name":"MI GENTE",
+        "artist":"J BALVIN, WILLY WILLIAM",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL2oNEeUrJkjcsTDLxn9BmmDF4e7i6dSW7cZUalpfE1zPjv7p_h-8Ehac&s=10",
+        "audio":"https://www.dropbox.com/scl/fi/t3pm0e0jpbycg53vx6p5t/Mi-Gente-PagalNew.Com.Se.mp3?rlkey=w83aus2efhqlxkr2oio1zilph&st=zooao9af&raw=1"
+    },
+    "azul":{
+        "name":"AZUL",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/6tgk85h6gvzg1yvipsmox/azul.mp3?rlkey=uy78xg984bfpopgyar00lbwo2&st=lq7udb2x&raw=1"
+    },
+    "este":{
+        "name":"ESTE",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/d7mzy2fhk8qzeecmm7d2x/este.mp3?rlkey=nxykaa9rwpfvzdpzat6dvh688&st=h72jiygq&raw=1"
+    },
+    "martillando":{
+        "name":"MARTILLANDO",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/lsy69o4876kiflu3nyu3y/martillando.mp3?rlkey=fsmyf78m6cdihknjcy0nlfn3f&st=l4lzof59&raw=1"
+    },
+    "mi gata":{
+        "name":"MI GATA",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/vpn1mrmtmku5p0vbt9vcs/mi-gata.mp3?rlkey=f2gr98kn07uaw00c54r5g97sr&st=id5ayggs&raw=1"
+    },
+    "papi chulo":{
+        "name":"PAPI CHULO",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/62hhgeksy29be5bqjr6hc/papi-chulo.mp3?rlkey=eyyc0o790gt0h8ugfpb4dpbnh&st=ucajn1s1&raw=1"
+    },
+    "si no es contigo remix":{
+        "name":"SI NO ES CONTIGO (REMIX)",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/k9bnwe0kxosszr8xrc50j/si-no-es-contigo-remix.mp3?rlkey=1bepwb9nybz4z20r2vgmi0t5x&st=v7fcwpz2&raw=1"
+    },
+    "suave":{
+        "name":"SUAVE",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/wmoq0tflo3yia0mhcij52/Suave.mp3?rlkey=kcka53l22t4x0kor27p83cnq4&st=lufw7crd&raw=1"
+    },
+    "tacata remix":{
+        "name":"TACATA (REMIX)",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/kh9o3xkut46kbs52hb1nq/tacata-remix.mp3?rlkey=4f7pi6e2h31zhdqpy6uozmbg6&st=azis663i&raw=1"
+    },
+    "trakata":{
+        "name":"TRAKATA",
+        "artist":"",
+        "image":"",
+        "audio":"https://www.dropbox.com/scl/fi/jqwywk1zxx6goludca76f/trakata.mp3?rlkey=ofidwoci8qy03jsdigkmflvjm&st=oaywrymu&raw=1"
+    }
+}

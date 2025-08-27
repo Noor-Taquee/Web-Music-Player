@@ -1,0 +1,311 @@
+#homePanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;
+  width: 100%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+  gap: 1vh;
+  border: none;
+}
+#homeHeaderDiv {
+  display: flex;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 15%;
+  width: 100%;
+}
+#homeContentDiv {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-direction: column;
+  background: transparent;
+  height: 85%;
+  width: 90%;
+  border: none;
+  border-radius: 1rem;
+}
+#homeContentDiv::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#recentlyPLayedDiv {
+  display: flexbox;
+  flex-direction: column;
+  height: 30vh;
+  width: 100%;
+  flex-shrink: 0;
+  border: none;
+}
+#recentlyPLayedDivText {
+  cursor: default;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 20%;
+  width: 100%;
+  margin: 0;
+}
+#recentlyPLayedDivCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 1rem;
+}
+#hindiSongDiv {
+  display: flexbox;
+  flex-direction: column;
+  height: 30vh;
+  width: 100%;
+  flex-shrink: 0;
+  border: none;
+}
+#hindiSongDivText {
+  cursor: default;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 20%;
+  width: 100%;
+  margin: 0;
+}
+#hindiSongDivCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  border: none;
+  gap: 1vw;
+  border-radius: 1rem;
+}
+#hindiSongDivCon::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#punjabiSongDiv {
+  display: flexbox;
+  flex-direction: column;
+  height: 30vh;
+  width: 100%;
+  flex-shrink: 0;
+  border: none;
+}
+#punjabiSongDivText {
+  cursor: default;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 20%;
+  width: 100%;
+  margin: 0;
+}
+#punjabiSongDivCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 1rem;
+}
+#punjabiSongDivCon::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#englishSongDiv {
+  display: flexbox;
+  flex-direction: column;
+  height: 30vh;
+  width: 100%;
+  flex-shrink: 0;
+  border: none;
+}
+#englishSongDivText {
+  cursor: default;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 20%;
+  width: 100%;
+  margin: 0;
+}
+#englishSongDivCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 1rem;
+}
+#englishSongDivCon::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#phonkSongDiv {
+  display: flexbox;
+  flex-direction: column;
+  height: 30vh;
+  width: 100%;
+  flex-shrink: 0;
+  border: none;
+}
+#phonkSongDivText {
+  cursor: default;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 20%;
+  width: 100%;
+  margin: 0;
+}
+#phonkSongDivCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 1rem;
+}
+#phonkSongDivCon::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#spanishSongDiv {
+  display: flexbox;
+  flex-direction: column;
+  height: 30vh;
+  width: 100%;
+  flex-shrink: 0;
+  border: none;
+}
+#spanishSongDivText {
+  cursor: default;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 20%;
+  width: 100%;
+  margin: 0;
+}
+#spanishSongDivCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 1rem;
+}
+#spanishSongDivCon::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#tunesDiv {
+  display: flexbox;
+  flex-direction: column;
+  height: 30vh;
+  width: 100%;
+  flex-shrink: 0;
+  border: none;
+}
+#tunesDivText {
+  cursor: default;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
+  height: 20%;
+  width: 100%;
+  margin: 0;
+}
+#tunesDivCon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 1rem;
+}
+#tunesDivCon::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#suggestedSong {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 1rem;
+}
+#suggestedSongPic {
+  display: flex;
+  background-size: cover;
+  height: 80%;
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0.5rem;
+}
+#suggestedSongName {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  padding: 0;
+}
