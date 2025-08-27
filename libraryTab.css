@@ -81,29 +81,38 @@
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.1);
   height: 15%;
-  min-height: 3rem;
+  min-height: 4rem;
   width: auto;
   margin: 0;
   padding-left: 3vw;
-  padding-right: 3vh;
+  padding-right: 3vw;
   border: none;
   border-radius: 2rem;
 }
 #playlistInfo {
   display: flex;
-}
-#playlistPic {
-  display: flex;
-  background-size: cover;
-  height: 90%;
-  width: 2rem;
-  background-color: rgba(255, 255, 255, 0.7);
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2vw;
 }
 #playlistInfo p {
   text-align: center;
   white-space: pre;
   color: rgba(255, 255, 255, 0.7);
   font-size: 3.5vmin;
+}
+#playlistPic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 7vh;
+  width: 7vh;
+  margin: 0;
+  margin-left: 1.5vw;
+  border: none;
+  border-radius: 0.5rem;
 }
 #bnOptions {
   display: flex;
