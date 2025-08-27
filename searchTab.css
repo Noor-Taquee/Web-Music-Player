@@ -70,15 +70,8 @@
   justify-content: flex-start;
   background: transparent;
   height: 40%;
+  min-height: 10rem;
   width: 100%;
-}
-
-#recentSearches {
-  cursor: default;
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.7);
-  height: 15%;
 }
 
 #searchedTextDiv {
@@ -90,7 +83,6 @@
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.1);
   height: 85%;
-  min-height: 10vw;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -123,7 +115,7 @@
 }
 
 #searchedText p {
-  font-size: 120%;
+  font-size: 3vmin;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -137,15 +129,23 @@
   justify-content: flex-start;
   background: transparent;
   height: 50%;
+  min-height: 15rem;
   width: 100%;
 }
 
+#recentSearches,
 #recentSongs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   cursor: default;
-  font-size: 1.5rem;
+  font-size: 5vmin;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.7);
   height: 15%;
+  width: 100%;
+  margin-top:  1vh;
+  margin-bottom: 1vh;
 }
 
 #searchedSongDiv {
@@ -156,7 +156,6 @@
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.1);
   height: 85%;
-  min-height: 20vw;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -174,16 +173,14 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.2);
-  height: 95%;
-  width: 25%;
+  height: 30vh;
+  width: 30vh;
   margin: 0;
   padding: 0;
-  padding-top: 5%;
-  padding-bottom: 5%;
   flex-shrink: 0;
   border: none;
   border-radius: 1rem;
@@ -191,16 +188,24 @@
 #searchedSongPic {
   display: flex;
   background-size: cover;
-  height: 80%;
-  width: 90%;
+  height: 85%;
+  width: 100%;
   margin: 0;
   padding: 0;
   border: none;
   border-radius: 0.5rem;
 }
 #searchedSongName {
-  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: pre;
+  text-overflow: ellipsis;
+  font-size: 3vmin;
   color: rgba(255, 255, 255, 0.7);
+  height: 15%;
+  width: 90%;
   margin: 0;
   padding: 0;
 }
