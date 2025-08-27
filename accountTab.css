@@ -129,6 +129,7 @@
   background-color: rgba(0, 0, 0, 0.1);
   width: 100%;
   height: 15%;
+  min-height: 3.5rem;
   margin: 0;
   padding: 0;
   padding-left: 2vw;
