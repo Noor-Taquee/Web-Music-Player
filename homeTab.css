@@ -114,6 +114,8 @@
 }
 #suggestedSongPic {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-size: cover;
   height: 85%;
   width: 100%;
@@ -121,6 +123,11 @@
   padding: 0;
   border: none;
   border-radius: 0.5rem;
+}
+#suggestedSong i {
+  font-size: 10vmin;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
 }
 #suggestedSongName {
   display: flex;
