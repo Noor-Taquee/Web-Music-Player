@@ -13,6 +13,7 @@ let bnAccountPanel = document.getElementById("bnAccountPanel");
 //CREATING ELEMENTS===================
 let miniPlayer = document.createElement("div");
 miniPlayer.id = "miniPlayer";
+miniPlayer.addEventListener("click",expandToplayer);
 
 let miniInfoDiv = document.createElement("div");
 miniPlayer.appendChild(miniInfoDiv);
@@ -79,6 +80,11 @@ function initMiniPlayer() {
   }
   miniBnPlay.addEventListener("click", changeState);
 }
+
+function expandToplayer() {
+  switchTo("playerPanel");
+}
+
 function createScreen(defaultTab,btn) {
   blurLayer.removeChild(bottomDiv);
   blurLayer.appendChild(defaultTab);
