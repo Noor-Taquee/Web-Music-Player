@@ -1,3 +1,5 @@
+let recentlyPLayedSongList = ["vision","crystal dreams","kehlani remix"];
+
 
 //CREATING ELEMENTS
 let homePanel = document.createElement("div");
@@ -96,7 +98,27 @@ tunesDivCon.id = "tunesDivCon";
 
 
 
+function loadRecentlyPlayedSongs() {
+  for (let songs of recentlyPLayedSongList) {
+    let suggestedSong = document.createElement("button");
+    recentlyPLayedDivCon.appendChild(suggestedSong);
+    suggestedSong.id = "suggestedSong";
+    suggestedSong.addEventListener("click",() => playSong(songs));
+    
+    let suggestedSongPic = document.createElement("p");
+    suggestedSong.appendChild(suggestedSongPic);
+    suggestedSongPic.id = "suggestedSongPic";
+    suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+    
+    let suggestedSongName = document.createElement("p");
+    suggestedSong.appendChild(suggestedSongName);
+    suggestedSongName.id = "suggestedSongName";
+    suggestedSongName.textContent = songData[songs].name;
+  }
+}
+
 function loadHomeSongs() {
+  loadRecentlyPlayedSongs();
   for (let songs of HindiTitles) {
     let suggestedSong = document.createElement("button");
     hindiSongDivCon.appendChild(suggestedSong);
