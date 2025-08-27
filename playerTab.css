@@ -118,6 +118,12 @@
 }
 
 #trackName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  white-space: pre;
+  text-overflow: ellipsis;
   cursor: default;
   display: flex;
   font-size: 1.5rem;
@@ -145,6 +151,12 @@
 }
 
 #artistName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  white-space: pre;
+  text-overflow: ellipsis;
   font-weight: 500;
   text-align: left;
   white-space: pre;
