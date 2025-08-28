@@ -1,165 +1,327 @@
 {
-    "astronaout in the ocean":{
-        "name":"ASTRONAUT IN THE OCEAN",
-        "artist":"",
-        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnHFp7yOfqssbOfb6nfCP8q4ABfK5cT-n093c1nWzH-hzZYhKecpP8lmw&s=10",
-        "audio":"https://www.dropbox.com/scl/fi/9m5y6nu0c0r692vxlu9kh/asrtronaout-in-the-ocean.mp3?rlkey=o4zq8vw4xiu5ujcfp6k8hkoko&st=3zrf9y8c&raw=1"
-    },
-    "bad girls like you english":{
-        "name":"BAD GIRLS LIKE YOU (ENGLISH-VERSION)",
-        "artist":"TOBII, DOLLA",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/12r101ndtawv9lif5rbba/Bad-Girls-Like-You-English-version.mp3?rlkey=yeyudo486c27i8q2jv7nra346&st=ja4a2j7p&raw=1"
-    },
-    "blinding lights":{
-        "name":"BLINDING LIGHTS",
-        "artist":"THE WEEKND",
-        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnDTlqjunjPXFD73KOkFzLl5n_vaCDTpKGx7n94BnhQ9-aqp021udVlORV&s=10",
-        "audio":"https://www.dropbox.com/scl/fi/yrze3l9tvvjn2ojsyjtym/blinding-lights.mp3?rlkey=hqf21rf97xk58v7vvipz8q6kj&st=ukbsetdc&raw=1"
-    },
-    "company":{
-        "name":"COMPANY",
-        "artist":"JUSTIN BIEBER",
-        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PTNiImlJxY7yYPDp1i-YMHS2m5kwtpP5D45647UDHTmZA00OhevK54AN&s=10",
-        "audio":"https://www.dropbox.com/scl/fi/ooqjy0qrvro1mtn7dz5df/Company.mp3?rlkey=d33v7jji4iy2lzxl1mk765b71&st=qqugrgkg&raw=1"
-    },
-    "confess your love remix":{
-        "name":"CONFESS YOUR LOVE (REMIX)",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/hdxbco32meeo0acrecxcw/Confess-your-love-Remix.mp3?rlkey=cuuavk6lb47n9wtrkeakolj3u&st=c1w2ca3v&raw=1"
-    },
-    "dancing krono remix":{
-        "name":"DANCING KRONO (REMIX)",
-        "artist":"",
-        "image":"https://cdn-images.dzcdn.net/images/cover/a26e476def6a65078e518e95a961fd7f/1900x1900-000000-81-0-0.jpg",
-        "audio":"https://www.dropbox.com/scl/fi/rmgpzuskhtmyptwzf6fpu/Dancin-Krono-Remix.mp3?rlkey=bnycpqx1f3pkysdl1kq9gzcpx&st=yaa7w311&raw=1"
-    },
-    "dark horse":{
-        "name":"DARK HORSE",
-        "artist":"KATY PERRY",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/7n11p2tpvvm01si2a5ygb/dark-horse.mp3?rlkey=rcou7jgjrpi5kewe75k41iw72&st=zv8nzm2n&raw=1"
-    },
-    "did it first":{
-        "name":"DID IT FIRST",
-        "artist":"ICE SPICE, CENTRAL CEE",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/gb7p95z1drd58upyuubv2/Did-It-First.mp3?rlkey=smyzr57hspd1wpxftfsxumaca&st=fr4hs3ph&raw=1"
-    },
-    "good for you":{
-        "name":"GOOD FOR YOU",
-        "artist":"SALENA GOEZ, A$AP",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/a527nh9lvvc2awpzjp744/Good-for-You.mp3?rlkey=eja8wa9pf7eytr5zkjxllhzjw&st=kn1x9p26&raw=1"
-    },
-    "harleys in hawaii":{
-        "name":"HARLEYS IN HAWAII",
-        "artist":"KATY PERRY",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/09rap4jn328elacszgahb/harleys-in-hawaii.mp3?rlkey=17q3jz7sz0xbly6ceib4gmxan&st=vwzfj3m1&raw=1"
-    },
-    "havana":{
-        "name":"HAVANA",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/wt1g8urgkd9m9uxltigdo/havana.mp3?rlkey=lxovxoqhdrimj8ycwp1m2cf2g&st=570uig2n&raw=1"
-    },
-    "happy nation":{
-        "name":"HAPPY NATION",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/gq0qi6wkxvxva6s37zw74/heppy-nation.mp3?rlkey=xzsrjyrax7zoczvqss9mu5a5e&st=3k8eyitf&raw=1"
-    },
-    "kehlani remix":{
-        "name":"KEHLANI REMIX",
-        "artist":"JORDAN AUDETUNJI, KEHLANI",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/zeoqiq1zudr5jsh1w0cro/kehlani-remix.mp3?rlkey=32ns4z6m8nc8h890cgafae2u4&st=n7dd663q&raw=1"
-    },
-    "love me back":{
-        "name":"LOVE ME BACK",
-        "artist":"FAYYAH",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/0g9jua3mkxqza1szqb8ks/Love-Me-Back.mp3?rlkey=5ulh7c9e6xh7rctfpay0mndvf&st=dkfw4f8z&raw=1"
-    },
-    "moonlight":{
-        "name":"MOONLIGHT",
-        "artist":"KALI UCHIS",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/9f86fad4hs49f737lz7iq/Moonlight-0.mp3?rlkey=pose590keyk3ipcm36127ud9r&st=wxkrr4jf&raw=1"
-    },
-    "new jeans jersey remix":{
-        "name":"NEW JERSEY",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/14a7blxqc1iw6fri4x6d8/New-Jeans-jersey-remix.mp3?rlkey=ua2yqd8myx29jmvu758y9l76q&st=278idux3&raw=1"
-    },
-    "no guidance sped up":{
-        "name":"NO GUIDANCE",
-        "artist":"AZHA NYREE",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/svxf4isf4sepup3treoyh/No-Guidance-sped-up.mp3?rlkey=h8m612m35j6mqtcoz1s5v4dgo&st=buifj8yq&raw=1"
-    },
-    "old town road":{
-        "name":"OLD TOWN ROAD",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/oenzm9wvvk61w1t12k4b0/old-town-road.mp3?rlkey=ywmidn3ylzupxf48qnulrq804&st=gxuewkgv&raw=1"
-    },
-    "popular":{
-        "name":"POPULAR",
-        "artist":"THE WEEKND",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/ssbmo3cbjwxfxsq74xf2c/popular.mp3?rlkey=3ipwyc4uoykxri9iy1ckxi6yd&st=3lfvibr6&raw=1"
-    },
-    "renegade":{
-        "name":"RENEGADE",
-        "artist":"ARYAN SHAH",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/k3ymh1hljndqkv2v2llxs/renegade.mp3?rlkey=ltfpy9k5a7b79ljx07z909cf1&st=80dizx16&raw=1"
-    },
-    "sao paulo":{
-        "name":"SAO PAULO",
-        "artist":"THE WEEKND",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/9tfp9r6vpr4m4zxl4nawx/sao-paulo.mp3?rlkey=lqi1ogmdpufgsm3peffylm75a&st=q0u67am0&raw=1"
-    },
-    "senorita":{
-        "name":"SENORITA",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/n48za0sse5tpicuazcjqf/senorita.mp3?rlkey=8elq9k47p1xqyfbxkowitk4d6&st=mzk7t8y2&raw=1"
-    },
-    "shake it to the max":{
-        "name":"SHAKE IT TO THE MAX",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/hblfdypcu8862ebprhljd/shake-it-to-the-max-remix.mp3?rlkey=536hygbam9rdjhacm7pje9ieh&st=u2busdpd&raw=1"
-    },
-    "stay":{
-        "name":"STAY",
-        "artist":"JUSTIN BIEBER",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/js1ekpsjj8c4oe7ks8tva/STAY.mp3?rlkey=5d2ra0mf618viqflfvj7ecw1y&st=y6gosfes&raw=1"
-    },
-    "the west side free style":{
-        "name":"THE WEST SIDE FREE STYLE",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/geptiv3xtw8l2vlcz0vun/The-West-Side-Freestyle.mp3?rlkey=ca59qloufzc8aq6nf23un1i5t&st=hk6xerut&raw=1"
-    },
-    "timeless":{
-        "name":"TIMELESS",
-        "artist":"THE WEEKND",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/q95ch8038khquuz6bg8xo/Timeless.mp3?rlkey=2zsqph4e3yj4z6w5admbjibi6&st=giec45ke&raw=1"
-    },
-    "you right luxurios":{
-        "name":"YOU RIGHT",
-        "artist":"",
-        "image":"",
-        "audio":"https://www.dropbox.com/scl/fi/un0dky3ijkwkdyi2kyyn1/You-right-Luxurious.mp3?rlkey=0j9iwsm9nu9mfo8pybugqcvpe&st=ql2lywwq&raw=1"
-    }
-}
 
+    "astronaout in the ocean":{
+
+        "name":"ASTRONAUT IN THE OCEAN",
+
+        "artist":"",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnHFp7yOfqssbOfb6nfCP8q4ABfK5cT-n093c1nWzH-hzZYhKecpP8lmw&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/9m5y6nu0c0r692vxlu9kh/asrtronaout-in-the-ocean.mp3?rlkey=o4zq8vw4xiu5ujcfp6k8hkoko&st=3zrf9y8c&raw=1"
+
+    },
+
+    "bad girls like you english":{
+
+        "name":"BAD GIRLS LIKE YOU (ENGLISH-VERSION)",
+
+        "artist":"TOBII, DOLLA",
+
+        "image":"https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/04/2d/30/042d3005-d52d-b9d3-9ac9-26a875a0dec6/25UMGIM05116.rgb.jpg/600x600bf-60.jpg",
+
+        "audio":"https://www.dropbox.com/scl/fi/12r101ndtawv9lif5rbba/Bad-Girls-Like-You-English-version.mp3?rlkey=yeyudo486c27i8q2jv7nra346&st=ja4a2j7p&raw=1"
+
+    },
+
+    "blinding lights":{
+
+        "name":"BLINDING LIGHTS",
+
+        "artist":"THE WEEKND",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnDTlqjunjPXFD73KOkFzLl5n_vaCDTpKGx7n94BnhQ9-aqp021udVlORV&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/yrze3l9tvvjn2ojsyjtym/blinding-lights.mp3?rlkey=hqf21rf97xk58v7vvipz8q6kj&st=ukbsetdc&raw=1"
+
+    },
+
+    "company":{
+
+        "name":"COMPANY",
+
+        "artist":"JUSTIN BIEBER",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5PTNiImlJxY7yYPDp1i-YMHS2m5kwtpP5D45647UDHTmZA00OhevK54AN&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/ooqjy0qrvro1mtn7dz5df/Company.mp3?rlkey=d33v7jji4iy2lzxl1mk765b71&st=qqugrgkg&raw=1"
+
+    },
+
+    "confess your love remix":{
+
+        "name":"CONFESS YOUR LOVE (REMIX)",
+
+        "artist":"",
+
+        "image":"",
+
+        "audio":"https://www.dropbox.com/scl/fi/hdxbco32meeo0acrecxcw/Confess-your-love-Remix.mp3?rlkey=cuuavk6lb47n9wtrkeakolj3u&st=c1w2ca3v&raw=1"
+
+    },
+
+    "dancing krono remix":{
+
+        "name":"DANCING KRONO (REMIX)",
+
+        "artist":"",
+
+        "image":"https://cdn-images.dzcdn.net/images/cover/a26e476def6a65078e518e95a961fd7f/1900x1900-000000-81-0-0.jpg",
+
+        "audio":"https://www.dropbox.com/scl/fi/rmgpzuskhtmyptwzf6fpu/Dancin-Krono-Remix.mp3?rlkey=bnycpqx1f3pkysdl1kq9gzcpx&st=yaa7w311&raw=1"
+
+    },
+
+    "dark horse":{
+
+        "name":"DARK HORSE",
+
+        "artist":"KATY PERRY",
+
+        "image":"https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/5d/3a/f3/5d3af341-7f97-89d0-543b-075f15cdd553/00602537787333.rgb.jpg/600x600bf-60.jpg",
+
+        "audio":"https://www.dropbox.com/scl/fi/7n11p2tpvvm01si2a5ygb/dark-horse.mp3?rlkey=rcou7jgjrpi5kewe75k41iw72&st=zv8nzm2n&raw=1"
+
+    },
+
+    "did it first":{
+
+        "name":"DID IT FIRST",
+
+        "artist":"ICE SPICE, CENTRAL CEE",
+
+        "image":"https://cdn-images.dzcdn.net/images/cover/da8a50d6c5a9708795c450113a3448ed/1900x1900-000000-80-0-0.jpg",
+
+        "audio":"https://www.dropbox.com/scl/fi/gb7p95z1drd58upyuubv2/Did-It-First.mp3?rlkey=smyzr57hspd1wpxftfsxumaca&st=fr4hs3ph&raw=1"
+
+    },
+
+    "good for you":{
+
+        "name":"GOOD FOR YOU",
+
+        "artist":"SALENA GOEZ, A$AP",
+
+        "image":"https://static.wikia.nocookie.net/selenagomez/images/3/35/Revivaldeluxe.png/revision/latest/smart/width/386/height/259?cb=20170405144727",
+
+        "audio":"https://www.dropbox.com/scl/fi/a527nh9lvvc2awpzjp744/Good-for-You.mp3?rlkey=eja8wa9pf7eytr5zkjxllhzjw&st=kn1x9p26&raw=1"
+
+    },
+
+    "harleys in hawaii":{
+
+        "name":"HARLEYS IN HAWAII",
+
+        "artist":"KATY PERRY",
+
+        "image":"https://upload.wikimedia.org/wikipedia/en/0/04/Katy_Perry_-_Harleys_in_Hawaii.png",
+
+        "audio":"https://www.dropbox.com/scl/fi/09rap4jn328elacszgahb/harleys-in-hawaii.mp3?rlkey=17q3jz7sz0xbly6ceib4gmxan&st=vwzfj3m1&raw=1"
+
+    },
+
+    "havana":{
+
+        "name":"HAVANA",
+
+        "artist":"CAMILA CABELLO",
+
+        "image":"https://upload.wikimedia.org/wikipedia/en/9/98/Havana_%28featuring_Young_Thug%29_%28Official_Single_Cover%29_by_Camila_Cabello.png",
+
+        "audio":"https://www.dropbox.com/scl/fi/wt1g8urgkd9m9uxltigdo/havana.mp3?rlkey=lxovxoqhdrimj8ycwp1m2cf2g&st=570uig2n&raw=1"
+
+    },
+
+    "happy nation":{
+
+        "name":"HAPPY NATION",
+
+        "artist":"",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQatQVGXxVABRF97mljENSX-BeRU3ewka90V5Okg1HAbSN3Io_5Y2aK-E0r&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/gq0qi6wkxvxva6s37zw74/heppy-nation.mp3?rlkey=xzsrjyrax7zoczvqss9mu5a5e&st=3k8eyitf&raw=1"
+
+    },
+
+    "kehlani remix":{
+
+        "name":"KEHLANI REMIX",
+
+        "artist":"JORDAN AUDETUNJI, KEHLANI",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1LCpMdf-T0B4SFgJDnHWkhGoX0ZodQ5XYiFsQ2Z5zhK9903sElqeGnPvD&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/zeoqiq1zudr5jsh1w0cro/kehlani-remix.mp3?rlkey=32ns4z6m8nc8h890cgafae2u4&st=n7dd663q&raw=1"
+
+    },
+
+    "love me back":{
+
+        "name":"LOVE ME BACK",
+
+        "artist":"FAYYAH",
+
+        "image":"https://cdn-images.dzcdn.net/images/cover/aa4ab91c68e1204973b3b7dcc6c31dd6/1900x1900-000000-81-0-0.jpg",
+
+        "audio":"https://www.dropbox.com/scl/fi/0g9jua3mkxqza1szqb8ks/Love-Me-Back.mp3?rlkey=5ulh7c9e6xh7rctfpay0mndvf&st=dkfw4f8z&raw=1"
+
+    },
+
+    "moonlight":{
+
+        "name":"MOONLIGHT",
+
+        "artist":"KALI UCHIS",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREtF-CepItsSsB7rzFh5Sl5AYpBxI2-NnsFYKJ1CeJr4vDGw_BKSa0A08&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/9f86fad4hs49f737lz7iq/Moonlight-0.mp3?rlkey=pose590keyk3ipcm36127ud9r&st=wxkrr4jf&raw=1"
+
+    },
+
+    "new jeans jersey remix":{
+
+        "name":"NEW JEANS REMIX",
+
+        "artist":"JERSEY",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Qu8z_3iOpuJEKCKz6K_fglL3BzCz8DPYw_X_qIx7KM_DasVd3CBRW1KA&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/14a7blxqc1iw6fri4x6d8/New-Jeans-jersey-remix.mp3?rlkey=ua2yqd8myx29jmvu758y9l76q&st=278idux3&raw=1"
+
+    },
+
+    "no guidance sped up":{
+
+        "name":"NO GUIDANCE",
+
+        "artist":"AZHA NYREE",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqKDb_4FrUCghUJM_UQHwnXwmczVNB-yEwPncRyb3OgEAeFcJnOEu40A9m&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/svxf4isf4sepup3treoyh/No-Guidance-sped-up.mp3?rlkey=h8m612m35j6mqtcoz1s5v4dgo&st=buifj8yq&raw=1"
+
+    },
+
+    "old town road":{
+
+        "name":"OLD TOWN ROAD",
+
+        "artist":"",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo2sg6j2UFBDuaYch7mmGoqVFHLvfbb2ntF3BsE2xXPzqQK4INsjWcT4Bm&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/oenzm9wvvk61w1t12k4b0/old-town-road.mp3?rlkey=ywmidn3ylzupxf48qnulrq804&st=gxuewkgv&raw=1"
+
+    },
+
+    "popular":{
+
+        "name":"POPULAR",
+
+        "artist":"THE WEEKND",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv7coXaXHp5PBgBDh5WM4-7Hf6yNjKnyWLAt3NjoYu6uUrrFYJ6rFMF_k&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/ssbmo3cbjwxfxsq74xf2c/popular.mp3?rlkey=3ipwyc4uoykxri9iy1ckxi6yd&st=3lfvibr6&raw=1"
+
+    },
+
+    "renegade":{
+
+        "name":"RENEGADE",
+
+        "artist":"ARYAN SHAH",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhFEDowZyhMhxBYlD82S3f-I_kFdZKgjkzizM-ovdX-zdmOr3I45POrdti&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/k3ymh1hljndqkv2v2llxs/renegade.mp3?rlkey=ltfpy9k5a7b79ljx07z909cf1&st=80dizx16&raw=1"
+
+    },
+
+    "sao paulo":{
+
+        "name":"SAO PAULO",
+
+        "artist":"THE WEEKND",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTai2PT2eUSrM6V0rbiIcNZNZFqW4yZILdkke26tqo32jkYnvN76vCsyJfu&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/9tfp9r6vpr4m4zxl4nawx/sao-paulo.mp3?rlkey=lqi1ogmdpufgsm3peffylm75a&st=q0u67am0&raw=1"
+
+    },
+
+    "senorita":{
+
+        "name":"SENORITA",
+
+        "artist":"",
+
+        "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Shawn_Mendes_and_Camila_Cabello_-_Se%C3%B1orita.png/250px-Shawn_Mendes_and_Camila_Cabello_-_Se%C3%B1orita.png",
+
+        "audio":"https://www.dropbox.com/scl/fi/n48za0sse5tpicuazcjqf/senorita.mp3?rlkey=8elq9k47p1xqyfbxkowitk4d6&st=mzk7t8y2&raw=1"
+
+    },
+
+    "shake it to the max":{
+
+        "name":"SHAKE IT TO THE MAX",
+
+        "artist":"",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoBZFN-aQuZpyuUIbd-LXlx2CKnGqUHxAAjwK_fCfVb0h0GPv7oOe533lC&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/hblfdypcu8862ebprhljd/shake-it-to-the-max-remix.mp3?rlkey=536hygbam9rdjhacm7pje9ieh&st=u2busdpd&raw=1"
+
+    },
+
+    "stay":{
+
+        "name":"STAY",
+
+        "artist":"JUSTIN BIEBER",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXb_TJ70mIXszmM0uE1bzj7F6x56-g7uuqnf-iZ0r6WEIB4NXfT8joGgbM&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/js1ekpsjj8c4oe7ks8tva/STAY.mp3?rlkey=5d2ra0mf618viqflfvj7ecw1y&st=y6gosfes&raw=1"
+
+    },
+
+    "the west side free style":{
+
+        "name":"THE WEST SIDE FREE STYLE",
+
+        "artist":"",
+
+        "image":"https://c.saavncdn.com/124/The-West-Side-Freestyle-English-2022-20220809171602-500x500.jpg",
+
+        "audio":"https://www.dropbox.com/scl/fi/geptiv3xtw8l2vlcz0vun/The-West-Side-Freestyle.mp3?rlkey=ca59qloufzc8aq6nf23un1i5t&st=hk6xerut&raw=1"
+
+    },
+
+    "timeless":{
+
+        "name":"TIMELESS",
+
+        "artist":"THE WEEKND",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsdmFT4uKe1BUubni8D4-BPBoND4U13LiD3hhO9vJznN6L2YUo8yScocE&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/q95ch8038khquuz6bg8xo/Timeless.mp3?rlkey=2zsqph4e3yj4z6w5admbjibi6&st=giec45ke&raw=1"
+
+    },
+
+    "you right luxurios":{
+
+        "name":"YOU RIGHT",
+
+        "artist":"",
+
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOZOqWxsBmGZsSrP7Puz_kLnDLwC3iGBtwqBlyf8jQ2fH2mON_jeKqBM&s=10",
+
+        "audio":"https://www.dropbox.com/scl/fi/un0dky3ijkwkdyi2kyyn1/You-right-Luxurious.mp3?rlkey=0j9iwsm9nu9mfo8pybugqcvpe&st=ql2lywwq&raw=1"
+
+    }
+
+}
