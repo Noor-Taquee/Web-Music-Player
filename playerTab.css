@@ -57,7 +57,10 @@
 }
 
 #albumArt {
-  background-image: url('');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("");
   background-size: cover;
   height: 43vh;
   width: 43vh;
@@ -67,6 +70,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transform: scale(0.9);
   transition: transform 0.3s ease-in-out;
+}
+#albumArt i {
+  font-size: 10vh;
+  color: rgba(0,0,0,0.5);
 }
 
 #lyricsDiv {
@@ -329,3 +336,4 @@
   border: none;
   border-radius: 0.5rem;
 }
+
