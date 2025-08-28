@@ -152,13 +152,14 @@
   "volkswagen funk":{
     "name":"VOLKSWAGEN FUNK",
     "artist":"",
-    "image":"",
+    "image":"https://cdn-images.dzcdn.net/images/cover/3c7731e63d05e2c8f84183e67ba067c1/1900x1900-000000-81-0-0.jpg",
     "audio":"https://www.dropbox.com/scl/fi/l8fzza3p8hrr7sz38b0yr/VOLKSWAGEN-FUNK-slowed.mp3?rlkey=qs07jcmuq0ws2ju5awjryuxrk&st=0ytcci6l&raw=1"
   },
   "vou te bolto":{
     "name":"VOU TE BOLTO",
     "artist":"",
-    "image":"",
+    "image":"https://www.shazam.com/mkimage/image/thumb/Music221/v4/ce/f8/7e/cef87ecc-52ad-391f-b763-523ca88d6f3c/cover.jpg/1275x1275bb-60.webp",
     "audio":"https://www.dropbox.com/scl/fi/wrwi8on0bzow8heioeh4l/VOU-TE-BOLTO.mp3?rlkey=085wnrhevi5vwi7accsjqorn8&st=bc6bk8ab&raw=1"
   }
 }
+
