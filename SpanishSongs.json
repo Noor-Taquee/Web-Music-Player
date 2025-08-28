@@ -7,56 +7,56 @@
     },
     "azul":{
         "name":"AZUL",
-        "artist":"",
-        "image":"",
+        "artist":"J BALVIN",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzHdw7W_1SasbsoZ5H8AJhsZtSJupKs-w-Lvjj7YAjaFWPp2bWuMTGq3IH&s=10",
         "audio":"https://www.dropbox.com/scl/fi/6tgk85h6gvzg1yvipsmox/azul.mp3?rlkey=uy78xg984bfpopgyar00lbwo2&st=lq7udb2x&raw=1"
     },
     "este":{
         "name":"ESTE",
-        "artist":"",
-        "image":"",
+        "artist":"EL ALFA",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2DDZmd6AHzVcsIFOCvDhRJkUUrU8SOymz4R-y1etHvK3Dh2Mk9z55xl4F&s=10",
         "audio":"https://www.dropbox.com/scl/fi/d7mzy2fhk8qzeecmm7d2x/este.mp3?rlkey=nxykaa9rwpfvzdpzat6dvh688&st=h72jiygq&raw=1"
     },
     "martillando":{
         "name":"MARTILLANDO",
-        "artist":"",
-        "image":"",
+        "artist":"EL ALFA",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1K9_NptA8BRvJ_0inrKAyV_h_5ewqSfP1YkrLRgcP_jI7YaEIaCP23MY&s=10",
         "audio":"https://www.dropbox.com/scl/fi/lsy69o4876kiflu3nyu3y/martillando.mp3?rlkey=fsmyf78m6cdihknjcy0nlfn3f&st=l4lzof59&raw=1"
     },
     "mi gata":{
         "name":"MI GATA",
-        "artist":"",
-        "image":"",
+        "artist":"STANDLY",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcUN1QBzIjaEKyIkcFhZ69p95fjOrJGa6yEvJn2rKVDwBTiXnXMTUyR1Wu&s=10",
         "audio":"https://www.dropbox.com/scl/fi/vpn1mrmtmku5p0vbt9vcs/mi-gata.mp3?rlkey=f2gr98kn07uaw00c54r5g97sr&st=id5ayggs&raw=1"
     },
     "papi chulo":{
         "name":"PAPI CHULO",
-        "artist":"",
-        "image":"",
+        "artist":"LORNA",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuUs_IFe9gqnkiNV3OSCQ6Y5gux8xrLxsaxIOsn0cJH0DXJ7oqzOOlFXo&s=10",
         "audio":"https://www.dropbox.com/scl/fi/62hhgeksy29be5bqjr6hc/papi-chulo.mp3?rlkey=eyyc0o790gt0h8ugfpb4dpbnh&st=ucajn1s1&raw=1"
     },
     "si no es contigo remix":{
         "name":"SI NO ES CONTIGO (REMIX)",
-        "artist":"",
-        "image":"",
+        "artist":"KALI UHIS, CHRIS MJ",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcdFUsl4K6bPKGHCxz_-U4P4RNrwwXFTqISxgG9KvfVeauqMZDLVpJqrUy&s=10",
         "audio":"https://www.dropbox.com/scl/fi/k9bnwe0kxosszr8xrc50j/si-no-es-contigo-remix.mp3?rlkey=1bepwb9nybz4z20r2vgmi0t5x&st=v7fcwpz2&raw=1"
     },
     "suave":{
         "name":"SUAVE",
-        "artist":"",
-        "image":"",
+        "artist":"EL ALFA",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEWK93VOZ2sBeqlq_rGrV0_EBqUz4PGY2K3nmvCN87xVjCA_klaFwKTg4&s=10",
         "audio":"https://www.dropbox.com/scl/fi/wmoq0tflo3yia0mhcij52/Suave.mp3?rlkey=kcka53l22t4x0kor27p83cnq4&st=lufw7crd&raw=1"
     },
     "tacata remix":{
         "name":"TACATA (REMIX)",
-        "artist":"",
-        "image":"",
+        "artist":"EL ALFA",
+        "image":"https://cdn-images.dzcdn.net/images/cover/b43912537d02eb98ddd0c21afd92d50e/500x500.jpg",
         "audio":"https://www.dropbox.com/scl/fi/kh9o3xkut46kbs52hb1nq/tacata-remix.mp3?rlkey=4f7pi6e2h31zhdqpy6uozmbg6&st=azis663i&raw=1"
     },
     "trakata":{
         "name":"TRAKATA",
-        "artist":"",
-        "image":"",
+        "artist":"PTAZETA, FARINA, JUACKO",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeL5zmTn39E9BFLEr_DMoxq7a5plA1yY8hAVrZNdm6JyRgsazkx7Q8mrk&s=10",
         "audio":"https://www.dropbox.com/scl/fi/jqwywk1zxx6goludca76f/trakata.mp3?rlkey=ofidwoci8qy03jsdigkmflvjm&st=oaywrymu&raw=1"
     }
 }
