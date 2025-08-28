@@ -373,11 +373,12 @@ setInterval(() => {
     time1.textContent = coveredTime;
   }
   timeSlider.value = song.currentTime;
-}, 10);
+}, 1000);
 
 //INITIALIZATION
 togglePic.style.backgroundColor = "rgba(255,255,255,0.3)";
 togglePic.style.fontWeight = "500";
+
 
 
 attend();
