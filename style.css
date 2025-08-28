@@ -136,6 +136,8 @@ body::-webkit-scrollbar {
 }
 #miniAlbumArt {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("");
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.7);
@@ -144,6 +146,11 @@ body::-webkit-scrollbar {
   border: none;
   border-radius: 1vh;
 }
+#miniAlbumArt i {
+  font-size: 4vmin;
+  color: rgba(0,0,0,0.5);
+}
+
 #miniTrackInfoDiv {
   display: flex;
   flex-direction: column;
@@ -250,4 +257,5 @@ body::-webkit-scrollbar {
   font-size: 1.8vh;
   margin: 0.5vh;
 }
+
 
