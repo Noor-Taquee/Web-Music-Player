@@ -103,24 +103,44 @@ function stopMusic() {
   musicPlaying = false;
 }
 
+function changePicture(partTochange) {
+  if (currentAlbumArt.length > 0) {
+    if (partTochange == "miniPlayer") {
+      miniAlbumArt.style.backgroundImage = `url(${currentAlbumArt})`;
+    } else if (partTochange == "player") {
+      albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
+    }
+  } else {
+    if (partTochange == "miniPlayer") {
+      let miniPlayerSongIcon = document.createElement("i");
+      miniPlayerSongIcon.className = "fa-solid fa-headphones";
+      miniAlbumArt.appendChild(PlayerSongIcon);
+    } else if (partTochange == "player") {
+      let PlayerSongIcon = document.createElement("i");
+      PlayerSongIcon.className = "fa-solid fa-headphones";
+      albumArt.appendChild(PlayerSongIcon);
+    }
+  }
+}
+
 function nextSong() {
   if (currentSongIndex < titleNames.length - 1) {
     currentSongIndex++;
     updateSongInfo();
     showLoading();
     main.style.backgroundImage = `url(${currentAlbumArt})`;
-    miniAlbumArt.style.backgroundImage = `url(${currentAlbumArt})`;
+    changePicture("miniPlayer");
     if (blurLayer.contains(playerPanel) && pictureDiv.contains(albumArt)) {
         albumArt.style.animation = "fadeOutBehind";
         albumArt.style.animationDuration = "0.2s";
         albumArt.addEventListener("animationend",function animateNext() {
           albumArt.removeEventListener("animationend",animateNext);
-          albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
+          changePicture("player");
           albumArt.style.animation = "fadeInAhead";
           albumArt.style.animationDuration = "0.2s";
         });
     } else {
-      albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
+      changePicture("player");
     }
   }
 }
@@ -131,18 +151,18 @@ function prevSong() {
     updateSongInfo();
     showLoading();
     main.style.backgroundImage = `url(${currentAlbumArt})`;
-    miniAlbumArt.style.backgroundImage = `url(${currentAlbumArt})`;
+    changePicture("miniPlayer");
     if (blurLayer.contains(playerPanel) && pictureDiv.contains(albumArt)) {
         albumArt.style.animation = "fadeOutAhead";
         albumArt.style.animationDuration = "0.2s";
         albumArt.addEventListener("animationend",function animatePrev() {
           albumArt.removeEventListener("animationend",animatePrev);
-          albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
+          changePicture("player");
           albumArt.style.animation = "fadeInBehind";
           albumArt.style.animationDuration = "0.2s";
         });
     } else {
-      albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
+      changePicture("player");
     }
   }
 }
@@ -172,6 +192,7 @@ song.addEventListener("loadedmetadata",() => {
     startMusic();
   }
 });
+
 
 
 
