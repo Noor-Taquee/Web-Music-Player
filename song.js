@@ -133,11 +133,13 @@ function nextSong() {
     if (blurLayer.contains(playerPanel) && pictureDiv.contains(albumArt)) {
         albumArt.style.animation = "fadeOutBehind";
         albumArt.style.animationDuration = "0.2s";
+        albumArt.style.animationTimingFunction = "ease-in-out";
         albumArt.addEventListener("animationend",function animateNext() {
           albumArt.removeEventListener("animationend",animateNext);
           changePicture("player");
           albumArt.style.animation = "fadeInAhead";
           albumArt.style.animationDuration = "0.2s";
+          albumArt.style.animationTimingFunction = "ease-in-out";
         });
     } else {
       changePicture("player");
@@ -155,11 +157,13 @@ function prevSong() {
     if (blurLayer.contains(playerPanel) && pictureDiv.contains(albumArt)) {
         albumArt.style.animation = "fadeOutAhead";
         albumArt.style.animationDuration = "0.2s";
+        albumArt.style.animationTimingFunction = "ease-in-out";
         albumArt.addEventListener("animationend",function animatePrev() {
           albumArt.removeEventListener("animationend",animatePrev);
           changePicture("player");
           albumArt.style.animation = "fadeInBehind";
           albumArt.style.animationDuration = "0.2s";
+          albumArt.style.animationTimingFunction = "ease-in-out";
         });
     } else {
       changePicture("player");
@@ -197,3 +201,4 @@ song.addEventListener("loadedmetadata",() => {
 
 
 attend();
+
