@@ -293,8 +293,9 @@
 }
 #loadingIcon {
   animation: spin;
-  animation-duration: 2.0s;
+  animation-duration: 1.0s;
   animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 #bnPrev:active {
   transform: translateX(-5%);
@@ -336,4 +337,5 @@
   border: none;
   border-radius: 0.5rem;
 }
+
 
