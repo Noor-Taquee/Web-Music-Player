@@ -214,8 +214,9 @@ body::-webkit-scrollbar {
 }
 #miniLoadingIcon {
   animation: spin;
-  animation-duration: 2.0s;
+  animation-duration: 1.0s;
   animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 #switchDiv {
   display: flex;
@@ -257,3 +258,4 @@ body::-webkit-scrollbar {
   font-size: 1.8vh;
   margin: 0.5vh;
 }
+
