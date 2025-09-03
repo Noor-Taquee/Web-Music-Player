@@ -45,6 +45,12 @@ searchHistorySongDiv.appendChild(searchedSongDiv);
 searchedSongDiv.id = "searchedSongDiv";
 searchedSongDiv.textContent = "LOGIN TO SEE YOUR HISTORY";
 
+let searchPanelSpace = document.createElement("div");
+searchPanel.appendChild(searchPanelSpace);
+searchPanelSpace.id = "searchPanelSpace";
+
+
+
 function loadSearchTextHistory() {
   searchedTextDiv.innerHTML = "";
   for (let songs of searchedTextList) {

@@ -1,10 +1,8 @@
 //ELEMENTS==========================
 let main = document.getElementById("main");
-let blurLayer = document.getElementById("blurLayer");
 let bottomDiv = document.getElementById("bottomDiv");
 let switchDiv = document.getElementById("switchDiv");
 let bnHomePanel = document.getElementById("bnHomePanel");
-let bnPlayerPanel = document.getElementById("bnPlayerPanel");
 let bnSearchPanel = document.getElementById("bnSearchPanel");
 let bnLibraryPanel = document.getElementById("bnLibraryPanel");
 let bnAccountPanel = document.getElementById("bnAccountPanel");
@@ -87,49 +85,46 @@ function expandToplayer() {
 }
 
 function createScreen(defaultTab,btn) {
-  blurLayer.removeChild(bottomDiv);
-  blurLayer.appendChild(defaultTab);
-  blurLayer.appendChild(bottomDiv);
+  main.removeChild(bottomDiv);
+  main.appendChild(defaultTab);
+  main.appendChild(bottomDiv);
   btn.style.color = "rgba(255,255,255,0.7)";
   currentTab = defaultTab;
   currentBtn = btn;
-  if (defaultTab != playerPanel) {
-    bottomDiv.style.height = "20%";
-    bottomDiv.removeChild(switchDiv);
-    bottomDiv.appendChild(miniPlayer);
-    bottomDiv.appendChild(switchDiv);
-    switchDiv.style.borderTopLeftRadius = "0";
-    switchDiv.style.borderTopRightRadius = "0";
-    switchDiv.style.borderBottomLeftRadius = "2rem";
-    switchDiv.style.borderBottomRightRadius = "2rem";
-    switchDiv.style.height = "50%";
-  }
+  bottomDiv.style.height = "20%";
+  bottomDiv.removeChild(switchDiv);
+  bottomDiv.appendChild(miniPlayer);
+  bottomDiv.appendChild(switchDiv);
+  switchDiv.style.borderTopLeftRadius = "0";
+  switchDiv.style.borderTopRightRadius = "0";
+  switchDiv.style.borderBottomLeftRadius = "2rem";
+  switchDiv.style.borderBottomRightRadius = "2rem";
+  switchDiv.style.height = "50%";
 }
 function switchTo(destination) {
   currentBtn.style.color = "rgba(255,255,255,0.3)";
   if (currentTab != destination) {
     if (destination == "homePanel") {
-      blurLayer.replaceChild(homePanel,currentTab);
+      main.replaceChild(homePanel,currentTab);
       currentTab = homePanel;
       currentBtn = bnHomePanel;
       miniPlayerRequired = true;
     } else if (destination == "playerPanel") {
-      blurLayer.replaceChild(playerPanel,currentTab);
+      main.replaceChild(playerPanel,currentTab);
       currentTab = playerPanel;
-      currentBtn = bnPlayerPanel;
       miniPlayerRequired = false;
     } else if (destination == "searchPanel") {
-      blurLayer.replaceChild(searchPanel,currentTab);
+      main.replaceChild(searchPanel,currentTab);
       currentTab = searchPanel;
       currentBtn = bnSearchPanel;
       miniPlayerRequired = true;
     } else if (destination == "libraryPanel") {
-      blurLayer.replaceChild(libraryPanel,currentTab);
+      main.replaceChild(libraryPanel,currentTab);
       currentTab = libraryPanel;
       currentBtn = bnLibraryPanel;
       miniPlayerRequired = true;
     } else {
-      blurLayer.replaceChild(accountPanel,currentTab);
+      main.replaceChild(accountPanel,currentTab);
       currentTab = accountPanel;
       currentBtn = bnAccountPanel;
       miniPlayerRequired = true;
@@ -158,13 +153,12 @@ function switchTo(destination) {
   }
 }
 
-let totalFiles = 7;
+let totalFiles = 8;
 let attendFiles = 0;
 function attend() {
   attendFiles++;
   if (attendFiles == totalFiles) {
-    fetchSongs();
-    fetchUsersInfo();
+    startBackend();
   }
 }
 attend();
@@ -173,7 +167,6 @@ attend();
 miniBnNext.addEventListener("click",() => changeSong("next"));
 miniBnPrev.addEventListener("click",() => changeSong("prev"));
 bnHomePanel.addEventListener("click",() => switchTo("homePanel"));
-bnPlayerPanel.addEventListener("click",() => switchTo("playerPanel"));
 bnSearchPanel.addEventListener("click",() => switchTo("searchPanel"));
 bnLibraryPanel.addEventListener("click",() => switchTo("libraryPanel"));
 bnAccountPanel.addEventListener("click",() => switchTo("accountPanel"));

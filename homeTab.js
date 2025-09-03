@@ -93,6 +93,9 @@ let tunesDivCon = document.createElement("p");
 tunesDiv.appendChild(tunesDivCon);
 tunesDivCon.id = "tunesDivCon";
 
+let homePanelSpace = document.createElement("div");
+homeContentDiv.appendChild(homePanelSpace);
+homePanelSpace.id = "homePanelSpace";
 
 
 

@@ -10,11 +10,15 @@ let togglePic = document.createElement("button");
 toggleDiv.appendChild(togglePic);
 togglePic.id = "togglePic";
 togglePic.textContent = "PICTURE";
+togglePic.addEventListener("click",() => focusOn("picture"));
 let toggleLyr = document.createElement("button");
 toggleDiv.appendChild(toggleLyr);
 toggleLyr.id = "toggleLyr";
 toggleLyr.textContent = "LYRICS";
-
+toggleLyr.addEventListener("click",() => focusOn("lyrics"));
+let toggleLayer = document.createElement("div");
+toggleDiv.appendChild(toggleLayer);
+toggleLayer.id = "toggleLayer";
 
 let pictureDiv = document.createElement("div");
 playerPanel.appendChild(pictureDiv);
@@ -29,8 +33,11 @@ lyricsDiv.appendChild(lyrics);
 lyricsDiv.id = "lyrics";
 
 
+let secondaryDiv = document.createElement("div");
+playerPanel.appendChild(secondaryDiv);
+secondaryDiv.id = "secondaryDiv";
 let infoDiv = document.createElement("div");
-playerPanel.appendChild(infoDiv);
+secondaryDiv.appendChild(infoDiv);
 infoDiv.id = "infoDiv";
 let trackName = document.createElement("p");
 infoDiv.appendChild(trackName);
@@ -46,22 +53,11 @@ bnArtist.appendChild(artistName);
 artistName.id = "artistName";
 
 
-let controlDiv = document.createElement("div");
-playerPanel.appendChild(controlDiv);
-controlDiv.id = "controlDiv";
 
 let secondaryControls = document.createElement("div");
-controlDiv.appendChild(secondaryControls);
+secondaryDiv.appendChild(secondaryControls);
 secondaryControls.id = "secondaryControls";
 
-let bnLike = document.createElement("button");
-secondaryControls.appendChild(bnLike);
-bnLike.id = "bnLike";
-let likeIcon = document.createElement("i");
-bnLike.appendChild(likeIcon);
-likeIcon.className = "fa-regular fa-heart";
-bnLike.append(likeIcon, document.createTextNode("LIKE"));
-bnLike.addEventListener("click",f_like);
 
 let bnFavourite = document.createElement("button");
 secondaryControls.appendChild(bnFavourite);
@@ -69,45 +65,7 @@ bnFavourite.id = "bnFavourite";
 let favouriteIcon = document.createElement("i");
 bnFavourite.appendChild(favouriteIcon);
 favouriteIcon.className = "fa-regular fa-star";
-bnFavourite.append(favouriteIcon, document.createTextNode("FAVOURITE"));
 bnFavourite.addEventListener("click", f_favourite);
-
-let bnSave = document.createElement("button");
-secondaryControls.appendChild(bnSave);
-bnSave.id = "bnSave";
-let saveIcon = document.createElement("i");
-bnSave.appendChild(saveIcon);
-saveIcon.className = "fa-regular fa-bookmark";
-bnSave.append(saveIcon, document.createTextNode("SAVE"));
-bnSave.addEventListener("click",f_save);
-
-let bnAdd = document.createElement("button");
-secondaryControls.appendChild(bnAdd);
-bnAdd.id = "bnAdd";
-let addIcon = document.createElement("i");
-bnAdd.appendChild(addIcon);
-addIcon.className = "fa-solid fa-add";
-bnAdd.append(addIcon, document.createTextNode("PLAY NEXT"));
-bnAdd.addEventListener("click",f_add);
-
-
-let bnShare = document.createElement("button");
-secondaryControls.appendChild(bnShare);
-bnShare.id = "bnShare";
-let shareIcon = document.createElement("i");
-bnShare.appendChild(shareIcon);
-shareIcon.className = "fa-solid fa-share";
-bnShare.append(shareIcon, document.createTextNode("SHARE"));
-bnShare.addEventListener("click",f_share);
-
-let bnDownload = document.createElement("button");
-secondaryControls.appendChild(bnDownload);
-bnDownload.id = "bnDownload";
-let downloadIcon = document.createElement("i");
-bnDownload.appendChild(downloadIcon);
-downloadIcon.className = "fa-solid fa-download";
-bnDownload.append(downloadIcon, document.createTextNode("DOWNLOAD"));
-bnDownload.addEventListener("click",f_download);
 
 let bnMore = document.createElement("button");
 secondaryControls.appendChild(bnMore);
@@ -115,8 +73,47 @@ bnMore.id = "bnMore";
 let moreIcon = document.createElement("i");
 bnMore.appendChild(moreIcon);
 moreIcon.className = "fa-solid fa-ellipsis";
-bnMore.append(moreIcon, document.createTextNode("MORE"));
 bnMore.addEventListener("click",f_more);
+
+let bnLike = document.createElement("button");
+bnLike.id = "bnLike";
+let likeIcon = document.createElement("i");
+bnLike.appendChild(likeIcon);
+likeIcon.className = "fa-regular fa-heart";
+bnLike.addEventListener("click",f_like);
+
+let bnSave = document.createElement("button");
+bnSave.id = "bnSave";
+let saveIcon = document.createElement("i");
+bnSave.appendChild(saveIcon);
+saveIcon.className = "fa-regular fa-bookmark";
+bnSave.addEventListener("click",f_save);
+
+let bnAdd = document.createElement("button");
+bnAdd.id = "bnAdd";
+let addIcon = document.createElement("i");
+bnAdd.appendChild(addIcon);
+addIcon.className = "fa-solid fa-add";
+bnAdd.addEventListener("click",f_add);
+
+
+let bnShare = document.createElement("button");
+bnShare.id = "bnShare";
+let shareIcon = document.createElement("i");
+bnShare.appendChild(shareIcon);
+shareIcon.className = "fa-solid fa-share";
+bnShare.addEventListener("click",f_share);
+
+let bnDownload = document.createElement("button");
+bnDownload.id = "bnDownload";
+let downloadIcon = document.createElement("i");
+bnDownload.appendChild(downloadIcon);
+downloadIcon.className = "fa-solid fa-download";
+bnDownload.addEventListener("click",f_download);
+
+let controlDiv = document.createElement("div");
+playerPanel.appendChild(controlDiv);
+controlDiv.id = "controlDiv";
 
 let primaryControls = document.createElement("div");
 controlDiv.appendChild(primaryControls);
@@ -189,6 +186,9 @@ let volumeHighIcon = document.createElement("i");
 volumeDiv.appendChild(volumeHighIcon);
 volumeHighIcon.className = "fa-solid fa-volume-high";
 
+let playerPanelSpace = document.createElement("div");
+playerPanel.appendChild(playerPanelSpace);
+playerPanelSpace.id = "playerPanelSpace";
 
 
 //VARIABLES
@@ -197,15 +197,6 @@ let currentFocus = "picture";
 
 //FUNCTIONS
 function updateSecondaryButtons() {
-  if (recentlyPlayedSongList.includes(titleNames[currentSongIndex]))  {
-    likeIcon.className = "fa-solid fa-heart";
-    bnLike.removeEventListener("click",f_like);
-    bnLike.addEventListener("click",f_dislike);
-  } else {
-    likeIcon.className = "fa-regular fa-heart";
-    bnLike.removeEventListener("click",f_dislike);
-    bnLike.addEventListener("click",f_like);
-  }
   if (favouriteSongList.includes(titleNames[currentSongIndex]))  {
     favouriteIcon.className = "fa-solid fa-star";
     bnFavourite.removeEventListener("click",f_favourite);
@@ -271,10 +262,7 @@ function f_download() {}
 function f_more() {}
 
 function removeFocus() {
-  toggleLyr.style.backgroundColor = "transparent";
-  togglePic.style.backgroundColor = "transparent";
-  toggleLyr.style.fontWeight = "300";
-  togglePic.style.fontWeight = "300";
+  toggleLayer.style.transform = "translateX(0)"
   currentFocus = "";
 }
 
@@ -284,36 +272,34 @@ function focusOn(part) {
   if (part == "picture") {
     if (currentFocus != "picture") {
       removeFocus();
-      togglePic.style.backgroundColor = "rgba(255,255,255,0.3)";
-      togglePic.style.fontWeight = "500";
       lyricsDiv.style.animationName = "disappear";
-      lyricsDiv.style.animationDuration = "0.5s";
+      lyricsDiv.style.animationDuration = "0.3s";
       lyricsDiv.addEventListener("animationend",function lTop() {
         lyricsDiv.removeEventListener("animationend",lTop);
         pictureDiv.removeChild(lyricsDiv);
         pictureDiv.appendChild(albumArt);
         albumArt.style.animationName = "appear";
-        albumArt.style.animationDuration = "0.5s";
+        albumArt.style.animationDuration = "0.3s";
       });
     }
   } else {
     if (currentFocus != "lyrics") {
       removeFocus();
-      toggleLyr.style.backgroundColor = "rgba(255,255,255,0.3)";
-      toggleLyr.style.fontWeight = "500";
+      toggleLayer.style.transform = "translateX(20vw)"
       albumArt.style.animationName = "disappear";
-      albumArt.style.animationDuration = "0.5s";
+      albumArt.style.animationDuration = "0.3s";
       albumArt.addEventListener("animationend",function pTol() {
         albumArt.removeEventListener("animationend",pTol);
         pictureDiv.removeChild(albumArt);
         pictureDiv.appendChild(lyricsDiv);
         lyricsDiv.style.animationName = "appear";
-        lyricsDiv.style.animationDuration = "0.5s";
+        lyricsDiv.style.animationDuration = "0.3s";
       });
     }
   }
   currentFocus = part;
 }
+
 
 function showLoading() {
   if (bnPlay.contains(playIcon)) {
@@ -361,8 +347,7 @@ function initPlayer() {
 
 bnNext.addEventListener("click",() => changeSong("next"));
 bnPrev.addEventListener("click",() => changeSong("prev"));
-togglePic.addEventListener("click",() => focusOn("picture"));
-toggleLyr.addEventListener("click",() => focusOn("lyrics"));
+
 timeSlider.addEventListener("input" ,() => {
   setTimeTo(timeSlider.value);
   time1.textContent = coveredTime;
@@ -405,10 +390,6 @@ setInterval(() => {
   }
   timeSlider.value = song.currentTime;
 }, 10);
-
-//INITIALIZATION
-togglePic.style.backgroundColor = "rgba(255,255,255,0.3)";
-togglePic.style.fontWeight = "500";
 
 
 attend();

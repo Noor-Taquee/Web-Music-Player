@@ -5,9 +5,10 @@
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  background: transparent;
-  width: 90%;
-  height: 80%;
+  backdrop-filter: blur(10vmax);
+  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2));
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   padding: 0;
   border: none;
@@ -21,9 +22,10 @@
   display: flex;
   justify-content: center;
   height: 10%;
-  width: 100%;
+  width: 95%;
   margin: 0;
   padding: 2%;
+  flex-shrink: 0;
 }
 
 #searchBox {
@@ -71,7 +73,8 @@
   background: transparent;
   height: 40%;
   min-height: 10rem;
-  width: 100%;
+  width: 95%;
+  flex-shrink: 0;
 }
 
 #searchedTextDiv {
@@ -133,7 +136,10 @@
   background: transparent;
   height: 50%;
   min-height: 15rem;
-  width: 100%;
+  width: 95%;
+  margin: 0;
+  margin-bottom: 30vh;
+  flex-shrink: 0;
 }
 
 #recentSearches,
@@ -182,7 +188,7 @@
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.2);
+  background: transparent;
   height: 30vh;
   width: 30vh;
   margin: 0;
@@ -214,4 +220,11 @@
   width: 90%;
   margin: 0;
   padding: 0;
+}
+#searchPanelSpace {
+  height: 30vh;
+  width: 100%;
+  background: transparent;
+  border: none;
+  flex-shrink: 0;
 }

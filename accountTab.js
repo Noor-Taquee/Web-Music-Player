@@ -116,6 +116,9 @@ let bnfavouriteSongsP = document.createElement("p");
 bnfavouriteSongs.appendChild(bnfavouriteSongsP);
 bnfavouriteSongsP.textContent = "FAVOURITE SONGS";
 
+let accountPanelSpace = document.createElement("div");
+settingsPanel.appendChild(accountPanelSpace);
+accountPanelSpace.id = "accountPanelSpace";
 
 
 let loginPanel = document.createElement("div");
@@ -130,8 +133,12 @@ mainContainer.appendChild(loginHeader);
 loginHeader.id = "loginHeader";
 loginHeader.textContent = "Sign In";
 
+let inputContainer = document.createElement("div");
+mainContainer.appendChild(inputContainer);
+inputContainer.id = "inputContainer";
+
 let nameEntryDiv = document.createElement("div");
-mainContainer.appendChild(nameEntryDiv);
+inputContainer.appendChild(nameEntryDiv);
 nameEntryDiv.id = "nameEntryDiv";
 
 let nameInput = document.createElement("input");
@@ -141,7 +148,7 @@ nameInput.type = "text";
 nameInput.placeholder = "USERNAME";
 
 let passEntryDiv = document.createElement("div");
-mainContainer.appendChild(passEntryDiv);
+inputContainer.appendChild(passEntryDiv);
 passEntryDiv.id = "passEntryDiv";
 
 let passInput = document.createElement("input");
@@ -171,10 +178,6 @@ loginChangeBtn.id = "loginChangeBtn";
 loginChangeBtn.textContent = "Create account";
 loginChangeBtn.addEventListener("click",f_loginChange);
 
-const drpbx = new Dropbox.Dropbox({
-    accessToken: 'sl.u.AF8CndDV1ozXFcZZDLhb0ucoGsu77CzELG8L68pTojHEXYdukRFQd5TI5QLVAsDGDAUvSdy3rG6wi_wZRhmjaQ47jCCyEg_VyVBCXdrlZFws7hW2ES1OErUDvNt5Tn-LzAOoYY6V4FrgoU9BM7i93B9n36RrkF6JQ9pfm5DsuHX5VymWdVqhV5HD-dA28jKXaH1JEZTn0cjtRIRi3NRlhPmPImu9eIoczn2C-sHC97w2LZYkxKVwTEBVoa6jT0aMScyvmXBdqDYC36ouX-HSFNBWfRhIhrjc7ohkTEsXXQZ4x2MAoHOx81JjTWH9Ks2ye3BgscUbzfRrLuxzTKVk_i3VGq4V4xLqKr9wrVJtGUSIpU-r050FkvwWrNuVZMgTdd7Cye3T5yV5Qz4-YEjG7XR5DYHUjgmXMWB9rCyp_tQJi15w2BFJl-mjAxjFT12WcREGpzIQ28lFXiVmO_4gorOL1a5T4xg9123U8qRJPQWVac3si_VrzhJJKAOYpgIG2LmrZSnmYfKgfbJWUqsVDgnAnPeMrpvXgcqU_ID6kJsxYPsB79317sOclVAya11IsHgIWXTNvS9JViNLNGl1NJpSPhU502LXw2a4Q0R-Iog-53tu0zx7Zipl4xLUMTbLAY00bxHODaRYsz3A15Snn-2ZmDOaXY7ijUA-5EdMDiaRuImG3hple3KtfXSRplTN1neM21XDVOlBcTWtcbx5wMjP550KhvecHf675xjJ0at_xZPuAnLPS5ky3Nb_zu4maKPiP8yuBx9suB3iROSyri6Nrpi7lDnAM9nYT70Rh4jdr_jvNBDTQewn9YlneT3URcXk9tRl7Mx-cdxAUeNTWKW87XoKBcFcrjN5wg_FeJUBAtcwvqTxVTTGqwvq04dMtrxiG7Ysb6nGuROK_XXvyhP9DBXRRvpMq6reXyDlA9bICH3wS2_WTYQ08PW7JBSpDYg2Vly6T7MDlc2OQ19EtwNydEMSSkBABWQSko4G9GokxWPLzo2YWlG1-S5doniBRy08PFOCg8Wer6MJ-whmAtxn5m_I9E5IVlqr23qEayPX2iQsZC9dI4mDVe0l4bWTM-GX6MrBKEnriqzQMLvwbm2TMAbqVvCv-6VhcQorInV9BD383HeHRUGKyPbQBoZyLmsVeUmOARiGWj_kwYEyag5L7AhqYUBFINt_E69sI6F0-zH6kpSnopKZQ8dL4lBf2xMrRsMmNgAeWKKT_e--Yp1T6gaL1YAusQyIv5_wbRbSvkAtVdHBLGjlF2AwePlhBpFcNOhUAGau87ItUKx15ChkkZmP5gFmHxTb1eV-dQ_3nQAoLxwRJB9ApbJDhIff6ICc3ZZC4zbBPd7vTlx0FlBKosPPFsyqNv1cwvbNBna1GhegCYGgxCse_tpZvzTQlLXMl24fwrDEVWtJmJ9VOTou',
-    fetch: window.fetch.bind(window)
-});
 let reisterWay = "signIn";
 let  usersList = [];
 let data = null;
@@ -197,8 +200,12 @@ let signedIn = false;
 
 function f_login() {
   userGivenName = "aUser";
-  blurLayer.replaceChild(loginPanel,accountPanel);
-  currentTab = loginPanel;
+  if (usersList.length > 0) {
+    main.replaceChild(loginPanel,accountPanel);
+    currentTab = loginPanel;
+  } else {
+    alert("Server is not responding!")
+  }
 }
 function f_loginChange() {
   if (reisterWay == "signIn") {
@@ -233,7 +240,7 @@ function checkIdentity() {
     if (data[userGivenName].password == userGivenPass) {
       alert("Login Successful!")
       fetchUserData();
-      blurLayer.replaceChild(accountPanel,loginPanel);
+      main.replaceChild(accountPanel,loginPanel);
       currentTab = accountPanel;
     } else {
       alert("Incorrect Password!")
@@ -251,45 +258,9 @@ function checkAvailability() {
     alert("Password cannot be empty!")
   } else {
     alert("Account Created!")
-    blurLayer.replaceChild(accountPanel,loginPanel);
+    main.replaceChild(accountPanel,loginPanel);
     currentTab = accountPanel;
   }
-}
-
-function fetchUsersInfo() {
-  drpbx.filesDownload({path:"/UserFile.json"}).then(response => response.result.fileBlob.text()).then(text => {
-    data = JSON.parse(text);
-  }).then(()=>{
-    usersList = Object.keys(data);
-  });
-}
-function fetchUserData() {
-  userData = data[userGivenName];
-  userName = userData.profileName;
-  profilePicImage = userData.profilePic;
-  accountPassword = userData.password;
-  volumeLevel = userData.volumeLevel;
-  favouriteSongList = userData.favouriteSongList;
-  recentlyPlayedSongList = userData.recentlyPlayedSongList;
-  searchedTextList = userData.searchedTextList;
-  searchedSongList = userData.searchedSongList;
-  likedSongList = userData.likedSongList;
-  playlistList  = userData.playlistList;
-  showInfo();
-  loadPlaylists();
-  loadRecentlyPlayedSongs();
-  loadSearchHistory();
-  setVolumeTo(volumeLevel);
-}
-
-function updateDataFile() {
-  drpbx.filesUpload({
-    path: "/UserFile.json",
-    contents: JSON.stringify(data),
-    mode: {".tag":"overwrite"},
-    autorename: false,
-    mute: true
-  });
 }
 
 function showInfo() {

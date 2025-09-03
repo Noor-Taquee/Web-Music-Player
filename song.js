@@ -146,7 +146,7 @@ function nextSong() {
     showLoading();
     main.style.backgroundImage = `url(${currentAlbumArt})`;
     changePicture("miniPlayer");
-    if (blurLayer.contains(playerPanel) && pictureDiv.contains(albumArt)) {
+    if (main.contains(playerPanel) && pictureDiv.contains(albumArt)) {
         albumArt.style.animation = "fadeOutBehind";
         albumArt.style.animationDuration = "0.2s";
         albumArt.style.animationTimingFunction = "ease-in-out";
@@ -171,7 +171,7 @@ function prevSong() {
     showLoading();
     main.style.backgroundImage = `url(${currentAlbumArt})`;
     changePicture("miniPlayer");
-    if (blurLayer.contains(playerPanel) && pictureDiv.contains(albumArt)) {
+    if (main.contains(playerPanel) && pictureDiv.contains(albumArt)) {
         albumArt.style.animation = "fadeOutAhead";
         albumArt.style.animationDuration = "0.2s";
         albumArt.style.animationTimingFunction = "ease-in-out";

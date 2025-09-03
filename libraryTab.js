@@ -85,6 +85,8 @@ bnConfirmDel.id = "bnConfirmDel";
 bnConfirmDel.textContent = "DELETE";
 
 
+
+
 //VARIABLES
 let playlistInFocus = null;
 
@@ -131,6 +133,10 @@ function loadPlaylists() {
   } else {
     libraryContent.textContent = "YOU DON'T HAVE ANY PLAYLIST";
   }
+  let libraryPanelSpace = document.createElement("div");
+  libraryContent.appendChild(libraryPanelSpace);
+  libraryPanelSpace.id = "libraryPanelSpace";
+
 }
 
 function getPlaylistNames() {
