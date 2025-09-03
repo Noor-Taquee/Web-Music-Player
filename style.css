@@ -32,7 +32,7 @@
   flex-direction: column;
   justify-content: stretch;
   align-items: center;
-  height: 10%;
+  height: 7%;
   width: 90%;
   backdrop-filter: blur(5vw);
   background: transparent;
@@ -175,4 +175,5 @@
 #switchDiv i {
   font-size: 5vmin;
   margin: 0;
+
 }
