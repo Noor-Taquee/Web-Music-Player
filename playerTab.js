@@ -72,15 +72,8 @@ secondaryControls.appendChild(bnMore);
 bnMore.id = "bnMore";
 let moreIcon = document.createElement("i");
 bnMore.appendChild(moreIcon);
-moreIcon.className = "fa-solid fa-ellipsis";
+moreIcon.className = "fa-solid fa-ellipsis-vertical";
 bnMore.addEventListener("click",f_more);
-
-let bnLike = document.createElement("button");
-bnLike.id = "bnLike";
-let likeIcon = document.createElement("i");
-bnLike.appendChild(likeIcon);
-likeIcon.className = "fa-regular fa-heart";
-bnLike.addEventListener("click",f_like);
 
 let bnSave = document.createElement("button");
 bnSave.id = "bnSave";
@@ -88,14 +81,6 @@ let saveIcon = document.createElement("i");
 bnSave.appendChild(saveIcon);
 saveIcon.className = "fa-regular fa-bookmark";
 bnSave.addEventListener("click",f_save);
-
-let bnAdd = document.createElement("button");
-bnAdd.id = "bnAdd";
-let addIcon = document.createElement("i");
-bnAdd.appendChild(addIcon);
-addIcon.className = "fa-solid fa-add";
-bnAdd.addEventListener("click",f_add);
-
 
 let bnShare = document.createElement("button");
 bnShare.id = "bnShare";
@@ -209,32 +194,17 @@ function updateSecondaryButtons() {
 }
 
 
-function f_like() {
-  likeIcon.className = "fa-solid fa-heart";
-  bnLike.removeEventListener("click",f_like);
-  bnLike.addEventListener("click",f_dislike);
-
-  recentlyPlayedSongList.push(titleNames[currentSongIndex]);
-  updateDataFile();
-  loadRecentlyPlayedSongs();
-}
-function f_dislike() {
-  likeIcon.className = "fa-regular fa-heart";
-  bnLike.removeEventListener("click",f_dislike);
-  bnLike.addEventListener("click",f_like);
-
-  recentlyPlayedSongList.splice(recentlyPlayedSongList.indexOf(titleNames[currentSongIndex]),1);
-  updateDataFile();
-  loadRecentlyPlayedSongs();
-}
-
 function f_favourite() {
-  favouriteIcon.className = "fa-solid fa-star";
-  bnFavourite.removeEventListener("click",f_favourite);
-  bnFavourite.addEventListener("click",f_disfavourite);
-  favouriteSongList.push(titleNames[currentSongIndex]);
-  updateDataFile();
-  favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
+  if (signedIn) {
+    favouriteIcon.className = "fa-solid fa-star";
+    bnFavourite.removeEventListener("click",f_favourite);
+    bnFavourite.addEventListener("click",f_disfavourite);
+    favouriteSongList.push(titleNames[currentSongIndex]);
+    updateDataFile();
+    favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
+  } else {
+    alert("Login to your account first!")
+  }
 }
 function f_disfavourite() {
   favouriteIcon.className = "fa-regular fa-star";
@@ -256,7 +226,6 @@ function f_unsave() {
   bnSave.addEventListener("click",f_save);
 }
 
-function f_add() {}
 function f_share() {}
 function f_download() {}
 function f_more() {}

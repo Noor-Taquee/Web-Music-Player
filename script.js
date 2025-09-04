@@ -91,7 +91,7 @@ function createScreen(defaultTab,btn) {
   btn.style.color = "rgba(255,255,255,0.7)";
   currentTab = defaultTab;
   currentBtn = btn;
-  bottomDiv.style.height = "16%";
+  bottomDiv.style.height = "35vw";
   bottomDiv.removeChild(switchDiv);
   bottomDiv.appendChild(miniPlayer);
   bottomDiv.appendChild(switchDiv);
@@ -132,7 +132,8 @@ function switchTo(destination) {
     currentBtn.style.color = "rgba(255,255,255,0.8)";
     if (miniPlayerRequired) {
       if (!bottomDiv.contains(miniPlayer)) {
-        bottomDiv.style.height = "16%";
+        bottomDiv.style.height = "35vw";
+        bottomDiv.style.maxHeight = "15vh";
         bottomDiv.removeChild(switchDiv);
         bottomDiv.appendChild(miniPlayer);
         bottomDiv.appendChild(switchDiv);
@@ -145,7 +146,8 @@ function switchTo(destination) {
     } else {
       if (bottomDiv.contains(miniPlayer)) {
         bottomDiv.removeChild(miniPlayer);
-        bottomDiv.style.height = "8%";
+        bottomDiv.style.height = "17.5vw";
+        bottomDiv.style.maxHeight = "8vh";
         switchDiv.style.borderRadius = "3rem";
         switchDiv.style.height = "100%";
       }
@@ -169,5 +171,4 @@ miniBnPrev.addEventListener("click",() => changeSong("prev"));
 bnHomePanel.addEventListener("click",() => switchTo("homePanel"));
 bnSearchPanel.addEventListener("click",() => switchTo("searchPanel"));
 bnLibraryPanel.addEventListener("click",() => switchTo("libraryPanel"));
-
 bnAccountPanel.addEventListener("click",() => switchTo("accountPanel"));

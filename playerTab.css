@@ -224,8 +224,7 @@
   text-align: right;
   white-space: pre;
   color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(0.5px);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 233, 233, 0.1);
   height: 6vh;
   max-height: 15vw;
   width: 6vh;
@@ -310,7 +309,7 @@
   justify-content: center;
   align-items: center;
   font-family: 'Courier New', Courier, Monospace;
-  font-size: 5vmin;
+  font-size: 150%;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.7);
   background: transparent;
