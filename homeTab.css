@@ -147,7 +147,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  padding-left: 2vw;
+  padding-left: 5%;
 }
 #homePanelSpace {
   height: 30vh;
@@ -155,4 +155,5 @@
   background: transparent;
   border: none;
   flex-shrink: 0;
+
 }
