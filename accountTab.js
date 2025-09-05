@@ -212,10 +212,9 @@ let signedIn = false;
 
 
 function f_login() {
-  userGivenName = "aUser";
-  main.replaceChild(loginPanel,accountPanel);
-  currentTab = loginPanel;
   if (usersList.length > 0) {
+    main.replaceChild(loginPanel,accountPanel);
+    currentTab = loginPanel;
   } else {
     alert("Server is not responding!")
   }
@@ -245,31 +244,32 @@ function f_loginChange() {
 }
 
 function checkIdentity() {
-  userGivenName = nameInput.value;
-  userGivenPass = passInput.value;
+  let userGivenName = nameInput.value;
+  let userGivenPass = passInput.value;
   if (usersList.includes(userGivenName)) {
     if (data[userGivenName].password == userGivenPass) {
-      alert("Login Successful!")
+      switchTo("accountPanel");
+      alert("Login Successful!");
       fetchUserData(userGivenName);
-      main.replaceChild(accountPanel,loginPanel);
-      currentTab = accountPanel;
     } else {
-      alert("Incorrect Password!")
+      alert("Incorrect Password!");
     }
   } else {
-    alert("Username is not present!")
+    alert("Username is not present!");
   }
 }
 
 function checkAvailability() {
-  userGivenFullName = fullNameInput.value;
-  userGivenName = createUsernameInput.value;
-  userGivenPass = createPassInput.value;
+  let userGivenFullName = fullNameInput.value;
+  let userGivenName = createUsernameInput.value;
+  let userGivenPass = createPassInput.value;
   if (usersList.includes(userGivenName)) {
-    alert("Username is not available!")
+    alert("Username is not available!");
   } else if (userGivenPass.length < 1) {
-    alert("Password cannot be empty!")
-  } else {
+    alert("Password cannot be empty!");
+  } else if (userGivenFullName.length < 1) {
+    alert("Please provide your full name!");
+  }else {
     alert("Account Created!")
     data[userGivenName] = {"profileName":userGivenFullName,
       "profilePic":"",
@@ -284,8 +284,7 @@ function checkAvailability() {
     updateDataFile().then(() => {
       fetchUserData(userGivenName);
     })
-    main.replaceChild(accountPanel,loginPanel);
-    currentTab = accountPanel;
+    switchTo("accountPanel");
   }
 }
 

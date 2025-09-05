@@ -28,7 +28,10 @@ bnAddPlaylist.addEventListener("click",f_AddPlaylist);
 let libraryContent = document.createElement("div");
 libraryPanel.appendChild(libraryContent);
 libraryContent.id = "libraryContent";
-libraryContent.textContent = "LOGIN TO SEE YOUR PLAYLISTS";
+let libraryContentText = document.createElement("p");
+libraryContent.appendChild(libraryContentText);
+libraryContentText.id = "libraryContentText";
+libraryContentText.textContent = "LOGIN TO SEE YOUR PLAYLISTS";
 
 let optionPanel = document.createElement("div");
 optionPanel.id = "optionPanel";
@@ -95,8 +98,8 @@ let playlistInFocus = null;
 
 //FUNCTIONS
 function loadPlaylists() {
-  libraryContent.innerHTML = "";
   if (playlistList.length > 0) {
+    libraryContent.removeChild(libraryContentText);
     for (let playlists of playlistList) {
       let playlist = document.createElement("div");
       libraryContent.appendChild(playlist);
@@ -133,7 +136,7 @@ function loadPlaylists() {
       optionsIcon.className = "fa-solid fa-ellipsis-vertical";
     }
   } else {
-    libraryContent.textContent = "YOU DON'T HAVE ANY PLAYLIST";
+    libraryContentText.textContent = "YOU DON'T HAVE ANY PLAYLIST";
   }
   let libraryPanelSpace = document.createElement("div");
   libraryContent.appendChild(libraryPanelSpace);

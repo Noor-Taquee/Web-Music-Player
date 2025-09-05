@@ -102,28 +102,30 @@ homePanelSpace.id = "homePanelSpace";
 
 
 function loadRecentlyPlayedSongs() {
-  recentlyPLayedDivCon.removeChild(recentlyPLayedDivConText);
-  for (let songs of recentlyPlayedSongList) {
-    let suggestedSong = document.createElement("button");
-    recentlyPLayedDivCon.appendChild(suggestedSong);
-    suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click",() => playSong(songs));
+  if (recentlyPlayedSongList.length > 0) {
+    recentlyPLayedDivCon.removeChild(recentlyPLayedDivConText);
+    for (let songs of recentlyPlayedSongList) {
+      let suggestedSong = document.createElement("button");
+      recentlyPLayedDivCon.appendChild(suggestedSong);
+      suggestedSong.id = "suggestedSong";
+      suggestedSong.addEventListener("click", () => playSong(songs));
 
-    let suggestedSongPic = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongPic);
-    suggestedSongPic.id = "suggestedSongPic";
-    let songIcon = document.createElement("i");
-    songIcon.className = "fa-solid fa-headphones";
-    if (songData[songs].image.length > 0) {
-      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
-    } else {
-      suggestedSongPic.appendChild(songIcon);
+      let songIcon = document.createElement("span");
+      songIcon.className = "material-symbols-rounded";
+      songIcon.textContent = "headphones";
+      if (songData[songs].image.length > 0) {
+        suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
+      } else {
+        suggestedSong.appendChild(songIcon);
+      }
+
+      let suggestedSongName = document.createElement("p");
+      suggestedSong.appendChild(suggestedSongName);
+      suggestedSongName.id = "suggestedSongName";
+      suggestedSongName.textContent = songData[songs].name;
     }
-
-    let suggestedSongName = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongName);
-    suggestedSongName.id = "suggestedSongName";
-    suggestedSongName.textContent = songData[songs].name;
+  } else {
+    recentlyPLayedDivCon.textContent = "NO SONGS PLAYED RECENTLY";
   }
 }
 

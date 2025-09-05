@@ -58,7 +58,7 @@ searchPanelSpace.id = "searchPanelSpace";
 
 
 function loadSearchTextHistory() {
-  searchedTextDiv.innerHTML = "";
+  searchedTextDiv.removeChild(searchedTextDivText);
   for (let songs of searchedTextList) {
     let searchedText = document.createElement("button");
     searchedTextDiv.appendChild(searchedText);
@@ -75,7 +75,7 @@ function loadSearchTextHistory() {
 }
 
 function loadSearchSongHistory() {
-  searchedSongDiv.innerHTML = "";
+  searchedSongDiv.removeChild(searchedSongDivText);
   for (let songs of searchedSongList) {
     let searchedSong = document.createElement("button");
     searchedSongDiv.appendChild(searchedSong);
