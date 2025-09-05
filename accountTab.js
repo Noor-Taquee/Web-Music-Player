@@ -9,11 +9,14 @@ accountInfoHeader.id = "accountInfoHeader";
 let profilePic = document.createElement("p");
 accountInfoHeader.appendChild(profilePic);
 profilePic.id = "profilePic";
-let profilePicIcon = document.createElement("i");
+let profilePicIcon = document.createElement("span");
 profilePic.appendChild(profilePicIcon);
-profilePicIcon.className = "fa-solid fa-user";
-let editIcon = document.createElement("i");
-editIcon.className = "fa-solid fa-pen";
+profilePicIcon.className = "material-symbols-rounded";
+profilePicIcon.textContent = "account_circle";
+let editIcon = document.createElement("span");
+profilePic.appendChild(editIcon);
+editIcon.className = "material-symbols-rounded";
+editIcon.textContent = "edit";
 editIcon.id = "editIcon";
 
 let profileInfoCard = document.createElement("div");
@@ -40,17 +43,19 @@ statsDiv.id = "statsDiv";
 let playlistsCount = document.createElement("button");
 statsDiv.appendChild(playlistsCount);
 playlistsCount.addEventListener("click",() => switchTo("libraryPanel"));
-let libraryicon = document.createElement("i");
+let libraryicon = document.createElement("span");
 playlistsCount.appendChild(libraryicon);
-libraryicon.className = "fa-solid fa-book";
+libraryicon.className = "material-symbols-rounded";
+libraryicon.textContent = "library_music";
 let playlistsCountP = document.createElement("p");
 playlistsCount.appendChild(playlistsCountP);
 playlistsCountP.textContent = "playlists:";
 
 let favouriteSongsCount = document.createElement("button");
 statsDiv.appendChild(favouriteSongsCount);
-let favouriteCountIcon = document.createElement("i");
-favouriteCountIcon.className = "fa-solid fa-star";
+let favouriteCountIcon = document.createElement("span");
+favouriteCountIcon.className = "material-symbols-rounded";
+favouriteCountIcon.textContent = "star";
 favouriteSongsCount.appendChild(favouriteCountIcon);
 let favouriteSongsCountP = document.createElement("p");
 favouriteSongsCount.appendChild(favouriteSongsCountP);
@@ -64,9 +69,10 @@ settingsPanel.id = "settingsPanel";
 let bnSettings = document.createElement("button");
 settingsPanel.appendChild(bnSettings);
 bnSettings.id = "bnSettings";
-let bnSettingsIcon = document.createElement("i");
+let bnSettingsIcon = document.createElement("span");
 bnSettings.appendChild(bnSettingsIcon);
-bnSettingsIcon.className = "fa-solid fa-gear";
+bnSettingsIcon.className = "material-symbols-rounded";
+bnSettingsIcon.textContent = "settings";
 bnSettingsIcon.id = "bnSettingsIcon";
 let bnSettingsP = document.createElement("p");
 bnSettings.appendChild(bnSettingsP);
@@ -75,9 +81,11 @@ bnSettingsP.textContent = "SETTINGS";
 let bnChangePass = document.createElement("button");
 settingsPanel.appendChild(bnChangePass);
 bnChangePass.id = "bnChangePass";
-let bnChangePassIcon = document.createElement("i");
+bnChangePass.addEventListener("click",changePassword);
+let bnChangePassIcon = document.createElement("span");
 bnChangePass.appendChild(bnChangePassIcon);
-bnChangePassIcon.className = "fa-solid fa-key";
+bnChangePassIcon.className = "material-symbols-rounded";
+bnChangePassIcon.textContent = "password";
 bnChangePassIcon.id = "bnChangePassIcon";
 let bnChangePassP = document.createElement("p");
 bnChangePass.appendChild(bnChangePassP);
@@ -86,9 +94,10 @@ bnChangePassP.textContent = "CHANGE PASSWORD";
 let bnManageHistory = document.createElement("button");
 settingsPanel.appendChild(bnManageHistory);
 bnManageHistory.id = "bnManageHistory";
-let bnManageHistoryIcon = document.createElement("i");
+let bnManageHistoryIcon = document.createElement("span");
 bnManageHistory.appendChild(bnManageHistoryIcon);
-bnManageHistoryIcon.className = "fa-solid fa-clock";
+bnManageHistoryIcon.className = "material-symbols-rounded";
+bnManageHistoryIcon.textContent = "manage_history";
 bnManageHistoryIcon.id = "bnManageHistoryIcon";
 let bnManageHistoryP = document.createElement("p");
 bnManageHistory.appendChild(bnManageHistoryP);
@@ -97,24 +106,14 @@ bnManageHistoryP.textContent = "MANAGE HISTORY";
 let bnAudioQuality = document.createElement("button");
 settingsPanel.appendChild(bnAudioQuality);
 bnAudioQuality.id = "bnAudioQuality";
-let bnAudioQualityIcon = document.createElement("i");
+let bnAudioQualityIcon = document.createElement("span");
 bnAudioQuality.appendChild(bnAudioQualityIcon);
-bnAudioQualityIcon.className = "fa-solid fa-music";
+bnAudioQualityIcon.className = "material-symbols-rounded";
+bnAudioQualityIcon.textContent = "tune";
 bnAudioQualityIcon.id = "bnAudioQualityIcon";
 let bnAudioQualityP = document.createElement("p");
 bnAudioQuality.appendChild(bnAudioQualityP);
 bnAudioQualityP.textContent = "AUDIO QUALITY";
-
-let bnfavouriteSongs = document.createElement("button");
-settingsPanel.appendChild(bnfavouriteSongs);
-bnfavouriteSongs.id = "bnfavouriteSongs";
-let bnFavouriteIcon = document.createElement("i");
-bnfavouriteSongs.appendChild(bnFavouriteIcon);
-bnFavouriteIcon.className = "fa-solid fa-star";
-bnFavouriteIcon.id = "bnFavouriteIcon";
-let bnfavouriteSongsP = document.createElement("p");
-bnfavouriteSongs.appendChild(bnfavouriteSongsP);
-bnfavouriteSongsP.textContent = "FAVOURITE SONGS";
 
 let accountPanelSpace = document.createElement("div");
 settingsPanel.appendChild(accountPanelSpace);
@@ -133,34 +132,48 @@ mainContainer.appendChild(loginHeader);
 loginHeader.id = "loginHeader";
 loginHeader.textContent = "Sign In";
 
-let inputContainer = document.createElement("div");
-mainContainer.appendChild(inputContainer);
-inputContainer.id = "inputContainer";
-
-let nameEntryDiv = document.createElement("div");
-inputContainer.appendChild(nameEntryDiv);
-nameEntryDiv.id = "nameEntryDiv";
+let signInInputContainer = document.createElement("div");
+mainContainer.appendChild(signInInputContainer);
+signInInputContainer.id = "signInInputContainer";
 
 let nameInput = document.createElement("input");
-nameEntryDiv.appendChild(nameInput);
+signInInputContainer.appendChild(nameInput);
 nameInput.id = "nameInput";
 nameInput.type = "text";
 nameInput.placeholder = "USERNAME";
 
-let passEntryDiv = document.createElement("div");
-inputContainer.appendChild(passEntryDiv);
-passEntryDiv.id = "passEntryDiv";
-
 let passInput = document.createElement("input");
-passEntryDiv.appendChild(passInput);
+signInInputContainer.appendChild(passInput);
 passInput.id = "passInput";
 passInput.type = "password";
 passInput.placeholder = "PASSWORD";
 
+let signUpInputContainer = document.createElement("div");
+signUpInputContainer.id = "signUpInputContainer";
+
+let fullNameInput = document.createElement("input");
+signUpInputContainer.appendChild(fullNameInput);
+fullNameInput.id = "fullNameInput";
+fullNameInput.type = "text";
+fullNameInput.placeholder = "NAME";
+
+let createUsernameInput = document.createElement("input");
+signUpInputContainer.appendChild(createUsernameInput);
+createUsernameInput.id = "createUsernameInput";
+createUsernameInput.type = "text";
+createUsernameInput.placeholder = "CREATE USERNAME";
+
+let createPassInput = document.createElement("input");
+signUpInputContainer.appendChild(createPassInput);
+createPassInput.id = "createPassInput";
+createPassInput.type = "text";
+createPassInput.placeholder = "CREATE PASSWORD";
+
+
 let loginBtn = document.createElement("button");
 mainContainer.appendChild(loginBtn);
 loginBtn.id = "loginBtn";
-loginBtn.textContent = "LOG IN";
+loginBtn.textContent = "SIGN IN";
 loginBtn.addEventListener("click", checkIdentity);
 
 let loginFooter = document.createElement("div");
@@ -178,7 +191,7 @@ loginChangeBtn.id = "loginChangeBtn";
 loginChangeBtn.textContent = "Create account";
 loginChangeBtn.addEventListener("click",f_loginChange);
 
-let reisterWay = "signIn";
+let registerWay = "signIn";
 let  usersList = [];
 let data = null;
 let userData = null;
@@ -200,36 +213,34 @@ let signedIn = false;
 
 function f_login() {
   userGivenName = "aUser";
+  main.replaceChild(loginPanel,accountPanel);
+  currentTab = loginPanel;
   if (usersList.length > 0) {
-    main.replaceChild(loginPanel,accountPanel);
-    currentTab = loginPanel;
   } else {
     alert("Server is not responding!")
   }
 }
 function f_loginChange() {
-  if (reisterWay == "signIn") {
+  if (registerWay == "signIn") {
+    mainContainer.style.height = "65%";
     loginHeader.textContent = "Sign Up";
-    nameInput.placeholder = "CREATE USERNAME";
-    passInput.type = "text";
-    passInput.placeholder = "CREATE PASSWORD";
+    mainContainer.replaceChild(signUpInputContainer,signInInputContainer);
     loginBtn.textContent = "CREATE";
     loginBtn.removeEventListener("click",checkIdentity);
     loginBtn.addEventListener("click",checkAvailability);
     loginChangeText.textContent = "Already have an account?";
     loginChangeBtn.textContent = "Sign In";
-    reisterWay = "signUp";
+    registerWay = "signUp";
   } else {
+    mainContainer.style.height = "50%";
     loginHeader.textContent = "Sign In";
-    nameInput.placeholder = "USERNAME";
-    passInput.type = "password";
-    passInput.placeholder = "PASSWORD";
-    loginBtn.textContent = "LOG IN";
+    mainContainer.replaceChild(signInInputContainer,signUpInputContainer);
+    loginBtn.textContent = "SIGN IN";
     loginBtn.removeEventListener("click",checkAvailability);
     loginBtn.addEventListener("click",checkIdentity);
     loginChangeText.textContent = "Don't have an account?";
     loginChangeBtn.textContent = "Create account";
-    reisterWay = "signIn";
+    registerWay = "signIn";
   }
 }
 
@@ -239,7 +250,7 @@ function checkIdentity() {
   if (usersList.includes(userGivenName)) {
     if (data[userGivenName].password == userGivenPass) {
       alert("Login Successful!")
-      fetchUserData();
+      fetchUserData(userGivenName);
       main.replaceChild(accountPanel,loginPanel);
       currentTab = accountPanel;
     } else {
@@ -249,15 +260,30 @@ function checkIdentity() {
     alert("Username is not present!")
   }
 }
+
 function checkAvailability() {
-  userGivenName = nameInput.value;
-  userGivenPass = passInput.value;
+  userGivenFullName = fullNameInput.value;
+  userGivenName = createUsernameInput.value;
+  userGivenPass = createPassInput.value;
   if (usersList.includes(userGivenName)) {
     alert("Username is not available!")
   } else if (userGivenPass.length < 1) {
     alert("Password cannot be empty!")
   } else {
     alert("Account Created!")
+    data[userGivenName] = {"profileName":userGivenFullName,
+      "profilePic":"",
+      "password":userGivenPass,
+      "playlistList":[],
+      "recentlyPlayedSongList":[],
+      "searchedTextList":[],
+      "searchedSongList":[],
+      "favouriteSongList":[],
+      "volumeLevel":[]
+    };
+    updateDataFile().then(() => {
+      fetchUserData(userGivenName);
+    })
     main.replaceChild(accountPanel,loginPanel);
     currentTab = accountPanel;
   }
@@ -270,6 +296,7 @@ function showInfo() {
   favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
 }
 
+function changePassword() {}
 
 
 attend();

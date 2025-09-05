@@ -44,10 +44,11 @@ miniPrevIcon.id = "miniPrevIcon";
 let miniBnPlay = document.createElement("button");
 miniPlaybackControlsDiv.appendChild(miniBnPlay)
 miniBnPlay.id = "miniBnPlay";
-let miniLoadingIcon = document.createElement("i");
+let miniLoadingIcon = document.createElement("span");
 miniBnPlay.appendChild(miniLoadingIcon);
-miniLoadingIcon.className = "fa-solid fa-spinner";
 miniLoadingIcon.id = "miniLoadingIcon";
+miniLoadingIcon.className = "material-symbols-rounded";
+miniLoadingIcon.textContent = "progress_activity";
 let miniPlayIcon = document.createElement("i");
 miniPlayIcon.className = "fa-solid fa-play";
 let miniPauseIcon = document.createElement("i");
@@ -88,7 +89,7 @@ function createScreen(defaultTab,btn) {
   main.removeChild(bottomDiv);
   main.appendChild(defaultTab);
   main.appendChild(bottomDiv);
-  btn.style.color = "rgba(255,255,255,0.7)";
+  btn.id = "activeButton";
   currentTab = defaultTab;
   currentBtn = btn;
   bottomDiv.style.height = "35vw";
@@ -102,7 +103,7 @@ function createScreen(defaultTab,btn) {
   switchDiv.style.height = "50%";
 }
 function switchTo(destination) {
-  currentBtn.style.color = "rgba(255,255,255,0.3)";
+  currentBtn.id = "nonActiveBtn";
   if (currentTab != destination) {
     if (destination == "homePanel") {
       main.replaceChild(homePanel,currentTab);
@@ -129,7 +130,9 @@ function switchTo(destination) {
       currentBtn = bnAccountPanel;
       miniPlayerRequired = true;
     }
-    currentBtn.style.color = "rgba(255,255,255,0.8)";
+    if (currentTab != playerPanel) {
+      currentBtn.id = "activeButton";
+    }
     if (miniPlayerRequired) {
       if (!bottomDiv.contains(miniPlayer)) {
         bottomDiv.style.height = "35vw";

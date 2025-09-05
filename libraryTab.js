@@ -15,9 +15,10 @@ libraryTitle.textContent = "MY PLAYLISTS";
 let bnAddPlaylist = document.createElement("button");
 libraryHeader.appendChild(bnAddPlaylist);
 bnAddPlaylist.id = "bnAddPlaylist";
-addPlaylistIcon = document.createElement("i");
+addPlaylistIcon = document.createElement("span");
 bnAddPlaylist.appendChild(addPlaylistIcon);
-addPlaylistIcon.className = "fa-solid fa-add";
+addPlaylistIcon.className = "material-symbols-rounded";
+addPlaylistIcon.textContent = "playlist_add";
 let bnAddPlaylistP = document.createElement("p");
 bnAddPlaylist.appendChild(bnAddPlaylistP);
 bnAddPlaylistP.textContent = "ADD";
@@ -108,8 +109,9 @@ function loadPlaylists() {
       let playlistPic = document.createElement("p");
       playlistInfo.appendChild(playlistPic);
       playlistPic.id = "playlistPic";
-      let playlistIcon = document.createElement("i");
-      playlistIcon.className = "fa-solid fa-book";
+      let playlistIcon = document.createElement("span");
+      playlistIcon.className = "material-symbols-rounded";
+      playlistIcon.textContent = "queue_music";
       if (playlists.image.length > 0) {
         playlistPic.style.backgroundImage = `url(${playlists.image})`;
       } else {

@@ -98,11 +98,10 @@
 }
 #miniTrackName {
   cursor: default;
-  display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   overflow: hidden;
-  white-space: pre;
+  white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 3.5vmin;
   font-weight: 700;
@@ -112,11 +111,10 @@
 }
 #miniArtistName {
   cursor: default;
-  display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   overflow: hidden;
-  white-space: pre;
+  white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 2.5vmin;
   height: 50%;
@@ -166,7 +164,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: rgba(255, 255, 255, 0.3);
+  background: transparent;
+  height: 100%;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+#activeButton {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: transparent;
   height: 100%;
   width: 25%;
@@ -178,7 +191,18 @@
   transition: all 0.3s ease-in-out;
 }
 
-#switchDiv i {
+#switchDiv span {
   font-size: 5vmin;
   margin: 0;
+  color: rgba(255, 255, 255, 0.3);
+}
+#activeButton span {
+  font-variation-settings:
+  'FILL' 1;
+  font-size: 5vmin;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
 }

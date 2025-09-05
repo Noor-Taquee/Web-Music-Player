@@ -31,7 +31,10 @@ recentSearches.textContent = "RECENT SEARCHES";
 let searchedTextDiv = document.createElement("div");
 searchHistoryTextDiv.appendChild(searchedTextDiv);
 searchedTextDiv.id = "searchedTextDiv";
-searchedTextDiv.textContent = "LOGIN TO SEE YOUR HISTORY";
+let searchedTextDivText = document.createElement("p");
+searchedTextDiv.appendChild(searchedTextDivText);
+searchedTextDivText.id = "searchedTextDivText";
+searchedTextDivText.textContent = "LOGIN TO SEE YOUR HISTORY";
 
 let searchHistorySongDiv = document.createElement("div");
 searchPanel.appendChild(searchHistorySongDiv);
@@ -43,7 +46,10 @@ recentSongs.textContent = "RECENT SONGS";
 let searchedSongDiv = document.createElement("div");
 searchHistorySongDiv.appendChild(searchedSongDiv);
 searchedSongDiv.id = "searchedSongDiv";
-searchedSongDiv.textContent = "LOGIN TO SEE YOUR HISTORY";
+let searchedSongDivText = document.createElement("p");
+searchedSongDiv.appendChild(searchedSongDivText);
+searchedSongDivText.id = "searchedSongDivText";
+searchedSongDivText.textContent = "LOGIN TO SEE YOUR HISTORY";
 
 let searchPanelSpace = document.createElement("div");
 searchPanel.appendChild(searchPanelSpace);

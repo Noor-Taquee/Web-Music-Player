@@ -180,7 +180,12 @@
   height: 0;
   background: transparent;
 }
-
+#searchedTextDivText,
+#searchedSongDivText {
+  justify-self: center;
+  align-self: center;
+  margin: auto;
+}
 #searchedSong {
   cursor: pointer;
   display: flex;

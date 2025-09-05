@@ -6,7 +6,6 @@ let homeHeaderDiv = document.createElement("div");
 homePanel.appendChild(homeHeaderDiv);
 homeHeaderDiv.id = "homeHeaderDiv";
 
-
 let homeCategoryDiv = document.createElement("div");
 homeHeaderDiv.appendChild(homeCategoryDiv);
 homeCategoryDiv.id = "homeCategoryDiv";
@@ -25,7 +24,10 @@ recentlyPLayedDivText.textContent = "RECENTLY PLAYED SONGS";
 let recentlyPLayedDivCon = document.createElement("p");
 recentlyPLayedDiv.appendChild(recentlyPLayedDivCon);
 recentlyPLayedDivCon.id = "recentlyPLayedDivCon";
-recentlyPLayedDivCon.textContent = "LOGIN TO SEE RECENTLY PLAYED SONGS";
+let recentlyPLayedDivConText = document.createElement("p");
+recentlyPLayedDivCon.appendChild(recentlyPLayedDivConText);
+recentlyPLayedDivConText.id = "recentlyPLayedDivConText";
+recentlyPLayedDivConText.textContent = "LOGIN TO SEE RECENTLY PLAYED SONGS";
 
 let hindiSongDiv = document.createElement("div");
 homeContentDiv.appendChild(hindiSongDiv);
@@ -100,7 +102,7 @@ homePanelSpace.id = "homePanelSpace";
 
 
 function loadRecentlyPlayedSongs() {
-  recentlyPLayedDivCon.innerHTML = "";
+  recentlyPLayedDivCon.removeChild(recentlyPLayedDivConText);
   for (let songs of recentlyPlayedSongList) {
     let suggestedSong = document.createElement("button");
     recentlyPLayedDivCon.appendChild(suggestedSong);
@@ -130,18 +132,15 @@ function loadHomeSongs() {
     let suggestedSong = document.createElement("button");
     hindiSongDivCon.appendChild(suggestedSong);
     suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click",() => playSong(songs));
+    suggestedSong.addEventListener("click", () => playSong(songs));
 
-    let suggestedSongPic = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongPic);
-    suggestedSongPic.id = "suggestedSongPic";
-    suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
-    let songIcon = document.createElement("i");
-    songIcon.className = "fa-solid fa-headphones";
+    let songIcon = document.createElement("span");
+    songIcon.className = "material-symbols-rounded";
+    songIcon.textContent = "headphones";
     if (songData[songs].image.length > 0) {
-      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
     } else {
-      suggestedSongPic.appendChild(songIcon);
+      suggestedSong.appendChild(songIcon);
     }
 
     let suggestedSongName = document.createElement("p");
@@ -153,17 +152,15 @@ function loadHomeSongs() {
     let suggestedSong = document.createElement("button");
     punjabiSongDivCon.appendChild(suggestedSong);
     suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click",() => playSong(songs));
+    suggestedSong.addEventListener("click", () => playSong(songs));
 
-    let suggestedSongPic = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongPic);
-    suggestedSongPic.id = "suggestedSongPic";
-    let songIcon = document.createElement("i");
-    songIcon.className = "fa-solid fa-headphones";
+    let songIcon = document.createElement("span");
+    songIcon.className = "material-symbols-rounded";
+    songIcon.textContent = "headphones";
     if (songData[songs].image.length > 0) {
-      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
     } else {
-      suggestedSongPic.appendChild(songIcon);
+      suggestedSong.appendChild(songIcon);
     }
 
     let suggestedSongName = document.createElement("p");
@@ -175,17 +172,15 @@ function loadHomeSongs() {
     let suggestedSong = document.createElement("button");
     englishSongDivCon.appendChild(suggestedSong);
     suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click",() => playSong(songs));
+    suggestedSong.addEventListener("click", () => playSong(songs));
 
-    let suggestedSongPic = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongPic);
-    suggestedSongPic.id = "suggestedSongPic";
-    let songIcon = document.createElement("i");
-    songIcon.className = "fa-solid fa-headphones";
+    let songIcon = document.createElement("span");
+    songIcon.className = "material-symbols-rounded";
+    songIcon.textContent = "headphones";
     if (songData[songs].image.length > 0) {
-      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
     } else {
-      suggestedSongPic.appendChild(songIcon);
+      suggestedSong.appendChild(songIcon);
     }
 
     let suggestedSongName = document.createElement("p");
@@ -197,17 +192,15 @@ function loadHomeSongs() {
     let suggestedSong = document.createElement("button");
     phonkSongDivCon.appendChild(suggestedSong);
     suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click",() => playSong(songs));
+    suggestedSong.addEventListener("click", () => playSong(songs));
 
-    let suggestedSongPic = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongPic);
-    suggestedSongPic.id = "suggestedSongPic";
-    let songIcon = document.createElement("i");
-    songIcon.className = "fa-solid fa-headphones";
+    let songIcon = document.createElement("span");
+    songIcon.className = "material-symbols-rounded";
+    songIcon.textContent = "headphones";
     if (songData[songs].image.length > 0) {
-      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
     } else {
-      suggestedSongPic.appendChild(songIcon);
+      suggestedSong.appendChild(songIcon);
     }
 
     let suggestedSongName = document.createElement("p");
@@ -219,17 +212,15 @@ function loadHomeSongs() {
     let suggestedSong = document.createElement("button");
     spanishSongDivCon.appendChild(suggestedSong);
     suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click",() => playSong(songs));
+    suggestedSong.addEventListener("click", () => playSong(songs));
 
-    let suggestedSongPic = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongPic);
-    suggestedSongPic.id = "suggestedSongPic";
-    let songIcon = document.createElement("i");
-    songIcon.className = "fa-solid fa-headphones";
+    let songIcon = document.createElement("span");
+    songIcon.className = "material-symbols-rounded";
+    songIcon.textContent = "headphones";
     if (songData[songs].image.length > 0) {
-      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
     } else {
-      suggestedSongPic.appendChild(songIcon);
+      suggestedSong.appendChild(songIcon);
     }
 
     let suggestedSongName = document.createElement("p");
@@ -241,17 +232,15 @@ function loadHomeSongs() {
     let suggestedSong = document.createElement("button");
     tunesDivCon.appendChild(suggestedSong);
     suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click",() => playSong(songs));
+    suggestedSong.addEventListener("click", () => playSong(songs));
 
-    let suggestedSongPic = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongPic);
-    suggestedSongPic.id = "suggestedSongPic";
-    let songIcon = document.createElement("i");
-    songIcon.className = "fa-solid fa-headphones";
+    let songIcon = document.createElement("span");
+    songIcon.className = "material-symbols-rounded";
+    songIcon.textContent = "headphones";
     if (songData[songs].image.length > 0) {
-      suggestedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
     } else {
-      suggestedSongPic.appendChild(songIcon);
+      suggestedSong.appendChild(songIcon);
     }
 
     let suggestedSongName = document.createElement("p");

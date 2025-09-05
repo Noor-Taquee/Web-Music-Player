@@ -88,8 +88,10 @@ function registerSong() {
   if (recentlyPlayedSongList.length > 30) {
     recentlyPlayedSongList.pop();
   }
-  updateDataFile();
   loadRecentlyPlayedSongs();
+  if (signedIn) {
+    updateDataFile();
+  }
 }
 
 function formatTime(seconds) {
@@ -100,7 +102,9 @@ function formatTime(seconds) {
 
 function startMusic() {
   if (bnPlay.contains(playIcon)) {
+    // playIcon.className = "fa-solid fa-pause"
     bnPlay.replaceChild(pauseIcon,playIcon);
+    // miniPlayIcon.className = "fa-solid sa-pause"
     miniBnPlay.replaceChild(miniPauseIcon,miniPlayIcon);
   }
   albumArt.style.transform = "scale(1)"

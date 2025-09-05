@@ -30,7 +30,16 @@
   background: transparent;
   height: 85%;
   width: 95%;
+  padding: 0;
+  padding-top: 3vh;
+  margin: 0;
+  gap: 5vh;
   border: none;
+}
+#recentlyPLayedDivConText {
+  align-self: center;
+  justify-self: center;
+  margin: auto;
 }
 #homeContentDiv::-webkit-scrollbar,
 #hindiSongDivCon::-webkit-scrollbar,
@@ -101,11 +110,11 @@
 }
 #suggestedSong {
   cursor: pointer;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
+  overflow: hidden;
+  background-image: url("");
+  background-size: cover;
   height: 20vh;
   width: 20vh;
   margin: 0;
@@ -114,36 +123,31 @@
   border: none;
   border-radius: 1rem;
 }
-#suggestedSongPic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  height: 85%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0.5rem;
-}
 #suggestedSong i {
   font-size: 10vmin;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
 }
 #suggestedSongName {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  top: auto;
+  left: 0;
+  right: auto;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 3vmin;
+  text-align: left;
   overflow: hidden;
-  white-space: pre;
+  white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: 3vmin;
   color: rgba(255, 255, 255, 0.7);
+  background-image: linear-gradient(to top,rgba(0,0,0),rgb(0,0,0),rgba(0,0,0,0.8),rgba(0,0,0,0));
   height: 15%;
-  width: 90%;
+  width: 100%;
   margin: 0;
   padding: 0;
+  padding-left: 2vw;
 }
 #homePanelSpace {
   height: 30vh;
