@@ -10,6 +10,7 @@ searchBar.appendChild(searchBox);
 searchBox.id = "searchBox";
 searchBox.type = "search";
 searchBox.placeholder = "Search song";
+searchBox.addEventListener("keydown", findSearchMatches);
 let bnSearch = document.createElement("button");
 searchBar.appendChild(bnSearch);
 bnSearch.id = "bnSearch";
@@ -19,6 +20,9 @@ searchIcon.className = "fa-solid fa-search";
 let searchP = document.createElement("p");
 bnSearch.appendChild(searchP);
 searchP.textContent = "SEARCH";
+
+let searchResultDiv = document.createElement("div");
+searchResultDiv.id = "searchResultDiv";
 
 
 let searchHistoryTextDiv = document.createElement("div");
@@ -99,6 +103,45 @@ function loadSearchHistory() {
   loadSearchSongHistory();
 }
 
+function findSearchMatches() {
+  let searchedStr = searchBox.value.toLowerCase();
+  if (searchedStr.length < 1) {
+    showHistory();
+    return;
+  }
+  let resultList = [];
+  for (let songs in titleNames) {
+    if (songs.toLowerCase().includes(searchedStr)) {
+      resultList.push(songs);
+    }
+  }
+  showSearchResult(resultList);
+}
 
+function showSearchResult(resultList) {
+  if (searchPanel.contains(searchHistoryTextDiv)) {
+    searchPanel.replaceChild(searchResultDiv,searchHistoryTextDiv);
+  }
+  clearContainer(searchResultDiv);
+  for (let songs of resultList) {
+    let searchResultBtn = document.createElement("button");
+    searchResultDiv.appendChild(searchResultBtn);
+    searchResultBtn.id = "searchResultBtn";
+    searchResultBtn.textContent = songs;
+    searchResultBtn.addEventListener("click", () => playSong(songs));
+  }
+}
+
+function clearContainer(container) {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+}
+
+function showHistory() {
+  if (searchPanel.contains(searchResultDiv)) {
+    searchPanel.replaceChild(searchHistoryTextDiv,searchResultDiv);
+  }
+}
 
 attend();

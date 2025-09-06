@@ -112,6 +112,8 @@
   cursor: pointer;
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   background-image: url("");
   background-size: cover;
@@ -121,11 +123,11 @@
   padding: 0;
   flex-shrink: 0;
   border: none;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
-#suggestedSong i {
+#suggestedSong span {
   font-size: 10vmin;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
   margin: 0;
 }
 #suggestedSongName {
@@ -135,7 +137,7 @@
   left: 0;
   right: auto;
   justify-content: flex-start;
-  align-items: center;
+  align-items: baseline;
   text-align: left;
   overflow: hidden;
   white-space: nowrap;
@@ -144,7 +146,7 @@
   font-weight: 700;
   color: rgba(255, 255, 255, 0.7);
   background-image: linear-gradient(to top,rgba(0,0,0),rgb(0,0,0),rgba(0,0,0,0.8),rgba(0,0,0,0));
-  height: 15%;
+  height: 10%;
   width: 100%;
   margin: 0;
   padding: 0;

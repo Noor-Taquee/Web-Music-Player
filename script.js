@@ -36,31 +36,30 @@ miniPlaybackControlsDiv.id = "miniPlaybackControlsDiv";
 let miniBnPrev = document.createElement("button");
 miniPlaybackControlsDiv.appendChild(miniBnPrev)
 miniBnPrev.id = "miniBnPrev";
-let miniPrevIcon = document.createElement("i");
+let miniPrevIcon = document.createElement("span");
 miniBnPrev.appendChild(miniPrevIcon);
-miniPrevIcon.className = "fa-solid fa-backward-step";
-miniPrevIcon.id = "miniPrevIcon";
+miniPrevIcon.className = "material-symbols-rounded";
+miniPrevIcon.textContent = "skip_previous";
+
 
 let miniBnPlay = document.createElement("button");
 miniPlaybackControlsDiv.appendChild(miniBnPlay)
 miniBnPlay.id = "miniBnPlay";
-let miniLoadingIcon = document.createElement("span");
-miniBnPlay.appendChild(miniLoadingIcon);
-miniLoadingIcon.id = "miniLoadingIcon";
-miniLoadingIcon.className = "material-symbols-rounded";
-miniLoadingIcon.textContent = "progress_activity";
-let miniPlayIcon = document.createElement("i");
-miniPlayIcon.className = "fa-solid fa-play";
-let miniPauseIcon = document.createElement("i");
-miniPauseIcon.className = "fa-solid fa-pause";
+
+let miniPlaybackBtnIcon = document.createElement("span");
+miniBnPlay.appendChild(miniPlaybackBtnIcon);
+miniPlaybackBtnIcon.id = "miniLoadingIcon";
+miniPlaybackBtnIcon.className = "material-symbols-rounded";
+miniPlaybackBtnIcon.textContent = "progress_activity";
+
 
 let miniBnNext = document.createElement("button");
 miniPlaybackControlsDiv.appendChild(miniBnNext)
 miniBnNext.id = "miniBnNext";
-let miniNextIcon = document.createElement("i");
+let miniNextIcon = document.createElement("span");
 miniBnNext.appendChild(miniNextIcon);
-miniNextIcon.className = "fa-solid fa-forward-step";
-miniNextIcon.id = "miniNextIcon";
+miniNextIcon.className = "material-symbols-rounded";
+miniNextIcon.textContent = "skip_next";
 
 
 
@@ -75,9 +74,8 @@ function initMiniPlayer() {
   miniAlbumArt.style.backgroundImage = `url(${currentAlbumArt})`;
   miniTrackName.textContent = currentTrackName;
   miniArtistName.textContent = currentArtistName;
-  if (miniBnPlay.contains(miniLoadingIcon)) {
-    miniBnPlay.replaceChild(miniPlayIcon,miniLoadingIcon);
-  }
+  miniPlaybackBtnIcon.textContent = "play_arrow";
+  miniPlaybackBtnIcon.id = "any";
   miniBnPlay.addEventListener("click", changeState);
 }
 

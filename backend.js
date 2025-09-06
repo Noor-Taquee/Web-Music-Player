@@ -86,7 +86,6 @@ function fetchUserData(userGivenName) {
   loadPlaylists();
   loadRecentlyPlayedSongs();
   loadSearchHistory();
-  setVolumeTo(volumeLevel);
   signedIn = true;
 }
 attend();

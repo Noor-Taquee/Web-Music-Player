@@ -22,52 +22,7 @@ let currentAlbumArt = null;
 let currentTrackName = null;
 let currentArtistName = null;
 
-
-function fetchSongs() {
-  fetch("HindiSongs.json").then(response => response.json()).then(data => {
-    let HindiSongs = data;
-    Object.assign(songData,HindiSongs);
-    HindiTitles = Object.keys(data);
-    return fetch("PunjabiSongs.json");
-  }).then(response => response.json()).then(data => {
-    let PunjabiSongs = data;
-    Object.assign(songData,PunjabiSongs);
-    PunjabiTitles = Object.keys(data);
-    return fetch("EnglishSongs.json");
-  }).then(response => response.json()).then(data => {
-    let EnglishSongs = data;
-    Object.assign(songData,EnglishSongs);
-    EnglishTitles = Object.keys(data);
-    return fetch("PhonkSongs.json");
-  }).then(response => response.json()).then(data => {
-    let PhonkSongs = data;
-    Object.assign(songData,PhonkSongs);
-    PhonkTitles = Object.keys(data);
-    return fetch("SpanishSongs.json");
-  }).then(response => response.json()).then(data => {
-    let SpanishSongs = data;
-    Object.assign(songData,SpanishSongs);
-    SpanishTitles = Object.keys(data);
-    return fetch("Tunes.json");
-  }).then(response => response.json()).then(data => {
-    Tunes = data;
-    Object.assign(songData,Tunes);
-    TunesTitles = Object.keys(data);
-  }).then(() => {
-    titleNames.push(...HindiTitles);
-    titleNames.push(...PunjabiTitles);
-    titleNames.push(...EnglishTitles);
-    titleNames.push(...PhonkTitles);
-    titleNames.push(...SpanishTitles);
-    titleNames.push(...TunesTitles);
-    updateSongInfo();
-    loadHomeSongs();
-    if (signedIn) {
-      fetchUserData();
-    }
-  });
-}
-
+let playingMode = "autoPlayOn";
 
 
 function updateSongInfo() {
@@ -101,12 +56,8 @@ function formatTime(seconds) {
 }
 
 function startMusic() {
-  if (bnPlay.contains(playIcon)) {
-    // playIcon.className = "fa-solid fa-pause"
-    bnPlay.replaceChild(pauseIcon,playIcon);
-    // miniPlayIcon.className = "fa-solid sa-pause"
-    miniBnPlay.replaceChild(miniPauseIcon,miniPlayIcon);
-  }
+  playbackBtnIcon.textContent = "pause";
+  miniPlaybackBtnIcon.textContent = "pause";
   albumArt.style.transform = "scale(1)"
   song.play();
   musicPlaying = true;
@@ -114,10 +65,8 @@ function startMusic() {
 }
 
 function stopMusic() {
-  if (bnPlay.contains(pauseIcon)) {
-    bnPlay.replaceChild(playIcon,pauseIcon);
-    miniBnPlay.replaceChild(miniPlayIcon,miniPauseIcon);
-  }
+  playbackBtnIcon.textContent = "play_arrow";
+  miniPlaybackBtnIcon.textContent = "play_arrow";
   albumArt.style.transform = "scale(o.9)"
   song.pause();
   musicPlaying = false;
@@ -192,9 +141,14 @@ function prevSong() {
   }
 }
 
-function setVolumeTo(newVolume) {
-  song.volume = newVolume;
+
+function showLoading() {
+  playbackBtnIcon.textContent = "progress_activity";
+  playbackBtnIcon.id = "loadingIcon";
+  miniPlaybackBtnIcon.textContent = "progress_activity";
+  miniPlaybackBtnIcon.id = "miniLoadingIcon";
 }
+
 function setTimeTo(newTime) {
   song.currentTime = newTime;
   coveredTime = formatTime(song.currentTime);
@@ -218,6 +172,19 @@ song.addEventListener("loadedmetadata",() => {
   }
 });
 
+song.addEventListener("ended", function() {
+  if (playingMode == "autoPlayOn") {
+    nextSong();
+    songChanged = true;
+  } else if (playingMode == "autoPlayOff") {
+    stopMusic();
+    playbackBtnIcon.textContent = "replay";
+    miniPlaybackBtnIcon.textContent = "replay";
+  } else if (playingMode == "repeat") {
+    stopMusic();
+    startMusic();
+  }
+});
 
 
 attend();

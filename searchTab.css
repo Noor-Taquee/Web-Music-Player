@@ -65,6 +65,47 @@
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
 }
+#searchResultDiv {
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  backdrop-filter: blur(50px);
+  font-size: 3vmin;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 40%;
+  min-height: 10rem;
+  width: 95%;
+  margin: 0;
+  padding: 0;
+  gap: 1%;
+  border: none;
+  border-radius: 1.5rem;
+}
+#searchResultDiv::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#searchResultBtn {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 25%;
+  min-height: 2.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-left: 5%;
+  padding-right: 5%;
+  border: none;
+  border-radius: 2rem;
+}
 
 #searchHistoryTextDiv {
   display: flex;

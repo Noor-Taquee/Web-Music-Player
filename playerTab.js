@@ -6,19 +6,66 @@ playerPanel.id = "playerPanel";
 let toggleDiv = document.createElement("div");
 playerPanel.appendChild(toggleDiv);
 toggleDiv.id = "toggleDiv";
+
+let togglePLDiv = document.createElement("div")
+toggleDiv.appendChild(togglePLDiv);
+togglePLDiv.id = "togglePLDiv";
 let togglePic = document.createElement("button");
-toggleDiv.appendChild(togglePic);
+togglePLDiv.appendChild(togglePic);
 togglePic.id = "togglePic";
-togglePic.textContent = "PICTURE";
-togglePic.addEventListener("click",() => focusOn("picture"));
+let picIcon = document.createElement("span");
+togglePic.appendChild(picIcon);
+picIcon.className = "material-symbols-rounded";
+picIcon.textContent = "image";
+picIcon.id = "picIcon";
+togglePic.addEventListener("click",() => focusPLOn("picture"));
 let toggleLyr = document.createElement("button");
-toggleDiv.appendChild(toggleLyr);
+togglePLDiv.appendChild(toggleLyr);
 toggleLyr.id = "toggleLyr";
-toggleLyr.textContent = "LYRICS";
-toggleLyr.addEventListener("click",() => focusOn("lyrics"));
-let toggleLayer = document.createElement("div");
-toggleDiv.appendChild(toggleLayer);
-toggleLayer.id = "toggleLayer";
+let lyrIcon = document.createElement("span");
+toggleLyr.appendChild(lyrIcon);
+lyrIcon.className = "material-symbols-rounded";
+lyrIcon.textContent = "lyrics";
+lyrIcon.id = "lyrIcon";
+toggleLyr.addEventListener("click",() => focusPLOn("lyrics"));
+let toggleLayerPL = document.createElement("div");
+togglePLDiv.appendChild(toggleLayerPL);
+toggleLayerPL.id = "toggleLayerPL";
+
+let toggleAPDiv = document.createElement("div")
+toggleDiv.appendChild(toggleAPDiv);
+toggleAPDiv.id = "toggleAPDiv";
+let toggleAutoPlayOn = document.createElement("button");
+toggleAPDiv.appendChild(toggleAutoPlayOn);
+toggleAutoPlayOn.id = "toggleAutoPlayOn";
+toggleAutoPlayOn.addEventListener("click",() => focusAPOn("autoPlayOn"));
+let autoPlayIcon = document.createElement("span");
+toggleAutoPlayOn.appendChild(autoPlayIcon);
+autoPlayIcon.className = "material-symbols-rounded";
+autoPlayIcon.textContent = "trending_flat";
+autoPlayIcon.id = "autoPlayIcon";
+let toggleAutoPlayOff = document.createElement("button");
+toggleAPDiv.appendChild(toggleAutoPlayOff);
+toggleAutoPlayOff.id = "toggleAutoPlayOff";
+toggleAutoPlayOff.addEventListener("click",() => focusAPOn("autoPlayOff"));
+let autoPlayOffIcon = document.createElement("span");
+toggleAutoPlayOff.appendChild(autoPlayOffIcon);
+autoPlayOffIcon.className = "material-symbols-rounded";
+autoPlayOffIcon.textContent = "play_disabled";
+autoPlayOffIcon.id = "autoPlayOffIcon";
+let toggleRepeat = document.createElement("button");
+toggleAPDiv.appendChild(toggleRepeat);
+toggleRepeat.id = "toggleRepeat";
+toggleRepeat.addEventListener("click",() => focusAPOn("repeat"));
+let repeatIcon = document.createElement("span");
+toggleRepeat.appendChild(repeatIcon);
+repeatIcon.className = "material-symbols-rounded";
+repeatIcon.textContent = "repeat_one";
+repeatIcon.id = "repeatIcon";
+let toggleLayerAP = document.createElement("div");
+toggleAPDiv.appendChild(toggleLayerAP);
+toggleLayerAP.id = "toggleLayerAP";
+
 
 let pictureDiv = document.createElement("div");
 playerPanel.appendChild(pictureDiv);
@@ -105,6 +152,17 @@ let primaryControls = document.createElement("div");
 controlDiv.appendChild(primaryControls);
 primaryControls.id = "primaryControls";
 
+let runBarInfo = document.createElement("div");
+primaryControls.appendChild(runBarInfo);
+runBarInfo.id = "runBarInfo";
+let timeSlider = document.createElement("input");
+runBarInfo.appendChild(timeSlider);
+timeSlider.id = "timeSlider";
+timeSlider.type = "range";
+timeSlider.min = "0";
+timeSlider.max = "0";
+timeSlider.step = "0.001";
+timeSlider.value = "0";
 let runtimeInfo = document.createElement("div");
 primaryControls.appendChild(runtimeInfo);
 runtimeInfo.id = "runtimeInfo";
@@ -112,14 +170,6 @@ let time1 = document.createElement("p");
 runtimeInfo.appendChild(time1);
 time1.id = "time1";
 time1.textContent = "0:00";
-let timeSlider = document.createElement("input");
-runtimeInfo.appendChild(timeSlider);
-timeSlider.id = "timeSlider";
-timeSlider.type = "range";
-timeSlider.min = "0";
-timeSlider.max = "0";
-timeSlider.step = "0.001";
-timeSlider.value = "0";
 let time2 = document.createElement("p");
 runtimeInfo.appendChild(time2);
 time2.id = "time2";
@@ -131,47 +181,28 @@ playbackControls.id = "playbackControls";
 let bnPrev = document.createElement("button");
 playbackControls.appendChild(bnPrev);
 bnPrev.id = "bnPrev";
-let prevIcon = document.createElement("i");
+let prevIcon = document.createElement("span");
 bnPrev.appendChild(prevIcon);
-prevIcon.className = "fa-solid fa-backward-step";
+prevIcon.className = "material-symbols-rounded";
+prevIcon.textContent = "skip_previous";
+
 let bnPlay = document.createElement("button");
 playbackControls.appendChild(bnPlay);
 bnPlay.id = "bnPlay";
-let loadingIcon = document.createElement("span");
-bnPlay.appendChild(loadingIcon);
-loadingIcon.id = "loadingIcon";
-loadingIcon.className = "material-symbols-rounded";
-loadingIcon.textContent = "progress_activity";
-let playIcon = document.createElement("i");
-playIcon.className = "fa-solid fa-play";
-let pauseIcon = document.createElement("i");
-pauseIcon.className = "fa-solid fa-pause";
+
+let playbackBtnIcon = document.createElement("span");
+bnPlay.appendChild(playbackBtnIcon);
+playbackBtnIcon.id = "loadingIcon";
+playbackBtnIcon.className = "material-symbols-rounded";
+playbackBtnIcon.textContent = "progress_activity";
+
 let bnNext = document.createElement("button");
 playbackControls.appendChild(bnNext);
 bnNext.id = "bnNext";
-let nextIcon = document.createElement("i");
+let nextIcon = document.createElement("span");
 bnNext.appendChild(nextIcon);
-nextIcon.className = "fa-solid fa-forward-step";
-
-let volumeDiv = document.createElement("div");
-primaryControls.appendChild(volumeDiv);
-volumeDiv.id = "volumeDiv";
-let volumeLowIcon = document.createElement("i");
-volumeDiv.appendChild(volumeLowIcon);
-volumeLowIcon.className = "fa-solid fa-volume-low";
-let volumeMuteIcon = document.createElement("i");
-volumeMuteIcon.className = "fa-solid fa-volume-mute";
-let volumeSlider = document.createElement("input");
-volumeDiv.appendChild(volumeSlider);
-volumeSlider.id = "volumeSlider";
-volumeSlider.type = "range";
-volumeSlider.min = "0";
-volumeSlider.max = "1";
-volumeSlider.step = "0.01";
-volumeSlider.value = "0.4";
-let volumeHighIcon = document.createElement("i");
-volumeDiv.appendChild(volumeHighIcon);
-volumeHighIcon.className = "fa-solid fa-volume-high";
+nextIcon.className = "material-symbols-rounded";
+nextIcon.textContent = "skip_next";
 
 let playerPanelSpace = document.createElement("div");
 playerPanel.appendChild(playerPanelSpace);
@@ -179,7 +210,7 @@ playerPanelSpace.id = "playerPanelSpace";
 
 
 //VARIABLES
-let currentFocus = "picture";
+let currentFocusPL = "picture";
 
 
 //FUNCTIONS
@@ -232,17 +263,22 @@ function f_share() {}
 function f_download() {}
 function f_more() {}
 
-function removeFocus() {
-  toggleLayer.style.transform = "translateX(0)"
-  currentFocus = "";
+function removeFocus(Opart) {
+  if (Opart == "PL") {
+    toggleLayerPL.style.transform = "translateX(0)"
+    currentFocusPL = "";
+  } else {
+    toggleLayerAP.style.transform = "translateX(0)"
+  }
 }
 
 
 //BUTTON FUNCTIONS
-function focusOn(part) {
+function focusPLOn(part) {
+  let move = 40/2;
   if (part == "picture") {
-    if (currentFocus != "picture") {
-      removeFocus();
+    if (currentFocusPL != "picture") {
+      removeFocus("PL");
       lyricsDiv.style.animationName = "disappear";
       lyricsDiv.style.animationDuration = "0.3s";
       lyricsDiv.addEventListener("animationend",function lTop() {
@@ -254,9 +290,9 @@ function focusOn(part) {
       });
     }
   } else {
-    if (currentFocus != "lyrics") {
-      removeFocus();
-      toggleLayer.style.transform = "translateX(20vw)"
+    if (currentFocusPL != "lyrics") {
+      removeFocus("PL");
+      toggleLayerPL.style.transform = `translateX(${move}vw)`;
       albumArt.style.animationName = "disappear";
       albumArt.style.animationDuration = "0.3s";
       albumArt.addEventListener("animationend",function pTol() {
@@ -268,17 +304,21 @@ function focusOn(part) {
       });
     }
   }
-  currentFocus = part;
+  currentFocusPL = part;
 }
-
-
-function showLoading() {
-  if (bnPlay.contains(playIcon)) {
-    bnPlay.replaceChild(loadingIcon,playIcon);
-    miniBnPlay.replaceChild(miniLoadingIcon, miniPlayIcon)
-  } else if (bnPlay.contains(pauseIcon)) {
-    bnPlay.replaceChild(loadingIcon,pauseIcon)
-    miniBnPlay.replaceChild(miniLoadingIcon, miniPauseIcon)
+function focusAPOn(part) {
+  let move = 40/3;
+  if (part == "autoPlayOn") {
+    removeFocus("AP");
+    playingMode = "autoPlayOn";
+  } else if (part == "autoPlayOff") {
+    removeFocus("AP");
+    toggleLayerAP.style.transform = `translateX(${move}vw)`;
+    playingMode = "autoPlayOff";
+  } else if (part == "repeat"){
+    removeFocus("AP");
+    toggleLayerAP.style.transform = `translateX(${2*move}vw)`;
+    playingMode = "repeat";
   }
 }
 
@@ -296,7 +336,7 @@ function changeSong(order) {
   } else {
     prevSong();
   }
-  focusOn("picture");
+  focusPLOn("picture");
   trackName.textContent = currentTrackName;
   artistName.textContent = currentArtistName;
 }
@@ -308,9 +348,8 @@ function initPlayer() {
   albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
   trackName.textContent = currentTrackName;
   artistName.textContent = currentArtistName;
-  if (bnPlay.contains(loadingIcon)) {
-    bnPlay.replaceChild(playIcon,loadingIcon);
-  }
+  playbackBtnIcon.textContent = "play_arrow";
+  playbackBtnIcon.id = "any";
   bnPlay.addEventListener("click", changeState);
 }
 
@@ -324,23 +363,6 @@ timeSlider.addEventListener("input" ,() => {
   time1.textContent = coveredTime;
 });
 
-volumeSlider.addEventListener("input" ,() => {
-  setVolumeTo(volumeSlider.value);
-  if (volumeSlider.value == 0) {
-    volumeDiv.replaceChild(volumeMuteIcon,volumeLowIcon);
-  } else if (volumeDiv.contains(volumeMuteIcon)) {
-    volumeDiv.replaceChild(volumeLowIcon,volumeMuteIcon);
-  }
-});
-volumeLowIcon.addEventListener("click",() => {
-  volumeDiv.replaceChild(volumeMuteIcon,volumeLowIcon);
-  volumeSlider.value = 0;
-  setVolumeTo(0);
-});
-volumeHighIcon.addEventListener("click",() => {
-  volumeSlider.value = 1;
-  setVolumeTo(1);
-});
 
 
 //KEY BINDINGS

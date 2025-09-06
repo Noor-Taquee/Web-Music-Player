@@ -40,7 +40,7 @@
   width: 95%;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1.5rem;
+  border-radius: 2rem;
 }
 #miniPlayer {
   display: flex;
@@ -98,28 +98,29 @@
 }
 #miniTrackName {
   cursor: default;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-self: center;
+  align-self: center;
+  text-align: left;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 3.5vmin;
   font-weight: 700;
-  height: 50%;
+  height: fit-content;
   width: 100%;
-  margin: 0;
+  margin: auto;
 }
 #miniArtistName {
   cursor: default;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-self: center;
+  align-self: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 2.5vmin;
-  height: 50%;
+  height: fit-content;
   width: 100%;
-  margin: 0;
+  margin: auto;
 }
 #miniPlaybackControlsDiv {
   display: flex;
@@ -142,6 +143,14 @@
 #miniPlaybackControlsDiv button i {
   font-size: 4vmin;
 }
+
+#miniPlaybackControlsDiv span {
+  font-variation-settings:
+  'FILL' 1;
+  font-size: 2rem;
+}
+
+
 #miniLoadingIcon {
   animation: spin;
   animation-duration: 1.0s;
