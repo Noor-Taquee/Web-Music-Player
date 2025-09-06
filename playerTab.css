@@ -380,7 +380,7 @@
 #playbackControls span {
   font-variation-settings:
   'FILL' 1;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 #loadingIcon {
@@ -406,4 +406,5 @@
   background: transparent;
   border: none;
   flex-shrink: 0;
+
 }
