@@ -35,8 +35,8 @@
   align-items: center;
   backdrop-filter: blur(5vw);
   background-color: rgba(255, 255, 255, 0.15);
-  height: 35vw;
-  max-height: 15vh;
+  height: 10vh;
+  max-height: 25vw;
   width: 95%;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -71,14 +71,14 @@
   background-image: url("");
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.7);
-  width: 15vw;
-  max-height: 7vh;
-  height: 15vw;
-  max-width: 7vh;
+  width: 4.5vh;
+  max-height: 12vw;
+  height: 4.5vh;
+  max-width: 12vw;
   border: none;
   border-radius: 1vh;
 }
-#miniAlbumArt i {
+#miniAlbumArt span {
   font-size: 4vmin;
   color: rgba(0,0,0,0.5);
 }
@@ -183,36 +183,19 @@
   border-radius: 50%;
   transition: all 0.3s ease-in-out;
 }
-#activeButton {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  height: 100%;
-  width: 25%;
-  margin: 0;
-  padding: 0;
-  gap: 0;
-  border: none;
-  border-radius: 50%;
-  transition: all 0.3s ease-in-out;
-}
 
 #switchDiv span {
-  font-size: 5vmin;
+  font-size: 2rem;
   margin: 0;
   color: rgba(255, 255, 255, 0.3);
 }
 #activeButton span {
   font-variation-settings:
   'FILL' 1;
-  font-size: 5vmin;
+  font-size: 2rem;
   margin: 0;
   color: rgba(255, 255, 255, 0.7);
 }
 .material-symbols-rounded {
   font-family: 'Material Symbols Rounded';
-
 }

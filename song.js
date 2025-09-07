@@ -24,6 +24,12 @@ let currentArtistName = null;
 
 let playingMode = "autoPlayOn";
 
+let miniPlayerSongIcon = document.createElement("span");
+miniPlayerSongIcon.className = "material-symbols-rounded";
+miniPlayerSongIcon.textContent = "headphones";
+let PlayerSongIcon = document.createElement("span");
+PlayerSongIcon.className = "material-symbols-rounded";
+PlayerSongIcon.textContent = "headphones";
 
 function updateSongInfo() {
   currentSong = songData[titleNames[currentSongIndex]];
@@ -74,6 +80,10 @@ function stopMusic() {
 
 function changePicture(partTochange) {
   if (currentAlbumArt.length > 0) {
+    if (albumArt.contains(PlayerSongIcon)) {
+      albumArt.removeChild(PlayerSongIcon);
+      miniAlbumArt.removeChild(miniPlayerSongIcon);
+    }
     if (partTochange == "miniPlayer") {
       miniAlbumArt.style.backgroundImage = `url(${currentAlbumArt})`;
     } else if (partTochange == "player") {
@@ -81,16 +91,13 @@ function changePicture(partTochange) {
     }
   } else {
     if (partTochange == "miniPlayer") {
-      let miniPlayerSongIcon = document.createElement("i");
-      miniPlayerSongIcon.className = "fa-solid fa-headphones";
-      miniAlbumArt.appendChild(PlayerSongIcon);
+      miniAlbumArt.appendChild(miniPlayerSongIcon);
     } else if (partTochange == "player") {
-      let PlayerSongIcon = document.createElement("i");
-      PlayerSongIcon.className = "fa-solid fa-headphones";
       albumArt.appendChild(PlayerSongIcon);
     }
   }
 }
+
 
 function nextSong() {
   if (currentSongIndex < titleNames.length - 1) {

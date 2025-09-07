@@ -1,4 +1,6 @@
 #playerPanel {
+  position: relative;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -139,7 +141,6 @@
   border: none;
   border-radius: 5%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transform: scale(0.9);
   transition: transform 0.3s ease-in-out;
 }
 #albumArt span {
@@ -280,8 +281,6 @@
   justify-content: center;
   align-items: center;
   font-size: 100%;
-  text-align: right;
-  white-space: pre;
   color: rgba(255, 255, 255, 0.7);
   background-color: rgba(255, 233, 233, 0.1);
   height: 6vh;
@@ -290,7 +289,6 @@
   max-width: 15vw;
   padding-left: 1rem;
   padding-right: 1rem;
-  gap: 10%;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   transition: all 0.4s ease-out;
@@ -298,6 +296,47 @@
 
 #secondaryControls button:active {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+#moreDiv {
+  position: absolute;
+  z-index: 2;
+  left: auto;
+  right: 2.5%;
+  top: 30vh;
+  bottom: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  backdrop-filter: blur(50px);
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 10rem;
+  width: 8rem;
+  padding: 1vw;
+  gap: 0;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+}
+#moreDiv button {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: right;
+  white-space: pre;
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  height: fit-content;
+  max-width: 15vw;
+  margin: 0;
+  padding: 0;
+  gap: 10%;
+  border: none;
+  transition: all 0.4s ease-out;
 }
 
 #controlDiv {

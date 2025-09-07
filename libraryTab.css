@@ -17,7 +17,7 @@
   justify-content: space-between;
   align-items: center;
   background: transparent;
-  height: 15%;
+  height: 10vh;
   width: 95%;
   min-height: 4rem;
   margin: 0;
@@ -26,7 +26,7 @@
 }
 #libraryHeader p {
   cursor: default;
-  font-size: 4vmin;
+  font-size: 2rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
@@ -42,17 +42,18 @@
   height: 70%;
   width: 20%;
   max-width: 5rem;
+  min-width: 5vh;
   border: none;
   border-radius: 1rem;
 }
-#bnAddPlaylist i {
+#bnAddPlaylist span {
   cursor: pointer;
-  font-size: 3vmin;
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.7);
 }
 #bnAddPlaylist p {
   cursor: pointer;
-  font-size: 2.4vmin;
+  font-size: 1rem;
 }
 #libraryContent {
   cursor: default;

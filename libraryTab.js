@@ -15,6 +15,7 @@ libraryTitle.textContent = "MY PLAYLISTS";
 let bnAddPlaylist = document.createElement("button");
 libraryHeader.appendChild(bnAddPlaylist);
 bnAddPlaylist.id = "bnAddPlaylist";
+bnAddPlaylist.addEventListener("click", f_AddPlaylist);
 addPlaylistIcon = document.createElement("span");
 bnAddPlaylist.appendChild(addPlaylistIcon);
 addPlaylistIcon.className = "material-symbols-rounded";
@@ -39,9 +40,10 @@ optionPanel.id = "optionPanel";
 let bnCancel = document.createElement("button");
 optionPanel.appendChild(bnCancel);
 bnCancel.id = "bnCancel";
-let cancelIcon = document.createElement("i");
+let cancelIcon = document.createElement("span");
 bnCancel.appendChild(cancelIcon);
-cancelIcon.className = "fa-solid fa-cancel";
+cancelIcon.className = "material-symbols-rounded";
+cancelIcon.textContent = "cancel";
 let bnCancelP = document.createElement("p");
 bnCancel.appendChild(bnCancelP);
 bnCancelP.textContent = "CANCEL";
@@ -49,9 +51,10 @@ bnCancelP.textContent = "CANCEL";
 let bnRenamePlaylist = document.createElement("button");
 optionPanel.appendChild(bnRenamePlaylist);
 bnRenamePlaylist.id = "bnRenamePlaylist";
-let deletePlaylistIcon = document.createElement("i");
-bnRenamePlaylist.appendChild(deletePlaylistIcon);
-deletePlaylistIcon.className = "fa-solid fa-pen";
+let renamePlaylistIcon = document.createElement("span");
+bnRenamePlaylist.appendChild(renamePlaylistIcon);
+renamePlaylistIcon.className = "material-symbols-rounded";
+renamePlaylistIcon.textContent = "edit";
 let bnRenamePlaylistP = document.createElement("p");
 bnRenamePlaylist.appendChild(bnRenamePlaylistP);
 bnRenamePlaylistP.textContent = "RENAME";
@@ -59,9 +62,10 @@ bnRenamePlaylistP.textContent = "RENAME";
 let bnDelPlaylist = document.createElement("button");
 optionPanel.appendChild(bnDelPlaylist);
 bnDelPlaylist.id = "bnDelPlaylist";
-let renamePlaylistIcon = document.createElement("i");
-bnDelPlaylist.appendChild(renamePlaylistIcon);
-renamePlaylistIcon.className = "fa-solid fa-trash";
+let delPlaylistIcon = document.createElement("span");
+bnDelPlaylist.appendChild(delPlaylistIcon);
+delPlaylistIcon.className = "material-symbols-rounded";
+delPlaylistIcon.textContent = "delete";
 let bnDelPlaylistP = document.createElement("p");
 bnDelPlaylist.appendChild(bnDelPlaylistP);
 bnDelPlaylistP.textContent = "DELETE";
@@ -131,9 +135,10 @@ function loadPlaylists() {
       bnOptions.id = "bnOptions";
       bnOptions.addEventListener("click",() => f_options(playlist.name));
 
-      let optionsIcon = document.createElement("i");
+      let optionsIcon = document.createElement("span");
       bnOptions.appendChild(optionsIcon);
-      optionsIcon.className = "fa-solid fa-ellipsis-vertical";
+      optionsIcon.className = "material-symbols-rounded";
+      optionsIcon.textContent = "more_vert";
     }
   } else {
     libraryContentText.textContent = "YOU DON'T HAVE ANY PLAYLIST";
@@ -150,7 +155,12 @@ function getPlaylistNames() {
   }
 }
 
-function f_AddPlaylist() {}
+function f_AddPlaylist() {
+  if (signedIn) {
+  } else {
+    alert("Login to your account first!");
+  }
+}
 
 function addPlaylist(nameOfPlaylist,privacy,imageOfPlaylist) {
   playlistList.push({
