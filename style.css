@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  font-family: sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter;
   background-image: none;
   background: transparent;
   background-size: contain;
@@ -87,7 +87,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
+  align-items: flex-start;
   color: rgba(255, 255, 255, 0.7);
   background: transparent;
   height: 100%;
@@ -98,29 +98,28 @@
 }
 #miniTrackName {
   cursor: default;
-  justify-self: center;
-  align-self: center;
-  text-align: left;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 3.5vmin;
   font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
   height: fit-content;
   width: 100%;
-  margin: auto;
+  margin: 0;
+  padding: 0;
 }
 #miniArtistName {
   cursor: default;
-  justify-self: center;
-  align-self: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 2.5vmin;
+  color: rgba(255, 255, 255, 0.5);
   height: fit-content;
   width: 100%;
-  margin: auto;
+  margin: 0;
+  padding: 0;
 }
 #miniPlaybackControlsDiv {
   display: flex;

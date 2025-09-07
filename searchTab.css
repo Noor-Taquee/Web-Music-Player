@@ -94,6 +94,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 3vmin;
+  color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.2);
   height: 25%;

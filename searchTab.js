@@ -10,13 +10,14 @@ searchBar.appendChild(searchBox);
 searchBox.id = "searchBox";
 searchBox.type = "search";
 searchBox.placeholder = "Search song";
-searchBox.addEventListener("keydown", findSearchMatches);
+searchBox.addEventListener("input", findSearchMatches);
 let bnSearch = document.createElement("button");
 searchBar.appendChild(bnSearch);
 bnSearch.id = "bnSearch";
-let searchIcon = document.createElement("i");
+let searchIcon = document.createElement("span");
 bnSearch.appendChild(searchIcon);
-searchIcon.className = "fa-solid fa-search";
+searchIcon.className = "material-symbols-rounded";
+searchIcon.textContent = "search";
 let searchP = document.createElement("p");
 bnSearch.appendChild(searchP);
 searchP.textContent = "SEARCH";
@@ -62,7 +63,7 @@ searchPanelSpace.id = "searchPanelSpace";
 
 
 function loadSearchTextHistory() {
-  searchedTextDiv.removeChild(searchedTextDivText);
+  clearContainer(searchedTextDiv);
   for (let songs of searchedTextList) {
     let searchedText = document.createElement("button");
     searchedTextDiv.appendChild(searchedText);
@@ -79,7 +80,7 @@ function loadSearchTextHistory() {
 }
 
 function loadSearchSongHistory() {
-  searchedSongDiv.removeChild(searchedSongDivText);
+  clearContainer(searchedSongDiv);
   for (let songs of searchedSongList) {
     let searchedSong = document.createElement("button");
     searchedSongDiv.appendChild(searchedSong);
@@ -107,15 +108,20 @@ function findSearchMatches() {
   let searchedStr = searchBox.value.toLowerCase();
   if (searchedStr.length < 1) {
     showHistory();
-    return;
-  }
-  let resultList = [];
-  for (let songs in titleNames) {
-    if (songs.toLowerCase().includes(searchedStr)) {
-      resultList.push(songs);
+  } else {
+    let resultList = {};
+    for (let songs of titleNames) {
+      if (songs.toLowerCase().includes(searchedStr)) {
+        resultList[songs] = songs.toLowerCase().indexOf(searchedStr);
+      }
     }
+    let sortedResultList = Object.entries(resultList).sort((a, b) => a[1] - b[1]);
+    resultList = [];
+    for (let songs of sortedResultList) {
+      resultList.push(songs[0]);
+    }
+    showSearchResult(resultList);
   }
-  showSearchResult(resultList);
 }
 
 function showSearchResult(resultList) {

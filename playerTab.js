@@ -3,37 +3,63 @@
 let playerPanel = document.createElement("div");
 playerPanel.id = "playerPanel";
 
-let toggleDiv = document.createElement("div");
-playerPanel.appendChild(toggleDiv);
-toggleDiv.id = "toggleDiv";
+let pictureDiv = document.createElement("div");
+playerPanel.appendChild(pictureDiv);
+pictureDiv.id = "pictureDiv";
+pictureDiv.addEventListener("click", focusPLOn);
+let albumArt = document.createElement("p");
+pictureDiv.appendChild(albumArt);
+albumArt.id = "albumArt";
+let lyricsDiv = document.createElement("div");
+lyricsDiv.id = "lyricsDiv";
+let lyrics = document.createElement("p");
+lyricsDiv.appendChild(lyrics);
+lyricsDiv.id = "lyrics";
 
-let togglePLDiv = document.createElement("div")
-toggleDiv.appendChild(togglePLDiv);
-togglePLDiv.id = "togglePLDiv";
-let togglePic = document.createElement("button");
-togglePLDiv.appendChild(togglePic);
-togglePic.id = "togglePic";
-let picIcon = document.createElement("span");
-togglePic.appendChild(picIcon);
-picIcon.className = "material-symbols-rounded";
-picIcon.textContent = "image";
-picIcon.id = "picIcon";
-togglePic.addEventListener("click",() => focusPLOn("picture"));
-let toggleLyr = document.createElement("button");
-togglePLDiv.appendChild(toggleLyr);
-toggleLyr.id = "toggleLyr";
-let lyrIcon = document.createElement("span");
-toggleLyr.appendChild(lyrIcon);
-lyrIcon.className = "material-symbols-rounded";
-lyrIcon.textContent = "lyrics";
-lyrIcon.id = "lyrIcon";
-toggleLyr.addEventListener("click",() => focusPLOn("lyrics"));
-let toggleLayerPL = document.createElement("div");
-togglePLDiv.appendChild(toggleLayerPL);
-toggleLayerPL.id = "toggleLayerPL";
+
+let secondaryDiv = document.createElement("div");
+playerPanel.appendChild(secondaryDiv);
+secondaryDiv.id = "secondaryDiv";
+let infoDiv = document.createElement("div");
+secondaryDiv.appendChild(infoDiv);
+infoDiv.id = "infoDiv";
+let trackName = document.createElement("p");
+infoDiv.appendChild(trackName);
+trackName.id = "trackName";
+let artistName = document.createElement("p");
+infoDiv.appendChild(artistName);
+artistName.id = "artistName";
+
+
+
+let secondaryControls = document.createElement("div");
+secondaryDiv.appendChild(secondaryControls);
+secondaryControls.id = "secondaryControls";
+
+
+let bnFavourite = document.createElement("button");
+secondaryControls.appendChild(bnFavourite);
+bnFavourite.id = "bnFavourite";
+let favouriteIcon = document.createElement("span");
+bnFavourite.appendChild(favouriteIcon);
+favouriteIcon.className = "material-symbols-rounded";
+favouriteIcon.textContent = "favorite";
+bnFavourite.addEventListener("click", f_favourite);
+
+let bnMore = document.createElement("button");
+secondaryControls.appendChild(bnMore);
+bnMore.id = "bnMore";
+bnMore.addEventListener("click",showMore);
+let moreIcon = document.createElement("span");
+bnMore.appendChild(moreIcon);
+moreIcon.className = "material-symbols-rounded";
+moreIcon.textContent = "more_vert";
+
+let moreDiv = document.createElement("div");
+moreDiv.id = "moreDiv";
 
 let toggleAPDiv = document.createElement("div")
-toggleDiv.appendChild(toggleAPDiv);
+moreDiv.appendChild(toggleAPDiv);
 toggleAPDiv.id = "toggleAPDiv";
 let toggleAutoPlayOn = document.createElement("button");
 toggleAPDiv.appendChild(toggleAutoPlayOn);
@@ -65,68 +91,6 @@ repeatIcon.id = "repeatIcon";
 let toggleLayerAP = document.createElement("div");
 toggleAPDiv.appendChild(toggleLayerAP);
 toggleLayerAP.id = "toggleLayerAP";
-
-
-let pictureDiv = document.createElement("div");
-playerPanel.appendChild(pictureDiv);
-pictureDiv.id = "pictureDiv";
-let albumArt = document.createElement("p");
-pictureDiv.appendChild(albumArt);
-albumArt.id = "albumArt";
-let lyricsDiv = document.createElement("div");
-lyricsDiv.id = "lyricsDiv";
-let lyrics = document.createElement("p");
-lyricsDiv.appendChild(lyrics);
-lyricsDiv.id = "lyrics";
-
-
-let secondaryDiv = document.createElement("div");
-playerPanel.appendChild(secondaryDiv);
-secondaryDiv.id = "secondaryDiv";
-let infoDiv = document.createElement("div");
-secondaryDiv.appendChild(infoDiv);
-infoDiv.id = "infoDiv";
-let trackName = document.createElement("p");
-infoDiv.appendChild(trackName);
-trackName.id = "trackName";
-let bnArtist = document.createElement("button");
-infoDiv.appendChild(bnArtist);
-bnArtist.id = "bnArtist";
-let artistIcon = document.createElement("span");
-bnArtist.appendChild(artistIcon);
-artistIcon.className = "material-symbols-rounded";
-artistIcon.textContent = "artist";
-let artistName = document.createElement("p");
-bnArtist.appendChild(artistName);
-artistName.id = "artistName";
-
-
-
-let secondaryControls = document.createElement("div");
-secondaryDiv.appendChild(secondaryControls);
-secondaryControls.id = "secondaryControls";
-
-
-let bnFavourite = document.createElement("button");
-secondaryControls.appendChild(bnFavourite);
-bnFavourite.id = "bnFavourite";
-let favouriteIcon = document.createElement("span");
-bnFavourite.appendChild(favouriteIcon);
-favouriteIcon.className = "material-symbols-rounded";
-favouriteIcon.textContent = "favorite";
-bnFavourite.addEventListener("click", f_favourite);
-
-let bnMore = document.createElement("button");
-secondaryControls.appendChild(bnMore);
-bnMore.id = "bnMore";
-bnMore.addEventListener("click",showMore);
-let moreIcon = document.createElement("span");
-bnMore.appendChild(moreIcon);
-moreIcon.className = "material-symbols-rounded";
-moreIcon.textContent = "more_vert";
-
-let moreDiv = document.createElement("div");
-moreDiv.id = "moreDiv";
 
 let bnSave = document.createElement("button");
 moreDiv.appendChild(bnSave);
@@ -224,11 +188,6 @@ bnNext.appendChild(nextIcon);
 nextIcon.className = "material-symbols-rounded";
 nextIcon.textContent = "skip_next";
 
-let playerPanelSpace = document.createElement("div");
-playerPanel.appendChild(playerPanelSpace);
-playerPanelSpace.id = "playerPanelSpace";
-
-
 //VARIABLES
 let currentFocusPL = "picture";
 
@@ -280,12 +239,12 @@ function hideMore() {
 }
 
 function f_save() {
-  saveIcon.className = "fa-solid fa-bookmark";
+  saveIcon.fontVariationSettings = "1";
   bnSave.removeEventListener("click",f_save);
   bnSave.addEventListener("click",f_unsave);
 }
 function f_unsave() {
-  saveIcon.className = "fa-regular fa-bookmark";
+  saveIcon.fontVariationSettings = "0";
   bnSave.removeEventListener("click",f_unsave);
   bnSave.addEventListener("click",f_save);
 }
@@ -294,59 +253,47 @@ function f_share() {}
 function f_download() {}
 
 function removeFocus(Opart) {
-  if (Opart == "PL") {
-    toggleLayerPL.style.transform = "translateX(0)"
-    currentFocusPL = "";
-  } else {
-    toggleLayerAP.style.transform = "translateX(0)"
-  }
+  toggleLayerAP.style.transform = "translateX(0)"
 }
 
 
 //BUTTON FUNCTIONS
-function focusPLOn(part) {
-  let move = 40/2;
-  if (part == "picture") {
-    if (currentFocusPL != "picture") {
-      removeFocus("PL");
-      lyricsDiv.style.animationName = "disappear";
-      lyricsDiv.style.animationDuration = "0.3s";
-      lyricsDiv.addEventListener("animationend",function lTop() {
-        lyricsDiv.removeEventListener("animationend",lTop);
-        pictureDiv.removeChild(lyricsDiv);
-        pictureDiv.appendChild(albumArt);
-        albumArt.style.animationName = "appear";
-        albumArt.style.animationDuration = "0.3s";
-      });
-    }
-  } else {
-    if (currentFocusPL != "lyrics") {
-      removeFocus("PL");
-      toggleLayerPL.style.transform = `translateX(${move}vw)`;
-      albumArt.style.animationName = "disappear";
+function focusPLOn() {
+  if (currentFocusPL == "lyrics") {
+    lyricsDiv.style.animationName = "disappear";
+    lyricsDiv.style.animationDuration = "0.3s";
+    lyricsDiv.addEventListener("animationend",function lTop() {
+      lyricsDiv.removeEventListener("animationend",lTop);
+      pictureDiv.removeChild(lyricsDiv);
+      pictureDiv.appendChild(albumArt);
+      albumArt.style.animationName = "appear";
       albumArt.style.animationDuration = "0.3s";
-      albumArt.addEventListener("animationend",function pTol() {
-        albumArt.removeEventListener("animationend",pTol);
-        pictureDiv.removeChild(albumArt);
-        pictureDiv.appendChild(lyricsDiv);
-        lyricsDiv.style.animationName = "appear";
-        lyricsDiv.style.animationDuration = "0.3s";
-      });
-    }
+    });
+    currentFocusPL = "picture";
+  } else {
+    albumArt.style.animationName = "disappear";
+    albumArt.style.animationDuration = "0.3s";
+    albumArt.addEventListener("animationend",function pTol() {
+      albumArt.removeEventListener("animationend",pTol);
+      pictureDiv.removeChild(albumArt);
+      pictureDiv.appendChild(lyricsDiv);
+      lyricsDiv.style.animationName = "appear";
+      lyricsDiv.style.animationDuration = "0.3s";
+    });
+    currentFocusPL = "lyrics";
   }
-  currentFocusPL = part;
 }
 function focusAPOn(part) {
-  let move = 40/3;
+  let move = 35/3;
   if (part == "autoPlayOn") {
-    removeFocus("AP");
+    removeFocus();
     playingMode = "autoPlayOn";
   } else if (part == "autoPlayOff") {
-    removeFocus("AP");
+    removeFocus();
     toggleLayerAP.style.transform = `translateX(${move}vw)`;
     playingMode = "autoPlayOff";
   } else if (part == "repeat"){
-    removeFocus("AP");
+    removeFocus();
     toggleLayerAP.style.transform = `translateX(${2*move}vw)`;
     playingMode = "repeat";
   }

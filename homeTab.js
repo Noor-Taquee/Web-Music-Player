@@ -103,9 +103,7 @@ homePanelSpace.id = "homePanelSpace";
 
 function loadRecentlyPlayedSongs() {
   if (recentlyPlayedSongList.length > 0) {
-    if (recentlyPLayedDivCon.contains(recentlyPLayedDivConText)) {
-      recentlyPLayedDivCon.removeChild(recentlyPLayedDivConText);
-    }
+    clearContainer(recentlyPLayedDivCon);
     for (let songs of recentlyPlayedSongList) {
       let suggestedSong = document.createElement("button");
       recentlyPLayedDivCon.appendChild(suggestedSong);
@@ -253,7 +251,6 @@ function loadHomeSongs() {
     suggestedSongName.textContent = songData[songs].name;
   }
 }
-
 
 
 
