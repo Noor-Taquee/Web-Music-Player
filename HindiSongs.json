@@ -62,7 +62,7 @@
     "pal pal":{
         "name":"PAL PAL",
         "artist":"AFUSIC,ALISOOMROMUSIC",
-        "image":"https://cdn-images.dzcdn.net/images/cover/46dfd6bc9ccd0db772c4afe8a5d79343/1900x1900-000000-81-0-0.jpg",
+        "image":"https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/35/05/06/350506a4-3d4b-4fdf-bff7-2e1627c5c947/artwork.jpg/400x400bb.webp",
         "audio":"https://www.dropbox.com/scl/fi/15oijj2vssxgxhyce6ah5/pal-pal.mp3?rlkey=5sj3cx1ohjq47d38bnyl78rzf&st=69y0kpjj&raw=1"
     },
     "soni soni":{
@@ -71,4 +71,5 @@
         "image":"https://i.scdn.co/image/ab67616d0000b273b397e32af8189792fb1513b4",
         "audio":"https://www.dropbox.com/scl/fi/duo01119ixhog4347qdlj/soni-soni.mp3?rlkey=ktiygz0v3j0ropvwwf4fyx7zq&st=88eycy18&raw=1"
     }
+
 }
