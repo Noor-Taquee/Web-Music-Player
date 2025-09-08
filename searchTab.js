@@ -134,7 +134,10 @@ function showSearchResult(resultList) {
     searchResultDiv.appendChild(searchResultBtn);
     searchResultBtn.id = "searchResultBtn";
     searchResultBtn.textContent = songs;
-    searchResultBtn.addEventListener("click", () => playSong(songs));
+    searchResultBtn.addEventListener("click", function () {
+      playSong(songs);
+      switchTo("playerPanel");
+    });
   }
 }
 

@@ -1,4 +1,3 @@
-
 //CREATING ELEMEMTS
 let playerPanel = document.createElement("div");
 playerPanel.id = "playerPanel";
@@ -313,7 +312,6 @@ function changeSong(order) {
   } else {
     prevSong();
   }
-  focusPLOn("picture");
   trackName.textContent = currentTrackName;
   artistName.textContent = currentArtistName;
 }

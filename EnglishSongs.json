@@ -1,7 +1,7 @@
 {
     "astronaout in the ocean":{
         "name":"ASTRONAUT IN THE OCEAN",
-        "artist":"",
+        "artist":"MASKED WOLF",
         "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnHFp7yOfqssbOfb6nfCP8q4ABfK5cT-n093c1nWzH-hzZYhKecpP8lmw&s=10",
         "audio":"https://www.dropbox.com/scl/fi/9m5y6nu0c0r692vxlu9kh/asrtronaout-in-the-ocean.mp3?rlkey=o4zq8vw4xiu5ujcfp6k8hkoko&st=3zrf9y8c&raw=1"
     },
@@ -25,13 +25,13 @@
     },
     "confess your love remix":{
         "name":"CONFESS YOUR LOVE (REMIX)",
-        "artist":"",
+        "artist":"JIANDRO",
         "image":"",
         "audio":"https://www.dropbox.com/scl/fi/hdxbco32meeo0acrecxcw/Confess-your-love-Remix.mp3?rlkey=cuuavk6lb47n9wtrkeakolj3u&st=c1w2ca3v&raw=1"
     },
     "dancing krono remix":{
         "name":"DANCING KRONO (REMIX)",
-        "artist":"",
+        "artist":"AARON SMITH",
         "image":"https://cdn-images.dzcdn.net/images/cover/a26e476def6a65078e518e95a961fd7f/1900x1900-000000-81-0-0.jpg",
         "audio":"https://www.dropbox.com/scl/fi/rmgpzuskhtmyptwzf6fpu/Dancin-Krono-Remix.mp3?rlkey=bnycpqx1f3pkysdl1kq9gzcpx&st=yaa7w311&raw=1"
     },
@@ -67,9 +67,21 @@
     },
     "happy nation":{
         "name":"HAPPY NATION",
-        "artist":"",
+        "artist":"ACE OF BASE",
         "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQatQVGXxVABRF97mljENSX-BeRU3ewka90V5Okg1HAbSN3Io_5Y2aK-E0r&s=10",
         "audio":"https://www.dropbox.com/scl/fi/gq0qi6wkxvxva6s37zw74/heppy-nation.mp3?rlkey=xzsrjyrax7zoczvqss9mu5a5e&st=3k8eyitf&raw=1"
+    },
+    "i no baybeh":{
+        "name":"I NO BAYBEH",
+        "artist":"FIKRI HERMAWAN",
+        "image":"https://i1.sndcdn.com/artworks-9uJitZA4mhKc-0-t500x500.png",
+        "audio":"https://www.dropbox.com/scl/fi/d7jemziizpbe7o8pahswi/I-No-Baybeh.mp3?rlkey=gi9ygjzkb4gsawt97ebqysw8n&st=42lagrhs&raw=1"
+    },
+    "is it":{
+        "name":"IS IT",
+        "artist":"TYLA",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj63ztRGeYKh5KybUKQPhAluIaZ7yCbj7iuzJ63aXFJZKqt8eYI1FycgAg&s=10",
+        "audio":"https://www.dropbox.com/scl/fi/ujqxo7yj10qb2c7ltfhiu/is-it.mp3?rlkey=7z6cpg0sqh1xtayuxhg638e61&st=pt36ouqw&raw=1"
     },
     "kehlani remix":{
         "name":"KEHLANI REMIX",
@@ -103,7 +115,7 @@
     },
     "old town road":{
         "name":"OLD TOWN ROAD",
-        "artist":"",
+        "artist":"LIL NAS X",
         "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo2sg6j2UFBDuaYch7mmGoqVFHLvfbb2ntF3BsE2xXPzqQK4INsjWcT4Bm&s=10",
         "audio":"https://www.dropbox.com/scl/fi/oenzm9wvvk61w1t12k4b0/old-town-road.mp3?rlkey=ywmidn3ylzupxf48qnulrq804&st=gxuewkgv&raw=1"
     },
@@ -127,13 +139,13 @@
     },
     "senorita":{
         "name":"SENORITA",
-        "artist":"",
+        "artist":"CAMILA CABELLO,SHAWN MENDES",
         "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Shawn_Mendes_and_Camila_Cabello_-_Se%C3%B1orita.png/250px-Shawn_Mendes_and_Camila_Cabello_-_Se%C3%B1orita.png",
         "audio":"https://www.dropbox.com/scl/fi/n48za0sse5tpicuazcjqf/senorita.mp3?rlkey=8elq9k47p1xqyfbxkowitk4d6&st=mzk7t8y2&raw=1"
     },
     "shake it to the max":{
         "name":"SHAKE IT TO THE MAX",
-        "artist":"",
+        "artist":"MOLIY,SILENT ADDY,SHENSEEA,SKILLIBENG",
         "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoBZFN-aQuZpyuUIbd-LXlx2CKnGqUHxAAjwK_fCfVb0h0GPv7oOe533lC&s=10",
         "audio":"https://www.dropbox.com/scl/fi/hblfdypcu8862ebprhljd/shake-it-to-the-max-remix.mp3?rlkey=536hygbam9rdjhacm7pje9ieh&st=u2busdpd&raw=1"
     },
@@ -145,7 +157,7 @@
     },
     "the west side free style":{
         "name":"THE WEST SIDE FREE STYLE",
-        "artist":"",
+        "artist":"DJ MAX STAR",
         "image":"https://c.saavncdn.com/124/The-West-Side-Freestyle-English-2022-20220809171602-500x500.jpg",
         "audio":"https://www.dropbox.com/scl/fi/geptiv3xtw8l2vlcz0vun/The-West-Side-Freestyle.mp3?rlkey=ca59qloufzc8aq6nf23un1i5t&st=hk6xerut&raw=1"
     },
@@ -157,7 +169,7 @@
     },
     "you right luxurios":{
         "name":"YOU RIGHT",
-        "artist":"",
+        "artist":"DOJA CAT,THE WEEKND",
         "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOZOqWxsBmGZsSrP7Puz_kLnDLwC3iGBtwqBlyf8jQ2fH2mON_jeKqBM&s=10",
         "audio":"https://www.dropbox.com/scl/fi/un0dky3ijkwkdyi2kyyn1/You-right-Luxurious.mp3?rlkey=0j9iwsm9nu9mfo8pybugqcvpe&st=ql2lywwq&raw=1"
     }
