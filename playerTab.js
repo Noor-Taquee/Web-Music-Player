@@ -39,11 +39,11 @@ secondaryControls.id = "secondaryControls";
 let bnFavourite = document.createElement("button");
 secondaryControls.appendChild(bnFavourite);
 bnFavourite.id = "bnFavourite";
+bnFavourite.addEventListener("click", f_favourite);
 let favouriteIcon = document.createElement("span");
 bnFavourite.appendChild(favouriteIcon);
 favouriteIcon.className = "material-symbols-rounded";
 favouriteIcon.textContent = "favorite";
-bnFavourite.addEventListener("click", f_favourite);
 
 let bnMore = document.createElement("button");
 secondaryControls.appendChild(bnMore);
@@ -194,11 +194,11 @@ let currentFocusPL = "picture";
 //FUNCTIONS
 function updateSecondaryButtons() {
   if (favouriteSongList.includes(titleNames[currentSongIndex]))  {
-    favouriteIcon.style.fontVariationSettings = "1";
+    favouriteIcon.style.fontVariationSettings = '"FILL 1"';
     bnFavourite.removeEventListener("click",f_favourite);
     bnFavourite.addEventListener("click",f_disfavourite);
   } else {
-    favouriteIcon.style.fontVariationSettings = "0";
+    favouriteIcon.style.fontVariationSettings = '"FILL 0"';
     bnFavourite.removeEventListener("click",f_disfavourite);
     bnFavourite.addEventListener("click",f_favourite);
   }
@@ -206,8 +206,8 @@ function updateSecondaryButtons() {
 
 
 function f_favourite() {
-  if (!signedIn) {
-    favouriteIcon.style.fontVariationSettings = "1";
+  if (signedIn) {
+    favouriteIcon.style.fontVariationSettings = '"FILL" 1';
     bnFavourite.removeEventListener("click",f_favourite);
     bnFavourite.addEventListener("click",f_disfavourite);
     favouriteSongList.push(titleNames[currentSongIndex]);
@@ -218,7 +218,7 @@ function f_favourite() {
   }
 }
 function f_disfavourite() {
-  favouriteIcon.style.fontVariationSettings = "0";
+  favouriteIcon.style.fontVariationSettings = '"FILL" 0';
   bnFavourite.removeEventListener("click",f_disfavourite);
   bnFavourite.addEventListener("click",f_favourite);
   favouriteSongList.splice(favouriteSongList.indexOf(titleNames[currentSongIndex]),1);
@@ -238,12 +238,12 @@ function hideMore() {
 }
 
 function f_save() {
-  saveIcon.fontVariationSettings = "1";
+  saveIcon.fontVariationSettings = '"FILL" 1';
   bnSave.removeEventListener("click",f_save);
   bnSave.addEventListener("click",f_unsave);
 }
 function f_unsave() {
-  saveIcon.fontVariationSettings = "0";
+  saveIcon.fontVariationSettings = '"FILL" 0';
   bnSave.removeEventListener("click",f_unsave);
   bnSave.addEventListener("click",f_save);
 }
@@ -357,7 +357,7 @@ setInterval(() => {
     time1.textContent = coveredTime;
   }
   timeSlider.value = song.currentTime;
-}, 10);
+}, 1000);
 
 
 attend();
