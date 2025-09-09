@@ -36,7 +36,7 @@
   gap: 5vh;
   border: none;
 }
-#recentlyPLayedDivConText {
+#recentlyPlayedDivConText {
   align-self: center;
   justify-self: center;
   margin: auto;
@@ -48,7 +48,7 @@
 #phonkSongDivCon::-webkit-scrollbar,
 #spanishSongDivCon::-webkit-scrollbar,
 #tunesDivCon::-webkit-scrollbar,
-#recentlyPLayedDivCon::-webkit-scrollbar {
+#recentlyPlayedDivCon::-webkit-scrollbar {
   width: 0;
   background: transparent;
 }
@@ -58,7 +58,7 @@
 #phonkSongDiv,
 #spanishSongDiv,
 #tunesDiv,
-#recentlyPLayedDiv {
+#recentlyPlayedDiv {
   display: flexbox;
   flex-direction: column;
   height: 30vh;
@@ -72,7 +72,7 @@
 #phonkSongDivText,
 #spanishSongDivText,
 #tunesDivText,
-#recentlyPLayedDivText {
+#recentlyPlayedDivText {
   cursor: default;
   display: flex;
   justify-content: flex-start;
@@ -90,7 +90,7 @@
 #phonkSongDivCon,
 #spanishSongDivCon,
 #tunesDivCon,
-#recentlyPLayedDivCon {
+#recentlyPlayedDivCon {
   display: flex;
   justify-content: flex-start;
   align-items: center;

@@ -206,7 +206,7 @@ function updateSecondaryButtons() {
 
 
 function f_favourite() {
-  if (signedIn) {
+  if (!signedIn) {
     favouriteIcon.style.fontVariationSettings = "1";
     bnFavourite.removeEventListener("click",f_favourite);
     bnFavourite.addEventListener("click",f_disfavourite);

@@ -102,51 +102,49 @@ let playlistInFocus = null;
 
 //FUNCTIONS
 function loadPlaylists() {
-  if (playlistList.length > 0) {
-    libraryContent.removeChild(libraryContentText);
-    for (let playlists of playlistList) {
-      let playlist = document.createElement("div");
-      libraryContent.appendChild(playlist);
-      playlist.id = "playlist";
-
-      let playlistInfo = document.createElement("div");
-      playlist.appendChild(playlistInfo);
-      playlistInfo.id = "playlistInfo";
-
-      let playlistPic = document.createElement("p");
-      playlistInfo.appendChild(playlistPic);
-      playlistPic.id = "playlistPic";
-      let playlistIcon = document.createElement("span");
-      playlistIcon.className = "material-symbols-rounded";
-      playlistIcon.textContent = "queue_music";
-      if (playlists.image.length > 0) {
-        playlistPic.style.backgroundImage = `url(${playlists.image})`;
-      } else {
-        playlistPic.appendChild(playlistIcon);
+  clearContainer(libraryContent);
+  if (signedIn) {
+    if (playlistList.length > 0) {
+      for (let playlists of playlistList) {
+        let playlist = document.createElement("div");
+        libraryContent.appendChild(playlist);
+        playlist.id = "playlist";
+        let playlistInfo = document.createElement("div");
+        playlist.appendChild(playlistInfo);
+        playlistInfo.id = "playlistInfo";
+        let playlistPic = document.createElement("p");
+        playlistInfo.appendChild(playlistPic);
+        playlistPic.id = "playlistPic";
+        let playlistIcon = document.createElement("span");
+        playlistIcon.className = "material-symbols-rounded";
+        playlistIcon.textContent = "queue_music";
+        if (playlists.image.length > 0) {
+          playlistPic.style.backgroundImage = `url(${playlists.image})`;
+        } else {
+          playlistPic.appendChild(playlistIcon);
+        }
+        let playlistName = document.createElement("p");
+        playlistInfo.appendChild(playlistName);
+        playlistName.id = "playlistName";
+        playlistName.textContent = playlists.name;
+        let bnOptions = document.createElement("button");
+        playlist.appendChild(bnOptions);
+        bnOptions.id = "bnOptions";
+        bnOptions.addEventListener("click",() => f_options(playlist.name));
+        let optionsIcon = document.createElement("span");
+        bnOptions.appendChild(optionsIcon);
+        optionsIcon.className = "material-symbols-rounded";
+        optionsIcon.textContent = "more_vert";
       }
-
-      let playlistName = document.createElement("p");
-      playlistInfo.appendChild(playlistName);
-      playlistName.id = "playlistName";
-      playlistName.textContent = playlists.name;
-
-      let bnOptions = document.createElement("button");
-      playlist.appendChild(bnOptions);
-      bnOptions.id = "bnOptions";
-      bnOptions.addEventListener("click",() => f_options(playlist.name));
-
-      let optionsIcon = document.createElement("span");
-      bnOptions.appendChild(optionsIcon);
-      optionsIcon.className = "material-symbols-rounded";
-      optionsIcon.textContent = "more_vert";
+    } else {
+      libraryContent.textContent = "YOU DON'T HAVE ANY PLAYLIST";
     }
   } else {
-    libraryContentText.textContent = "YOU DON'T HAVE ANY PLAYLIST";
+    libraryContent.appendChild(libraryContentText);
   }
   let libraryPanelSpace = document.createElement("div");
   libraryContent.appendChild(libraryPanelSpace);
   libraryPanelSpace.id = "libraryPanelSpace";
-
 }
 
 function getPlaylistNames() {

@@ -156,7 +156,7 @@ function switchTo(destination) {
   }
 }
 
-let totalFiles = 8;
+let totalFiles = 10;
 let attendFiles = 0;
 function attend() {
   attendFiles++;

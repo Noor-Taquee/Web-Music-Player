@@ -14,20 +14,20 @@ let homeContentDiv = document.createElement("div");
 homePanel.appendChild(homeContentDiv);
 homeContentDiv.id = "homeContentDiv";
 
-let recentlyPLayedDiv = document.createElement("div");
-homeContentDiv.appendChild(recentlyPLayedDiv);
-recentlyPLayedDiv.id = "recentlyPLayedDiv";
-let recentlyPLayedDivText = document.createElement("p");
-recentlyPLayedDiv.appendChild(recentlyPLayedDivText);
-recentlyPLayedDivText.id = "recentlyPLayedDivText";
-recentlyPLayedDivText.textContent = "RECENTLY PLAYED SONGS";
-let recentlyPLayedDivCon = document.createElement("p");
-recentlyPLayedDiv.appendChild(recentlyPLayedDivCon);
-recentlyPLayedDivCon.id = "recentlyPLayedDivCon";
-let recentlyPLayedDivConText = document.createElement("p");
-recentlyPLayedDivCon.appendChild(recentlyPLayedDivConText);
-recentlyPLayedDivConText.id = "recentlyPLayedDivConText";
-recentlyPLayedDivConText.textContent = "LOGIN TO SEE RECENTLY PLAYED SONGS";
+let recentlyPlayedDiv = document.createElement("div");
+homeContentDiv.appendChild(recentlyPlayedDiv);
+recentlyPlayedDiv.id = "recentlyPlayedDiv";
+let recentlyPlayedDivText = document.createElement("p");
+recentlyPlayedDiv.appendChild(recentlyPlayedDivText);
+recentlyPlayedDivText.id = "recentlyPlayedDivText";
+recentlyPlayedDivText.textContent = "RECENTLY PLAYED SONGS";
+let recentlyPlayedDivCon = document.createElement("p");
+recentlyPlayedDiv.appendChild(recentlyPlayedDivCon);
+recentlyPlayedDivCon.id = "recentlyPlayedDivCon";
+let recentlyPlayedDivConText = document.createElement("p");
+recentlyPlayedDivCon.appendChild(recentlyPlayedDivConText);
+recentlyPlayedDivConText.id = "recentlyPlayedDivConText";
+recentlyPlayedDivConText.textContent = "LOGIN TO SEE RECENTLY PLAYED SONGS";
 
 let hindiSongDiv = document.createElement("div");
 homeContentDiv.appendChild(hindiSongDiv);
@@ -102,30 +102,32 @@ homePanelSpace.id = "homePanelSpace";
 
 
 function loadRecentlyPlayedSongs() {
-  if (recentlyPlayedSongList.length > 0) {
-    clearContainer(recentlyPLayedDivCon);
-    for (let songs of recentlyPlayedSongList) {
-      let suggestedSong = document.createElement("button");
-      recentlyPLayedDivCon.appendChild(suggestedSong);
-      suggestedSong.id = "suggestedSong";
-      suggestedSong.addEventListener("click", () => playSong(songs));
-
-      let songIcon = document.createElement("span");
-      songIcon.className = "material-symbols-rounded";
-      songIcon.textContent = "headphones";
-      if (songData[songs].image.length > 0) {
-        suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
-      } else {
-        suggestedSong.appendChild(songIcon);
+  clearContainer(recentlyPlayedDivCon);
+  if (signedIn) {
+    if (recentlyPlayedSongList.length > 0) {
+      for (let songs of recentlyPlayedSongList) {
+        let suggestedSong = document.createElement("button");
+        recentlyPlayedDivCon.appendChild(suggestedSong);
+        suggestedSong.id = "suggestedSong";
+        suggestedSong.addEventListener("click", () => playSong(songs));
+        let songIcon = document.createElement("span");
+        songIcon.className = "material-symbols-rounded";
+        songIcon.textContent = "headphones";
+        if (songData[songs].image.length > 0) {
+          suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
+        } else {
+          suggestedSong.appendChild(songIcon);
+        }
+        let suggestedSongName = document.createElement("p");
+        suggestedSong.appendChild(suggestedSongName);
+        suggestedSongName.id = "suggestedSongName";
+        suggestedSongName.textContent = songData[songs].name;
       }
-
-      let suggestedSongName = document.createElement("p");
-      suggestedSong.appendChild(suggestedSongName);
-      suggestedSongName.id = "suggestedSongName";
-      suggestedSongName.textContent = songData[songs].name;
+    } else {
+      recentlyPlayedDivCon.textContent = "NO SONGS PLAYED RECENTLY";
     }
   } else {
-    recentlyPLayedDivCon.textContent = "NO SONGS PLAYED RECENTLY";
+    recentlyPlayedDivCon.appendChild(recentlyPlayedDivConText);
   }
 }
 

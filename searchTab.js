@@ -14,6 +14,7 @@ searchBox.addEventListener("input", findSearchMatches);
 let bnSearch = document.createElement("button");
 searchBar.appendChild(bnSearch);
 bnSearch.id = "bnSearch";
+bnSearch.addEventListener("click", addSearch);
 let searchIcon = document.createElement("span");
 bnSearch.appendChild(searchIcon);
 searchIcon.className = "material-symbols-rounded";
@@ -64,38 +65,55 @@ searchPanelSpace.id = "searchPanelSpace";
 
 function loadSearchTextHistory() {
   clearContainer(searchedTextDiv);
-  for (let songs of searchedTextList) {
-    let searchedText = document.createElement("button");
-    searchedTextDiv.appendChild(searchedText);
-    searchedText.id = "searchedText";
+  if (signedIn) {
+    if (searchedTextList.length > 0) {
+      for (let songs of searchedTextList) {
+        let searchedText = document.createElement("button");
+        searchedTextDiv.appendChild(searchedText);
+        searchedText.id = "searchedText";
 
-    let searchedTextP = document.createElement("p");
-    searchedText.appendChild(searchedTextP);
-    searchedTextP.textContent = songs;
+        let searchedTextP = document.createElement("p");
+        searchedText.appendChild(searchedTextP);
+        searchedTextP.textContent = songs;
 
-    let searchedIcon = document.createElement("i");
-    searchedText.appendChild(searchedIcon);
-    searchedIcon.className = "fa-solid fa-search";
+        let searchedIcon = document.createElement("span");
+        searchedText.appendChild(searchedIcon);
+        searchedIcon.className = "material-symbols-rounded";
+        searchedIcon.textContent = "search";
+      }
+    } else {
+      searchedTextDiv.textContent = "NOTHING SEARCHED YET";
+    }
+  } else {
+    searchedTextDiv.appendChild(searchedTextDivText);
   }
 }
 
 function loadSearchSongHistory() {
   clearContainer(searchedSongDiv);
-  for (let songs of searchedSongList) {
-    let searchedSong = document.createElement("button");
-    searchedSongDiv.appendChild(searchedSong);
-    searchedSong.id = "searchedSong";
-    searchedSong.addEventListener("click",() => playSong(songs));
+  if (signedIn) {
+    if (searchedSongList.length > 0) {
+      for (let songs of searchedSongList) {
+        let searchedSong = document.createElement("button");
+        searchedSongDiv.appendChild(searchedSong);
+        searchedSong.id = "searchedSong";
+        searchedSong.addEventListener("click",() => playSong(songs));
 
-    let searchedSongPic = document.createElement("p");
-    searchedSong.appendChild(searchedSongPic);
-    searchedSongPic.id = "searchedSongPic";
-    searchedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
+        let searchedSongPic = document.createElement("p");
+        searchedSong.appendChild(searchedSongPic);
+        searchedSongPic.id = "searchedSongPic";
+        searchedSongPic.style.backgroundImage = `url(${songData[songs].image})`;
 
-    let searchedSongName = document.createElement("p");
-    searchedSong.appendChild(searchedSongName);
-    searchedSongName.id = "searchedSongName";
-    searchedSongName.textContent = songData[songs].name;
+        let searchedSongName = document.createElement("p");
+        searchedSong.appendChild(searchedSongName);
+        searchedSongName.id = "searchedSongName";
+        searchedSongName.textContent = songData[songs].name;
+      }
+    } else {
+      searchedSongDiv.textContent = "NOTHING SEARCHED YET";
+    }
+  } else {
+    searchedSongDiv.appendChild(searchedSongDivText);
   }
 }
 
@@ -137,7 +155,23 @@ function showSearchResult(resultList) {
     searchResultBtn.addEventListener("click", function () {
       playSong(songs);
       switchTo("playerPanel");
+      if(searchedSongList.includes(songs)) {
+        searchedSongList.splice(searchedSongList.indexOf(songs),1);
+      }
+      searchedSongList.unshift(songs);
+      loadSearchSongHistory();
     });
+  }
+}
+
+function addSearch() {
+  let searchedStr = searchBox.value;
+  if (searchedStr.length > 0) {
+    if(searchedTextList.includes(searchedStr)) {
+      searchedTextList.splice(searchedTextList.indexOf(searchedStr),1);
+    }
+    searchedTextList.unshift(searchedStr);
+    loadSearchTextHistory();
   }
 }
 

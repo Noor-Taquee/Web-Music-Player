@@ -1,3 +1,17 @@
+let data = null;
+let userData = null;
+let  usersList = [];
+
+let userName = "";
+let accountPassword = "";
+let profilePicImage = "";
+let favouriteSongList = [];
+let searchedTextList = [];
+let searchedSongList = [];
+let recentlyPlayedSongList = [];
+let playlistList = [];
+
+
 let dropbox = new Dropbox.Dropbox({
     clientId: 't8wj3k9vzx9thyg',
     fetch: window.fetch.bind(window),
@@ -11,8 +25,11 @@ function startBackend() {
 }
 
 function updateDataFile() {
+  return dumpInfo("/JSON/UserFile.json", data);
+}
+function dumpInfo(path,data) {
   return dropbox.filesUpload({
-    path: "/UserFile.json",
+    path: path,
     contents: JSON.stringify(data),
     mode: {".tag":"overwrite"},
     autorename: false,
@@ -20,35 +37,34 @@ function updateDataFile() {
   });
 }
 
+function loadInfo(path) {
+  return dropbox.filesDownload({path: path}).then(response => response.result.fileBlob.text()).then(text => {
+    return JSON.parse(text);
+  });
+}
 function fetchSongData() {
-  fetch("HindiSongs.json").then(response => response.json()).then(data => {
-    let HindiSongs = data;
-    Object.assign(songData,HindiSongs);
+  loadInfo("/JSON/HindiSongs.json").then(data => {
+    Object.assign(songData,data);
     HindiTitles = Object.keys(data);
-    return fetch("PunjabiSongs.json");
-  }).then(response => response.json()).then(data => {
-    let PunjabiSongs = data;
-    Object.assign(songData,PunjabiSongs);
+    return loadInfo("/JSON/PunjabiSongs.json");
+  }).then(data => {
+    Object.assign(songData,data);
     PunjabiTitles = Object.keys(data);
-    return fetch("EnglishSongs.json");
-  }).then(response => response.json()).then(data => {
-    let EnglishSongs = data;
-    Object.assign(songData,EnglishSongs);
+    return loadInfo("/JSON/EnglishSongs.json");
+  }).then(data => {
+    Object.assign(songData,data);
     EnglishTitles = Object.keys(data);
-    return fetch("PhonkSongs.json");
-  }).then(response => response.json()).then(data => {
-    let PhonkSongs = data;
-    Object.assign(songData,PhonkSongs);
+    return loadInfo("/JSON/PhonkSongs.json");
+  }).then(data => {
+    Object.assign(songData,data);
     PhonkTitles = Object.keys(data);
-    return fetch("SpanishSongs.json");
-  }).then(response => response.json()).then(data => {
-    let SpanishSongs = data;
-    Object.assign(songData,SpanishSongs);
+    return loadInfo("/JSON/SpanishSongs.json");
+  }).then(data => {
+    Object.assign(songData,data);
     SpanishTitles = Object.keys(data);
-    return fetch("Tunes.json");
-  }).then(response => response.json()).then(data => {
-    Tunes = data;
-    Object.assign(songData,Tunes);
+    return loadInfo("/JSON/Tunes.json");
+  }).then(data => {
+    Object.assign(songData,data);
     TunesTitles = Object.keys(data);
   }).then(() => {
     titleNames.push(...HindiTitles);
@@ -63,9 +79,8 @@ function fetchSongData() {
 }
 
 function fetchUsersInfo() {
-  dropbox.filesDownload({path:"/UserFile.json"}).then(response => response.result.fileBlob.text()).then(text => {
-    data = JSON.parse(text);
-  }).then(()=>{
+  loadInfo("/JSON/UserFile.json").then(response => {
+    data = response;
     usersList = Object.keys(data);
   });
 }
@@ -82,10 +97,10 @@ function fetchUserData(userGivenName) {
   searchedSongList = userData.searchedSongList;
   likedSongList = userData.likedSongList;
   playlistList  = userData.playlistList;
+  signedIn = true;
   showInfo();
   loadPlaylists();
   loadRecentlyPlayedSongs();
   loadSearchHistory();
-  signedIn = true;
 }
 attend();

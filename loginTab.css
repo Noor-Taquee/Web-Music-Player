@@ -1,0 +1,132 @@
+#loginPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+#loginPanel .material-symbols-rounded {
+  color: black;
+  font-size: 2rem;
+}
+#topBarLT {
+  display: flex;
+  height: 5%;
+  width: 90%;
+}
+#bnBackLT {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;
+  gap: 1vw;
+  border: none;
+}
+#bnBackP {
+  font-size: 1.5rem;
+  color: black;
+}
+#bnBackLT .material-symbols-rounded {
+  color: black;
+  font-size: 1.2rem;
+}
+#signInContainer,
+#signUpContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 90%;
+}
+#loginHeaderSignIn,
+#loginHeaderSignUp {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 2.5vh;
+}
+#inputContainerSignIn,
+#inputContainerSignUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background: transparent;
+  height: 25%;
+  width: 100%;
+}
+#inputContainerSignIn div,
+#inputContainerSignUp div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+  height: 7vh;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+#inputContainerSignIn input,
+#inputContainerSignUp input {
+  display: flex;
+  font-size: 1rem;
+  height: 100%;
+  width: 100%;
+  padding-left: 1rem;
+  border: none;
+}
+#inputContainerSignIn input::placeholder,
+#inputContainerSignUp input::placeholder {
+  color: rgba(0,0,0,0.7);
+}
+#passInputSignIn,
+#passInputSignUp {
+  max-width: 85%;
+}
+#paesDivSignIn .material-symbols-rounded,
+#paesDivSignUp .material-symbols-rounded {
+  height: 100%;
+  width: 15%;
+}
+#bnSignIn,
+#bnSignUp {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background-color: black;
+  height: 7vh;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+#inputContainerSignUp {
+  height: 35%;
+}
+#inputContainerSignUp div {
+  height: 30%;
+}
+#bottomContainerLT {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background: transparent;
+  height: 15%;
+  width: 90%;
+}
+#bnCreateAC {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background-color: black;
+  height: 7vh;
+  width: 100%;
+  border: none;
+  border-radius: 1rem;
+}
