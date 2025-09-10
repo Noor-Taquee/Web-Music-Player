@@ -96,7 +96,7 @@ bnAddCT.textContent = "ADD";
 bnAddCT.addEventListener("click", addContribution);
 
 let messageDivCT = document.createElement("div");
-contributionInputDiv.appendChild(messageDivCT);
+
 messageDivCT.id = "messageDivCT";
 let messageDivCTP1 = document.createElement("p");
 messageDivCT.appendChild(messageDivCTP1);
