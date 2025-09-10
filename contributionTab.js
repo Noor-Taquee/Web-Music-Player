@@ -140,11 +140,11 @@ p10.textContent = "STEP 2: GET YOUR SONG LINK FROM DROPBOX";
 
 let p11 = document.createElement("p");
 contributionHelpDiv.appendChild(p11);
-p11.textContent = "An audio file of the song. We accept common formats like MP3, M4A, and WAV.";
+p11.textContent = "Open the Dropbox app or website.";
 
 let p12 = document.createElement("p");
 contributionHelpDiv.appendChild(p12);
-p12.textContent = "Open the Dropbox app or website.";
+p12.textContent = "Upload the song in your Dropbox account. We accept common formats like MP3, M4A, and WAV.";
 
 let p13 = document.createElement("p");
 contributionHelpDiv.appendChild(p13);
