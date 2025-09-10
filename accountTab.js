@@ -12,11 +12,7 @@ let profilePicIcon = document.createElement("span");
 profilePic.appendChild(profilePicIcon);
 profilePicIcon.className = "material-symbols-rounded";
 profilePicIcon.textContent = "account_circle";
-let editIcon = document.createElement("span");
-profilePic.appendChild(editIcon);
-editIcon.className = "material-symbols-rounded";
-editIcon.textContent = "edit";
-editIcon.id = "editIcon";
+profilePicIcon.id = "profilePicIcon";
 
 let profileInfoCard = document.createElement("div");
 accountInfoHeader.appendChild(profileInfoCard);
@@ -110,17 +106,17 @@ let bnAudioQualityP = document.createElement("p");
 bnAudioQuality.appendChild(bnAudioQualityP);
 bnAudioQualityP.textContent = "AUDIO QUALITY";
 
-// let bnContribute = document.createElement("button");
-// settingsPanel.appendChild(bnContribute);
-// bnContribute.id = "bnContribute";
-// bnContribute.addEventListener("click",f_contribute);
-// let bnContributeIcon = document.createElement("span");
-// bnContribute.appendChild(bnContributeIcon);
-// bnContributeIcon.className = "material-symbols-rounded";
-// bnContributeIcon.textContent = "volunteer_activism";
-// let bnContributeP = document.createElement("p");
-// bnContribute.appendChild(bnContributeP);
-// bnContributeP.textContent = "CONTRIBUTE";
+let bnContribute = document.createElement("button");
+settingsPanel.appendChild(bnContribute);
+bnContribute.id = "bnContribute";
+bnContribute.addEventListener("click",f_contribute);
+let bnContributeIcon = document.createElement("span");
+bnContribute.appendChild(bnContributeIcon);
+bnContributeIcon.className = "material-symbols-rounded";
+bnContributeIcon.textContent = "volunteer_activism";
+let bnContributeP = document.createElement("p");
+bnContribute.appendChild(bnContributeP);
+bnContributeP.textContent = "ADD YOUR FAVOURITE SONG";
 
 let bnLogOut = document.createElement("button");
 settingsPanel.appendChild(bnLogOut);
@@ -173,8 +169,15 @@ function changePassword() {}
 
 
 function f_contribute() {
-  main.replaceChild(contributionPanel, accountPanel);
-  currentTab = contributionPanel;
+  if (signedIn) {
+    startContribution().then(() => {
+      main.replaceChild(contributionPanel, accountPanel);
+      currentTab = contributionPanel;
+      bottomDiv.style.display = "none";
+    })
+  } else {
+    alert("You need to be logged in to contribute!");
+  }
 }
 
 function f_logOut() {
@@ -184,7 +187,6 @@ function f_logOut() {
     loadHomeSongs();
     loadPlaylists();
     loadSearchHistory();
-    f_login();
   }
 }
 

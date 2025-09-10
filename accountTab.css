@@ -3,9 +3,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: transparent;
   backdrop-filter: blur(10vmax);
-  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2));
+  background-color: rgba(0,0,0,0.3);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -20,12 +19,13 @@
   width: 90%;
   gap: 2vw;
 }
-.material-symbols-rounded {
+#accountPanel .material-symbols-rounded {
   color: rgba(255, 255, 255, 0.7);
 }
 #profilePic {
   cursor: pointer;
   position: relative;
+  z-index: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,29 +38,11 @@
   border: none;
   border-radius: 50%;
 }
-#profilePic .material-symbols-rounded {
+#profilePicIcon {
   font-size: 17vh;
   color: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: 50%;
-}
-#editIcon {
-  cursor: pointer;
-  position: absolute;
-  display: none;
-  z-index: 1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  margin: 0;
-  border: none;
-  border-radius: 50%;
-}
-#editIcon span {
-  font-size: 10vh;
-  color: rgba(255, 255, 255, 0.8);
 }
 #profilePic:hover #editIcon {
   display: flex;
@@ -77,12 +59,12 @@
   border-radius: 1rem;
 }
 #profileName {
+  cursor: default;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  cursor: default;
   text-align: left;
-  font-size: 3.5vh;
+  font-size: 3vmin;
   font-weight: 900;
   color: rgba(255,255,255,0.7);
   height: 65%;
@@ -100,8 +82,8 @@
   font-weight: 700;
   color: rgba(255, 255, 255, 0.7);
   background-color: rgba(0, 0, 0, 0.3);
-  height: 40%;
-  width: 40%;
+  height: 60%;
+  width: 90%;
   border: none;
   border-radius: 0.5rem;
 }

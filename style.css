@@ -139,9 +139,6 @@
   width: 30%;
   border: none;
 }
-#miniPlaybackControlsDiv button i {
-  font-size: 4vmin;
-}
 
 #miniPlaybackControlsDiv span {
   font-variation-settings:

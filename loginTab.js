@@ -28,12 +28,8 @@ signInContainer.appendChild(loginHeaderSignIn);
 loginHeaderSignIn.id = "loginHeaderSignIn";
 loginHeaderSignIn.textContent = "SIGN IN";
 
-let inputContainerSignIn = document.createElement("div");
-signInContainer.appendChild(inputContainerSignIn);
-inputContainerSignIn.id = "inputContainerSignIn";
-
 let nameDivSignIn = document.createElement("div");
-inputContainerSignIn.appendChild(nameDivSignIn);
+signInContainer.appendChild(nameDivSignIn);
 nameDivSignIn.id = "nameDivSignIn";
 let nameInputSignIn = document.createElement("input");
 nameDivSignIn.appendChild(nameInputSignIn);
@@ -42,7 +38,7 @@ nameInputSignIn.type = "text";
 nameInputSignIn.placeholder = "USERNAME";
 
 let passDivSignIn = document.createElement("div");
-inputContainerSignIn.appendChild(passDivSignIn);
+signInContainer.appendChild(passDivSignIn);
 passDivSignIn.id = "paesDivSignIn";
 let passInputSignIn = document.createElement("input");
 passDivSignIn.appendChild(passInputSignIn);
@@ -54,6 +50,7 @@ let eyeIcon = document.createElement("span");
 passDivSignIn.appendChild(eyeIcon);
 eyeIcon.className = "material-symbols-rounded";
 eyeIcon.textContent = "visibility";
+eyeIcon.id = "eyeIcon";
 eyeIcon.addEventListener("click", () => {
   if (passInputSignIn.type === "password") {
     passInputSignIn.type = "text";
@@ -86,12 +83,8 @@ signUpContainer.appendChild(loginHeaderSignUp);
 loginHeaderSignUp.id = "loginHeaderSignUp";
 loginHeaderSignUp.textContent = "SIGN UP";
 
-let inputContainerSignUp = document.createElement("div");
-signUpContainer.appendChild(inputContainerSignUp);
-inputContainerSignUp.id = "inputContainerSignUp";
-
 let fullNameDivSignUp = document.createElement("div");
-inputContainerSignUp.appendChild(fullNameDivSignUp);
+signUpContainer.appendChild(fullNameDivSignUp);
 fullNameDivSignUp.id = "fullNameDivSignUp";
 let fullNameInputSignUp = document.createElement("input");
 fullNameDivSignUp.appendChild(fullNameInputSignUp);
@@ -100,7 +93,7 @@ fullNameInputSignUp.type = "text";
 fullNameInputSignUp.placeholder = "FULL NAME";
 
 let nameDivSignUp = document.createElement("div");
-inputContainerSignUp.appendChild(nameDivSignUp);
+signUpContainer.appendChild(nameDivSignUp);
 nameDivSignUp.id = "nameDivSignUp";
 let nameInputSignUp = document.createElement("input");
 nameDivSignUp.appendChild(nameInputSignUp);
@@ -109,7 +102,7 @@ nameInputSignUp.type = "text";
 nameInputSignUp.placeholder = "USERNAME";
 
 let passDivSignUp = document.createElement("div");
-inputContainerSignUp.appendChild(passDivSignUp);
+signUpContainer.appendChild(passDivSignUp);
 passDivSignUp.id = "paesDivSignUp";
 let passInputSignUp = document.createElement("input");
 passDivSignUp.appendChild(passInputSignUp);

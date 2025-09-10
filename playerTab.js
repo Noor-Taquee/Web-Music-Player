@@ -193,12 +193,12 @@ let currentFocusPL = "picture";
 
 //FUNCTIONS
 function updateSecondaryButtons() {
-  if (favouriteSongList.includes(titleNames[currentSongIndex]))  {
-    favouriteIcon.style.fontVariationSettings = '"FILL 1"';
+  if (favouriteSongList.includes(titleNames[currentSongIndex])) {
+    favouriteIcon.style.fontVariationSettings = '"FILL" 1';
     bnFavourite.removeEventListener("click",f_favourite);
     bnFavourite.addEventListener("click",f_disfavourite);
   } else {
-    favouriteIcon.style.fontVariationSettings = '"FILL 0"';
+    favouriteIcon.style.fontVariationSettings = '"FILL" 0';
     bnFavourite.removeEventListener("click",f_disfavourite);
     bnFavourite.addEventListener("click",f_favourite);
   }

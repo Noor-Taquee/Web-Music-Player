@@ -3,9 +3,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: transparent;
-  backdrop-filter: blur(10vmax);
-  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2));
+  backdrop-filter: blur(10vmax);;
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -94,7 +93,7 @@
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.1);
   height: 15%;
-  width: 90%;
+  width: 94%;
   min-height: 4rem;
   margin: 0;
   padding-left: 3vw;
@@ -132,7 +131,7 @@
   background: transparent;
   border: none;
 }
-#bnOptions i {
+#bnOptions span {
   cursor: pointer;
   font-size: 3vmin;
   color: rgba(255, 255, 255, 0.7);

@@ -6,7 +6,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   backdrop-filter: blur(10vmax);
-  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2));
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -42,10 +42,12 @@
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
 }
-
 #searchBox::placeholder {
   font-size: 100%;
   color: rgba(255, 255, 255, 0.7);
+}
+#searchBox:focus {
+  outline: none;
 }
 
 #bnSearch {
@@ -94,12 +96,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 3vmin;
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(50px);
   background-color: rgba(0, 0, 0, 0.2);
   height: 25%;
-  min-height: 2.5rem;
+  min-height: 3rem;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -168,7 +170,7 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-#searchedText i {
+#searchedText span {
   color: rgba(255, 255, 255, 0.7);
 }
 
