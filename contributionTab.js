@@ -24,29 +24,7 @@ bnContributeCT.id = "bnContribute";
 bnContributeCT.textContent = "CONTRIBUTE";
 bnContributeCT.addEventListener("click", goToInput);
 
-/**
- * Uploads JSON data to a specified Dropbox path.
- *
- * @param {string} path - The Dropbox path where the data will be uploaded.
- * @param {object} data - The JSON data to be uploaded.
- * @returns {Promise} - A promise that resolves to the result of the Dropbox filesUpload method.
- *
- * @example
- * dumpInfo("/JSON/UserFile.json", userData).then(response => {
- *   console.log("Data uploaded successfully");
- * }).catch(error => {
- *   console.error("Error uploading data:", error);
- * });
- */
-function dumpInfo(path, data) {
-  return dropbox.filesUpload({
-    path: path,
-    contents: JSON.stringify(data),
-    mode: {".tag": "overwrite"},
-    autorename: false,
-    mute: true
-  });
-}
+
 let contributionContent = document.createElement("div");
 contributionPanel.appendChild(contributionContent);
 contributionContent.id = "contributionContent";
