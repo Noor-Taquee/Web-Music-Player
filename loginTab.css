@@ -154,7 +154,7 @@
 }
 .loginPanel_lightMode #signUpContainer div,
 .loginPanel_lightMode #signInContainer div {
-  border: 1px solid white;
+  border: 1px solid black;
 }
 .loginPanel_lightMode input{
   color: black;

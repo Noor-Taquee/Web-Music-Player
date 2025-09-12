@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  backdrop-filter: blur(10vmax);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -142,10 +143,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 3vmin;
+  font-size: 1rem;
   font-weight: 700;
-  height: 10%;
-  width: 30%;
+  height: 5vh;
+  width: 40%;
   border: none;
 }
 #bnCancel {
@@ -182,8 +183,8 @@
   font-size: 1rem;
   font-weight: 600;
   background-color: rgb(0, 0, 0);
-  height: 50%;
-  width: 50%;
+  height: 30%;
+  width: 80%;
   min-width: 10rem;
   border: none;
   border-radius: 2rem;
@@ -232,7 +233,7 @@
 
 /* DARK MODE SETTINGS */
 .libraryPanel_darkMode {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .libraryPanel_darkMode p {
   color: white;
@@ -240,7 +241,7 @@
 
 .libraryPanel_darkMode #bnAddPlaylist {
   color: white;
-  background-color: rgb(25, 25, 25);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .libraryPanel_darkMode #bnAddPlaylist span {
@@ -252,11 +253,11 @@
 }
 
 .libraryPanel_darkMode #libraryContent {
-  background-color: rgb(15, 15, 15);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .libraryPanel_darkMode #playlist {
-  background-color: rgb(25, 25, 25);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .libraryPanel_darkMode #playlist span {
@@ -283,7 +284,7 @@
 
 /* LIGHT MODE SETTINGS */
 .libraryPanel_lightMode {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 .libraryPanel_lightMode p {
   color: black;
@@ -291,7 +292,7 @@
 
 .libraryPanel_lightMode #bnAddPlaylist {
   color: black;
-  background-color: rgb(220, 220, 220);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .libraryPanel_lightMode #bnAddPlaylist span {
@@ -303,11 +304,11 @@
 }
 
 .libraryPanel_lightMode #libraryContent {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .libraryPanel_lightMode #playlist {
-  background-color: rgb(220, 220, 220);
+  background-color: rgba(220, 220, 220,0.3);
 }
 
 .libraryPanel_lightMode #playlist span {

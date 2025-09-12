@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  backdrop-filter: blur(10vmax);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -180,12 +181,94 @@
   flex-shrink: 0;
 }
 
+#changeThemePanel,
+#changePassPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 80%;
+  width: 95%;
+  margin: 0;
+  padding: 0;
+  gap: 0.5vh;
+  border: none;
+  border-radius: 1.5rem;
+}
+
+#changeThemePanelTopBar,
+#changePassPanelTopBar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;
+  height: 10%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 0.5vw;
+}
+
+#bnBackChangeThemePanel,
+#bnBackChangePassPanel{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+}
+#changeThemeConDiv,
+#changePassConDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 90%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#ChangeBlurDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  width: 95%;
+  margin: 0;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+#changeBlurToggle {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: blue;
+  height: 2vh;
+  width: 8vw;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 1vh;
+}
+#changeBlurToggleBall {
+  background-color: white;
+  height: 2vh;
+  width: 2vh;
+  border: none;
+  border-radius: 50%;
+  transform: translateX(4vw);
+  transition: all 0.2s ease-out;
+}
 
 
 
 /* DARK MODE SETTINGS */
 .accountPanel_darkMode {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .accountPanel_darkMode p {
@@ -202,19 +285,20 @@
 }
 
 .accountPanel_darkMode #profileInfoCard {
-  background-color: rgb(15,15,15);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.accountPanel_darkMode #settingsPanel {
-  background-color: rgb(15,15,15);
+.accountPanel_darkMode #settingsPanel,
+.accountPanel_darkMode #changeThemePanel,
+.accountPanel_darkMode #changePassPanel {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 
 
 /* LIGHT MODE SETTINGS */
-
 .accountPanel_lightMode {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .accountPanel_lightMode p {
@@ -231,9 +315,11 @@
 }
 
 .accountPanel_lightMode #profileInfoCard {
-  background-color: rgb(220,220,220);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-.accountPanel_lightMode #settingsPanel {
-  background-color: rgb(220,220,220);
+.accountPanel_lightMode #settingsPanel,
+.accountPanel_lightMode #changeThemePanel,
+.accountPanel_lightMode #changePassPanel{
+  background-color: rgba(255, 255, 255, 0.7);
 }

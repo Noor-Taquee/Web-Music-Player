@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  backdrop-filter: blur(10vmax);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -130,16 +131,16 @@
 
 /* LIGHT MODE SETTINGS */
 .homePanel_lightMode {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 .homePanel_lightMode p {
   color: black;
 }
 .homePanel_lightMode #homeHeaderDiv {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(255, 255, 255,0.7);
 }
 .homePanel_lightMode .songDivCon {
-  background-color: rgb(220, 220, 220);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .homePanel_lightMode #suggestedSongName {
   color: black;
@@ -152,16 +153,16 @@
 
 /* DARK MODE SETTINGS */
 .homePanel_darkMode {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .homePanel_darkMode p {
   color: white;
 }
 .homePanel_darkMode #homeHeaderDiv {
-  background-color: rgb(20, 20, 20);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .homePanel_darkMode .songDivCon {
-  background-color: rgb(20, 20, 20);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .homePanel_darkMode #suggestedSongName {
   color: white;

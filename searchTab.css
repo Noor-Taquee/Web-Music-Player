@@ -5,6 +5,7 @@
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
+  backdrop-filter: blur(10vmax);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -19,7 +20,7 @@
 #searchBar {
   display: flex;
   justify-content: center;
-  height: 10%;
+  height: 8%;
   width: 95%;
   margin: 0;
   padding: 2%;
@@ -66,7 +67,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   font-size: 3vmin;
-  height: 40%;
+  height: 51%;
   min-height: 10rem;
   width: 95%;
   margin: 0;
@@ -100,7 +101,7 @@
   flex-direction: column;
   justify-content: flex-start;
   background: transparent;
-  height: 40%;
+  height: 51%;
   min-height: 10rem;
   width: 95%;
   flex-shrink: 0;
@@ -133,7 +134,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 25%;
+  height: 15%;
   min-height: 2.5rem;
   width: 100%;
   margin: 0;
@@ -144,7 +145,7 @@
 }
 
 #searchedText p {
-  font-size: 3vmin;
+  font-size: 1rem;
 }
 
 #searchHistorySongDiv {
@@ -152,8 +153,8 @@
   flex-direction: column;
   justify-content: flex-start;
   background: transparent;
-  height: 50%;
-  min-height: 15rem;
+  height: 41%;
+  min-height: 10rem;
   width: 95%;
   margin: 0;
   margin-bottom: 30vh;
@@ -251,7 +252,7 @@
 
 /* DARK MODE SETTINGS */
 .searchPanel_darkMode {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .searchPanel_darkMode p {
@@ -259,9 +260,9 @@
 }
 
 .searchPanel_darkMode #searchBox {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  border: 1px solid white;
+  border: 0.5px solid white;
 }
 .searchPanel_darkMode #searchBox::placeholder {
   color: white;
@@ -276,22 +277,22 @@
 }
 
 .searchPanel_darkMode #searchResultDiv {
-  background-color: rgb(15, 15, 15);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .searchPanel_darkMode #searchResultBtn {
   color: white;
-  background-color: rgb(25, 25, 25);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .searchPanel_darkMode #searchedTextDiv,
 .searchPanel_darkMode #searchedSongDiv {
-  background-color: rgb(15, 15, 15);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .searchPanel_darkMode #searchedText {
   color: white;
-  background-color: rgb(25, 25, 25);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 
@@ -299,7 +300,7 @@
 
 /* LIGHT MODE SETTINIGS */
 .searchPanel_lightMode {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .searchPanel_lightMode p {
@@ -307,9 +308,9 @@
 }
 
 .searchPanel_lightMode #searchBox {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
   color: black;
-  border: 1px solid black;
+  border: 0.5px solid black;
 }
 
 .searchPanel_lightMode #searchBox::placeholder {
@@ -326,20 +327,20 @@
 }
 
 .searchPanel_lightMode #searchResultDiv {
-  background-color: rgb(220, 220, 220);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .searchPanel_lightMode #searchResultBtn {
   color: black;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .searchPanel_lightMode #searchedTextDiv,
 .searchPanel_lightMode #searchedSongDiv {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(255, 255, 255,0.7);
 }
 
 .searchPanel_lightMode #searchedText {
   color: black;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255,0.8);
 }

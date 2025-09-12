@@ -1,6 +1,7 @@
 //VARIABLES
 let currentThemeColor = "DARK";
 let currentThemeColorIcon = "dark_mode";
+let BlurActive = true;
 
 //CREATING ELEMENTS
 let accountPanel = document.createElement("div");
@@ -72,7 +73,7 @@ ChangePassDiv.id = "buttonDiv";
 let bnChangePass = document.createElement("button");
 ChangePassDiv.appendChild(bnChangePass);
 bnChangePass.id = "bnChangePass";
-bnChangePass.addEventListener("click", showChangePassDiv);
+bnChangePass.addEventListener("click", f_changePass);
 let bnChangePassIcon = document.createElement("span");
 bnChangePass.appendChild(bnChangePassIcon);
 bnChangePassIcon.className = "material-symbols-rounded";
@@ -117,6 +118,7 @@ ChangeThemeDiv.id = "buttonDiv";
 let bnChangeTheme = document.createElement("button");
 ChangeThemeDiv.appendChild(bnChangeTheme);
 bnChangeTheme.id = "bnChangeTheme";
+bnChangeTheme.addEventListener("click", f_changeTheme);
 let bnChangeThemeIcon = document.createElement("span");
 bnChangeTheme.appendChild(bnChangeThemeIcon);
 bnChangeThemeIcon.className = "material-symbols-rounded";
@@ -132,29 +134,6 @@ let changeThemeSelectionIcon = document.createElement("span");
 changeThemeTextContainer.appendChild(changeThemeSelectionIcon);
 changeThemeSelectionIcon.className = "material-symbols-rounded";
 changeThemeSelectionIcon.textContent = "arrow_forward_ios";
-
-let ChangeColorDiv = document.createElement("div");
-settingsPanel.appendChild(ChangeColorDiv);
-ChangeColorDiv.id = "buttonDiv";
-let bnChangeColor = document.createElement("button");
-ChangeColorDiv.appendChild(bnChangeColor);
-bnChangeColor.id = "bnChangeColor";
-bnChangeColor.addEventListener("click", f_changeThemeColor);
-let bnChangeColorIcon = document.createElement("span");
-bnChangeColor.appendChild(bnChangeColorIcon);
-bnChangeColorIcon.className = "material-symbols-rounded";
-bnChangeColorIcon.textContent = currentThemeColorIcon;
-bnChangeColorIcon.id = "settingBtnIcon";
-let ChangeColorTextContainer = document.createElement("div");
-ChangeColorTextContainer.className = "buttonTextContainer";
-bnChangeColor.appendChild(ChangeColorTextContainer);
-let bnChangeColorP = document.createElement("p");
-ChangeColorTextContainer.appendChild(bnChangeColorP);
-bnChangeColorP.textContent = currentThemeColor;
-let ChangeColorSelectionIcon = document.createElement("span");
-ChangeColorTextContainer.appendChild(ChangeColorSelectionIcon);
-ChangeColorSelectionIcon.className = "material-symbols-rounded";
-ChangeColorSelectionIcon.textContent = "unfold_more";
 
 let AudioQualityDiv = document.createElement("div");
 settingsPanel.appendChild(AudioQualityDiv);
@@ -259,52 +238,202 @@ function showInfo() {
   favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
 }
 
-function showChangePassDiv() {
-  ChangePassConDiv.style.display = "flex";
-  bnChangePass.removeEventListener("click", showChangePassDiv);
-  bnChangePass.addEventListener("click", hideChangePassDiv);
+
+
+
+// CHANGEPASS DIV==================================
+let changePassPanel = document.createElement("div");
+changePassPanel.id = "changePassPanel";
+
+let changePassPanelTopBar = document.createElement("div");
+changePassPanel.appendChild(changePassPanelTopBar);
+changePassPanelTopBar.id = "changePassPanelTopBar";
+
+let bnBackChangePassPanel = document.createElement("button");
+changePassPanelTopBar.appendChild(bnBackChangePassPanel);
+bnBackChangePassPanel.id = "bnBackChangePassPanel";
+bnBackChangePassPanel.addEventListener("click", f_backChangePassPanel);
+let backChangePassIcon = document.createElement("span");
+bnBackChangePassPanel.appendChild(backChangePassIcon);
+backChangePassIcon.className = "material-symbols-rounded";
+backChangePassIcon.textContent = "arrow_back_ios_new";
+let bnBackChangePassPanelP = document.createElement("p");
+bnBackChangePassPanel.appendChild(bnBackChangePassPanelP);
+bnBackChangePassPanelP.textContent = "BACK";
+
+let changePassConDiv = document.createElement("div");
+changePassPanel.appendChild(changePassConDiv);
+changePassConDiv.id = "changePassConDiv";
+
+let changePassTitleP = document.createElement("p");
+changePassConDiv.appendChild(changePassTitleP);
+changePassTitleP.textContent = "CHANGE PASSWORD";
+
+let changePassFormDiv = document.createElement("div");
+changePassConDiv.appendChild(changePassFormDiv);
+
+let oldPasswordInput = document.createElement("input");
+changePassFormDiv.appendChild(oldPasswordInput);
+oldPasswordInput.type = "password";
+oldPasswordInput.placeholder = "OLD PASSWORD";
+
+let newPasswordInput = document.createElement("input");
+changePassFormDiv.appendChild(newPasswordInput);
+newPasswordInput.type = "password";
+newPasswordInput.placeholder = "NEW PASSWORD";
+
+let confirmPasswordInput = document.createElement("input");
+changePassFormDiv.appendChild(confirmPasswordInput);
+confirmPasswordInput.type = "password";
+confirmPasswordInput.placeholder = "CONFIRM NEW PASSWORD";
+
+let cancelChangePassBtn = document.createElement("button");
+changePassFormDiv.appendChild(cancelChangePassBtn);
+cancelChangePassBtn.id = "cancelChangePassBtn";
+cancelChangePassBtn.textContent = "CANCEL";
+cancelChangePassBtn.addEventListener("click", f_cancelChangePassword);
+
+let confirmChangePassBtn = document.createElement("button");
+changePassFormDiv.appendChild(confirmChangePassBtn);
+confirmChangePassBtn.id = "confirmChangePassBtn";
+confirmChangePassBtn.textContent = "CHANGE";
+confirmChangePassBtn.addEventListener("click", f_confirmChangePassword);
+
+
+function f_changePass() {
+  accountPanel.replaceChild(changePassPanel,settingsPanel)
 }
 
-function hideChangePassDiv() {
-  ChangePassConDiv.style.display = "none";
-  bnChangePass.removeEventListener("click", hideChangePassDiv);
-  bnChangePass.addEventListener("click", showChangePassDiv);
+function f_backChangePassPanel() {
+  accountPanel.replaceChild(settingsPanel, changePassPanel);
 }
+
+function f_cancelChangePassword() {}
 
 function f_confirmChangePassword() {}
 
+
+
+// MANAGEHISTORY DIV==============================
 function f_manageHistory() {}
+
+
+
+// CHANGE THEME DIV================================
+let changeThemePanel = document.createElement("div");
+changeThemePanel.id = "changeThemePanel";
+
+let changeThemePanelTopBar = document.createElement("div");
+changeThemePanel.appendChild(changeThemePanelTopBar);
+changeThemePanelTopBar.id = "changeThemePanelTopBar";
+
+let bnBackChangeThemePanel = document.createElement("button");
+changeThemePanelTopBar.appendChild(bnBackChangeThemePanel);
+bnBackChangeThemePanel.id = "bnBackChangeThemePanel";
+bnBackChangeThemePanel.addEventListener("click", f_backChangeThemePanel);
+let backChangeThemeIcon = document.createElement("span");
+bnBackChangeThemePanel.appendChild(backChangeThemeIcon);
+backChangeThemeIcon.className = "material-symbols-rounded";
+backChangeThemeIcon.textContent = "arrow_back_ios_new";
+let bnBackChangeThemePanelP = document.createElement("p");
+bnBackChangeThemePanel.appendChild(bnBackChangeThemePanelP);
+bnBackChangeThemePanelP.textContent = "BACK";
+
+let changeThemeConDiv = document.createElement("div");
+changeThemePanel.appendChild(changeThemeConDiv);
+changeThemeConDiv.id = "changeThemeConDiv";
+
+let ChangeColorDiv = document.createElement("div");
+changeThemeConDiv.appendChild(ChangeColorDiv);
+ChangeColorDiv.id = "buttonDiv";
+let bnChangeColor = document.createElement("button");
+ChangeColorDiv.appendChild(bnChangeColor);
+bnChangeColor.id = "bnChangeColor";
+bnChangeColor.addEventListener("click", f_changeThemeColor);
+let bnChangeColorIcon = document.createElement("span");
+bnChangeColor.appendChild(bnChangeColorIcon);
+bnChangeColorIcon.className = "material-symbols-rounded";
+bnChangeColorIcon.textContent = currentThemeColorIcon;
+bnChangeColorIcon.id = "settingBtnIcon";
+let ChangeColorTextContainer = document.createElement("div");
+ChangeColorTextContainer.className = "buttonTextContainer";
+bnChangeColor.appendChild(ChangeColorTextContainer);
+let bnChangeColorP = document.createElement("p");
+ChangeColorTextContainer.appendChild(bnChangeColorP);
+bnChangeColorP.textContent = currentThemeColor;
+let ChangeColorSelectionIcon = document.createElement("span");
+ChangeColorTextContainer.appendChild(ChangeColorSelectionIcon);
+ChangeColorSelectionIcon.className = "material-symbols-rounded";
+ChangeColorSelectionIcon.textContent = "unfold_more";
+
+let ChangeBlurDiv = document.createElement("div");
+changeThemeConDiv.appendChild(ChangeBlurDiv);
+ChangeBlurDiv.id = "ChangeBlurDiv";
+let changeBlurP = document.createElement("p");
+ChangeBlurDiv.appendChild(changeBlurP);
+changeBlurP.id = "changeBlurP";
+changeBlurP.textContent = "BLUR EFFECT";
+let changeBlurToggle = document.createElement("div");
+ChangeBlurDiv.appendChild(changeBlurToggle);
+changeBlurToggle.id = "changeBlurToggle";
+changeBlurToggle.addEventListener("click", f_changeBlur);
+let changeBlurToggleBall = document.createElement("p");
+changeBlurToggle.appendChild(changeBlurToggleBall);
+changeBlurToggleBall.id = "changeBlurToggleBall";
+
+function f_changeTheme() {
+  accountPanel.replaceChild(changeThemePanel, settingsPanel)
+}
+
+function f_backChangeThemePanel() {
+  accountPanel.replaceChild(settingsPanel, changeThemePanel)
+}
 
 function f_changeThemeColor() {
   if (currentThemeColor != "DARK") {
     currentThemeColor = "DARK";
     currentThemeColorIcon = "dark_mode";
-    loadingDiv.className = "loadingDiv_darkMode"
+    loadingDiv.className = "loadingDiv_darkMode";
     bottomDiv.className = "bottomDiv_darkMode";
     homePanel.className = "homePanel_darkMode";
     playerPanel.className = "playerPanel_darkMode";
     searchPanel.className = "searchPanel_darkMode";
     libraryPanel.className = "libraryPanel_darkMode";
     accountPanel.className = "accountPanel_darkMode";
-    libraryPanel.className = "libraryPanel_darkMode";
+    loginPanel.className = "loginPanel_darkMode";
     contributionPanel.className = "contributionPanel_darkMode";
   } else if (currentThemeColor != "LIGHT") {
     currentThemeColor = "LIGHT";
     currentThemeColorIcon = "light_mode";
-    loadingDiv.className = "loadingDiv_lightMode"
+    loadingDiv.className = "loadingDiv_lightMode";
     bottomDiv.className = "bottomDiv_lightMode";
     homePanel.className = "homePanel_lightMode";
     playerPanel.className = "playerPanel_lightMode";
     searchPanel.className = "searchPanel_lightMode";
     libraryPanel.className = "libraryPanel_lightMode";
     accountPanel.className = "accountPanel_lightMode";
-    libraryPanel.className = "libraryPanel_lightMode";
+    loginPanel.className = "loginPanel_lightMode";
     contributionPanel.className = "contributionPanel_lightMode";
   }
   bnChangeColorP.textContent = currentThemeColor;
   bnChangeColorIcon.textContent = currentThemeColorIcon;
 }
 
+function f_changeBlur() {
+  if (BlurActive) {
+    changeBlurToggleBall.style.transform = "translateX(0)";
+    changeBlurToggle.style.backgroundColor = "black";
+    BlurActive = false;
+  } else {
+    changeBlurToggleBall.style.transform = "translateX(4vw)";
+    changeBlurToggle.style.backgroundColor = "blue";
+    BlurActive = true;
+  }
+}
+
+
+
+// AUDIO QUALITY DIV================================
 function f_audioQuality() {
   if (signedIn) {
   }
