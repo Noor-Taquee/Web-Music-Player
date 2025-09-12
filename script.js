@@ -10,7 +10,7 @@ let bnAccountPanel = document.getElementById("bnAccountPanel");
 
 
 //CREATING ELEMENTS===================
-loadingDiv.className = "loadingDiv_lightMode";
+loadingDiv.className = "loadingDiv_darkMode";
 bottomDiv.className = "bottomDiv_darkMode";
 
 let miniPlayer = document.createElement("div");

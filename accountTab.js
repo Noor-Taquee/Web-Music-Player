@@ -1,6 +1,6 @@
 //VARIABLES
-let currentTheme = "DARK";
-let currentThemeIcon = "dark_mode";
+let currentThemeColor = "DARK";
+let currentThemeColorIcon = "dark_mode";
 
 //CREATING ELEMENTS
 let accountPanel = document.createElement("div");
@@ -139,18 +139,18 @@ ChangeColorDiv.id = "buttonDiv";
 let bnChangeColor = document.createElement("button");
 ChangeColorDiv.appendChild(bnChangeColor);
 bnChangeColor.id = "bnChangeColor";
-bnChangeColor.addEventListener("click", f_changeTheme);
+bnChangeColor.addEventListener("click", f_changeThemeColor);
 let bnChangeColorIcon = document.createElement("span");
 bnChangeColor.appendChild(bnChangeColorIcon);
 bnChangeColorIcon.className = "material-symbols-rounded";
-bnChangeColorIcon.textContent = currentThemeIcon;
+bnChangeColorIcon.textContent = currentThemeColorIcon;
 bnChangeColorIcon.id = "settingBtnIcon";
 let ChangeColorTextContainer = document.createElement("div");
 ChangeColorTextContainer.className = "buttonTextContainer";
 bnChangeColor.appendChild(ChangeColorTextContainer);
 let bnChangeColorP = document.createElement("p");
 ChangeColorTextContainer.appendChild(bnChangeColorP);
-bnChangeColorP.textContent = currentTheme;
+bnChangeColorP.textContent = currentThemeColor;
 let ChangeColorSelectionIcon = document.createElement("span");
 ChangeColorTextContainer.appendChild(ChangeColorSelectionIcon);
 ChangeColorSelectionIcon.className = "material-symbols-rounded";
@@ -275,10 +275,11 @@ function f_confirmChangePassword() {}
 
 function f_manageHistory() {}
 
-function f_changeTheme() {
-  if (currentTheme != "DARK") {
-    currentTheme = "DARK";
-    currentThemeIcon = "dark_mode";
+function f_changeThemeColor() {
+  if (currentThemeColor != "DARK") {
+    currentThemeColor = "DARK";
+    currentThemeColorIcon = "dark_mode";
+    loadingDiv.className = "loadingDiv_darkMode"
     bottomDiv.className = "bottomDiv_darkMode";
     homePanel.className = "homePanel_darkMode";
     playerPanel.className = "playerPanel_darkMode";
@@ -287,11 +288,10 @@ function f_changeTheme() {
     accountPanel.className = "accountPanel_darkMode";
     libraryPanel.className = "libraryPanel_darkMode";
     contributionPanel.className = "contributionPanel_darkMode";
-    bnChangeThemeP.textContent = "DARK";
-    bnChangeThemeIcon.textContent = "dark_mode";
-  } else if (currentTheme != "LIGHT") {
-    currentTheme = "LIGHT";
-    currentThemeIcon = "light_mode";
+  } else if (currentThemeColor != "LIGHT") {
+    currentThemeColor = "LIGHT";
+    currentThemeColorIcon = "light_mode";
+    loadingDiv.className = "loadingDiv_lightMode"
     bottomDiv.className = "bottomDiv_lightMode";
     homePanel.className = "homePanel_lightMode";
     playerPanel.className = "playerPanel_lightMode";
@@ -300,9 +300,9 @@ function f_changeTheme() {
     accountPanel.className = "accountPanel_lightMode";
     libraryPanel.className = "libraryPanel_lightMode";
     contributionPanel.className = "contributionPanel_lightMode";
-    bnChangeThemeP.textContent = "LIGHT";
-    bnChangeThemeIcon.textContent = "light_mode";
   }
+  bnChangeColorP.textContent = currentThemeColor;
+  bnChangeColorIcon.textContent = currentThemeColorIcon;
 }
 
 function f_audioQuality() {
