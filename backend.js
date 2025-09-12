@@ -22,10 +22,12 @@ let dropbox = new Dropbox.Dropbox({
 function startBackend() {
   fetchUsersInfo().then(() => {
     fetchSongData().then(() => {
-      loadingDiv.style.display = "none";
-      main.style.display = "flex";
+      document.fonts.ready.then(() => {
+        loadingDiv.style.display = "none";
+        main.style.display = "flex";
+      });
     });
-  })
+  });
 }
 
 function updateDataFile() {
