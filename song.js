@@ -124,27 +124,31 @@ function nextSong() {
 }
 
 function prevSong() {
-  if (currentSongIndex > 0) {
-    currentSongIndex--;
-    recentlyPlayedSongList.push(titleNames[currentSongIndex]);
-    updateSongInfo();
-    showLoading();
-    main.style.backgroundImage = `url(${currentAlbumArt})`;
-    changePicture("miniPlayer");
-    if (main.contains(playerPanel) && pictureDiv.contains(albumArt)) {
-        albumArt.style.animation = "fadeOutAhead";
-        albumArt.style.animationDuration = "0.2s";
-        albumArt.style.animationTimingFunction = "ease-in-out";
-        albumArt.addEventListener("animationend",function animatePrev() {
-          albumArt.removeEventListener("animationend",animatePrev);
-          changePicture("player");
-          albumArt.style.animation = "fadeInBehind";
+  if (song.currentTime < 5) {
+    if (currentSongIndex > 0) {
+      currentSongIndex--;
+      recentlyPlayedSongList.push(titleNames[currentSongIndex]);
+      updateSongInfo();
+      showLoading();
+      main.style.backgroundImage = `url(${currentAlbumArt})`;
+      changePicture("miniPlayer");
+      if (main.contains(playerPanel) && pictureDiv.contains(albumArt)) {
+          albumArt.style.animation = "fadeOutAhead";
           albumArt.style.animationDuration = "0.2s";
           albumArt.style.animationTimingFunction = "ease-in-out";
-        });
-    } else {
-      changePicture("player");
+          albumArt.addEventListener("animationend",function animatePrev() {
+            albumArt.removeEventListener("animationend",animatePrev);
+            changePicture("player");
+            albumArt.style.animation = "fadeInBehind";
+            albumArt.style.animationDuration = "0.2s";
+            albumArt.style.animationTimingFunction = "ease-in-out";
+          });
+      } else {
+        changePicture("player");
+      }
     }
+  } else  {
+    setTimeTo(0);
   }
 }
 

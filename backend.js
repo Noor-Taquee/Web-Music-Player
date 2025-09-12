@@ -20,8 +20,12 @@ let dropbox = new Dropbox.Dropbox({
 });
 
 function startBackend() {
-  fetchSongData();
-  fetchUsersInfo();
+  fetchUsersInfo().then(() => {
+    fetchSongData().then(() => {
+      loadingDiv.style.display = "none";
+      main.style.display = "flex";
+    });
+  })
 }
 
 function updateDataFile() {
@@ -43,7 +47,7 @@ function loadInfo(path) {
   });
 }
 function fetchSongData() {
-  loadInfo("/JSON/HindiSongs.json").then(data => {
+  return loadInfo("/JSON/HindiSongs.json").then(data => {
     Object.assign(songData,data);
     HindiTitles = Object.keys(data);
     return loadInfo("/JSON/PunjabiSongs.json");
@@ -79,28 +83,33 @@ function fetchSongData() {
 }
 
 function fetchUsersInfo() {
-  loadInfo("/JSON/UserFile.json").then(response => {
+  return loadInfo("/JSON/UserFile.json").then(response => {
     data = response;
     usersList = Object.keys(data);
   });
 }
 
 function fetchUserData(userGivenName) {
-  userData = data[userGivenName];
-  userName = userData.profileName;
-  profilePicImage = userData.profilePic;
-  accountPassword = userData.password;
-  volumeLevel = userData.volumeLevel;
-  favouriteSongList = userData.favouriteSongList;
-  recentlyPlayedSongList = userData.recentlyPlayedSongList;
-  searchedTextList = userData.searchedTextList;
-  searchedSongList = userData.searchedSongList;
-  likedSongList = userData.likedSongList;
-  playlistList  = userData.playlistList;
-  signedIn = true;
-  showInfo();
-  loadPlaylists();
-  loadRecentlyPlayedSongs();
-  loadSearchHistory();
+  return new Promise((resolve,reject) => {
+    setTimeout(() => {
+      userData = data[userGivenName];
+      userName = userData.profileName;
+      profilePicImage = userData.profilePic;
+      accountPassword = userData.password;
+      volumeLevel = userData.volumeLevel;
+      favouriteSongList = userData.favouriteSongList;
+      recentlyPlayedSongList = userData.recentlyPlayedSongList;
+      searchedTextList = userData.searchedTextList;
+      searchedSongList = userData.searchedSongList;
+      likedSongList = userData.likedSongList;
+      playlistList  = userData.playlistList;
+      signedIn = true;
+      showInfo();
+      loadPlaylists();
+      loadRecentlyPlayedSongs();
+      loadSearchHistory();
+      resolve();
+    },1000)
+  });
 }
 attend();

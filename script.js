@@ -1,4 +1,5 @@
 //ELEMENTS==========================
+let loadingDiv  = document.getElementById("loadingDiv");
 let main = document.getElementById("main");
 let bottomDiv = document.getElementById("bottomDiv");
 let switchDiv = document.getElementById("switchDiv");
@@ -9,6 +10,9 @@ let bnAccountPanel = document.getElementById("bnAccountPanel");
 
 
 //CREATING ELEMENTS===================
+loadingDiv.className = "loadingDiv_lightMode";
+bottomDiv.className = "bottomDiv_darkMode";
+
 let miniPlayer = document.createElement("div");
 miniPlayer.id = "miniPlayer";
 

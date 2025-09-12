@@ -3,8 +3,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  backdrop-filter: blur(10vmax);;
-  background-color: rgba(0, 0, 0, 0.4);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -27,7 +25,6 @@
   cursor: default;
   font-size: 2rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.7);
   margin: 0;
   padding: 0;
 }
@@ -36,7 +33,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  backdrop-filter: blur(50px);
   background: transparent;
   height: 70%;
   width: 20%;
@@ -48,7 +44,6 @@
 #bnAddPlaylist span {
   cursor: pointer;
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.7);
 }
 #bnAddPlaylist p {
   cursor: pointer;
@@ -64,9 +59,6 @@
   overflow-x: hidden;
   overflow-y: auto;
   font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 85%;
   width: 95%;
   padding: 0;
@@ -90,8 +82,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 15%;
   width: 94%;
   min-height: 4rem;
@@ -99,7 +89,6 @@
   padding-left: 3vw;
   padding-right: 3vw;
   border: none;
-  border-radius: 2rem;
 }
 #playlistInfo {
   display: flex;
@@ -110,15 +99,14 @@
 #playlistInfo p {
   text-align: center;
   white-space: pre;
-  color: rgba(255, 255, 255, 0.7);
   font-size: 3.5vmin;
+  font-weight: 700;
 }
 #playlistPic {
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover;
-  background-color: rgba(255, 255, 255, 0.2);
   height: 7vh;
   width: 7vh;
   margin: 0;
@@ -134,7 +122,6 @@
 #bnOptions span {
   cursor: pointer;
   font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
 }
 #optionPanel {
   position: absolute;
@@ -147,7 +134,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
   margin: auto;
   gap: 0.5vh;
 }
@@ -158,14 +144,11 @@
   align-items: center;
   font-size: 3vmin;
   font-weight: 700;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(100px);
   height: 10%;
   width: 30%;
   border: none;
 }
 #bnCancel {
-  color: rgba(255, 255, 255, 0.7);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
@@ -243,4 +226,104 @@
   background: transparent;
   border: none;
   flex-shrink: 0;
+}
+
+
+
+/* DARK MODE SETTINGS */
+.libraryPanel_darkMode {
+  background-color: black;
+}
+.libraryPanel_darkMode p {
+  color: white;
+}
+
+.libraryPanel_darkMode #bnAddPlaylist {
+  color: white;
+  background-color: rgb(25, 25, 25);
+}
+
+.libraryPanel_darkMode #bnAddPlaylist span {
+  color: white;
+}
+
+.libraryPanel_darkMode #bnAddPlaylist p {
+  color: white;
+}
+
+.libraryPanel_darkMode #libraryContent {
+  background-color: rgb(15, 15, 15);
+}
+
+.libraryPanel_darkMode #playlist {
+  background-color: rgb(25, 25, 25);
+}
+
+.libraryPanel_darkMode #playlist span {
+  color: white;
+}
+
+.libraryPanel_darkMode #optionPanel {
+  background-color: rgb(0, 0, 0,0.2);
+}
+
+.libraryPanel_darkMode #optionPanel button {
+  color: white;
+  background-color: rgba(25, 25, 25);
+}
+
+.libraryPanel_darkMode #bnDelPlaylist p,
+.libraryPanel_darkMode #bnDelPlaylist span {
+  color: rgb(255, 0, 0);
+}
+
+
+
+
+
+/* LIGHT MODE SETTINGS */
+.libraryPanel_lightMode {
+  background-color: white;
+}
+.libraryPanel_lightMode p {
+  color: black;
+}
+
+.libraryPanel_lightMode #bnAddPlaylist {
+  color: black;
+  background-color: rgb(220, 220, 220);
+}
+
+.libraryPanel_lightMode #bnAddPlaylist span {
+  color: black;
+}
+
+.libraryPanel_lightMode #bnAddPlaylist p {
+  color: black;
+}
+
+.libraryPanel_lightMode #libraryContent {
+  background-color: white;
+}
+
+.libraryPanel_lightMode #playlist {
+  background-color: rgb(220, 220, 220);
+}
+
+.libraryPanel_lightMode #playlist span {
+  color: black;
+}
+
+.libraryPanel_lightMode #optionPanel {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.libraryPanel_lightMode #optionPanel button {
+  color: black;
+  background-color: white;
+}
+
+.libraryPanel_lightMode #bnDelPlaylist p,
+.libraryPanel_lightMode #bnDelPlaylist span {
+  color: rgb(255, 0, 0);
 }

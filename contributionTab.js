@@ -1,5 +1,6 @@
 let contributionPanel = document.createElement("div");
 contributionPanel.id = "contributionPanel";
+contributionPanel.className = "contributionPanel_darkMode";
 
 let topBarCT = document.createElement("div");
 contributionPanel.appendChild(topBarCT);
@@ -23,7 +24,6 @@ topBarCT.appendChild(bnContributeCT);
 bnContributeCT.id = "bnContribute";
 bnContributeCT.textContent = "CONTRIBUTE";
 bnContributeCT.addEventListener("click", goToInput);
-
 
 let contributionContent = document.createElement("div");
 contributionPanel.appendChild(contributionContent);
@@ -74,7 +74,6 @@ bnAddCT.textContent = "ADD";
 bnAddCT.addEventListener("click", addContribution);
 
 let messageDivCT = document.createElement("div");
-
 messageDivCT.id = "messageDivCT";
 let messageDivCTP1 = document.createElement("p");
 messageDivCT.appendChild(messageDivCTP1);
@@ -140,11 +139,11 @@ p10.textContent = "STEP 2: GET YOUR SONG LINK FROM DROPBOX";
 
 let p11 = document.createElement("p");
 contributionHelpDiv.appendChild(p11);
-p11.textContent = "Open the Dropbox app or website.";
+p11.textContent = "An audio file of the song. We accept common formats like MP3, M4A, and WAV.";
 
 let p12 = document.createElement("p");
 contributionHelpDiv.appendChild(p12);
-p12.textContent = "Upload the song in your Dropbox account. We accept common formats like MP3, M4A, and WAV.";
+p12.textContent = "Open the Dropbox app or website.";
 
 let p13 = document.createElement("p");
 contributionHelpDiv.appendChild(p13);
@@ -271,6 +270,8 @@ function createID() {
 
 function addContribution() {
   if (checkFields()) {
+    main.style.display = "none";
+    loadingDiv.style.display = "flex"
     contributionRequestFile[createID()] = {
       "user": contributer,
       "name": songNameCT,
@@ -280,13 +281,15 @@ function addContribution() {
       "description": songInfoCT
     };
     dumpInfo("/JSON/addSong.json",contributionRequestFile).then(() => {
+      clearInputFieldsCT();
+      loadingDiv.style.display = "none"
+      main.style.display = "flex";
       showMessage();
-      clearInputFields();
     });
   }
 }
 
-function clearInputFields() {
+function clearInputFieldsCT() {
   songNameInput.value = "";
   artistNameInput.value = "";
   songLinkInput.value = "";

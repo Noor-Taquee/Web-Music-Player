@@ -1,5 +1,6 @@
 let loginPanel = document.createElement("div");
 loginPanel.id = "loginPanel";
+loginPanel.className = "loginPanel_darkMode";
 
 let topBarLT = document.createElement("div");
 loginPanel.appendChild(topBarLT);
@@ -138,6 +139,8 @@ let registerWay = "signIn";
 
 function goBack() {
   switchTo("accountPanel");
+  clearInputFieldsLT();
+  clearInputFieldsCT();
   bottomDiv.style.display = "flex";
 }
 
@@ -148,13 +151,14 @@ function changeMethod() {
     pBottom.textContent = "Already have an account?";
     bnCreateAC.textContent = "SIGN IN";
     registerWay = "signUp";
-} else {
+  } else {
     loginPanel.replaceChild(signInContainer,signUpContainer);
     passDivSignIn.appendChild(eyeIcon);
     pBottom.textContent = "Don't have an account?";
     bnCreateAC.textContent = "CREATE ACCOUNT";
     registerWay = "signIn";
   }
+  clearInputFieldsLT();
 }
 
 function checkIdentity() {
@@ -162,9 +166,13 @@ function checkIdentity() {
   let userGivenPass = passInputSignIn.value;
   if (usersList.includes(userGivenName)) {
     if (data[userGivenName].password == userGivenPass) {
-      fetchUserData(userGivenName);
-      alert("Login Successful!");
-      goBack();
+      main.style.display = "none";
+      loadingDiv.style.display = "flex";
+      fetchUserData(userGivenName).then(() => {
+        main.style.display = "flex";
+        loadingDiv.style.display = "none";
+        goBack();
+      })
     } else {
       alert("Incorrect Password!");
     }
@@ -184,7 +192,6 @@ function checkAvailability() {
   } else if (userGivenFullName.length < 1) {
     alert("Please provide your full name!");
   }else {
-    alert("Account Created!")
     data[userGivenName] = {"profileName":userGivenFullName,
       "profilePic":"",
       "password":userGivenPass,
@@ -194,12 +201,23 @@ function checkAvailability() {
       "searchedSongList":[],
       "favouriteSongList":[]
     };
+    main.style.display = "none";
+    loadingDiv.style.display = "flex";
     updateDataFile().then(() => {
+      loadingDiv.style.display = "none";
+      main.style.display = "flex";
       fetchUserData(userGivenName);
+      goBack();
     })
-    goBack();
   }
 }
 
+function clearInputFieldsLT() {
+  nameInputSignIn.value = "";
+  passInputSignIn.value = "";
+  fullNameInputSignUp.value = "";
+  nameInputSignUp.value = "";
+  passInputSignUp.value = "";
+}
 
 attend();

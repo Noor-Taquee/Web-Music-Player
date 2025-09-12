@@ -1,6 +1,7 @@
 //CREATING ELEMENTS
 let homePanel = document.createElement("div");
 homePanel.id = "homePanel";
+homePanel.className = "homePanel_darkMode";
 
 let homeHeaderDiv = document.createElement("div");
 homePanel.appendChild(homeHeaderDiv);
@@ -16,14 +17,14 @@ homeContentDiv.id = "homeContentDiv";
 
 let recentlyPlayedDiv = document.createElement("div");
 homeContentDiv.appendChild(recentlyPlayedDiv);
-recentlyPlayedDiv.id = "recentlyPlayedDiv";
+recentlyPlayedDiv.className = "songDiv";
 let recentlyPlayedDivText = document.createElement("p");
 recentlyPlayedDiv.appendChild(recentlyPlayedDivText);
-recentlyPlayedDivText.id = "recentlyPlayedDivText";
+recentlyPlayedDivText.className = "songDivText";
 recentlyPlayedDivText.textContent = "RECENTLY PLAYED SONGS";
 let recentlyPlayedDivCon = document.createElement("p");
 recentlyPlayedDiv.appendChild(recentlyPlayedDivCon);
-recentlyPlayedDivCon.id = "recentlyPlayedDivCon";
+recentlyPlayedDivCon.className = "songDivCon";
 let recentlyPlayedDivConText = document.createElement("p");
 recentlyPlayedDivCon.appendChild(recentlyPlayedDivConText);
 recentlyPlayedDivConText.id = "recentlyPlayedDivConText";
@@ -31,69 +32,69 @@ recentlyPlayedDivConText.textContent = "LOGIN TO SEE RECENTLY PLAYED SONGS";
 
 let hindiSongDiv = document.createElement("div");
 homeContentDiv.appendChild(hindiSongDiv);
-hindiSongDiv.id = "hindiSongDiv";
+hindiSongDiv.className = "songDiv";
 let hindiSongDivText = document.createElement("p");
 hindiSongDiv.appendChild(hindiSongDivText);
-hindiSongDivText.id = "hindiSongDivText";
+hindiSongDivText.className = "songDivText";
 hindiSongDivText.textContent = "HINDI SONGS";
 let hindiSongDivCon = document.createElement("p");
 hindiSongDiv.appendChild(hindiSongDivCon);
-hindiSongDivCon.id = "hindiSongDivCon";
+hindiSongDivCon.className = "songDivCon";
 
 let punjabiSongDiv = document.createElement("div");
 homeContentDiv.appendChild(punjabiSongDiv);
-punjabiSongDiv.id = "punjabiSongDiv";
+punjabiSongDiv.className = "songDiv";
 let punjabiSongDivText = document.createElement("p");
 punjabiSongDiv.appendChild(punjabiSongDivText);
-punjabiSongDivText.id = "punjabiSongDivText";
+punjabiSongDivText.className = "songDivText";
 punjabiSongDivText.textContent = "PUNJABI SONGS";
 let punjabiSongDivCon = document.createElement("p");
 punjabiSongDiv.appendChild(punjabiSongDivCon);
-punjabiSongDivCon.id = "punjabiSongDivCon";
+punjabiSongDivCon.className = "songDivCon";
 
 let englishSongDiv = document.createElement("div");
 homeContentDiv.appendChild(englishSongDiv);
-englishSongDiv.id = "englishSongDiv";
+englishSongDiv.className = "songDiv";
 let englishSongDivText = document.createElement("p");
 englishSongDiv.appendChild(englishSongDivText);
-englishSongDivText.id = "englishSongDivText";
+englishSongDivText.className = "songDivText";
 englishSongDivText.textContent = "ENGLISH SONGS";
 let englishSongDivCon = document.createElement("p");
 englishSongDiv.appendChild(englishSongDivCon);
-englishSongDivCon.id = "englishSongDivCon";
+englishSongDivCon.className = "songDivCon";
 
 let phonkSongDiv = document.createElement("div");
 homeContentDiv.appendChild(phonkSongDiv);
-phonkSongDiv.id = "phonkSongDiv";
+phonkSongDiv.className = "songDiv";
 let phonkSongDivText = document.createElement("p");
 phonkSongDiv.appendChild(phonkSongDivText);
-phonkSongDivText.id = "phonkSongDivText";
+phonkSongDivText.className = "songDivText";
 phonkSongDivText.textContent = "PHONK SONGS";
 let phonkSongDivCon = document.createElement("p");
 phonkSongDiv.appendChild(phonkSongDivCon);
-phonkSongDivCon.id = "phonkSongDivCon";
+phonkSongDivCon.className = "songDivCon";
 
 let spanishSongDiv = document.createElement("div");
 homeContentDiv.appendChild(spanishSongDiv);
-spanishSongDiv.id = "spanishSongDiv";
+spanishSongDiv.className = "songDiv";
 let spanishSongDivText = document.createElement("p");
 spanishSongDiv.appendChild(spanishSongDivText);
-spanishSongDivText.id = "spanishSongDivText";
+spanishSongDivText.className = "songDivText";
 spanishSongDivText.textContent = "SPANISH SONGS";
 let spanishSongDivCon = document.createElement("p");
 spanishSongDiv.appendChild(spanishSongDivCon);
-spanishSongDivCon.id = "spanishSongDivCon";
+spanishSongDivCon.className = "songDivCon";
 
 let tunesDiv = document.createElement("div");
 homeContentDiv.appendChild(tunesDiv);
-tunesDiv.id = "tunesDiv";
+tunesDiv.className = "songDiv";
 let tunesDivText = document.createElement("p");
 tunesDiv.appendChild(tunesDivText);
-tunesDivText.id = "tunesDivText";
+tunesDivText.className = "songDivText";
 tunesDivText.textContent = "TUNES";
 let tunesDivCon = document.createElement("p");
 tunesDiv.appendChild(tunesDivCon);
-tunesDivCon.id = "tunesDivCon";
+tunesDivCon.className = "songDivCon";
 
 let homePanelSpace = document.createElement("div");
 homeContentDiv.appendChild(homePanelSpace);

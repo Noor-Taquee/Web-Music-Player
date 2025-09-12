@@ -3,6 +3,7 @@ let playlistNameList = [];
 //CREATING ELEMENTS
 let libraryPanel = document.createElement("div");
 libraryPanel.id = "libraryPanel";
+libraryPanel.className =  "libraryPanel_darkMode";
 
 let libraryHeader = document.createElement("div");
 libraryPanel.appendChild(libraryHeader);

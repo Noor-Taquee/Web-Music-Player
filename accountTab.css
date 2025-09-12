@@ -3,35 +3,32 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  backdrop-filter: blur(10vmax);
-  background-color: rgba(0,0,0,0.3);
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
   border: none;
 }
+#accountPanel .material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1;
+}
 #accountInfoHeader {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 25%;
+  height: 20%;
   width: 90%;
   gap: 2vw;
 }
-#accountPanel .material-symbols-rounded {
-  color: rgba(255, 255, 255, 0.7);
-}
 #profilePic {
-  cursor: pointer;
+  cursor: default;
   position: relative;
   z-index: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 17vh;
   width: 17vh;
   margin: 0;
@@ -40,18 +37,12 @@
 }
 #profilePicIcon {
   font-size: 17vh;
-  color: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: 50%;
-}
-#profilePic:hover #editIcon {
-  display: flex;
 }
 #profileInfoCard {
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 17vh;
   width: 60%;
   margin: 0;
@@ -66,7 +57,6 @@
   text-align: left;
   font-size: 3vmin;
   font-weight: 900;
-  color: rgba(255,255,255,0.7);
   height: 65%;
   width: 100%;
   margin: 0;
@@ -80,8 +70,6 @@
   align-items: center;
   font-size: 3vmin;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.3);
   height: 60%;
   width: 90%;
   border: none;
@@ -90,7 +78,6 @@
 #separator {
   display: flex;
   align-self: center;
-  color: black;
   height: 0.01px;
   width: 95%;
   margin: 0;
@@ -115,7 +102,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: rgba(255, 255, 255, 0.7);
   background: transparent;
   height: 100%;
   gap: 1vw;
@@ -135,9 +121,7 @@
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  backdrop-filter: blur(50px);
-  background: rgba(0, 0, 0, 0.1);
-  height: 75%;
+  height: 80%;
   width: 95%;
   margin: 0;
   padding: 0;
@@ -149,28 +133,44 @@
   width: 0;
   background: transparent;
 }
-#settingsPanel button {
-  cursor: pointer;
+#buttonDiv {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: 15%;
+  justify-content: center;
+  align-items: flex-end;
+  height: fit-content;
   min-height: 3.5rem;
+  width: 100%;
   margin: 0;
   padding: 0;
-  padding-left: 2vw;
-  gap: 3vw;
+  flex-shrink: 0;
   border: none;
-  border-radius: 1.5rem;
 }
-#settingsPanel button i,
-#settingsPanel button p {
-  font-size: 3vmin;
-  font-weight: 700;
-  color: rgba(255,255,255,0.7);
+#buttonDiv button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+#settingBtnIcon {
+  justify-self: center;
+  align-self: center;
+  height: fit-content;
+  width: 10%;
+  margin: auto;
+  padding: auto;
+}
+.buttonTextContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 100%;
 }
 #accountPanelSpace {
   height: 30vh;
@@ -178,4 +178,62 @@
   background: transparent;
   border: none;
   flex-shrink: 0;
+}
+
+
+
+
+/* DARK MODE SETTINGS */
+.accountPanel_darkMode {
+  background-color: black;
+}
+
+.accountPanel_darkMode p {
+  color: white;
+}
+
+.accountPanel_darkMode span {
+  color: white;
+}
+
+.accountPanel_darkMode #bnLogin {
+  color: black;
+  background-color: white;
+}
+
+.accountPanel_darkMode #profileInfoCard {
+  background-color: rgb(15,15,15);
+}
+
+.accountPanel_darkMode #settingsPanel {
+  background-color: rgb(15,15,15);
+}
+
+
+
+/* LIGHT MODE SETTINGS */
+
+.accountPanel_lightMode {
+  background-color: white;
+}
+
+.accountPanel_lightMode p {
+  color: black;
+}
+
+.accountPanel_lightMode span {
+  color: black;
+}
+
+.accountPanel_lightMode #bnLogin {
+  color: white;
+  background-color: black;
+}
+
+.accountPanel_lightMode #profileInfoCard {
+  background-color: rgb(220,220,220);
+}
+
+.accountPanel_lightMode #settingsPanel {
+  background-color: rgb(220,220,220);
 }

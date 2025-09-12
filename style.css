@@ -1,4 +1,4 @@
-#main {
+#body {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -12,11 +12,66 @@
   width: 100vw;
   margin: 0;
   padding: 0;
-  transition: all 1.0s ease-in-out;
 }
-#main::-webkit-scrollbar {
+#body::-webkit-scrollbar {
   width: 0;
   background: transparent;
+}
+
+#loadingDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.bar {
+  justify-self: center;
+  align-self: center;
+  height: 10%;
+  width: 5%;
+  border-radius: 1rem;
+  animation: shrink;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bar:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.bar:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.bar:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.bar:nth-child(6) {
+  animation-delay: 1.0s;
+}
+.bar:nth-child(7) {
+  animation-delay: 0.8s;
+}
+#main {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;
+  background-image: none;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  transition: all 1.0s ease-in-out;
 }
 
 #bottomDiv {
@@ -33,13 +88,10 @@
   flex-direction: column;
   justify-content: stretch;
   align-items: center;
-  backdrop-filter: blur(5vw);
-  background-color: rgba(255, 255, 255, 0.15);
   height: 10vh;
   max-height: 25vw;
   width: 95%;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 2rem;
 }
 #miniPlayer {
@@ -70,7 +122,6 @@
   align-items: center;
   background-image: url("");
   background-size: cover;
-  background-color: rgba(255, 255, 255, 0.7);
   width: 4.5vh;
   max-height: 12vw;
   height: 4.5vh;
@@ -80,7 +131,6 @@
 }
 #miniAlbumArt span {
   font-size: 4vmin;
-  color: rgba(0,0,0,0.5);
 }
 
 #miniTrackInfoDiv {
@@ -88,7 +138,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  color: rgba(255, 255, 255, 0.7);
   background: transparent;
   height: 100%;
   width: 80%;
@@ -103,7 +152,6 @@
   text-overflow: ellipsis;
   font-size: 3.5vmin;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.7);
   height: fit-content;
   width: 100%;
   margin: 0;
@@ -115,7 +163,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 2.5vmin;
-  color: rgba(255, 255, 255, 0.5);
   height: fit-content;
   width: 100%;
   margin: 0;
@@ -133,7 +180,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(255, 255, 255, 0.7);
   background: transparent;
   height: 100%;
   width: 30%;
@@ -183,15 +229,67 @@
 #switchDiv span {
   font-size: 2rem;
   margin: 0;
-  color: rgba(255, 255, 255, 0.3);
 }
 #activeButton span {
   font-variation-settings:
   'FILL' 1;
   font-size: 2rem;
   margin: 0;
-  color: rgba(255, 255, 255, 0.7);
 }
 .material-symbols-rounded {
   font-family: 'Material Symbols Rounded';
+}
+
+
+
+
+/* LIGHT MODE SETTINGS */
+.loadingDiv_lightMode {
+  background-color: white;
+}
+.loadingDiv_lightMode .bar {
+  background-color: black;
+}
+.bottomDiv_lightMode {
+  background-color: white;
+  border: 1px solid black;
+}
+.bottomDiv_lightMode p {
+  color: black;
+}
+.bottomDiv_lightMode span {
+  color: black;
+}
+.bottomDiv_lightMode #switchDiv span {
+  color: rgba(0,0,0,0.75);
+}
+.bottomDiv_lightMode #activeButton span {
+  color: rgba(0,0,0);
+}
+
+
+
+
+/* DARK MODE SETTINGS */
+.loadingDiv_darkMode {
+  background-color: black;
+}
+.loadingDiv_darkMode .bar {
+  background-color: white;
+}
+.bottomDiv_darkMode {
+  background-color: rgb(20, 20, 20);
+  border: 1px solid white;
+}
+.bottomDiv_darkMode p {
+  color: white;
+}
+.bottomDiv_darkMode span {
+  color: white;
+}
+.bottomDiv_darkMode #switchDiv span {
+  color: rgba(255,255,255,0.5);
+}
+.bottomDiv_darkMode #activeButton span {
+  color: rgba(255,255,255);
 }

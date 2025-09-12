@@ -5,8 +5,6 @@
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  backdrop-filter: blur(10vmax);
-  background-color: rgba(0, 0, 0, 0.4);
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -30,9 +28,6 @@
 
 #searchBox {
   font-size: 100%;
-  backdrop-filter: blur(50px);
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 100%;
   width: 75%;
   margin: 0;
@@ -44,7 +39,6 @@
 }
 #searchBox::placeholder {
   font-size: 100%;
-  color: rgba(255, 255, 255, 0.7);
 }
 #searchBox:focus {
   outline: none;
@@ -55,9 +49,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(50px);
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 100%;
   width: 25%;
   margin: 0;
@@ -74,10 +65,7 @@
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  backdrop-filter: blur(50px);
   font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 40%;
   min-height: 10rem;
   width: 95%;
@@ -97,9 +85,6 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.2);
   height: 25%;
   min-height: 3rem;
   width: 100%;
@@ -108,7 +93,6 @@
   padding-left: 5%;
   padding-right: 5%;
   border: none;
-  border-radius: 2rem;
 }
 
 #searchHistoryTextDiv {
@@ -129,10 +113,7 @@
   align-items: center;
   overflow-x: hidden;
   overflow-y: auto;
-  backdrop-filter: blur(50px);
   font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 85%;
   width: 100%;
   margin: 0;
@@ -152,8 +133,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.2);
   height: 25%;
   min-height: 2.5rem;
   width: 100%;
@@ -162,16 +141,10 @@
   padding-left: 5%;
   padding-right: 5%;
   border: none;
-  border-radius: 2rem;
 }
 
 #searchedText p {
   font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-#searchedText span {
-  color: rgba(255, 255, 255, 0.7);
 }
 
 #searchHistorySongDiv {
@@ -195,7 +168,6 @@
   cursor: default;
   font-size: 5vmin;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.7);
   height: 15%;
   width: 100%;
   margin-top:  1vh;
@@ -209,9 +181,6 @@
   overflow-x: auto;
   overflow-y: hidden;
   font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(50px);
-  background-color: rgba(0, 0, 0, 0.1);
   height: 85%;
   width: 100%;
   margin: 0;
@@ -237,7 +206,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(50px);
   background: transparent;
   height: 30vh;
   width: 30vh;
@@ -265,7 +233,6 @@
   white-space: pre;
   text-overflow: ellipsis;
   font-size: 3vmin;
-  color: rgba(255, 255, 255, 0.7);
   height: 15%;
   width: 90%;
   margin: 0;
@@ -277,4 +244,102 @@
   background: transparent;
   border: none;
   flex-shrink: 0;
+}
+
+
+
+
+/* DARK MODE SETTINGS */
+.searchPanel_darkMode {
+  background-color: black;
+}
+
+.searchPanel_darkMode p {
+  color: white;
+}
+
+.searchPanel_darkMode #searchBox {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+.searchPanel_darkMode #searchBox::placeholder {
+  color: white;
+}
+
+.searchPanel_darkMode #bnSearch {
+  background-color: white;
+  color: black;
+}
+.searchPanel_darkMode #bnSearch p {
+  color: black;
+}
+
+.searchPanel_darkMode #searchResultDiv {
+  background-color: rgb(15, 15, 15);
+}
+
+.searchPanel_darkMode #searchResultBtn {
+  color: white;
+  background-color: rgb(25, 25, 25);
+}
+
+.searchPanel_darkMode #searchedTextDiv,
+.searchPanel_darkMode #searchedSongDiv {
+  background-color: rgb(15, 15, 15);
+}
+
+.searchPanel_darkMode #searchedText {
+  color: white;
+  background-color: rgb(25, 25, 25);
+}
+
+
+
+
+/* LIGHT MODE SETTINIGS */
+.searchPanel_lightMode {
+  background-color: white;
+}
+
+.searchPanel_lightMode p {
+  color: black;
+}
+
+.searchPanel_lightMode #searchBox {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.searchPanel_lightMode #searchBox::placeholder {
+  color: black;
+}
+
+.searchPanel_lightMode #bnSearch {
+  background-color: black;
+  color: white;
+}
+
+.searchPanel_lightMode #bnSearch p {
+  color: white;
+}
+
+.searchPanel_lightMode #searchResultDiv {
+  background-color: rgb(220, 220, 220);
+}
+
+.searchPanel_lightMode #searchResultBtn {
+  color: black;
+  background-color: white;
+}
+
+.searchPanel_lightMode #searchedTextDiv,
+.searchPanel_lightMode #searchedSongDiv {
+  background-color: rgb(220, 220, 220);
+}
+
+.searchPanel_lightMode #searchedText {
+  color: black;
+  background-color: rgb(255, 255, 255);
 }

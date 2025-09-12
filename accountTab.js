@@ -1,6 +1,11 @@
+//VARIABLES
+let currentTheme = "DARK";
+let currentThemeIcon = "dark_mode";
+
 //CREATING ELEMENTS
 let accountPanel = document.createElement("div");
 accountPanel.id = "accountPanel";
+accountPanel.className = "accountPanel_darkMode";
 
 let accountInfoHeader = document.createElement("div");
 accountPanel.appendChild(accountInfoHeader);
@@ -61,74 +66,163 @@ let settingsPanel = document.createElement("div");
 accountPanel.appendChild(settingsPanel);
 settingsPanel.id = "settingsPanel";
 
-let bnSettings = document.createElement("button");
-settingsPanel.appendChild(bnSettings);
-bnSettings.id = "bnSettings";
-let bnSettingsIcon = document.createElement("span");
-bnSettings.appendChild(bnSettingsIcon);
-bnSettingsIcon.className = "material-symbols-rounded";
-bnSettingsIcon.textContent = "settings";
-let bnSettingsP = document.createElement("p");
-bnSettings.appendChild(bnSettingsP);
-bnSettingsP.textContent = "SETTINGS";
-
+let ChangePassDiv = document.createElement("div");
+settingsPanel.appendChild(ChangePassDiv);
+ChangePassDiv.id = "buttonDiv";
 let bnChangePass = document.createElement("button");
-settingsPanel.appendChild(bnChangePass);
+ChangePassDiv.appendChild(bnChangePass);
 bnChangePass.id = "bnChangePass";
-bnChangePass.addEventListener("click",changePassword);
+bnChangePass.addEventListener("click", showChangePassDiv);
 let bnChangePassIcon = document.createElement("span");
 bnChangePass.appendChild(bnChangePassIcon);
 bnChangePassIcon.className = "material-symbols-rounded";
 bnChangePassIcon.textContent = "password";
+bnChangePassIcon.id = "settingBtnIcon";
+let changePassTextContainer = document.createElement("div");
+changePassTextContainer.className = "buttonTextContainer";
+bnChangePass.appendChild(changePassTextContainer);
 let bnChangePassP = document.createElement("p");
-bnChangePass.appendChild(bnChangePassP);
+changePassTextContainer.appendChild(bnChangePassP);
 bnChangePassP.textContent = "CHANGE PASSWORD";
+let changePassSelectionIcon = document.createElement("span");
+changePassTextContainer.appendChild(changePassSelectionIcon);
+changePassSelectionIcon.className = "material-symbols-rounded";
+changePassSelectionIcon.textContent = "arrow_forward_ios";
 
+let ManageHistoryDiv = document.createElement("div");
+settingsPanel.appendChild(ManageHistoryDiv);
+ManageHistoryDiv.id = "buttonDiv";
 let bnManageHistory = document.createElement("button");
-settingsPanel.appendChild(bnManageHistory);
+ManageHistoryDiv.appendChild(bnManageHistory);
 bnManageHistory.id = "bnManageHistory";
 let bnManageHistoryIcon = document.createElement("span");
 bnManageHistory.appendChild(bnManageHistoryIcon);
 bnManageHistoryIcon.className = "material-symbols-rounded";
 bnManageHistoryIcon.textContent = "manage_history";
+bnManageHistoryIcon.id = "settingBtnIcon";
+let manageHistoryTextContainer = document.createElement("div");
+manageHistoryTextContainer.className = "buttonTextContainer";
+bnManageHistory.appendChild(manageHistoryTextContainer);
 let bnManageHistoryP = document.createElement("p");
-bnManageHistory.appendChild(bnManageHistoryP);
+manageHistoryTextContainer.appendChild(bnManageHistoryP);
 bnManageHistoryP.textContent = "MANAGE HISTORY";
+let manageHistorySelectionIcon = document.createElement("span");
+manageHistoryTextContainer.appendChild(manageHistorySelectionIcon);
+manageHistorySelectionIcon.className = "material-symbols-rounded";
+manageHistorySelectionIcon.textContent = "arrow_forward_ios";
 
+let ChangeThemeDiv = document.createElement("div");
+settingsPanel.appendChild(ChangeThemeDiv);
+ChangeThemeDiv.id = "buttonDiv";
+let bnChangeTheme = document.createElement("button");
+ChangeThemeDiv.appendChild(bnChangeTheme);
+bnChangeTheme.id = "bnChangeTheme";
+let bnChangeThemeIcon = document.createElement("span");
+bnChangeTheme.appendChild(bnChangeThemeIcon);
+bnChangeThemeIcon.className = "material-symbols-rounded";
+bnChangeThemeIcon.textContent = "routine";
+bnChangeThemeIcon.id = "settingBtnIcon";
+let changeThemeTextContainer = document.createElement("div");
+changeThemeTextContainer.className = "buttonTextContainer";
+bnChangeTheme.appendChild(changeThemeTextContainer);
+let bnChangeThemeP = document.createElement("p");
+changeThemeTextContainer.appendChild(bnChangeThemeP);
+bnChangeThemeP.textContent = "THEME";
+let changeThemeSelectionIcon = document.createElement("span");
+changeThemeTextContainer.appendChild(changeThemeSelectionIcon);
+changeThemeSelectionIcon.className = "material-symbols-rounded";
+changeThemeSelectionIcon.textContent = "arrow_forward_ios";
+
+let ChangeColorDiv = document.createElement("div");
+settingsPanel.appendChild(ChangeColorDiv);
+ChangeColorDiv.id = "buttonDiv";
+let bnChangeColor = document.createElement("button");
+ChangeColorDiv.appendChild(bnChangeColor);
+bnChangeColor.id = "bnChangeColor";
+bnChangeColor.addEventListener("click", f_changeTheme);
+let bnChangeColorIcon = document.createElement("span");
+bnChangeColor.appendChild(bnChangeColorIcon);
+bnChangeColorIcon.className = "material-symbols-rounded";
+bnChangeColorIcon.textContent = currentThemeIcon;
+bnChangeColorIcon.id = "settingBtnIcon";
+let ChangeColorTextContainer = document.createElement("div");
+ChangeColorTextContainer.className = "buttonTextContainer";
+bnChangeColor.appendChild(ChangeColorTextContainer);
+let bnChangeColorP = document.createElement("p");
+ChangeColorTextContainer.appendChild(bnChangeColorP);
+bnChangeColorP.textContent = currentTheme;
+let ChangeColorSelectionIcon = document.createElement("span");
+ChangeColorTextContainer.appendChild(ChangeColorSelectionIcon);
+ChangeColorSelectionIcon.className = "material-symbols-rounded";
+ChangeColorSelectionIcon.textContent = "unfold_more";
+
+let AudioQualityDiv = document.createElement("div");
+settingsPanel.appendChild(AudioQualityDiv);
+AudioQualityDiv.id = "buttonDiv";
 let bnAudioQuality = document.createElement("button");
-settingsPanel.appendChild(bnAudioQuality);
+AudioQualityDiv.appendChild(bnAudioQuality);
 bnAudioQuality.id = "bnAudioQuality";
 let bnAudioQualityIcon = document.createElement("span");
 bnAudioQuality.appendChild(bnAudioQualityIcon);
 bnAudioQualityIcon.className = "material-symbols-rounded";
 bnAudioQualityIcon.textContent = "tune";
+bnAudioQualityIcon.id = "settingBtnIcon";
+let audioQualityTextContainer = document.createElement("div");
+audioQualityTextContainer.className = "buttonTextContainer";
+bnAudioQuality.appendChild(audioQualityTextContainer);
 let bnAudioQualityP = document.createElement("p");
-bnAudioQuality.appendChild(bnAudioQualityP);
+audioQualityTextContainer.appendChild(bnAudioQualityP);
 bnAudioQualityP.textContent = "AUDIO QUALITY";
+let audioQualitySelectionIcon = document.createElement("span");
+audioQualityTextContainer.appendChild(audioQualitySelectionIcon);
+audioQualitySelectionIcon.className = "material-symbols-rounded";
+audioQualitySelectionIcon.textContent = "arrow_forward_ios";
 
+
+let ContributeDiv = document.createElement("div");
+settingsPanel.appendChild(ContributeDiv);
+ContributeDiv.id = "buttonDiv";
 let bnContribute = document.createElement("button");
-settingsPanel.appendChild(bnContribute);
+ContributeDiv.appendChild(bnContribute);
 bnContribute.id = "bnContribute";
-bnContribute.addEventListener("click",f_contribute);
+bnContribute.addEventListener("click", f_contribute);
 let bnContributeIcon = document.createElement("span");
 bnContribute.appendChild(bnContributeIcon);
 bnContributeIcon.className = "material-symbols-rounded";
 bnContributeIcon.textContent = "volunteer_activism";
+bnContributeIcon.id = "settingBtnIcon";
+let contributeTextContainer = document.createElement("div");
+contributeTextContainer.className = "buttonTextContainer";
+bnContribute.appendChild(contributeTextContainer);
 let bnContributeP = document.createElement("p");
-bnContribute.appendChild(bnContributeP);
+contributeTextContainer.appendChild(bnContributeP);
 bnContributeP.textContent = "ADD YOUR FAVOURITE SONG";
+let contributeSelectionIcon = document.createElement("span");
+contributeTextContainer.appendChild(contributeSelectionIcon);
+contributeSelectionIcon.className = "material-symbols-rounded";
+contributeSelectionIcon.textContent = "arrow_forward_ios";
 
+
+let LogOutDiv = document.createElement("div");
+settingsPanel.appendChild(LogOutDiv);
+LogOutDiv.id = "buttonDiv";
 let bnLogOut = document.createElement("button");
-settingsPanel.appendChild(bnLogOut);
+LogOutDiv.appendChild(bnLogOut);
 bnLogOut.id = "bnLogOut";
-bnLogOut.addEventListener("click",f_logOut);
+bnLogOut.addEventListener("click", f_logOut);
 let bnLogOutIcon = document.createElement("span");
 bnLogOut.appendChild(bnLogOutIcon);
 bnLogOutIcon.className = "material-symbols-rounded";
 bnLogOutIcon.textContent = "logout";
+bnLogOutIcon.id = "settingBtnIcon";
+bnLogOutIcon.style.color = "red";
+let logOutTextContainer = document.createElement("div");
+logOutTextContainer.className = "buttonTextContainer";
+bnLogOut.appendChild(logOutTextContainer);
 let bnLogOutP = document.createElement("p");
-bnLogOut.appendChild(bnLogOutP);
+logOutTextContainer.appendChild(bnLogOutP);
 bnLogOutP.textContent = "LOG OUT";
+bnLogOutP.style.color = "red";
 
 let accountPanelSpace = document.createElement("div");
 settingsPanel.appendChild(accountPanelSpace);
@@ -165,12 +259,64 @@ function showInfo() {
   favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
 }
 
-function changePassword() {}
+function showChangePassDiv() {
+  ChangePassConDiv.style.display = "flex";
+  bnChangePass.removeEventListener("click", showChangePassDiv);
+  bnChangePass.addEventListener("click", hideChangePassDiv);
+}
 
+function hideChangePassDiv() {
+  ChangePassConDiv.style.display = "none";
+  bnChangePass.removeEventListener("click", hideChangePassDiv);
+  bnChangePass.addEventListener("click", showChangePassDiv);
+}
+
+function f_confirmChangePassword() {}
+
+function f_manageHistory() {}
+
+function f_changeTheme() {
+  if (currentTheme != "DARK") {
+    currentTheme = "DARK";
+    currentThemeIcon = "dark_mode";
+    bottomDiv.className = "bottomDiv_darkMode";
+    homePanel.className = "homePanel_darkMode";
+    playerPanel.className = "playerPanel_darkMode";
+    searchPanel.className = "searchPanel_darkMode";
+    libraryPanel.className = "libraryPanel_darkMode";
+    accountPanel.className = "accountPanel_darkMode";
+    libraryPanel.className = "libraryPanel_darkMode";
+    contributionPanel.className = "contributionPanel_darkMode";
+    bnChangeThemeP.textContent = "DARK";
+    bnChangeThemeIcon.textContent = "dark_mode";
+  } else if (currentTheme != "LIGHT") {
+    currentTheme = "LIGHT";
+    currentThemeIcon = "light_mode";
+    bottomDiv.className = "bottomDiv_lightMode";
+    homePanel.className = "homePanel_lightMode";
+    playerPanel.className = "playerPanel_lightMode";
+    searchPanel.className = "searchPanel_lightMode";
+    libraryPanel.className = "libraryPanel_lightMode";
+    accountPanel.className = "accountPanel_lightMode";
+    libraryPanel.className = "libraryPanel_lightMode";
+    contributionPanel.className = "contributionPanel_lightMode";
+    bnChangeThemeP.textContent = "LIGHT";
+    bnChangeThemeIcon.textContent = "light_mode";
+  }
+}
+
+function f_audioQuality() {
+  if (signedIn) {
+  }
+}
 
 function f_contribute() {
   if (signedIn) {
+    main.style.display = "none";
+    loadingDiv.style.display = "flex";
     startContribution().then(() => {
+      main.style.display = "flex";
+      loadingDiv.style.display = "none";
       main.replaceChild(contributionPanel, accountPanel);
       currentTab = contributionPanel;
       bottomDiv.style.display = "none";
@@ -184,10 +330,9 @@ function f_logOut() {
   if (signedIn) {
     signedIn = false;
     showInfo();
-    loadHomeSongs();
+    loadRecentlyPlayedSongs();
     loadPlaylists();
     loadSearchHistory();
   }
 }
-
 attend();

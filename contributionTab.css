@@ -1,23 +1,19 @@
-#contributionTab {
+#contributionPanel {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: white;
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
   border: none;
 }
-#contributionTab .material-symbols-rounded {
-  color: black;
-}
 #topBarCT {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  background: transparent;
   height: 7vh;
   width: 100%;
   margin: 0;
@@ -29,7 +25,7 @@
   justify-content: flex-start;
   align-items: center;
   font-size: 1rem;
-  background: white;
+  background: transparent;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -42,7 +38,6 @@
 }
 #bnBackCT span {
   font-size: 1rem;
-  color: black;
   margin: 0;
 }
 #bnContribute {
@@ -50,19 +45,16 @@
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  color: white;
-  background-color: black;
   height: 90%;
   width: 40%;
   margin-right: 2vw;
-  border: 1px solid black;
   border-radius: 0.5rem;
 }
 #contributionContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: white;
+  background: transparent;
   height: 93vh;
   width: 100%;
 }
@@ -74,7 +66,7 @@
   align-items: center;
   font-size: 2rem;
   font-weight: 900;
-  background: white;
+  background: transparent;
   height: 100%;
   width: 100vw;
   margin: 0;
@@ -84,22 +76,21 @@
 }
 #contributionInputDiv input {
   font-size: 1rem;
-  color: black;
+  background: transparent;
   height: 7vh;
   width: 90vw;
   margin: 0;
   padding: 0;
   padding-left: 2vw;
-  border: 1px solid black;
   border-radius: 0.5rem;
 }
 #contributionInputDiv input::placeholder {
   font-size: 1rem;
-  color: rgba(0,0,0,0.8);
 }
 #buttonDivCT {
   display: flex;
   justify-content: space-evenly;
+  background: transparent;
   height: 7vh;
   width: 95vw;
   margin: 0;
@@ -111,16 +102,7 @@
   font-weight: 500;
   height: 100%;
   width: 48%;
-  border: 1px solid black;
   border-radius: 0.5rem;
-}
-#bnCancelCT {
-  color: black;
-  background-color: white;
-}
-#bnAddCT {
-  color: white;
-  background-color: black;
 }
 #messageDivCT {
   position: absolute;
@@ -135,22 +117,19 @@
   justify-self: center;
   align-items: center;
   align-self: center;
-  background-color: white;
+  background: transparent;
   height: 40vh;
   width: 80vw;
   margin: auto;
   padding: 0;
   border-radius: 1rem;
-  box-shadow: 0 0 5px black;
 }
 #messageDivCTP1 {
-  color: black;
   font-size: 1.3rem;
   font-weight: 900;
   margin-top: 5vh;
 }
 #messageDivCTP2 {
-  color: black;
   font-size: 1rem;
   font-weight: 500;
   margin: 1vh;
@@ -159,8 +138,6 @@
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-  color: white;
-  background-color: black;
   height: 7vh;
   width: 90%;
   margin-top: 5vh;
@@ -175,6 +152,7 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
+  background: transparent;
   height: 100%;
   width: 95%;
 }
@@ -196,4 +174,104 @@ img {
   height: 700px;
   width: 300px;
   margin: auto;
+}
+
+
+
+
+/* LIGHT MODE SETTINGS */
+.contributionPanel_lightMode {
+  background-color: white;
+}
+.contributionPanel_lightMode p {
+  color: black;
+}
+.contributionPanel_lightMode .material-symbols-rounded {
+  color: black;
+}
+.contributionPanel_lightMode #bnContribute {
+  color: white;
+  background-color: black;
+}
+.contributionPanel_lightMode #bnCancelCT {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+.contributionPanel_lightMode #bnAddCT {
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+}
+.contributionPanel_lightMode input {
+  color: black;
+  background: transparent;
+  border: 1px solid black;
+}
+.contributionPanel_lightMode input::placeholder {
+  color: rgba(0,0,0,0.75);
+}
+.contributionPanel_lightMode #messageDivCT {
+  background-color: white;
+  box-shadow: 0 0 10px black;
+}
+.contributionPanel_lightMode #messageDivCTP1 {
+  color: black;
+}
+.contributionPanel_lightMode #messageDivCTP2 {
+  color: black;
+}
+.contributionPanel_lightMode #messageDivCT button {
+  color: white;
+  background-color: black;
+}
+
+
+
+
+/* DARK MODE SETTINGS */
+.contributionPanel_darkMode {
+  background-color: black;
+}
+.contributionPanel_darkMode p {
+  color: white;
+}
+.contributionPanel_darkMode .material-symbols-rounded {
+  color: white;
+}
+.contributionPanel_darkMode #bnContribute {
+  color: black;
+  background-color: white;
+}
+.contributionPanel_darkMode #bnCancelCT {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+.contributionPanel_darkMode #bnAddCT {
+  color: black;
+  background-color: white;
+  border: 1px solid white;
+}
+.contributionPanel_darkMode input {
+  color: white;
+  background: transparent;
+  border: 1px solid white;
+}
+.contributionPanel_darkMode input::placeholder {
+  color: rgba(255,255,255,0.75);
+}
+.contributionPanel_darkMode #messageDivCT {
+  background-color: black;
+  box-shadow: 0 0 10px white;
+}
+.contributionPanel_darkMode #messageDivCTP1 {
+  color: white;
+}
+.contributionPanel_darkMode #messageDivCTP2 {
+  color: white;
+}
+.contributionPanel_darkMode #messageDivCT button {
+  color: black;
+  background-color: white;
 }

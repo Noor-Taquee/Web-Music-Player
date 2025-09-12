@@ -1,6 +1,7 @@
 //CREATING ELEMENTS
 let searchPanel = document.createElement("div");
 searchPanel.id = "searchPanel";
+searchPanel.className = "searchPanel_darkMode";
 
 let searchBar = document.createElement("div");
 searchPanel.appendChild(searchBar);
