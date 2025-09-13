@@ -4,6 +4,7 @@ let song = document.getElementById("song");
 
 //VARIABLES========================
 let musicPlaying = false;
+
 let songData = {};
 let HindiTitles = null;
 let PunjabiTitles = null;
@@ -12,6 +13,16 @@ let PhonkTitles = null;
 let SpanishTitles = null;
 let TunesTitles = null;
 let titleNames = [];
+
+let artistData = {};
+let HindiArtists = null;
+let PunjabiArtists = null;
+let EnglishArtists = null;
+let PhonkArtists = null;
+let SpanishArtists = null;
+let TunesArtists = null;
+let artistNames = [];
+
 let currentSongIndex = 0;
 let currentSong = null;
 
@@ -35,7 +46,13 @@ function updateSongInfo() {
   currentSong = songData[titleNames[currentSongIndex]];
   currentAlbumArt = currentSong.image;
   currentTrackName = currentSong.name;
-  currentArtistName = currentSong.artist;
+  currentArtistName = "";
+  for (let artist of currentSong.artist) {
+    if (!currentArtistName == "") {
+      currentArtistName += ", ";
+    }
+    currentArtistName += `${artist}`;
+  }
   song.src = currentSong.audio;
   main.style.backgroundImage = `url(${currentAlbumArt})`;
   updateSecondaryButtons();

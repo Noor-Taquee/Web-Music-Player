@@ -265,11 +265,11 @@
   border: 0.5px solid white;
 }
 .searchPanel_darkMode #searchBox::placeholder {
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .searchPanel_darkMode #bnSearch {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   color: black;
 }
 .searchPanel_darkMode #bnSearch p {

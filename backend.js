@@ -2,6 +2,7 @@ let data = null;
 let userData = null;
 let  usersList = [];
 
+let userNameKey = "";
 let userName = "";
 let accountPassword = "";
 let profilePicImage = "";
@@ -81,6 +82,39 @@ function fetchSongData() {
     titleNames.push(...TunesTitles);
     loadHomeSongs();
     updateSongInfo();
+  });
+}
+function fetchArtistsData() {
+  return loadInfo("/JSON/hindiArtists.json").then(data => {
+    Object.assign(artistData,data);
+    hindiArtists = Object.keys(data);
+    return loadInfo("/JSON/englishArtists.json");
+  }).then(data => {
+    Object.assign(artistData,data);
+    englishArtists = Object.keys(data);
+    return loadInfo("/JSON/punjabiArtists.json")
+  }).then(data => {
+    Object.assign(artistData,data);
+    punjabiArtists = Object.keys(data);
+    return loadInfo("/JSON/phonkArtists.json")
+  }).then(data => {
+    Object.assign(artistData,data);
+    phonkArtists = Object.keys(data);
+    return loadInfo("/JSON/spanishArtists.json")
+  }).then(data => {
+    Object.assign(artistData,data);
+    spanishArtists = Object.keys(data);
+    return loadInfo("/JSON/tunesArtists.json")
+  }).then(data => {
+    Object.assign(artistData,data);
+    tunesArtists = Object.keys(data);
+  }).then(() => {
+    artistNames.push(...hindiArtists);
+    artistNames.push(...englishArtists);
+    artistNames.push(...punjabiArtists);
+    artistNames.push(...phonkArtists);
+    artistNames.push(...spanishArtists);
+    artistNames.push(...tunesArtists);
   });
 }
 

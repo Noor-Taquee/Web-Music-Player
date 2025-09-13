@@ -166,6 +166,7 @@ function checkIdentity() {
   let userGivenPass = passInputSignIn.value;
   if (usersList.includes(userGivenName)) {
     if (data[userGivenName].password == userGivenPass) {
+      userNameKey = userGivenName;
       main.style.display = "none";
       loadingDiv.style.display = "flex";
       fetchUserData(userGivenName).then(() => {

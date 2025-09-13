@@ -2,6 +2,54 @@
 let playerPanel = document.createElement("div");
 playerPanel.id = "playerPanel";
 
+let playerPanelTopBar = document.createElement("div");
+playerPanel.appendChild(playerPanelTopBar);
+playerPanelTopBar.id = "playerPanelTopBar";
+let bnSongInfo = document.createElement("button");
+playerPanelTopBar.appendChild(bnSongInfo);
+bnSongInfo.id = "bnSongInfo";
+bnSongInfo.addEventListener("click", showSongInfo);
+let bnSongInfoIcon = document.createElement("span");
+bnSongInfo.appendChild(bnSongInfoIcon);
+bnSongInfoIcon.className = "material-symbols-rounded";
+bnSongInfoIcon.textContent = "info";
+
+
+
+
+let songInfoDiv = document.createElement("div");
+songInfoDiv.id = "songInfoDiv";
+let songInfoDivTopBar = document.createElement("div");
+songInfoDiv.appendChild(songInfoDivTopBar);
+songInfoDivTopBar.id = "songInfoDivTopBar";
+let bnBackSongInfoDiv = document.createElement("button");
+songInfoDivTopBar.appendChild(bnBackSongInfoDiv);
+bnBackSongInfoDiv.id = "bnBackSongInfoDiv";
+bnBackSongInfoDiv.addEventListener("click", hideSongInfo);
+let backSongInfoIcon = document.createElement("span");
+bnBackSongInfoDiv.appendChild(backSongInfoIcon);
+backSongInfoIcon.className = "material-symbols-rounded";
+backSongInfoIcon.textContent = "arrow_back_ios_new";
+let bnBackSongInfoDivP = document.createElement("p");
+bnBackSongInfoDiv.appendChild(bnBackSongInfoDivP);
+bnBackSongInfoDivP.textContent = "BACK";
+
+let songInfoLoader = document.createElement("div");
+songInfoLoader.id = "songInfoLoader";
+let songInfoLoadingIcon = document.createElement("span");
+songInfoLoader.appendChild(songInfoLoadingIcon);
+songInfoLoadingIcon.id = "songInfoLoadingIcon";
+songInfoLoader.className = "material-symbols-rounded";
+songInfoLoadingIcon.textContent = "progress_activity";
+
+let songInfoConDiv = document.createElement("div");
+songInfoDiv.appendChild(songInfoConDiv);
+songInfoConDiv.id = "songInfoConDiv";
+
+
+
+
+
 let pictureDiv = document.createElement("div");
 playerPanel.appendChild(pictureDiv);
 pictureDiv.id = "pictureDiv";
@@ -359,5 +407,73 @@ setInterval(() => {
   timeSlider.value = song.currentTime;
 }, 1000);
 
+
+function showSongInfo() {
+  playerPanel.appendChild(songInfoDiv);
+  if (songInfoDiv.contains(songInfoConDiv)) {
+    songInfoDiv.replaceChild(songInfoLoader, songInfoConDiv);
+  }
+  if (artistNames.length < 1) {
+    fetchArtistsData().then(() => {
+      loadSondInfo();
+      songInfoDiv.replaceChild(songInfoConDiv, songInfoLoader);
+    });
+  } else {
+    loadSondInfo();
+    songInfoDiv.replaceChild(songInfoConDiv, songInfoLoader);
+  }
+}
+
+function hideSongInfo() {
+  playerPanel.removeChild(songInfoDiv);
+}
+
+function loadSondInfo() {
+  clearContainer(songInfoConDiv);
+
+  let songInfo = document.createElement("div");
+  songInfoConDiv.appendChild(songInfo);
+  songInfo.id = "songInfo";
+  let songReleaseP = document.createElement("p");
+  songInfo.appendChild(songReleaseP);
+  songReleaseP.textContent = `Release Date: ${currentSong.release}`;
+
+
+  let songInfoArtists = document.createElement("div");
+  songInfoConDiv.appendChild(songInfoArtists);
+  songInfoArtists.id = "songInfoArtists";
+
+
+  for (let artist of currentSong.artist) {
+    let cArtistName = artist.trim();
+    let cArtistData = artistData[cArtistName];
+
+    let artistDiv = document.createElement("div");
+    songInfoArtists.appendChild(artistDiv);
+
+    let artistInfoDiv = document.createElement("div");
+    artistDiv.appendChild(artistInfoDiv);
+    artistInfoDiv.id = "artistInfoDiv";
+    let artistImage = document.createElement("img");
+    artistInfoDiv.appendChild(artistImage);
+    artistImage.id = "artistImage";
+    artistImage.src = cArtistData.picture;
+    let artistNameP = document.createElement("p");
+    artistInfoDiv.appendChild(artistNameP);
+    artistNameP.id = "artistNameP";
+    artistNameP.textContent = cArtistName;
+    let aboutArtistP = document.createElement("div");
+    artistDiv.appendChild(aboutArtistP);
+    aboutArtistP.id = "aboutArtistP";
+    aboutArtistP.textContent = cArtistData.about;
+  }
+
+  let songContributionInfoDiv = document.createElement("div");
+  songInfoConDiv.appendChild(songContributionInfoDiv);
+  songContributionInfoDiv.id = "songContributionInfoDiv";
+  let songContributerP = document.createElement("p");
+  songContributionInfoDiv.appendChild(songContributerP);
+  songContributerP.textContent = `Contributed by: ${currentSong.contributer} on ${currentSong.contributionDate}`;
+}
 
 attend();
