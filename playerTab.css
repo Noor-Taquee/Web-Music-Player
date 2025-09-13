@@ -33,6 +33,7 @@
 }
 
 #bnSongInfo {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,6 +67,9 @@
   padding: 0;
   flex-shrink: 0;
 }
+#songInfoDiv p {
+  cursor: default;
+}
 
 #songInfoDivTopBar {
   display: flex;
@@ -79,13 +83,27 @@
 }
 
 #bnBackSongInfoDiv {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
   height: 100%;
   width: 10%;
+  gap: 0;
   border: none;
+}
+
+#bnBackSongInfoDiv p {
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0;
+}
+
+#bnBackSongInfoDiv span {
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin: 0;
 }
 
 #songInfoLoader {
@@ -130,6 +148,7 @@
 
 #songInfo {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   background: transparent;
@@ -138,6 +157,16 @@
   margin: 0;
   padding: 0;
 }
+
+#songInfoHeader {
+  font-size: 1.5rem;
+  font-weight: 900;
+  height: fit-content;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 #songInfoArtists {
   display: flex;
   flex-direction: column;
@@ -154,7 +183,7 @@
 #songInfoArtistsHeader {
   font-size: 1.5rem;
   font-weight: 900;
-  height: 5vh;
+  height: fit-content;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -164,12 +193,14 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: transparent;
+  background-size: cover;
   height: fit-content;
   width: 100%;
   margin: 0;
   padding: 0;
-  gap: 2vh;
+  gap: 0;
+  border: 0.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
 }
 
 #artistInfoDiv {
@@ -177,21 +208,44 @@
   justify-content: flex-start;
   align-items: center;
   background: transparent;
-  height: fit-content;
+  height: 50vh;
   width: 100%;
   margin: 0;
   padding: 0;
 }
-#artistInfoDiv img {
-  height: 20vw;
-  width: 20vw;
+
+#artistImageDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  background: transparent;
   margin: 0;
   padding: 0;
-  border-radius: 50%;
+  border-radius: 0.5rem;
 }
+
 #artistInfoDiv p {
-  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 2rem;
   font-weight: 700;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0,0.8));
+  height: fit-content;
+  width: 100%;
+  margin: 0;
+  padding: 0.2rem;
+}
+
+#aboutArtistP {
+  display: flex;
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  backdrop-filter: blur(5vmax);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0,0.8),rgba(0, 0, 0));
+  height: fit-content;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -214,6 +268,11 @@
   font-weight: 500;
   margin-top: 0.5vh;
   margin-bottom: 0.5vh;
+}
+#songInfoDivSpace {
+  background: transparent;
+  min-height: 15vh;
+  width: 100%;
 }
 
 #pictureDiv {

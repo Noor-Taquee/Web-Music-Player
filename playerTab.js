@@ -434,6 +434,10 @@ function loadSondInfo() {
   let songInfo = document.createElement("div");
   songInfoConDiv.appendChild(songInfo);
   songInfo.id = "songInfo";
+  let songInfoHeader = document.createElement("p");
+  songInfo.appendChild(songInfoHeader);
+  songInfoHeader.id = "songInfoHeader";
+  songInfoHeader.textContent = "SONG INFO";
   let songReleaseP = document.createElement("p");
   songInfo.appendChild(songReleaseP);
   songReleaseP.textContent = `Release Date: ${currentSong.release}`;
@@ -443,6 +447,10 @@ function loadSondInfo() {
   songInfoConDiv.appendChild(songInfoArtists);
   songInfoArtists.id = "songInfoArtists";
 
+  let songInfoArtistsHeader = document.createElement("p");
+  songInfoArtists.appendChild(songInfoArtistsHeader);
+  songInfoArtistsHeader.id = "songInfoArtistsHeader";
+  songInfoArtistsHeader.textContent = "ABOUT ARTIST ";
 
   for (let artist of currentSong.artist) {
     let cArtistName = artist.trim();
@@ -450,16 +458,17 @@ function loadSondInfo() {
 
     let artistDiv = document.createElement("div");
     songInfoArtists.appendChild(artistDiv);
+    artistDiv.id = "artistDiv";
+    artistDiv.style.backgroundImage = `url(${cArtistData.picture})`;
 
     let artistInfoDiv = document.createElement("div");
     artistDiv.appendChild(artistInfoDiv);
     artistInfoDiv.id = "artistInfoDiv";
-    let artistImage = document.createElement("img");
-    artistInfoDiv.appendChild(artistImage);
-    artistImage.id = "artistImage";
-    artistImage.src = cArtistData.picture;
+    let artistImageDiv = document.createElement("div");
+    artistInfoDiv.appendChild(artistImageDiv);
+    artistImageDiv.id = "artistImageDiv";
     let artistNameP = document.createElement("p");
-    artistInfoDiv.appendChild(artistNameP);
+    artistImageDiv.appendChild(artistNameP);
     artistNameP.id = "artistNameP";
     artistNameP.textContent = cArtistName;
     let aboutArtistP = document.createElement("div");
@@ -474,6 +483,10 @@ function loadSondInfo() {
   let songContributerP = document.createElement("p");
   songContributionInfoDiv.appendChild(songContributerP);
   songContributerP.textContent = `Contributed by: ${currentSong.contributer} on ${currentSong.contributionDate}`;
+
+  let songInfoDivSpace = document.createElement("div");
+  songInfoConDiv.appendChild(songInfoDivSpace);
+  songInfoDivSpace.id = "songInfoDivSpace";
 }
 
 attend();

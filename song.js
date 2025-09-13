@@ -56,6 +56,9 @@ function updateSongInfo() {
   song.src = currentSong.audio;
   main.style.backgroundImage = `url(${currentAlbumArt})`;
   updateSecondaryButtons();
+  if (artistNames.length > 0) {
+    loadSondInfo();
+  }
 }
 
 function registerSong() {
