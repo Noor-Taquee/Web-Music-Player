@@ -11,11 +11,41 @@
   gap: 0;
   border: none;
 }
+
 #homeHeaderDiv {
   display: flex;
+  align-items: center;
   height: 15%;
   width: 100%;
 }
+
+#homeCategoryDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 40%;
+  width: 100%;
+  padding: 0;
+  padding-left: 2vw;
+  margin: 0;
+  gap: 2vw;
+}
+#homeCategoryDiv::-webkit-scrollbar {
+  display: none;
+}
+
+#homeCategoryDiv button {
+  cursor: pointer;
+  height: 90%;
+  width: fit-content;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  border: none;
+  border-radius: 0.5rem;
+}
+
 #homeContentDiv {
   cursor: default;
   display: flex;
@@ -139,12 +169,17 @@
 .homePanel_lightMode #homeHeaderDiv {
   background-color: rgb(255, 255, 255,0.7);
 }
+.homePanel_lightMode #homeCategoryDiv button {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.07);
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+}
 .homePanel_lightMode .songDivCon {
   background-color: rgba(255, 255, 255, 0.7);
 }
 .homePanel_lightMode #suggestedSongName {
   color: black;
-  background-image: linear-gradient(to top,rgb(255, 255, 255),rgb(255, 255, 255),rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
+  background: linear-gradient(to top,rgb(255, 255, 255),rgb(255, 255, 255),rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
 }
 
 
@@ -161,10 +196,15 @@
 .homePanel_darkMode #homeHeaderDiv {
   background-color: rgba(0, 0, 0, 0.5);
 }
+.homePanel_darkMode #homeCategoryDiv button {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+}
 .homePanel_darkMode .songDivCon {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .homePanel_darkMode #suggestedSongName {
   color: white;
-  background-image: linear-gradient(to top,rgb(0, 0, 0),rgb(0, 0, 0),rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0));
+  background: linear-gradient(to top,rgb(0, 0, 0),rgb(0, 0, 0),rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0));
 }

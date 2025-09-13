@@ -11,6 +11,62 @@ let homeCategoryDiv = document.createElement("div");
 homeHeaderDiv.appendChild(homeCategoryDiv);
 homeCategoryDiv.id = "homeCategoryDiv";
 
+let bnHindiSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnHindiSongs);
+bnHindiSongs.id = "bnHindiSongs";
+bnHindiSongs.textContent = "HINDI";
+
+let bnPartySongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnPartySongs);
+bnPartySongs.id = "bnPartySongs";
+bnPartySongs.textContent = "PARTY";
+
+let bnPunjabiSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnPunjabiSongs);
+bnPunjabiSongs.id = "bnPunjabiSongs";
+bnPunjabiSongs.textContent = "PUNJABI";
+
+let bnRomanticSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnRomanticSongs);
+bnRomanticSongs.id = "bnRomanticSongs";
+bnRomanticSongs.textContent = "ROMANTIC";
+
+let bnSlowedSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnSlowedSongs);
+bnSlowedSongs.id = "bnSlowedSongs";
+bnSlowedSongs.textContent = "SLOWED";
+
+let bnEnglishSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnEnglishSongs);
+bnEnglishSongs.id = "bnEnglishSongs";
+bnEnglishSongs.textContent = "ENGLISH";
+
+let bnPhonkSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnPhonkSongs);
+bnPhonkSongs.id = "bnPhonkSongs";
+bnPhonkSongs.textContent = "PHONK";
+
+let bnDanceSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnDanceSongs);
+bnDanceSongs.id = "bnDanceSongs";
+bnDanceSongs.textContent = "DANCE";
+
+let bnSpanishSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnSpanishSongs);
+bnSpanishSongs.id = "bnSpanishSongs";
+bnSpanishSongs.textContent = "SPANISH";
+
+let bnChillSongs = document.createElement("button");
+homeCategoryDiv.appendChild(bnChillSongs);
+bnChillSongs.id = "bnChillSongs";
+bnChillSongs.textContent = "CHILL";
+
+let bnTunes = document.createElement("button");
+homeCategoryDiv.appendChild(bnTunes);
+bnTunes.id = "bnTunes";
+bnTunes.textContent = "TUNES";
+
+
 let homeContentDiv = document.createElement("div");
 homePanel.appendChild(homeContentDiv);
 homeContentDiv.id = "homeContentDiv";
@@ -125,9 +181,11 @@ function loadRecentlyPlayedSongs() {
         suggestedSongName.textContent = songData[songs].name;
       }
     } else {
-      recentlyPlayedDivCon.textContent = "NO SONGS PLAYED RECENTLY";
+      recentlyPlayedDivConText.textContent = "NO SONGS PLAYED RECENTLY";
+      recentlyPlayedDivCon.appendChild(recentlyPlayedDivConText);
     }
   } else {
+    recentlyPlayedDivConText.textContent = "LOGIN TO SEE RECENTLY PLAYED SONGS";
     recentlyPlayedDivCon.appendChild(recentlyPlayedDivConText);
   }
 }

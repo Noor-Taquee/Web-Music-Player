@@ -2,6 +2,7 @@
 let currentThemeColor = "DARK";
 let currentThemeColorIcon = "dark_mode";
 let BlurActive = true;
+let historyAllowed = true;
 
 //CREATING ELEMENTS
 let accountPanel = document.createElement("div");
@@ -388,6 +389,40 @@ let manageHistoryConDiv = document.createElement("div");
 manageHistoryPanel.appendChild(manageHistoryConDiv);
 manageHistoryConDiv.id = "manageHistoryConDiv";
 
+let AllowHistoryDiv = document.createElement("div");
+manageHistoryConDiv.appendChild(AllowHistoryDiv);
+AllowHistoryDiv.id = "AllowHistoryDiv";
+let AllowHistoryP = document.createElement("p");
+AllowHistoryDiv.appendChild(AllowHistoryP);
+AllowHistoryP.id = "AllowHistoryP";
+AllowHistoryP.textContent = "ALLOW HISTORY";
+let AllowHistoryToggle = document.createElement("div");
+AllowHistoryDiv.appendChild(AllowHistoryToggle);
+AllowHistoryToggle.id = "AllowHistoryToggle";
+AllowHistoryToggle.addEventListener("click", f_allowHistory);
+let AllowHistoryToggleBall = document.createElement("p");
+AllowHistoryToggle.appendChild(AllowHistoryToggleBall);
+AllowHistoryToggleBall.id = "AllowHistoryToggleBall";
+
+let bnClearSearchHistory = document.createElement("button");
+manageHistoryConDiv.appendChild(bnClearSearchHistory);
+bnClearSearchHistory.id = "bnClearSearchHistory";
+let bnClearSearchHistoryP = document.createElement("p");
+bnClearSearchHistory.appendChild(bnClearSearchHistoryP);
+bnClearSearchHistoryP.textContent = "CLEAR SEARCH HISTORY";
+bnClearSearchHistoryP.style.color = "red";
+bnClearSearchHistory.addEventListener("click", f_clearSearchHistory);
+
+let bnClearPlayedSongHistory = document.createElement("button");
+manageHistoryConDiv.appendChild(bnClearPlayedSongHistory);
+bnClearPlayedSongHistory.id = "bnClearPlayedSongHistory";
+let bnClearPlayedSongHistoryP = document.createElement("p");
+bnClearPlayedSongHistory.appendChild(bnClearPlayedSongHistoryP);
+bnClearPlayedSongHistoryP.textContent = "CLEAR PLAYED SONG HISTORY";
+bnClearPlayedSongHistoryP.style.color = "red";
+bnClearPlayedSongHistory.addEventListener("click", f_clearPlayedSongHistory);
+
+
 let manageHistoryListDiv = document.createElement("div");
 function f_manageHistory() {
   accountPanel.replaceChild(manageHistoryPanel, settingsPanel);
@@ -397,6 +432,48 @@ function f_backManageHistoryPanel() {
   accountPanel.replaceChild(settingsPanel, manageHistoryPanel);
 }
 
+function f_allowHistory() {
+  if (historyAllowed) {
+    AllowHistoryToggleBall.style.transform = "translateX(0)";
+    AllowHistoryToggleBall.style.backgroundColor = "black";
+    bnClearSearchHistory.style.display = "none";
+    bnClearPlayedSongHistory.style.display = "none";
+    historyAllowed = false;
+  } else {
+    AllowHistoryToggleBall.style.transform = "translateX(4vw)";
+    AllowHistoryToggleBall.style.backgroundColor = "blue";
+    bnClearSearchHistory.style.display = "flex";
+    bnClearPlayedSongHistory.style.display = "flex";
+    historyAllowed = true;
+  }
+}
+
+function f_clearSearchHistory() {
+  if (signedIn) {
+    main.style.display = "none";
+    loadingDiv.style.display = "flex";
+    searchedTextList.splice(0, searchedTextList.length);
+    searchedSongList.splice(0, searchedSongList.length);
+    updateDataFile().then(() => {
+      loadSearchHistory();
+      loadingDiv.style.display = "none";
+      main.style.display = "flex";
+    });
+  }
+}
+
+function f_clearPlayedSongHistory() {
+  if (signedIn) {
+    main.style.display = "none";
+    loadingDiv.style.display = "flex";
+    recentlyPlayedSongList.splice(0, recentlyPlayedSongList.length);
+    updateDataFile().then(() => {
+      loadRecentlyPlayedSongs();
+      loadingDiv.style.display = "none";
+      main.style.display = "flex";
+    });
+  }
+}
 
 
 // CHANGE THEME DIV================================
@@ -536,6 +613,7 @@ bnBackAudioQualityPanelP.textContent = "BACK";
 let audioQualityPanelConDiv = document.createElement("div");
 audioQualityPanel.appendChild(audioQualityPanelConDiv);
 audioQualityPanelConDiv.id = "audioQualityPanelConDiv";
+audioQualityPanelConDiv.textContent = "This feature will be available soon.";
 
 function f_audioQuality() {
   accountPanel.replaceChild(audioQualityPanel, settingsPanel)

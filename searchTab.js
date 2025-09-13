@@ -83,9 +83,11 @@ function loadSearchTextHistory() {
         searchedIcon.textContent = "search";
       }
     } else {
-      searchedTextDiv.textContent = "NOTHING SEARCHED YET";
+      searchedTextDivText.textContent = "NOTHING SEARCHED YET";
+      searchedTextDiv.appendChild(searchedTextDivText);
     }
   } else {
+    searchedTextDivText.textContent = "LOGIN TO SEE YOUR HISTORY";
     searchedTextDiv.appendChild(searchedTextDivText);
   }
 }
@@ -111,9 +113,11 @@ function loadSearchSongHistory() {
         searchedSongName.textContent = songData[songs].name;
       }
     } else {
-      searchedSongDiv.textContent = "NOTHING SEARCHED YET";
+      searchedSongDivText.textContent = "NOTHING SEARCHED YET";
+      searchedSongDiv.appendChild(searchedSongDivText);
     }
   } else {
+    searchedSongDivText.textContent = "LOGIN TO SEE YOUR HISTORY";
     searchedSongDiv.appendChild(searchedSongDivText);
   }
 }
@@ -156,23 +160,27 @@ function showSearchResult(resultList) {
     searchResultBtn.addEventListener("click", function () {
       playSong(songs);
       switchTo("playerPanel");
-      if(searchedSongList.includes(songs)) {
-        searchedSongList.splice(searchedSongList.indexOf(songs),1);
+      if (historyAllowed) {
+        if(searchedSongList.includes(songs)) {
+          searchedSongList.splice(searchedSongList.indexOf(songs),1);
+        }
+        searchedSongList.unshift(songs);
+        loadSearchSongHistory();
       }
-      searchedSongList.unshift(songs);
-      loadSearchSongHistory();
     });
   }
 }
 
 function addSearch() {
-  let searchedStr = searchBox.value;
-  if (searchedStr.length > 0) {
-    if(searchedTextList.includes(searchedStr)) {
-      searchedTextList.splice(searchedTextList.indexOf(searchedStr),1);
+  if (historyAllowed) {
+    let searchedStr = searchBox.value;
+    if (searchedStr.length > 0) {
+      if(searchedTextList.includes(searchedStr)) {
+        searchedTextList.splice(searchedTextList.indexOf(searchedStr),1);
+      }
+      searchedTextList.unshift(searchedStr);
+      loadSearchTextHistory();
     }
-    searchedTextList.unshift(searchedStr);
-    loadSearchTextHistory();
   }
 }
 
