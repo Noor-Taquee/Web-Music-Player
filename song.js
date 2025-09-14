@@ -178,8 +178,10 @@ function prevSong() {
 function showLoading() {
   playbackBtnIcon.textContent = "progress_activity";
   playbackBtnIcon.id = "loadingIcon";
+  bnPlay.removeEventListener("click", changeState);
   miniPlaybackBtnIcon.textContent = "progress_activity";
   miniPlaybackBtnIcon.id = "miniLoadingIcon";
+  miniBnPlay.removeEventListener("click", changeState);
 }
 
 function setTimeTo(newTime) {
@@ -200,10 +202,61 @@ song.addEventListener("loadedmetadata",() => {
   totalTime = formatTime(song.duration);
   initPlayer();
   initMiniPlayer();
+  updateDevicePlayer();
   if (songChanged) {
     startMusic();
   }
 });
+
+function setDevicePlayer() {
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.setActionHandler("play", function() {
+      startMusic();
+    });
+    navigator.mediaSession.setActionHandler("pause", function() {
+      stopMusic();
+    });
+    navigator.mediaSession.setActionHandler("nexttrack", function() {
+      nextSong();
+      songChanged = true;
+    });
+    navigator.mediaSession.setActionHandler("previoustrack", function() {
+      prevSong();
+    });
+  }
+}
+
+function updateDevicePlayer() {
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: currentTrackName,
+      artist: currentArtistName,
+      artwork: [
+        {src: currentAlbumArt, sizes: "512x512", type: "image/png"},
+        {src: currentAlbumArt, sizes: "300x300", type: "image/png"},
+        {src: currentAlbumArt, sizes: "150x150", type: "image/png"}
+      ]
+    });
+  }
+}
+
+function updateDevicePlayerProgress() {
+  if ("setPositionState" in navigator.mediaSession) {
+    try {
+      navigator.mediaSession.setPositionState({
+        duration: song.duration,
+        playbackRate: song.playbackRate,
+        position: song.currentTime
+      });
+    } catch {
+      navigator.mediaSession.setPositionState({
+        duration: 0,
+        playbackRate: 1,
+        position: 0
+      });
+    }
+  }
+}
 
 song.addEventListener("ended", function() {
   if (playingMode == "autoPlayOn") {
@@ -219,5 +272,21 @@ song.addEventListener("ended", function() {
   }
 });
 
+song.addEventListener("waiting", function() {
+  if (musicPlaying) {
+    showLoading();
+  }
+});
+
+song.addEventListener("playing", function() {
+  if (musicPlaying) {
+    playbackBtnIcon.textContent = "pause";
+    playbackBtnIcon.id = "any";
+    bnPlay.addEventListener("click", changeState);
+    miniPlaybackBtnIcon.textContent = "pause";
+    miniPlaybackBtnIcon.id = "any";
+    miniBnPlay.addEventListener("click", changeState);
+  }
+});
 
 attend();

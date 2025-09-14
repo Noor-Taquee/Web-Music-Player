@@ -23,6 +23,7 @@ let dropbox = new Dropbox.Dropbox({
 function startBackend() {
   fetchUsersInfo().then(() => {
     fetchSongData().then(() => {
+      setDevicePlayer();
       let storedUserName = localStorage.getItem("username");
       let storedPass = localStorage.getItem("password");
       if (storedUserName != null && usersList.includes(storedUserName) && storedPass == data[storedUserName].password) {

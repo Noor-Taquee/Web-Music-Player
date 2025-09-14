@@ -212,6 +212,7 @@ playbackControls.id = "playbackControls";
 let bnPrev = document.createElement("button");
 playbackControls.appendChild(bnPrev);
 bnPrev.id = "bnPrev";
+bnPrev.addEventListener("click",() => changeSong("prev"));
 let prevIcon = document.createElement("span");
 bnPrev.appendChild(prevIcon);
 prevIcon.className = "material-symbols-rounded";
@@ -230,10 +231,12 @@ playbackBtnIcon.textContent = "progress_activity";
 let bnNext = document.createElement("button");
 playbackControls.appendChild(bnNext);
 bnNext.id = "bnNext";
+bnNext.addEventListener("click",() => changeSong("next"));
 let nextIcon = document.createElement("span");
 bnNext.appendChild(nextIcon);
 nextIcon.className = "material-symbols-rounded";
 nextIcon.textContent = "skip_next";
+
 
 //VARIABLES
 let currentFocusPL = "picture";
@@ -378,9 +381,6 @@ function initPlayer() {
 
 
 
-bnNext.addEventListener("click",() => changeSong("next"));
-bnPrev.addEventListener("click",() => changeSong("prev"));
-
 timeSlider.addEventListener("input" ,() => {
   setTimeTo(timeSlider.value);
   time1.textContent = coveredTime;
@@ -400,6 +400,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 setInterval(() => {
+  updateDevicePlayerProgress();
   if (musicPlaying) {
     coveredTime = formatTime(song.currentTime);
     time1.textContent = coveredTime;
