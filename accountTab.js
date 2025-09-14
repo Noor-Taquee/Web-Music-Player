@@ -348,6 +348,7 @@ function f_confirmChangePassword() {
           data[userNameKey].password = newPassword;
           updateDataFile().then(() => {
             showInfo();
+            localStorage.setItem("password", newPassword);
             loadingDiv.style.display = "none";
             main.style.display = "flex";
             f_backChangePassPanel();
@@ -646,6 +647,8 @@ function f_contribute() {
 function f_logOut() {
   if (signedIn) {
     signedIn = false;
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
     showInfo();
     loadRecentlyPlayedSongs();
     loadPlaylists();

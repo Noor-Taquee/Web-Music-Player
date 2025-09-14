@@ -23,10 +23,17 @@ let dropbox = new Dropbox.Dropbox({
 function startBackend() {
   fetchUsersInfo().then(() => {
     fetchSongData().then(() => {
-      document.fonts.ready.then(() => {
+      let storedUserName = localStorage.getItem("username");
+      let storedPass = localStorage.getItem("password");
+      if (storedUserName != null && usersList.includes(storedUserName) && storedPass == data[storedUserName].password) {
+        fetchUserData(localStorage.getItem("username")).then(() => {
+          loadingDiv.style.display = "none";
+          main.style.display = "flex";
+        });
+      } else {
         loadingDiv.style.display = "none";
         main.style.display = "flex";
-      });
+      }
     });
   });
 }
@@ -139,6 +146,8 @@ function fetchUserData(userGivenName) {
       searchedSongList = userData.searchedSongList;
       likedSongList = userData.likedSongList;
       playlistList  = userData.playlistList;
+      localStorage.setItem("username", userGivenName);
+      localStorage.setItem("password", accountPassword);
       signedIn = true;
       showInfo();
       loadPlaylists();
