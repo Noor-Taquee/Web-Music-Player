@@ -86,6 +86,32 @@ changePassTextContainer.appendChild(changePassSelectionIcon);
 changePassSelectionIcon.className = "material-symbols-rounded";
 changePassSelectionIcon.textContent = "arrow_forward_ios";
 
+let NotificationsDiv = document.createElement("div");
+settingsPanel.appendChild(NotificationsDiv);
+NotificationsDiv.id = "buttonDiv";
+let bnNotifications = document.createElement("button");
+NotificationsDiv.appendChild(bnNotifications);
+bnNotifications.id = "bnNotifications";
+bnNotifications.addEventListener("click", f_notifications);
+let bnNotificationsIconDiv = document.createElement("div");
+bnNotifications.appendChild(bnNotificationsIconDiv);
+bnNotificationsIconDiv.id = "settingBtnIconDiv";
+let bnNotificationsIcon = document.createElement("span");
+bnNotificationsIconDiv.appendChild(bnNotificationsIcon);
+bnNotificationsIcon.className = "material-symbols-rounded";
+bnNotificationsIcon.textContent = "notifications";
+bnNotificationsIcon.id = "settingBtnIcon";
+let notificationsTextContainer = document.createElement("div");
+notificationsTextContainer.className = "buttonTextContainer";
+bnNotifications.appendChild(notificationsTextContainer);
+let bnNotificationsP = document.createElement("p");
+notificationsTextContainer.appendChild(bnNotificationsP);
+bnNotificationsP.textContent = "NOTIFICATIONS";
+let notificationsSelectionIcon = document.createElement("span");
+notificationsTextContainer.appendChild(notificationsSelectionIcon);
+notificationsSelectionIcon.className = "material-symbols-rounded";
+notificationsSelectionIcon.textContent = "arrow_forward_ios";
+
 let ManageHistoryDiv = document.createElement("div");
 settingsPanel.appendChild(ManageHistoryDiv);
 ManageHistoryDiv.id = "buttonDiv";
@@ -256,15 +282,15 @@ function showInfo() {
 
 // CHANGEPASS DIV==================================
 let changePassPanel = document.createElement("div");
-changePassPanel.id = "changePassPanel";
+changePassPanel.className = "accountPanel_subPanel";
 
 let changePassPanelTopBar = document.createElement("div");
 changePassPanel.appendChild(changePassPanelTopBar);
-changePassPanelTopBar.id = "changePassPanelTopBar";
+changePassPanelTopBar.className = "accountPanel_subPanelTopBar";
 
 let bnBackChangePassPanel = document.createElement("button");
 changePassPanelTopBar.appendChild(bnBackChangePassPanel);
-bnBackChangePassPanel.id = "bnBackChangePassPanel";
+bnBackChangePassPanel.className = "bnBack_accountPanel_subPanel";
 bnBackChangePassPanel.addEventListener("click", f_backChangePassPanel);
 let backChangePassIcon = document.createElement("span");
 bnBackChangePassPanel.appendChild(backChangePassIcon);
@@ -276,7 +302,7 @@ bnBackChangePassPanelP.textContent = "BACK";
 
 let changePassConDiv = document.createElement("div");
 changePassPanel.appendChild(changePassConDiv);
-changePassConDiv.id = "changePassConDiv";
+changePassConDiv.className = "accountPanel_subPanelConDiv";
 
 let changePassFormDiv = document.createElement("div");
 changePassConDiv.appendChild(changePassFormDiv);
@@ -365,18 +391,94 @@ function f_confirmChangePassword() {
 }
 
 
+// NOTIFICATIONS DIV==============================
+let notificationsPanel = document.createElement("div");
+notificationsPanel.className = "accountPanel_subPanel";
+
+let notificationsPanelTopBar = document.createElement("div");
+notificationsPanel.appendChild(notificationsPanelTopBar);
+notificationsPanelTopBar.className = "accountPanel_subPanelTopBar";
+
+let bnBackNotificationsPanel = document.createElement("button");
+notificationsPanelTopBar.appendChild(bnBackNotificationsPanel);
+bnBackNotificationsPanel.className = "bnBack_accountPanel_subPanel";
+bnBackNotificationsPanel.addEventListener("click", f_backNotificationsPanel);
+let backNotificationsIcon = document.createElement("span");
+bnBackNotificationsPanel.appendChild(backNotificationsIcon);
+backNotificationsIcon.className = "material-symbols-rounded";
+backNotificationsIcon.textContent = "arrow_back_ios_new";
+let bnBackNotificationsPanelP = document.createElement("p");
+bnBackNotificationsPanel.appendChild(bnBackNotificationsPanelP);
+bnBackNotificationsPanelP.textContent = "BACK";
+
+let notificationsConDiv = document.createElement("div");
+notificationsPanel.appendChild(notificationsConDiv);
+notificationsConDiv.className = "accountPanel_subPanelConDiv";
+
+
+function loadNotifications() {
+  clearContainer(notificationsConDiv);
+  for (i in notificationsList) {
+    let notificationDiv = document.createElement("div");
+    notificationsConDiv.appendChild(notificationDiv);
+    notificationDiv.className = "notificationDiv";
+
+    let NotificationHeader = document.createElement("div");
+    notificationDiv.appendChild(NotificationHeader);
+    NotificationHeader.id = "notificationHeader";
+
+    let notificationTitleP = document.createElement("p");
+    NotificationHeader.appendChild(notificationTitleP);
+    notificationTitleP.textContent = notificationsList[i].title;
+
+    let bnRemoveNotification = document.createElement("button");
+    NotificationHeader.appendChild(bnRemoveNotification);
+    bnRemoveNotification.id = "bnRemoveNotification";
+    bnRemoveNotification.addEventListener("click",() => f_removeNotification(i));
+    let removeNotificationIcon = document.createElement("span");
+    bnRemoveNotification.appendChild(removeNotificationIcon);
+    removeNotificationIcon.className = "material-symbols-rounded";
+    removeNotificationIcon.textContent = "delete";
+    removeNotificationIcon.style.color = "red";
+    let removeNotificationP = document.createElement("p");
+    bnRemoveNotification.appendChild(removeNotificationP);
+    removeNotificationP.textContent = "REMOVE";
+    removeNotificationP.style.color = "red";
+
+    let notificationContentP = document.createElement("p");
+    notificationDiv.appendChild(notificationContentP);
+    notificationContentP.textContent = notificationsList[i].content;
+  }
+}
+
+function f_notifications() {
+  accountPanel.replaceChild(notificationsPanel, settingsPanel);
+}
+
+function f_backNotificationsPanel() {
+  accountPanel.replaceChild(settingsPanel, notificationsPanel);
+}
+
+function f_removeNotification(index) {
+  notificationsList.splice(index, 1);
+  loadNotifications();
+  updateDataFile();
+}
+
+
+
 
 // MANAGEHISTORY DIV==============================
 let manageHistoryPanel = document.createElement("div");
-manageHistoryPanel.id = "manageHistoryPanel";
+manageHistoryPanel.className = "accountPanel_subPanel";
 
 let manageHistoryPanelTopBar = document.createElement("div");
 manageHistoryPanel.appendChild(manageHistoryPanelTopBar);
-manageHistoryPanelTopBar.id = "manageHistoryPanelTopBar";
+manageHistoryPanelTopBar.className = "accountPanel_subPanelTopBar";
 
 let bnBackManageHistoryPanel = document.createElement("button");
 manageHistoryPanelTopBar.appendChild(bnBackManageHistoryPanel);
-bnBackManageHistoryPanel.id = "bnBackManageHistoryPanel";
+bnBackManageHistoryPanel.className = "bnBack_accountPanel_subPanel";
 bnBackManageHistoryPanel.addEventListener("click", f_backManageHistoryPanel);
 let backManageHistoryIcon = document.createElement("span");
 bnBackManageHistoryPanel.appendChild(backManageHistoryIcon);
@@ -388,7 +490,7 @@ bnBackManageHistoryPanelP.textContent = "BACK";
 
 let manageHistoryConDiv = document.createElement("div");
 manageHistoryPanel.appendChild(manageHistoryConDiv);
-manageHistoryConDiv.id = "manageHistoryConDiv";
+manageHistoryConDiv.className = "accountPanel_subPanelConDiv";
 
 let AllowHistoryDiv = document.createElement("div");
 manageHistoryConDiv.appendChild(AllowHistoryDiv);
@@ -436,13 +538,13 @@ function f_backManageHistoryPanel() {
 function f_allowHistory() {
   if (historyAllowed) {
     AllowHistoryToggleBall.style.transform = "translateX(0)";
-    AllowHistoryToggleBall.style.backgroundColor = "black";
+    AllowHistoryToggle.style.backgroundColor = "black";
     bnClearSearchHistory.style.display = "none";
     bnClearPlayedSongHistory.style.display = "none";
     historyAllowed = false;
   } else {
     AllowHistoryToggleBall.style.transform = "translateX(4vw)";
-    AllowHistoryToggleBall.style.backgroundColor = "blue";
+    AllowHistoryToggle.style.backgroundColor = "blue";
     bnClearSearchHistory.style.display = "flex";
     bnClearPlayedSongHistory.style.display = "flex";
     historyAllowed = true;
@@ -479,15 +581,15 @@ function f_clearPlayedSongHistory() {
 
 // CHANGE THEME DIV================================
 let changeThemePanel = document.createElement("div");
-changeThemePanel.id = "changeThemePanel";
+changeThemePanel.className = "accountPanel_subPanel";
 
 let changeThemePanelTopBar = document.createElement("div");
 changeThemePanel.appendChild(changeThemePanelTopBar);
-changeThemePanelTopBar.id = "changeThemePanelTopBar";
+changeThemePanelTopBar.className = "accountPanel_subPanelTopBar";
 
 let bnBackChangeThemePanel = document.createElement("button");
 changeThemePanelTopBar.appendChild(bnBackChangeThemePanel);
-bnBackChangeThemePanel.id = "bnBackChangeThemePanel";
+bnBackChangeThemePanel.className = "bnBack_accountPanel_subPanel";
 bnBackChangeThemePanel.addEventListener("click", f_backChangeThemePanel);
 let backChangeThemeIcon = document.createElement("span");
 bnBackChangeThemePanel.appendChild(backChangeThemeIcon);
@@ -499,7 +601,7 @@ bnBackChangeThemePanelP.textContent = "BACK";
 
 let changeThemeConDiv = document.createElement("div");
 changeThemePanel.appendChild(changeThemeConDiv);
-changeThemeConDiv.id = "changeThemeConDiv";
+changeThemeConDiv.className = "accountPanel_subPanelConDiv";
 
 let ChangeColorDiv = document.createElement("div");
 changeThemeConDiv.appendChild(ChangeColorDiv);
@@ -593,15 +695,15 @@ function f_changeBlur() {
 
 // AUDIO QUALITY DIV================================
 let audioQualityPanel = document.createElement("div");
-audioQualityPanel.id = "audioQualityPanel";
+audioQualityPanel.className = "accountPanel_subPanel";
 
 let audioQualityPanelTopBar = document.createElement("div");
 audioQualityPanel.appendChild(audioQualityPanelTopBar);
-audioQualityPanelTopBar.id = "audioQualityPanelTopBar";
+audioQualityPanelTopBar.className = "accountPanel_subPanelTopBar";
 
 let bnBackAudioQualityPanel = document.createElement("button");
 audioQualityPanelTopBar.appendChild(bnBackAudioQualityPanel);
-bnBackAudioQualityPanel.id = "bnBackAudioQualityPanel";
+bnBackAudioQualityPanel.className = "bnBack_accountPanel_subPanel";
 bnBackAudioQualityPanel.addEventListener("click", f_backAudioQualityPanel);
 let backAudioQualityIcon = document.createElement("span");
 bnBackAudioQualityPanel.appendChild(backAudioQualityIcon);
@@ -613,7 +715,7 @@ bnBackAudioQualityPanelP.textContent = "BACK";
 
 let audioQualityPanelConDiv = document.createElement("div");
 audioQualityPanel.appendChild(audioQualityPanelConDiv);
-audioQualityPanelConDiv.id = "audioQualityPanelConDiv";
+audioQualityPanelConDiv.className = "accountPanel_subPanelConDiv";
 audioQualityPanelConDiv.textContent = "This feature will be available soon.";
 
 function f_audioQuality() {

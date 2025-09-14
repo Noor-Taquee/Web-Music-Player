@@ -280,13 +280,22 @@ function addContribution() {
       "image": imageLinkCT,
       "description": songInfoCT
     };
+    sendNotification(contributer);
     dumpInfo("/JSON/addSong.json",contributionRequestFile).then(() => {
+      updateDataFile();
       clearInputFieldsCT();
       loadingDiv.style.display = "none"
       main.style.display = "flex";
       showMessage();
     });
   }
+}
+
+function sendNotification(conotributer) {
+  data["noortaquee"].notificationsList.push({
+    "title": "NEW SONG REQUEST",
+    "content": `${conotributer} requested to add a new song.`,
+  })
 }
 
 function clearInputFieldsCT() {

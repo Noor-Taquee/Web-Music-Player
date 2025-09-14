@@ -1,4 +1,5 @@
 #libraryPanel {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -50,9 +51,111 @@
   cursor: pointer;
   font-size: 1rem;
 }
+
+#addPlaylistPanel {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  align-self: center;
+  margin: auto;
+  padding: 1rem;
+  gap: 2vh;
+  border-radius: 1rem;
+}
+
+#addPlaylistForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+#addPlaylistPanel input {
+  display: flex;
+  height: 6vh;
+  width: 69vw;
+  font-size: 1rem;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  padding-left: 1vw;
+  border-radius: 0.5rem;
+}
+
+#privacyToggle {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  height: 6vh;
+  width: 70vw;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 2rem;
+}
+
+#privacyToggle p {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  height: 100%;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+#privacyToggleLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 6vh;
+  border: none;
+  border-radius: 2rem;
+}
+
+#addPlaylistBtnDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  height: 6vh;
+  width: 70vw;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+#addPlaylistBtnDiv button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 48%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0.5rem;
+}
+
 #libraryContent {
   cursor: default;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -68,8 +171,7 @@
   border-radius: 1.5rem;
 }
 #libraryContent::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+  display: none;
 }
 #libraryContentText {
   justify-self: center;
@@ -273,9 +375,41 @@
   background-color: rgba(25, 25, 25);
 }
 
-.libraryPanel_darkMode #bnDelPlaylist p,
-.libraryPanel_darkMode #bnDelPlaylist span {
-  color: rgb(255, 0, 0);
+.libraryPanel_darkMode #addPlaylistPanel {
+  background-color: rgb(0, 0, 0);
+}
+
+.libraryPanel_darkMode #addPlaylistPanel input {
+  color: white;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.libraryPanel_darkMode #privacyToggle {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.libraryPanel_darkMode #privacyToggleLayer {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.libraryPanel_darkMode #bnCancelAddPlaylist {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.libraryPanel_darkMode #bnCancelAddPlaylist p {
+  color: white;
+}
+
+.libraryPanel_darkMode #bnConfirmAddPlaylist {
+  background: white;
+  color: rgb(0, 0, 0);
+  border: 1px solid white;
+}
+
+.libraryPanel_darkMode #bnConfirmAddPlaylist p {
+  color: rgb(0, 0, 0);
 }
 
 
@@ -324,7 +458,40 @@
   background-color: white;
 }
 
-.libraryPanel_lightMode #bnDelPlaylist p,
-.libraryPanel_lightMode #bnDelPlaylist span {
-  color: rgb(255, 0, 0);
+.libraryPanel_lightMode #addPlaylistPanel {
+  background-color: rgb(255, 255, 255);
+}
+
+.libraryPanel_lightMode #addPlaylistPanel input {
+  color: black;
+  border: 1px solid black;
+}
+
+.libraryPanel_lightMode #privacyToggle {
+  color: black;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.libraryPanel_lightMode #privacyToggleLayer {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.libraryPanel_lightMode #addPlaylistPanel {
+  background-color: rgb(255, 255, 255);
+}
+
+.libraryPanel_lightMode #addPlaylistPanel button {
+  border: 1px solid black;
+}
+
+.libraryPanel_lightMode #bnCancelAddPlaylist p {
+  color: black;
+}
+
+.libraryPanel_lightMode #bnConfirmAddPlaylist {
+  background-color: rgb(0, 0, 0);
+}
+
+.libraryPanel_lightMode #bnConfirmAddPlaylist p {
+  color: rgb(255, 255, 255);
 }

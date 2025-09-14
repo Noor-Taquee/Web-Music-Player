@@ -400,7 +400,9 @@ document.addEventListener("keydown", (event) => {
 });
 
 setInterval(() => {
-  updateDevicePlayerProgress();
+  try {
+    updateDevicePlayerProgress();
+  } catch {}
   if (musicPlaying) {
     coveredTime = formatTime(song.currentTime);
     time1.textContent = coveredTime;
@@ -454,28 +456,31 @@ function loadSondInfo() {
   songInfoArtistsHeader.textContent = "ABOUT ARTIST ";
 
   for (let artist of currentSong.artist) {
-    let cArtistName = artist.trim();
-    let cArtistData = artistData[cArtistName];
+    try {
+      let cArtistName = artist.trim();
+      let cArtistData = artistData[cArtistName];
 
-    let artistDiv = document.createElement("div");
-    songInfoArtists.appendChild(artistDiv);
-    artistDiv.id = "artistDiv";
-    artistDiv.style.backgroundImage = `url(${cArtistData.picture})`;
+      let artistDiv = document.createElement("div");
+      songInfoArtists.appendChild(artistDiv);
+      artistDiv.id = "artistDiv";
 
-    let artistInfoDiv = document.createElement("div");
-    artistDiv.appendChild(artistInfoDiv);
-    artistInfoDiv.id = "artistInfoDiv";
-    let artistImageDiv = document.createElement("div");
-    artistInfoDiv.appendChild(artistImageDiv);
-    artistImageDiv.id = "artistImageDiv";
-    let artistNameP = document.createElement("p");
-    artistImageDiv.appendChild(artistNameP);
-    artistNameP.id = "artistNameP";
-    artistNameP.textContent = cArtistName;
-    let aboutArtistP = document.createElement("div");
-    artistDiv.appendChild(aboutArtistP);
-    aboutArtistP.id = "aboutArtistP";
-    aboutArtistP.textContent = cArtistData.about;
+      let artistPicture = document.createElement("img");
+      artistDiv.appendChild(artistPicture);
+      artistPicture.id = "artistPicture";
+      artistPicture.src = cArtistData.picture;
+
+      let artistInfoDiv = document.createElement("div");
+      artistDiv.appendChild(artistInfoDiv);
+      artistInfoDiv.id = "artistInfoDiv";
+      let artistNameP = document.createElement("p");
+      artistInfoDiv.appendChild(artistNameP);
+      artistNameP.id = "artistNameP";
+      artistNameP.textContent = cArtistName;
+      let aboutArtistP = document.createElement("div");
+      artistInfoDiv.appendChild(aboutArtistP);
+      aboutArtistP.id = "aboutArtistP";
+      aboutArtistP.textContent = cArtistData.about;
+    } catch {}
   }
 
   let songContributionInfoDiv = document.createElement("div");

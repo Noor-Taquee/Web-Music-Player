@@ -202,7 +202,9 @@ song.addEventListener("loadedmetadata",() => {
   totalTime = formatTime(song.duration);
   initPlayer();
   initMiniPlayer();
-  updateDevicePlayer();
+  try {
+    updateDevicePlayer();
+  } catch {}
   if (songChanged) {
     startMusic();
   }

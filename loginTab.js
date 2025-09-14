@@ -200,7 +200,8 @@ function checkAvailability() {
       "recentlyPlayedSongList":[],
       "searchedTextList":[],
       "searchedSongList":[],
-      "favouriteSongList":[]
+      "favouriteSongList":[],
+      "notificationsList":[]
     };
     main.style.display = "none";
     loadingDiv.style.display = "flex";

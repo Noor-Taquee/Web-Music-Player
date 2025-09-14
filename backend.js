@@ -11,6 +11,7 @@ let searchedTextList = [];
 let searchedSongList = [];
 let recentlyPlayedSongList = [];
 let playlistList = [];
+let notificationsList = [];
 
 
 let dropbox = new Dropbox.Dropbox({
@@ -23,7 +24,9 @@ let dropbox = new Dropbox.Dropbox({
 function startBackend() {
   fetchUsersInfo().then(() => {
     fetchSongData().then(() => {
-      setDevicePlayer();
+      try {
+        setDevicePlayer();
+      } catch {}
       let storedUserName = localStorage.getItem("username");
       let storedPass = localStorage.getItem("password");
       if (storedUserName != null && usersList.includes(storedUserName) && storedPass == data[storedUserName].password) {
@@ -147,6 +150,7 @@ function fetchUserData(userGivenName) {
       searchedSongList = userData.searchedSongList;
       likedSongList = userData.likedSongList;
       playlistList  = userData.playlistList;
+      notificationsList = userData.notificationsList;
       localStorage.setItem("username", userGivenName);
       localStorage.setItem("password", accountPassword);
       signedIn = true;
@@ -154,6 +158,7 @@ function fetchUserData(userGivenName) {
       loadPlaylists();
       loadRecentlyPlayedSongs();
       loadSearchHistory();
+      loadNotifications();
       resolve();
     },1000)
   });

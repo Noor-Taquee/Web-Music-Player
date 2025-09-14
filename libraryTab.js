@@ -24,7 +24,6 @@ addPlaylistIcon.textContent = "playlist_add";
 let bnAddPlaylistP = document.createElement("p");
 bnAddPlaylist.appendChild(bnAddPlaylistP);
 bnAddPlaylistP.textContent = "ADD";
-bnAddPlaylist.addEventListener("click",f_AddPlaylist);
 
 
 let libraryContent = document.createElement("div");
@@ -35,6 +34,168 @@ libraryContent.appendChild(libraryContentText);
 libraryContentText.id = "libraryContentText";
 libraryContentText.textContent = "LOGIN TO SEE YOUR PLAYLISTS";
 
+
+
+//VARIABLES
+let playlistInFocus = null;
+
+
+
+//FUNCTIONS
+function loadPlaylists() {
+  clearContainer(libraryContent);
+  if (signedIn) {
+    if (playlistList.length > 0) {
+      for (let playlists of playlistList) {
+        let playlist = document.createElement("div");
+        libraryContent.appendChild(playlist);
+        playlist.id = "playlist";
+        let playlistInfo = document.createElement("div");
+        playlist.appendChild(playlistInfo);
+        playlistInfo.id = "playlistInfo";
+        let playlistPic = document.createElement("p");
+        playlistInfo.appendChild(playlistPic);
+        playlistPic.id = "playlistPic";
+        let playlistIcon = document.createElement("span");
+        playlistIcon.className = "material-symbols-rounded";
+        playlistIcon.textContent = "queue_music";
+        if (playlists.image.length > 0) {
+          playlistPic.style.backgroundImage = `url(${playlists.image})`;
+        } else {
+          playlistPic.appendChild(playlistIcon);
+        }
+        let playlistName = document.createElement("p");
+        playlistInfo.appendChild(playlistName);
+        playlistName.id = "playlistName";
+        playlistName.textContent = playlists.name;
+        let bnOptions = document.createElement("button");
+        playlist.appendChild(bnOptions);
+        bnOptions.id = "bnOptions";
+        bnOptions.addEventListener("click",() => {
+          playlistInFocus = playlist;
+          f_options();
+        });
+        let optionsIcon = document.createElement("span");
+        bnOptions.appendChild(optionsIcon);
+        optionsIcon.className = "material-symbols-rounded";
+        optionsIcon.textContent = "more_vert";
+      }
+    } else {
+      libraryContent.textContent = "YOU DON'T HAVE ANY PLAYLIST";
+    }
+  } else {
+    libraryContent.appendChild(libraryContentText);
+  }
+  let libraryPanelSpace = document.createElement("div");
+  libraryContent.appendChild(libraryPanelSpace);
+  libraryPanelSpace.id = "libraryPanelSpace";
+}
+
+function getPlaylistNames() {
+  for (playlist of playlistList) {
+    playlistNameList.push(playlist.name);
+  }
+}
+
+
+
+// ADD PLAYLISTS===========================
+let addPlaylistPanel = document.createElement("div");
+addPlaylistPanel.id = "addPlaylistPanel";
+
+let addPlaylistForm = document.createElement("div");
+addPlaylistPanel.appendChild(addPlaylistForm);
+addPlaylistForm.id = "addPlaylistForm";
+let playlistNameInput = document.createElement("input");
+addPlaylistForm.appendChild(playlistNameInput);
+playlistNameInput.id = "playlistNameInput";
+playlistNameInput.type = "text";
+playlistNameInput.placeholder = "Playlist Name";
+let playlistImageInput = document.createElement("input");
+addPlaylistForm.appendChild(playlistImageInput);
+playlistImageInput.id = "playlistImageInput";
+playlistImageInput.type = "text";
+playlistImageInput.placeholder = "Playlist Image URL";
+let privacyToggle = document.createElement("div");
+addPlaylistForm.appendChild(privacyToggle);
+privacyToggle.id = "privacyToggle";
+let privateToggle = document.createElement("p");
+privacyToggle.appendChild(privateToggle);
+privateToggle.id = "privateToggle";
+privateToggle.textContent = "Private";
+let publicToggle = document.createElement("p");
+privacyToggle.appendChild(publicToggle);
+publicToggle.id = "publicToggle";
+publicToggle.textContent = "Public";
+let privacyToggleLayer = document.createElement("div");
+privacyToggle.appendChild(privacyToggleLayer);
+privacyToggleLayer.id = "privacyToggleLayer";
+
+let addPlaylistBtnDiv = document.createElement("div");
+addPlaylistPanel.appendChild(addPlaylistBtnDiv);
+addPlaylistBtnDiv.id = "addPlaylistBtnDiv";
+
+let bnCancelAddPlaylist = document.createElement("button");
+addPlaylistBtnDiv.appendChild(bnCancelAddPlaylist);
+bnCancelAddPlaylist.id = "bnCancelAddPlaylist";
+let bnCancelAddPlaylistP = document.createElement("p");
+bnCancelAddPlaylist.appendChild(bnCancelAddPlaylistP);
+bnCancelAddPlaylistP.textContent = "CANCEL";
+bnCancelAddPlaylist.addEventListener("click", f_cancelAddPlaylist);
+
+let bnConfirmAddPlaylist = document.createElement("button");
+addPlaylistBtnDiv.appendChild(bnConfirmAddPlaylist);
+bnConfirmAddPlaylist.id = "bnConfirmAddPlaylist";
+let bnConfirmAddPlaylistP = document.createElement("p");
+bnConfirmAddPlaylist.appendChild(bnConfirmAddPlaylistP);
+bnConfirmAddPlaylistP.textContent = "ADD";
+bnConfirmAddPlaylist.addEventListener("click", f_confirmAddPlaylist);
+
+
+let privacy = "public";
+
+
+function f_AddPlaylist() {
+  if (signedIn) {
+    libraryPanel.appendChild(addPlaylistPanel);
+    addPlaylistPanel.style.animation = "appear";
+    addPlaylistPanel.style.animationDuration = "0.5s";
+    addPlaylistPanel.addEventListener("animationend", function addPlaylistPanelA() {
+      addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelA);
+    });
+  } else {
+    alert("Login to your account first!");
+  }
+}
+
+function f_cancelAddPlaylist() {
+  addPlaylistPanel.style.animation = "disappear";
+  addPlaylistPanel.style.animationDuration = "0.5s";
+  addPlaylistPanel.addEventListener("animationend", function addPlaylistPanelD() {
+    addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelD);
+    libraryPanel.removeChild(addPlaylistPanel);
+  });
+}
+
+function f_confirmAddPlaylist() {
+  let nameOfPlaylist = playlistNameInput.value;
+  let imageOfPlaylist = playlistImageInput.value;
+  if (nameOfPlaylist.length < 1) {
+    alert("Playlist name cannot be empty!");
+    return;
+  } else {
+    playlistList.push({
+      "name": nameOfPlaylist,
+      "privacy": privacy,
+      "image": imageOfPlaylist
+    });
+    loadPlaylists();
+    updateDataFile();
+  }
+}
+
+
+// MODIFY PLAYLISTS===========================
 let optionPanel = document.createElement("div");
 optionPanel.id = "optionPanel";
 
@@ -94,87 +255,8 @@ bnConfirmDel.id = "bnConfirmDel";
 bnConfirmDel.textContent = "DELETE";
 
 
-
-
-//VARIABLES
-let playlistInFocus = null;
-
-
-
-//FUNCTIONS
-function loadPlaylists() {
-  clearContainer(libraryContent);
-  if (signedIn) {
-    if (playlistList.length > 0) {
-      for (let playlists of playlistList) {
-        let playlist = document.createElement("div");
-        libraryContent.appendChild(playlist);
-        playlist.id = "playlist";
-        let playlistInfo = document.createElement("div");
-        playlist.appendChild(playlistInfo);
-        playlistInfo.id = "playlistInfo";
-        let playlistPic = document.createElement("p");
-        playlistInfo.appendChild(playlistPic);
-        playlistPic.id = "playlistPic";
-        let playlistIcon = document.createElement("span");
-        playlistIcon.className = "material-symbols-rounded";
-        playlistIcon.textContent = "queue_music";
-        if (playlists.image.length > 0) {
-          playlistPic.style.backgroundImage = `url(${playlists.image})`;
-        } else {
-          playlistPic.appendChild(playlistIcon);
-        }
-        let playlistName = document.createElement("p");
-        playlistInfo.appendChild(playlistName);
-        playlistName.id = "playlistName";
-        playlistName.textContent = playlists.name;
-        let bnOptions = document.createElement("button");
-        playlist.appendChild(bnOptions);
-        bnOptions.id = "bnOptions";
-        bnOptions.addEventListener("click",() => f_options(playlist.name));
-        let optionsIcon = document.createElement("span");
-        bnOptions.appendChild(optionsIcon);
-        optionsIcon.className = "material-symbols-rounded";
-        optionsIcon.textContent = "more_vert";
-      }
-    } else {
-      libraryContent.textContent = "YOU DON'T HAVE ANY PLAYLIST";
-    }
-  } else {
-    libraryContent.appendChild(libraryContentText);
-  }
-  let libraryPanelSpace = document.createElement("div");
-  libraryContent.appendChild(libraryPanelSpace);
-  libraryPanelSpace.id = "libraryPanelSpace";
-}
-
-function getPlaylistNames() {
-  for (playlist of playlistList) {
-    playlistNameList.push(playlist.name);
-  }
-}
-
-function f_AddPlaylist() {
-  if (signedIn) {
-  } else {
-    alert("Login to your account first!");
-  }
-}
-
-function addPlaylist(nameOfPlaylist,privacy,imageOfPlaylist) {
-  playlistList.push({
-    "name":nameOfPlaylist,
-    "privacy":privacy,
-    "image":imageOfPlaylist
-  });
-}
-
-function renamePlaylist(newName,oldName) {
-}
-
-function f_options(nameOfPlaylist) {
-  playlistInFocus = nameOfPlaylist;
-  libraryContent.appendChild(optionPanel);
+function f_options() {
+  libraryPanel.appendChild(optionPanel);
   optionPanel.style.animation = "appear";
   optionPanel.style.animationDuration = "0.5s";
   optionPanel.addEventListener("animationend", function optionPanelA() {
@@ -187,7 +269,7 @@ bnCancel.addEventListener("click",() => {
   optionPanel.style.animationDuration = "0.5s";
   optionPanel.addEventListener("animationend", function optionPanelD() {
     optionPanel.removeEventListener("animationend", optionPanelD);
-    libraryContent.removeChild(optionPanel);
+    libraryPanel.removeChild(optionPanel);
   });
 });
 bnDelPlaylist.addEventListener("click",() => {
@@ -207,6 +289,8 @@ bnCancelDel.addEventListener("click",() => {
   });
 });
 
+function renamePlaylist(newName,oldName) {
+}
 
 
 attend();
