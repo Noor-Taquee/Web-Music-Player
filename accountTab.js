@@ -434,7 +434,7 @@ function loadNotifications() {
     let bnRemoveNotification = document.createElement("button");
     NotificationHeader.appendChild(bnRemoveNotification);
     bnRemoveNotification.id = "bnRemoveNotification";
-    bnRemoveNotification.addEventListener("click",() => f_removeNotification(i));
+    bnRemoveNotification.addEventListener("click",() => f_removeNotification(notificationsList[i]));
     let removeNotificationIcon = document.createElement("span");
     bnRemoveNotification.appendChild(removeNotificationIcon);
     removeNotificationIcon.className = "material-symbols-rounded";
@@ -445,10 +445,23 @@ function loadNotifications() {
     removeNotificationP.textContent = "REMOVE";
     removeNotificationP.style.color = "red";
 
+    let notificationDateP = document.createElement("p");
+    notificationDiv.appendChild(notificationDateP);
+    notificationDateP.id = "notificationDate";
+    notificationDateP.textContent = notificationsList[i].date;
+    let notificationTimeP = document.createElement("p");
+    notificationDiv.appendChild(notificationTimeP);
+    notificationTimeP.id = "notificationTime";
+    notificationTimeP.textContent = notificationsList[i].time;
+
+
     let notificationContentP = document.createElement("p");
     notificationDiv.appendChild(notificationContentP);
     notificationContentP.textContent = notificationsList[i].content;
   }
+  let notificationContentSpace = document.createElement("div");
+  notificationsConDiv.appendChild(notificationContentSpace);
+  notificationContentSpace.id = "notificationContentSpace";
 }
 
 function f_notifications() {
@@ -459,8 +472,8 @@ function f_backNotificationsPanel() {
   accountPanel.replaceChild(settingsPanel, notificationsPanel);
 }
 
-function f_removeNotification(index) {
-  notificationsList.splice(index, 1);
+function f_removeNotification(notification) {
+  notificationsList.splice(notificationsList.indexOf(notification), 1);
   loadNotifications();
   updateDataFile();
 }

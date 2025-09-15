@@ -488,7 +488,7 @@ function loadSondInfo() {
   songContributionInfoDiv.id = "songContributionInfoDiv";
   let songContributerP = document.createElement("p");
   songContributionInfoDiv.appendChild(songContributerP);
-  songContributerP.textContent = `Contributed by: ${currentSong.contributer} on ${currentSong.contributionDate}`;
+  songContributerP.textContent = `Contributed by ${currentSong.contributer} on ${currentSong.contributionDate}`;
 
   let songInfoDivSpace = document.createElement("div");
   songInfoConDiv.appendChild(songInfoDivSpace);

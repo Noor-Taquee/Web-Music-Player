@@ -280,7 +280,7 @@ function addContribution() {
       "image": imageLinkCT,
       "description": songInfoCT
     };
-    sendNotification(contributer);
+    sendNotificationCT(contributer);
     dumpInfo("/JSON/addSong.json",contributionRequestFile).then(() => {
       updateDataFile();
       clearInputFieldsCT();
@@ -291,9 +291,11 @@ function addContribution() {
   }
 }
 
-function sendNotification(conotributer) {
+function sendNotificationCT(conotributer) {
   data["noortaquee"].notificationsList.push({
     "title": "NEW SONG REQUEST",
+    "date": `${genDate()}`,
+    "time":`${genTime()}`,
     "content": `${conotributer} requested to add a new song.`,
   })
 }

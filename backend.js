@@ -23,8 +23,16 @@ let dropbox = new Dropbox.Dropbox({
 
 function startBackend() {
   fetchUsersInfo().then(() => {
-    fetchSongData().then(() => {
-      try {
+    fetchSongData();
+  });
+}
+
+let count = 0;
+function songAttendance() {
+  count++;
+  if (count >= 6) {
+    updateSongInfo();
+    try {
         setDevicePlayer();
       } catch {}
       let storedUserName = localStorage.getItem("username");
@@ -38,8 +46,7 @@ function startBackend() {
         loadingDiv.style.display = "none";
         main.style.display = "flex";
       }
-    });
-  });
+    }
 }
 
 function updateDataFile() {
@@ -66,39 +73,43 @@ function fetchSongData() {
     Object.assign(songData,data);
     titleNames.push(...HindiTitles);
     loadHomeSongs(HindiTitles,hindiSongDivCon);
+    songAttendance();
   })
   loadInfo("/JSON/PunjabiSongs.json").then(data => {
     PunjabiTitles = Object.keys(data);
     Object.assign(songData,data);
     titleNames.push(...PunjabiTitles);
     loadHomeSongs(PunjabiTitles,punjabiSongDivCon);
+    songAttendance();
   })
   loadInfo("/JSON/EnglishSongs.json").then(data => {
     EnglishTitles = Object.keys(data);
     Object.assign(songData,data);
     titleNames.push(...EnglishTitles);
     loadHomeSongs(EnglishTitles,englishSongDivCon);
+    songAttendance();
   })
   loadInfo("/JSON/PhonkSongs.json").then(data => {
     PhonkTitles = Object.keys(data);
     Object.assign(songData,data);
     titleNames.push(...PhonkTitles);
     loadHomeSongs(PhonkTitles,phonkSongDivCon);
+    songAttendance();
   })
   loadInfo("/JSON/SpanishSongs.json").then(data => {
     SpanishTitles = Object.keys(data);
     Object.assign(songData,data);
     titleNames.push(...SpanishTitles);
     loadHomeSongs(SpanishTitles,spanishSongDivCon);
+    songAttendance();
   })
   return loadInfo("/JSON/Tunes.json").then(data => {
     TunesTitles = Object.keys(data);
     Object.assign(songData,data);
     titleNames.push(...TunesTitles);
     loadHomeSongs(TunesTitles,tuneDivCon);
-  }).then(() => {
-    updateSongInfo();
-  });
+    songAttendance();
+  })
 }
 function fetchArtistsData() {
   loadInfo("/JSON/hindiArtists.json").then(data => {
