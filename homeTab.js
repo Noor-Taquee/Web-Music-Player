@@ -15,56 +15,78 @@ let bnHindiSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnHindiSongs);
 bnHindiSongs.id = "bnHindiSongs";
 bnHindiSongs.textContent = "HINDI";
+let hindiSongsDiv = document.createElement("div");
+hindiSongsDiv.id = "hindiSongsDiv";
 
 let bnPartySongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnPartySongs);
 bnPartySongs.id = "bnPartySongs";
 bnPartySongs.textContent = "PARTY";
+let partySongsDiv = document.createElement("div");
+partySongsDiv.id = "partySongsDiv";
 
 let bnPunjabiSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnPunjabiSongs);
 bnPunjabiSongs.id = "bnPunjabiSongs";
 bnPunjabiSongs.textContent = "PUNJABI";
+let punjabiSongsDiv = document.createElement("div");
+punjabiSongsDiv.id = "punjabiSongsDiv";
 
 let bnRomanticSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnRomanticSongs);
 bnRomanticSongs.id = "bnRomanticSongs";
 bnRomanticSongs.textContent = "ROMANTIC";
+let romanticSongsDiv = document.createElement("div");
+romanticSongsDiv.id = "romanticSongsDiv";
 
 let bnSlowedSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnSlowedSongs);
 bnSlowedSongs.id = "bnSlowedSongs";
 bnSlowedSongs.textContent = "SLOWED";
+let slowedSongsDiv = document.createElement("div");
+slowedSongsDiv.id = "slowedSongsDiv";
 
 let bnEnglishSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnEnglishSongs);
 bnEnglishSongs.id = "bnEnglishSongs";
 bnEnglishSongs.textContent = "ENGLISH";
+let englishSongsDiv = document.createElement("div");
+englishSongsDiv.id = "englishSongsDiv";
 
 let bnPhonkSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnPhonkSongs);
 bnPhonkSongs.id = "bnPhonkSongs";
 bnPhonkSongs.textContent = "PHONK";
+let phonkSongsDiv = document.createElement("div");
+phonkSongsDiv.id = "phonkSongsDiv";
 
 let bnDanceSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnDanceSongs);
 bnDanceSongs.id = "bnDanceSongs";
 bnDanceSongs.textContent = "DANCE";
+let danceSongsDiv = document.createElement("div");
+danceSongsDiv.id = "danceSongsDiv";
 
 let bnSpanishSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnSpanishSongs);
 bnSpanishSongs.id = "bnSpanishSongs";
 bnSpanishSongs.textContent = "SPANISH";
+let spanishSongsDiv = document.createElement("div");
+spanishSongsDiv.id = "spanishSongsDiv";
 
 let bnChillSongs = document.createElement("button");
 homeCategoryDiv.appendChild(bnChillSongs);
 bnChillSongs.id = "bnChillSongs";
 bnChillSongs.textContent = "CHILL";
+let chillSongsDiv = document.createElement("div");
+chillSongsDiv.id = "chillSongsDiv";
 
 let bnTunes = document.createElement("button");
 homeCategoryDiv.appendChild(bnTunes);
 bnTunes.id = "bnTunes";
 bnTunes.textContent = "TUNES";
+let tunesDiv = document.createElement("div");
+tunesDiv.id = "tunesDiv";
 
 
 let homeContentDiv = document.createElement("div");
@@ -85,6 +107,7 @@ let recentlyPlayedDivConText = document.createElement("p");
 recentlyPlayedDivCon.appendChild(recentlyPlayedDivConText);
 recentlyPlayedDivConText.id = "recentlyPlayedDivConText";
 recentlyPlayedDivConText.textContent = "LOGIN TO SEE RECENTLY PLAYED SONGS";
+
 
 let hindiSongDiv = document.createElement("div");
 homeContentDiv.appendChild(hindiSongDiv);
@@ -141,16 +164,16 @@ let spanishSongDivCon = document.createElement("p");
 spanishSongDiv.appendChild(spanishSongDivCon);
 spanishSongDivCon.className = "songDivCon";
 
-let tunesDiv = document.createElement("div");
-homeContentDiv.appendChild(tunesDiv);
-tunesDiv.className = "songDiv";
-let tunesDivText = document.createElement("p");
-tunesDiv.appendChild(tunesDivText);
-tunesDivText.className = "songDivText";
-tunesDivText.textContent = "TUNES";
-let tunesDivCon = document.createElement("p");
-tunesDiv.appendChild(tunesDivCon);
-tunesDivCon.className = "songDivCon";
+let tuneDiv = document.createElement("div");
+homeContentDiv.appendChild(tuneDiv);
+tuneDiv.className = "songDiv";
+let tuneDivText = document.createElement("p");
+tuneDiv.appendChild(tuneDivText);
+tuneDivText.className = "songDivText";
+tuneDivText.textContent = "TUNES";
+let tuneDivCon = document.createElement("p");
+tuneDiv.appendChild(tuneDivCon);
+tuneDivCon.className = "songDivCon";
 
 let homePanelSpace = document.createElement("div");
 homeContentDiv.appendChild(homePanelSpace);
@@ -190,110 +213,10 @@ function loadRecentlyPlayedSongs() {
   }
 }
 
-function loadHomeSongs() {
-  for (let songs of HindiTitles) {
+function loadHomeSongs(songList,songContainer) {
+  for (let songs of songList) {
     let suggestedSong = document.createElement("button");
-    hindiSongDivCon.appendChild(suggestedSong);
-    suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click", () => playSong(songs));
-
-    let songIcon = document.createElement("span");
-    songIcon.className = "material-symbols-rounded";
-    songIcon.textContent = "headphones";
-    if (songData[songs].image.length > 0) {
-      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
-    } else {
-      suggestedSong.appendChild(songIcon);
-    }
-
-    let suggestedSongName = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongName);
-    suggestedSongName.id = "suggestedSongName";
-    suggestedSongName.textContent = songData[songs].name;
-  }
-  for (let songs of PunjabiTitles) {
-    let suggestedSong = document.createElement("button");
-    punjabiSongDivCon.appendChild(suggestedSong);
-    suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click", () => playSong(songs));
-
-    let songIcon = document.createElement("span");
-    songIcon.className = "material-symbols-rounded";
-    songIcon.textContent = "headphones";
-    if (songData[songs].image.length > 0) {
-      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
-    } else {
-      suggestedSong.appendChild(songIcon);
-    }
-
-    let suggestedSongName = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongName);
-    suggestedSongName.id = "suggestedSongName";
-    suggestedSongName.textContent = songData[songs].name;
-  }
-  for (let songs of EnglishTitles) {
-    let suggestedSong = document.createElement("button");
-    englishSongDivCon.appendChild(suggestedSong);
-    suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click", () => playSong(songs));
-
-    let songIcon = document.createElement("span");
-    songIcon.className = "material-symbols-rounded";
-    songIcon.textContent = "headphones";
-    if (songData[songs].image.length > 0) {
-      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
-    } else {
-      suggestedSong.appendChild(songIcon);
-    }
-
-    let suggestedSongName = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongName);
-    suggestedSongName.id = "suggestedSongName";
-    suggestedSongName.textContent = songData[songs].name;
-  }
-  for (let songs of PhonkTitles) {
-    let suggestedSong = document.createElement("button");
-    phonkSongDivCon.appendChild(suggestedSong);
-    suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click", () => playSong(songs));
-
-    let songIcon = document.createElement("span");
-    songIcon.className = "material-symbols-rounded";
-    songIcon.textContent = "headphones";
-    if (songData[songs].image.length > 0) {
-      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
-    } else {
-      suggestedSong.appendChild(songIcon);
-    }
-
-    let suggestedSongName = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongName);
-    suggestedSongName.id = "suggestedSongName";
-    suggestedSongName.textContent = songData[songs].name;
-  }
-  for (let songs of SpanishTitles) {
-    let suggestedSong = document.createElement("button");
-    spanishSongDivCon.appendChild(suggestedSong);
-    suggestedSong.id = "suggestedSong";
-    suggestedSong.addEventListener("click", () => playSong(songs));
-
-    let songIcon = document.createElement("span");
-    songIcon.className = "material-symbols-rounded";
-    songIcon.textContent = "headphones";
-    if (songData[songs].image.length > 0) {
-      suggestedSong.style.backgroundImage = `url(${songData[songs].image})`;
-    } else {
-      suggestedSong.appendChild(songIcon);
-    }
-
-    let suggestedSongName = document.createElement("p");
-    suggestedSong.appendChild(suggestedSongName);
-    suggestedSongName.id = "suggestedSongName";
-    suggestedSongName.textContent = songData[songs].name;
-  }
-  for (let songs of TunesTitles) {
-    let suggestedSong = document.createElement("button");
-    tunesDivCon.appendChild(suggestedSong);
+    songContainer.appendChild(suggestedSong);
     suggestedSong.id = "suggestedSong";
     suggestedSong.addEventListener("click", () => playSong(songs));
 

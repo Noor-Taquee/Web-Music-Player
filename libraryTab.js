@@ -46,34 +46,34 @@ function loadPlaylists() {
   clearContainer(libraryContent);
   if (signedIn) {
     if (playlistList.length > 0) {
-      for (let playlists of playlistList) {
-        let playlist = document.createElement("div");
+      for (let i in playlistList) {
+        let playlist = document.createElement("button");
         libraryContent.appendChild(playlist);
         playlist.id = "playlist";
         let playlistInfo = document.createElement("div");
         playlist.appendChild(playlistInfo);
         playlistInfo.id = "playlistInfo";
+        playlistInfo.addEventListener("click",() => openPlaylist(playlistList[i]));
         let playlistPic = document.createElement("p");
         playlistInfo.appendChild(playlistPic);
         playlistPic.id = "playlistPic";
         let playlistIcon = document.createElement("span");
         playlistIcon.className = "material-symbols-rounded";
         playlistIcon.textContent = "queue_music";
-        if (playlists.image.length > 0) {
-          playlistPic.style.backgroundImage = `url(${playlists.image})`;
+        if (playlistList[i].image.length > 0) {
+          playlistPic.style.backgroundImage = `url(${playlistList[i].image})`;
         } else {
           playlistPic.appendChild(playlistIcon);
         }
         let playlistName = document.createElement("p");
         playlistInfo.appendChild(playlistName);
         playlistName.id = "playlistName";
-        playlistName.textContent = playlists.name;
+        playlistName.textContent = playlistList[i].name;
         let bnOptions = document.createElement("button");
         playlist.appendChild(bnOptions);
         bnOptions.id = "bnOptions";
         bnOptions.addEventListener("click",() => {
-          playlistInFocus = playlist;
-          f_options();
+          f_options(playlistList[i]);
         });
         let optionsIcon = document.createElement("span");
         bnOptions.appendChild(optionsIcon);
@@ -81,9 +81,11 @@ function loadPlaylists() {
         optionsIcon.textContent = "more_vert";
       }
     } else {
-      libraryContent.textContent = "YOU DON'T HAVE ANY PLAYLIST";
+      libraryContentText.textContent = "YOU DON'T HAVE ANY PLAYLIST";
+      libraryContent.appendChild(libraryContentText);
     }
   } else {
+    libraryContentText.textContent = "LOGIN TO SEE YOUR PLAYLISTS";
     libraryContent.appendChild(libraryContentText);
   }
   let libraryPanelSpace = document.createElement("div");
@@ -91,12 +93,99 @@ function loadPlaylists() {
   libraryPanelSpace.id = "libraryPanelSpace";
 }
 
+let playlistPanel = document.createElement("div");
+playlistPanel.id = "playlistPanel";
+let playlistPanelHeader = document.createElement("div");
+playlistPanel.appendChild(playlistPanelHeader);
+playlistPanelHeader.id = "playlistPanelHeader";
+let bnBackPlaylistPanel = document.createElement("button");
+playlistPanelHeader.appendChild(bnBackPlaylistPanel);
+bnBackPlaylistPanel.id = "bnBackPlaylistPanel";
+bnBackPlaylistPanel.addEventListener("click", f_backPlaylistPanel);
+let backPlaylistPanelIcon = document.createElement("span");
+bnBackPlaylistPanel.appendChild(backPlaylistPanelIcon);
+backPlaylistPanelIcon.className = "material-symbols-rounded";
+backPlaylistPanelIcon.textContent = "arrow_back_ios_new";
+let bnBackPlaylistPanelP = document.createElement("p");
+bnBackPlaylistPanel.appendChild(bnBackPlaylistPanelP);
+bnBackPlaylistPanelP.textContent = "BACK";
+
+let playlistPanelContent = document.createElement("div");
+playlistPanel.appendChild(playlistPanelContent);
+playlistPanelContent.id = "playlistPanelContent";
+
+
 function getPlaylistNames() {
   for (playlist of playlistList) {
     playlistNameList.push(playlist.name);
   }
 }
 
+function openPlaylist(playlist) {
+  libraryPanel.replaceChild(playlistPanel, libraryContent);
+  clearContainer(playlistPanelContent);
+  let playlistInfoPanel = document.createElement("div");
+  playlistPanelContent.appendChild(playlistInfoPanel);
+  playlistInfoPanel.id = "playlistInfoPanel";
+  let playlistInfoPic = document.createElement("image");
+  playlistInfoPanel.appendChild(playlistInfoPic);
+  playlistInfoPic.id = "playlistInfoPic";
+  playlistInfoPic.src = `${playlist.image}`;
+  let playlistPanelTitle = document.createElement("p");
+  playlistInfoPanel.appendChild(playlistPanelTitle);
+  playlistPanelTitle.id = "playlistPanelTitle";
+  playlistPanelTitle.textContent = playlist.name;
+
+  let playlistPanelSongDiv = document.createElement("div");
+  playlistPanelContent.appendChild(playlistPanelSongDiv);
+  playlistPanelSongDiv.id = "playlistPanelSongDiv";
+  let playlistPanelSongDivP = document.createElement("p");
+  playlistPanelSongDiv.appendChild(playlistPanelSongDivP);
+  playlistPanelSongDivP.id = "playlistPanelSongDivP";
+  if (playlist.songs.length > 0) {
+    for (let i in playlist.songs) {
+      let playlistSong = document.createElement("button");
+      playlistPanelSongDiv.appendChild(playlistSong);
+      playlistSong.id = "playlistSong";
+
+      let playlistSongInfo = document.createElement("div");
+      playlistSong.appendChild(playlistSongInfo);
+      playlistSongInfo.id = "playlistSongInfo";
+      playlistSongInfo.addEventListener("click",() => playSong(playlist.songs[i]));
+      let playlistSongPic = document.createElement("p");
+      playlistSongInfo.appendChild(playlistSongPic);
+      playlistSongPic.id = "playlistSongPic";
+
+      let playlistSongIcon = document.createElement("span");
+      playlistSongIcon.className = "material-symbols-rounded";
+      playlistSongIcon.textContent = "headphones";
+      if (songData[playlist.songs[i]].image.length > 0) {
+        playlistSongPic.style.backgroundImage = `url(${songData[playlist.songs[i]].image})`;
+      } else {
+        playlistSongPic.appendChild(playlistSongIcon);
+      }
+      let playlistSongName = document.createElement("p");
+      playlistSongInfo.appendChild(playlistSongName);
+      playlistSongName.id = "playlistSongName";
+      playlistSongName.textContent = songData[playlist.songs[i]].name;
+      let bnPlaylistSongOptions = document.createElement("button");
+      playlistSong.appendChild(bnPlaylistSongOptions);
+      bnPlaylistSongOptions.id = "bnOptions";
+      bnPlaylistSongOptions.addEventListener("click",() => {});
+      let playlistSongOptionsIcon = document.createElement("span");
+      playlistSong.appendChild(playlistSongOptionsIcon);
+      playlistSongOptionsIcon.className = "material-symbols-rounded";
+      playlistSongOptionsIcon.textContent = "more_vert";
+    }
+  } else {
+    playlistPanelSongDivP.textContent = "THE PLAYLIST IS EMPTY";
+    libraryContent.appendChild(playlistPanelSongDivP);
+  }
+}
+
+function f_backPlaylistPanel() {
+  libraryPanel.replaceChild(libraryContent, playlistPanel);
+}
 
 
 // ADD PLAYLISTS===========================
@@ -175,6 +264,7 @@ function f_cancelAddPlaylist() {
     addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelD);
     libraryPanel.removeChild(addPlaylistPanel);
   });
+  clearInputFieldsLP();
 }
 
 function f_confirmAddPlaylist() {
@@ -187,11 +277,18 @@ function f_confirmAddPlaylist() {
     playlistList.push({
       "name": nameOfPlaylist,
       "privacy": privacy,
-      "image": imageOfPlaylist
+      "image": imageOfPlaylist,
+      "songs": []
     });
     loadPlaylists();
+    f_cancelAddPlaylist();
     updateDataFile();
   }
+}
+
+function clearInputFieldsLP() {
+  playlistNameInput.value = "";
+  playlistImageInput.value = "";
 }
 
 
@@ -202,6 +299,7 @@ optionPanel.id = "optionPanel";
 let bnCancel = document.createElement("button");
 optionPanel.appendChild(bnCancel);
 bnCancel.id = "bnCancel";
+bnCancel.addEventListener("click", f_cancel);
 let cancelIcon = document.createElement("span");
 bnCancel.appendChild(cancelIcon);
 cancelIcon.className = "material-symbols-rounded";
@@ -213,6 +311,7 @@ bnCancelP.textContent = "CANCEL";
 let bnRenamePlaylist = document.createElement("button");
 optionPanel.appendChild(bnRenamePlaylist);
 bnRenamePlaylist.id = "bnRenamePlaylist";
+bnRenamePlaylist.addEventListener("click", f_renamePlaylist);
 let renamePlaylistIcon = document.createElement("span");
 bnRenamePlaylist.appendChild(renamePlaylistIcon);
 renamePlaylistIcon.className = "material-symbols-rounded";
@@ -224,6 +323,7 @@ bnRenamePlaylistP.textContent = "RENAME";
 let bnDelPlaylist = document.createElement("button");
 optionPanel.appendChild(bnDelPlaylist);
 bnDelPlaylist.id = "bnDelPlaylist";
+bnDelPlaylist.addEventListener("click", f_delPlaylist);
 let delPlaylistIcon = document.createElement("span");
 bnDelPlaylist.appendChild(delPlaylistIcon);
 delPlaylistIcon.className = "material-symbols-rounded";
@@ -249,13 +349,16 @@ let bnCancelDel = document.createElement("button");
 delConfirmButtonsDiv.appendChild(bnCancelDel);
 bnCancelDel.id = "bnCancelDel";
 bnCancelDel.textContent = "CANCEL";
+bnCancelDel.addEventListener("click", f_cancelDelPlaylist);
 let bnConfirmDel = document.createElement("button");
 delConfirmButtonsDiv.appendChild(bnConfirmDel);
 bnConfirmDel.id = "bnConfirmDel";
 bnConfirmDel.textContent = "DELETE";
+bnConfirmDel.addEventListener("click", confirmDelPlaylist);
 
 
-function f_options() {
+function f_options(selectedPlaylist) {
+  playlistInFocus = selectedPlaylist;
   libraryPanel.appendChild(optionPanel);
   optionPanel.style.animation = "appear";
   optionPanel.style.animationDuration = "0.5s";
@@ -264,32 +367,44 @@ function f_options() {
   });
 }
 
-bnCancel.addEventListener("click",() => {
+function f_cancel() {
   optionPanel.style.animation = "disappear";
   optionPanel.style.animationDuration = "0.5s";
   optionPanel.addEventListener("animationend", function optionPanelD() {
     optionPanel.removeEventListener("animationend", optionPanelD);
     libraryPanel.removeChild(optionPanel);
   });
-});
-bnDelPlaylist.addEventListener("click",() => {
+}
+
+function f_renamePlaylist() {}
+
+function f_delPlaylist() {
   libraryContent.appendChild(confirmPanelOuter);
   confirmPanelOuter.style.animation = "appear";
   confirmPanelOuter.style.animationDuration = "0.5s";
   confirmPanelOuter.addEventListener("animationend", function confirmPanelA() {
     confirmPanelOuter.removeEventListener("animationend", confirmPanelA);
   });
-});
-bnCancelDel.addEventListener("click",() => {
+};
+
+function confirmDelPlaylist() {
+  playlistList.splice(playlistList.indexOf(playlistInFocus),1);
+  loadPlaylists();
+  updateDataFile();
+  f_cancelDelPlaylist();
+  f_cancel();
+}
+
+function f_cancelDelPlaylist() {
   confirmPanelOuter.style.animation = "disappear";
   confirmPanelOuter.style.animationDuration = "0.5s";
   confirmPanelOuter.addEventListener("animationend", function confirmPanelD() {
     confirmPanelOuter.removeEventListener("animationend", confirmPanelD);
     libraryContent.removeChild(confirmPanelOuter);
   });
-});
+}
 
-function renamePlaylist(newName,oldName) {
+function f_confirmRenamePlaylist(newName,oldName) {
 }
 
 

@@ -716,7 +716,9 @@ bnBackAudioQualityPanelP.textContent = "BACK";
 let audioQualityPanelConDiv = document.createElement("div");
 audioQualityPanel.appendChild(audioQualityPanelConDiv);
 audioQualityPanelConDiv.className = "accountPanel_subPanelConDiv";
-audioQualityPanelConDiv.textContent = "This feature will be available soon.";
+let audioQualityPanelP = document.createElement("p");
+audioQualityPanelConDiv.appendChild(audioQualityPanelP);
+audioQualityPanelP.textContent = "This feature will be available soon.";
 
 function f_audioQuality() {
   accountPanel.replaceChild(audioQualityPanel, settingsPanel)

@@ -162,7 +162,7 @@ function changeMethod() {
 }
 
 function checkIdentity() {
-  let userGivenName = nameInputSignIn.value;
+  let userGivenName = nameInputSignIn.value.trim();
   let userGivenPass = passInputSignIn.value;
   if (usersList.includes(userGivenName)) {
     if (data[userGivenName].password == userGivenPass) {
@@ -183,12 +183,12 @@ function checkIdentity() {
 }
 
 function checkAvailability() {
-  let userGivenFullName = fullNameInputSignUp.value;
-  let userGivenName = nameInputSignUp.value;
+  let userGivenFullName = fullNameInputSignUp.value.trim();
+  let userGivenName = nameInputSignUp.value.trim();
   let userGivenPass = passInputSignUp.value;
   if (usersList.includes(userGivenName)) {
     alert("Username is not available!");
-  } else if (userGivenPass.length < 1) {
+  } else if (userGivenPass.trim().length < 1) {
     alert("Password cannot be empty!");
   } else if (userGivenFullName.length < 1) {
     alert("Please provide your full name!");

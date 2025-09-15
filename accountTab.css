@@ -180,6 +180,12 @@
 .buttonTextContainer p {
   font-size: 1rem;
 }
+
+.buttonTextContainer span {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
 #accountPanelSpace {
   height: 30vh;
   width: 100%;

@@ -61,71 +61,76 @@ function loadInfo(path) {
   });
 }
 function fetchSongData() {
-  return loadInfo("/JSON/HindiSongs.json").then(data => {
-    Object.assign(songData,data);
+  loadInfo("/JSON/HindiSongs.json").then(data => {
     HindiTitles = Object.keys(data);
-    return loadInfo("/JSON/PunjabiSongs.json");
-  }).then(data => {
     Object.assign(songData,data);
-    PunjabiTitles = Object.keys(data);
-    return loadInfo("/JSON/EnglishSongs.json");
-  }).then(data => {
-    Object.assign(songData,data);
-    EnglishTitles = Object.keys(data);
-    return loadInfo("/JSON/PhonkSongs.json");
-  }).then(data => {
-    Object.assign(songData,data);
-    PhonkTitles = Object.keys(data);
-    return loadInfo("/JSON/SpanishSongs.json");
-  }).then(data => {
-    Object.assign(songData,data);
-    SpanishTitles = Object.keys(data);
-    return loadInfo("/JSON/Tunes.json");
-  }).then(data => {
-    Object.assign(songData,data);
-    TunesTitles = Object.keys(data);
-  }).then(() => {
     titleNames.push(...HindiTitles);
+    loadHomeSongs(HindiTitles,hindiSongDivCon);
+  })
+  loadInfo("/JSON/PunjabiSongs.json").then(data => {
+    PunjabiTitles = Object.keys(data);
+    Object.assign(songData,data);
     titleNames.push(...PunjabiTitles);
+    loadHomeSongs(PunjabiTitles,punjabiSongDivCon);
+  })
+  loadInfo("/JSON/EnglishSongs.json").then(data => {
+    EnglishTitles = Object.keys(data);
+    Object.assign(songData,data);
     titleNames.push(...EnglishTitles);
+    loadHomeSongs(EnglishTitles,englishSongDivCon);
+  })
+  loadInfo("/JSON/PhonkSongs.json").then(data => {
+    PhonkTitles = Object.keys(data);
+    Object.assign(songData,data);
     titleNames.push(...PhonkTitles);
+    loadHomeSongs(PhonkTitles,phonkSongDivCon);
+  })
+  loadInfo("/JSON/SpanishSongs.json").then(data => {
+    SpanishTitles = Object.keys(data);
+    Object.assign(songData,data);
     titleNames.push(...SpanishTitles);
+    loadHomeSongs(SpanishTitles,spanishSongDivCon);
+  })
+  return loadInfo("/JSON/Tunes.json").then(data => {
+    TunesTitles = Object.keys(data);
+    Object.assign(songData,data);
     titleNames.push(...TunesTitles);
-    loadHomeSongs();
+    loadHomeSongs(TunesTitles,tuneDivCon);
+  }).then(() => {
     updateSongInfo();
   });
 }
 function fetchArtistsData() {
-  return loadInfo("/JSON/hindiArtists.json").then(data => {
+  loadInfo("/JSON/hindiArtists.json").then(data => {
     Object.assign(artistData,data);
     hindiArtists = Object.keys(data);
-    return loadInfo("/JSON/englishArtists.json");
-  }).then(data => {
+    artistNames.push(...hindiArtists);
+  })
+  loadInfo("/JSON/englishArtists.json").then(data => {
     Object.assign(artistData,data);
     englishArtists = Object.keys(data);
-    return loadInfo("/JSON/punjabiArtists.json")
-  }).then(data => {
+    artistNames.push(...englishArtists);
+  })
+  loadInfo("/JSON/punjabiArtists.json").then(data => {
     Object.assign(artistData,data);
     punjabiArtists = Object.keys(data);
-    return loadInfo("/JSON/phonkArtists.json")
-  }).then(data => {
+    artistNames.push(...punjabiArtists);
+  })
+  loadInfo("/JSON/phonkArtists.json").then(data => {
     Object.assign(artistData,data);
     phonkArtists = Object.keys(data);
-    return loadInfo("/JSON/spanishArtists.json")
-  }).then(data => {
+    artistNames.push(...phonkArtists);
+  })
+  loadInfo("/JSON/spanishArtists.json").then(data => {
     Object.assign(artistData,data);
     spanishArtists = Object.keys(data);
-    return loadInfo("/JSON/tunesArtists.json")
-  }).then(data => {
+    artistNames.push(...spanishArtists);
+  })
+  return loadInfo("/JSON/tunesArtists.json").then(data => {
     Object.assign(artistData,data);
     tunesArtists = Object.keys(data);
-  }).then(() => {
-    artistNames.push(...hindiArtists);
-    artistNames.push(...englishArtists);
-    artistNames.push(...punjabiArtists);
-    artistNames.push(...phonkArtists);
-    artistNames.push(...spanishArtists);
     artistNames.push(...tunesArtists);
+  }).then(() => {
   });
 }
 
