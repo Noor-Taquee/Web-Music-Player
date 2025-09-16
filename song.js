@@ -62,17 +62,19 @@ function updateSongInfo() {
 }
 
 function registerSong() {
-  if (historyAllowed) {
-    if (recentlyPlayedSongList.includes(titleNames[currentSongIndex])) {
-      recentlyPlayedSongList.splice(recentlyPlayedSongList.indexOf(titleNames[currentSongIndex]),1);
-    }
-    recentlyPlayedSongList.unshift(titleNames[currentSongIndex]);
-    if (recentlyPlayedSongList.length > 30) {
-      recentlyPlayedSongList.pop();
-    }
-    loadRecentlyPlayedSongs();
-    if (signedIn) {
-      updateDataFile();
+  if (signedIn) {
+    if (userData.allowHistory == 1) {
+      if (recentlyPlayedSongList.includes(titleNames[currentSongIndex])) {
+        recentlyPlayedSongList.splice(recentlyPlayedSongList.indexOf(titleNames[currentSongIndex]),1);
+      }
+      recentlyPlayedSongList.unshift(titleNames[currentSongIndex]);
+      if (recentlyPlayedSongList.length > 30) {
+        recentlyPlayedSongList.pop();
+      }
+      loadRecentlyPlayedSongs();
+      if (signedIn) {
+        updateDataFile();
+      }
     }
   }
 }

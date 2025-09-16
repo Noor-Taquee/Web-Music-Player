@@ -47,16 +47,21 @@ function loadPlaylists() {
   if (signedIn) {
     if (playlistList.length > 0) {
       for (let i in playlistList) {
+        // playlist
         let playlist = document.createElement("button");
         libraryContent.appendChild(playlist);
         playlist.id = "playlist";
+
+        // playlists' info
         let playlistInfo = document.createElement("div");
         playlist.appendChild(playlistInfo);
         playlistInfo.id = "playlistInfo";
         playlistInfo.addEventListener("click",() => openPlaylist(playlistList[i]));
+        // Image of playlist
         let playlistPic = document.createElement("p");
         playlistInfo.appendChild(playlistPic);
         playlistPic.id = "playlistPic";
+        // icon if image is not available
         let playlistIcon = document.createElement("span");
         playlistIcon.className = "material-symbols-rounded";
         playlistIcon.textContent = "queue_music";
@@ -65,10 +70,22 @@ function loadPlaylists() {
         } else {
           playlistPic.appendChild(playlistIcon);
         }
+        // about the playlist
+        let aboutPlaylistDiv = document.createElement("div");
+        playlistInfo.appendChild(aboutPlaylistDiv);
+        aboutPlaylistDiv.id = "aboutPlaylistDiv";
+        // name of playlist
         let playlistName = document.createElement("p");
-        playlistInfo.appendChild(playlistName);
+        aboutPlaylistDiv.appendChild(playlistName);
         playlistName.id = "playlistName";
         playlistName.textContent = playlistList[i].name;
+        // privacy and number of songs in the playlist
+        let aboutPlaylistP = document.createElement("p");
+        aboutPlaylistDiv.appendChild(aboutPlaylistP);
+        aboutPlaylistP.id = "aboutPlaylistP";
+        aboutPlaylistP.textContent = `${playlistList[i].privacy} | ${playlistList[i].songs.length} songs`;
+
+        // options button for playlist
         let bnOptions = document.createElement("button");
         playlist.appendChild(bnOptions);
         bnOptions.id = "bnOptions";
@@ -124,38 +141,44 @@ function getPlaylistNames() {
 function openPlaylist(playlist) {
   libraryPanel.replaceChild(playlistPanel, libraryContent);
   clearContainer(playlistPanelContent);
+
+  // Area to show playlist name and image
   let playlistInfoPanel = document.createElement("div");
   playlistPanelContent.appendChild(playlistInfoPanel);
   playlistInfoPanel.id = "playlistInfoPanel";
-  let playlistInfoPic = document.createElement("image");
-  playlistInfoPanel.appendChild(playlistInfoPic);
-  playlistInfoPic.id = "playlistInfoPic";
-  playlistInfoPic.src = `${playlist.image}`;
+  // Playlist image
+  let playlistPanelImage = document.createElement("p");
+  playlistInfoPanel.appendChild(playlistPanelImage);
+  playlistPanelImage.id = "playlistPanelImage";
+  playlistPanelImage.style.backgroundImage = `url(${playlist.image})`;
+  // Playlist Name
   let playlistPanelTitle = document.createElement("p");
   playlistInfoPanel.appendChild(playlistPanelTitle);
   playlistPanelTitle.id = "playlistPanelTitle";
   playlistPanelTitle.textContent = playlist.name;
 
+  // Area for songs in the playlist
   let playlistPanelSongDiv = document.createElement("div");
   playlistPanelContent.appendChild(playlistPanelSongDiv);
   playlistPanelSongDiv.id = "playlistPanelSongDiv";
-  let playlistPanelSongDivP = document.createElement("p");
-  playlistPanelSongDiv.appendChild(playlistPanelSongDivP);
-  playlistPanelSongDivP.id = "playlistPanelSongDivP";
+
   if (playlist.songs.length > 0) {
     for (let i in playlist.songs) {
+      // song of playlist
       let playlistSong = document.createElement("button");
       playlistPanelSongDiv.appendChild(playlistSong);
       playlistSong.id = "playlistSong";
 
+      // Area for song's info
       let playlistSongInfo = document.createElement("div");
       playlistSong.appendChild(playlistSongInfo);
       playlistSongInfo.id = "playlistSongInfo";
       playlistSongInfo.addEventListener("click",() => playSong(playlist.songs[i]));
+      // Album art of song
       let playlistSongPic = document.createElement("p");
       playlistSongInfo.appendChild(playlistSongPic);
       playlistSongPic.id = "playlistSongPic";
-
+      // Icon if picture is not available
       let playlistSongIcon = document.createElement("span");
       playlistSongIcon.className = "material-symbols-rounded";
       playlistSongIcon.textContent = "headphones";
@@ -164,10 +187,13 @@ function openPlaylist(playlist) {
       } else {
         playlistSongPic.appendChild(playlistSongIcon);
       }
+      // Name of song
       let playlistSongName = document.createElement("p");
       playlistSongInfo.appendChild(playlistSongName);
       playlistSongName.id = "playlistSongName";
       playlistSongName.textContent = songData[playlist.songs[i]].name;
+
+      // Options for song
       let bnPlaylistSongOptions = document.createElement("button");
       playlistSong.appendChild(bnPlaylistSongOptions);
       bnPlaylistSongOptions.id = "bnOptions";

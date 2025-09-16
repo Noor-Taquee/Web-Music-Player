@@ -2,7 +2,6 @@
 let currentThemeColor = "DARK";
 let currentThemeColorIcon = "dark_mode";
 let BlurActive = true;
-let historyAllowed = true;
 
 //CREATING ELEMENTS
 let accountPanel = document.createElement("div");
@@ -465,7 +464,9 @@ function loadNotifications() {
 }
 
 function f_notifications() {
-  accountPanel.replaceChild(notificationsPanel, settingsPanel);
+  if (signedIn) {
+    accountPanel.replaceChild(notificationsPanel, settingsPanel);
+  }
 }
 
 function f_backNotificationsPanel() {
@@ -515,7 +516,6 @@ AllowHistoryP.textContent = "ALLOW HISTORY";
 let AllowHistoryToggle = document.createElement("div");
 AllowHistoryDiv.appendChild(AllowHistoryToggle);
 AllowHistoryToggle.id = "AllowHistoryToggle";
-AllowHistoryToggle.addEventListener("click", f_allowHistory);
 let AllowHistoryToggleBall = document.createElement("p");
 AllowHistoryToggle.appendChild(AllowHistoryToggleBall);
 AllowHistoryToggleBall.id = "AllowHistoryToggleBall";
@@ -541,26 +541,68 @@ bnClearPlayedSongHistory.addEventListener("click", f_clearPlayedSongHistory);
 
 let manageHistoryListDiv = document.createElement("div");
 function f_manageHistory() {
-  accountPanel.replaceChild(manageHistoryPanel, settingsPanel);
+  if (signedIn) {
+    accountPanel.replaceChild(manageHistoryPanel, settingsPanel);
+  }
 }
 
 function f_backManageHistoryPanel() {
   accountPanel.replaceChild(settingsPanel, manageHistoryPanel);
 }
 
-function f_allowHistory() {
-  if (historyAllowed) {
+function stopHistory() {
+  if (userData.allowHistory == 1) {
+    AllowHistoryToggle.removeEventListener("click", stopHistory);
+    AllowHistoryToggle.addEventListener("click", keepHistory);
     AllowHistoryToggleBall.style.transform = "translateX(0)";
     AllowHistoryToggle.style.backgroundColor = "black";
     bnClearSearchHistory.style.display = "none";
     bnClearPlayedSongHistory.style.display = "none";
-    historyAllowed = false;
-  } else {
+    userData.allowHistory = 0;
+    updateDataFile();
+  }
+}
+
+function keepHistory() {
+  if (userData.allowHistory == 0) {
+    AllowHistoryToggle.removeEventListener("click", keepHistory);
+    AllowHistoryToggle.addEventListener("click", stopHistory);
     AllowHistoryToggleBall.style.transform = "translateX(4vw)";
     AllowHistoryToggle.style.backgroundColor = "blue";
     bnClearSearchHistory.style.display = "flex";
     bnClearPlayedSongHistory.style.display = "flex";
-    historyAllowed = true;
+    userData.AllowHistory = 1;
+    updateDataFile();
+  }
+}
+
+function setHistoryPref(pref) {
+  if (pref == 1) {
+    try {
+      AllowHistoryToggle.removeEventListener("click", keepHistory);
+    } catch {
+      try {
+        AllowHistoryToggle.removeEventListener("click", stopHistory);
+      } catch {}
+    }
+    AllowHistoryToggle.addEventListener("click", stopHistory);
+    AllowHistoryToggleBall.style.transform = "translateX(4vw)";
+    AllowHistoryToggle.style.backgroundColor = "blue";
+    bnClearSearchHistory.style.display = "flex";
+    bnClearPlayedSongHistory.style.display = "flex";
+  } else {
+    try {
+      AllowHistoryToggle.removeEventListener("click", stopHistory);
+    } catch {
+      try {
+        AllowHistoryToggle.removeEventListener("click", keepHistory);
+      } catch {}
+    }
+    AllowHistoryToggle.addEventListener("click", keepHistory);
+    AllowHistoryToggleBall.style.transform = "translateX(0)";
+    AllowHistoryToggle.style.backgroundColor = "black";
+    bnClearSearchHistory.style.display = "none";
+    bnClearPlayedSongHistory.style.display = "none";
   }
 }
 
@@ -622,7 +664,6 @@ ChangeColorDiv.id = "buttonDiv";
 let bnChangeColor = document.createElement("button");
 ChangeColorDiv.appendChild(bnChangeColor);
 bnChangeColor.id = "bnChangeColor";
-bnChangeColor.addEventListener("click", f_changeThemeColor);
 let bnChangeColorIcon = document.createElement("span");
 bnChangeColor.appendChild(bnChangeColorIcon);
 bnChangeColorIcon.className = "material-symbols-rounded";
@@ -662,10 +703,11 @@ function f_backChangeThemePanel() {
   accountPanel.replaceChild(settingsPanel, changeThemePanel)
 }
 
-function f_changeThemeColor() {
-  if (currentThemeColor != "DARK") {
+function f_changeThemeColor(color) {
+  if (color == "dark") {
     currentThemeColor = "DARK";
     currentThemeColorIcon = "dark_mode";
+    bnChangeColor.addEventListener("click",() => f_changeThemeColor("light"));
     loadingDiv.className = "loadingDiv_darkMode";
     bottomDiv.className = "bottomDiv_darkMode";
     homePanel.className = "homePanel_darkMode";
@@ -675,9 +717,10 @@ function f_changeThemeColor() {
     accountPanel.className = "accountPanel_darkMode";
     loginPanel.className = "loginPanel_darkMode";
     contributionPanel.className = "contributionPanel_darkMode";
-  } else if (currentThemeColor != "LIGHT") {
+  } else if (color == "light") {
     currentThemeColor = "LIGHT";
     currentThemeColorIcon = "light_mode";
+    bnChangeColor.addEventListener("click",() => f_changeThemeColor("dark"));
     loadingDiv.className = "loadingDiv_lightMode";
     bottomDiv.className = "bottomDiv_lightMode";
     homePanel.className = "homePanel_lightMode";
@@ -690,6 +733,10 @@ function f_changeThemeColor() {
   }
   bnChangeColorP.textContent = currentThemeColor;
   bnChangeColorIcon.textContent = currentThemeColorIcon;
+  if (signedIn) {
+    userData.themeColor = color;
+    updateDataFile();
+  }
 }
 
 function f_changeBlur() {

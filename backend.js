@@ -6,6 +6,8 @@ let userNameKey = "";
 let userName = "";
 let accountPassword = "";
 let profilePicImage = "";
+let themeColorPref = "light";
+let historyPref = 1;
 let favouriteSongList = [];
 let searchedTextList = [];
 let searchedSongList = [];
@@ -33,20 +35,21 @@ function songAttendance() {
   if (count >= 6) {
     updateSongInfo();
     try {
-        setDevicePlayer();
-      } catch {}
-      let storedUserName = localStorage.getItem("username");
-      let storedPass = localStorage.getItem("password");
-      if (storedUserName != null && usersList.includes(storedUserName) && storedPass == data[storedUserName].password) {
-        fetchUserData(localStorage.getItem("username")).then(() => {
-          loadingDiv.style.display = "none";
-          main.style.display = "flex";
-        });
-      } else {
+      setDevicePlayer();
+    } catch {}
+    let storedUserName = localStorage.getItem("username");
+    let storedPass = localStorage.getItem("password");
+    if (storedUserName != null && usersList.includes(storedUserName) && storedPass == data[storedUserName].password) {
+      fetchUserData(localStorage.getItem("username")).then(() => {
         loadingDiv.style.display = "none";
         main.style.display = "flex";
-      }
+      });
+    } else {
+      loadingDiv.style.display = "none";
+      main.style.display = "flex";
+      f_changeThemeColor(themeColorPref);
     }
+  }
 }
 
 function updateDataFile() {
@@ -159,7 +162,7 @@ function fetchUserData(userGivenName) {
       userName = userData.profileName;
       profilePicImage = userData.profilePic;
       accountPassword = userData.password;
-      volumeLevel = userData.volumeLevel;
+      themeColorPref = userData.themeColor;
       favouriteSongList = userData.favouriteSongList;
       recentlyPlayedSongList = userData.recentlyPlayedSongList;
       searchedTextList = userData.searchedTextList;
@@ -176,7 +179,9 @@ function fetchUserData(userGivenName) {
       loadSearchHistory();
       loadNotifications();
       resolve();
-    },1000)
+      setHistoryPref(userData.allowPref);
+      f_changeThemeColor(userData.themeColor);
+      },1000)
   });
 }
 attend();
