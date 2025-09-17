@@ -490,9 +490,78 @@ function loadSondInfo() {
   songContributionInfoDiv.appendChild(songContributerP);
   songContributerP.textContent = `Contributed by ${currentSong.contributer} on ${currentSong.contributionDate}`;
 
+  let bnReportSongInfo = document.createElement("button");
+  songInfoConDiv.appendChild(bnReportSongInfo);
+  bnReportSongInfo.id = "bnReportSongInfo";
+  let reportIcon = document.createElement("span");
+  bnReportSongInfo.appendChild(reportIcon);
+  reportIcon.className = "material-symbols-rounded";
+  reportIcon.textContent = "feedback";
+  reportIcon.style.color = "red";
+  let bnReportSongInfoP = document.createElement("p");
+  bnReportSongInfo.appendChild(bnReportSongInfoP);
+  bnReportSongInfoP.textContent = "REPORT ERROR";
+  bnReportSongInfo.style.color = "red";
+  bnReportSongInfo.addEventListener("click", reportSong);
+
   let songInfoDivSpace = document.createElement("div");
   songInfoConDiv.appendChild(songInfoDivSpace);
   songInfoDivSpace.id = "songInfoDivSpace";
+}
+
+let reportSongInfoPanel = document.createElement("div");
+reportSongInfoPanel.id = "reportSongInfoPanel";
+let reportSongInfoTitleP = document.createElement("p");
+reportSongInfoPanel.appendChild(reportSongInfoTitleP);
+reportSongInfoTitleP.id = "reportSongInfoTitleP";
+reportSongInfoTitleP.textContent = "REPORT SONG";
+
+let reportSongInfoInput = document.createElement("input");
+reportSongInfoPanel.appendChild(reportSongInfoInput);
+reportSongInfoInput.id = "reportSongInfoInput";
+reportSongInfoInput.type = "text";
+reportSongInfoInput.placeholder = "Please enter the issue or error...";
+
+let bnReportSongInfoSubmit = document.createElement("button");
+reportSongInfoPanel.appendChild(bnReportSongInfoSubmit);
+bnReportSongInfoSubmit.id = "bnReportSongInfoSubmit";
+bnReportSongInfoSubmit.addEventListener("click", sendReportSongInfo);
+let bnReportSongInfoSubmitP = document.createElement("p");
+bnReportSongInfoSubmit.appendChild(bnReportSongInfoSubmitP);
+bnReportSongInfoSubmitP.textContent = "SUBMIT";
+let reportIcon = document.createElement("span");
+bnReportSongInfoSubmit.appendChild(reportIcon);
+reportIcon.className = "material-symbols-rounded";
+reportIcon.textContent = "send";
+
+let bnReportSongInfoCancel = document.createElement("button");
+reportSongInfoPanel.appendChild(bnReportSongInfoCancel);
+bnReportSongInfoCancel.id = "bnReportSongInfoCancel";
+bnReportSongInfoCancel.addEventListener("click", closeReportSongInfoPanel);
+let bnReportSongInfoCancelP = document.createElement("p");
+bnReportSongInfoCancel.appendChild(bnReportSongInfoCancelP);
+bnReportSongInfoCancelP.textContent = "CANCEL";
+
+let selectedSongToReport = null;
+function reportSong() {
+  selectedSongToReport = currentTrackName;
+  main.appendChild(reportSongInfoPanel);
+}
+
+function closeReportSongInfoPanel() {
+  main.removeChild(reportSongInfoPanel);
+}
+
+function sendReportSongInfo() {
+  main.style.display = "none";
+  loadingDiv.style.display = "flex";
+  sendNotification("noortaquee","ERROR REPORT",`${userName} reported an issue with the song "${selectedSongToReport}": "${reportSongInfoInput.value}"`);
+  updateDataFile().then(() => {
+    loadingDiv.style.display = "none";
+    main.style.display = "flex";
+    main.removeChild(reportSongInfoPanel);
+    alert("Your report has been sent successfully.");
+  })
 }
 
 attend();

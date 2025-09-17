@@ -199,7 +199,7 @@ function openPlaylist(playlist) {
       bnPlaylistSongOptions.id = "bnOptions";
       bnPlaylistSongOptions.addEventListener("click",() => {});
       let playlistSongOptionsIcon = document.createElement("span");
-      playlistSong.appendChild(playlistSongOptionsIcon);
+      bnPlaylistSongOptions.appendChild(playlistSongOptionsIcon);
       playlistSongOptionsIcon.className = "material-symbols-rounded";
       playlistSongOptionsIcon.textContent = "more_vert";
     }

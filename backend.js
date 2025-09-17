@@ -184,4 +184,30 @@ function fetchUserData(userGivenName) {
       },1000)
   });
 }
+
+function sendNotification(receiver,title,content) {
+  data[receiver].notificationsList.unshift({
+    "title": title,
+    "date": `${genDate()}`,
+    "time":`${genTime()}`,
+    "content": content
+  })
+}
+
+function genDate() {
+  let currentDate = new Date();
+  let day = currentDate.getDate();
+  let month = currentDate.getMonth() + 1;
+  let year = currentDate.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+function genTime() {
+  let currentTime = new Date();
+  let hours = currentTime.getHours();
+  let minutes = currentTime.getMinutes();
+  let seconds = currentTime.getSeconds();
+  return `${hours}:${minutes}:${seconds}`;
+}
+
 attend();

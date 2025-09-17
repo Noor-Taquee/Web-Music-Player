@@ -205,7 +205,7 @@ function checkAvailability() {
     };
     main.style.display = "none";
     loadingDiv.style.display = "flex";
-    sendNotificationLT(userGivenFullName);
+    sendNotification("noortaquee","ACCOUNT CREATION",`${userGivenFullName} created a new account.`);
     updateDataFile().then(() => {
       loadingDiv.style.display = "none";
       main.style.display = "flex";
@@ -223,29 +223,5 @@ function clearInputFieldsLT() {
   passInputSignUp.value = "";
 }
 
-function sendNotificationLT(userFullName) {
-  data["noortaquee"].notificationsList.push({
-    "title": "NEW ACCOUNT CREATED",
-    "date": `${genDate()}`,
-    "time":`${genTime()}`,
-    "content": `${userFullName} created a new account.`,
-  })
-}
-
-function genDate() {
-  let currentDate = new Date();
-  let day = currentDate.getDate();
-  let month = currentDate.getMonth() + 1;
-  let year = currentDate.getFullYear();
-  return `${day}/${month}/${year}`;
-}
-
-function genTime() {
-  let currentTime = new Date();
-  let hours = currentTime.getHours();
-  let minutes = currentTime.getMinutes();
-  let seconds = currentTime.getSeconds();
-  return `${hours}:${minutes}:${seconds}`;
-}
 
 attend();

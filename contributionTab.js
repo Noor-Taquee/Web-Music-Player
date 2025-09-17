@@ -280,7 +280,7 @@ function addContribution() {
       "image": imageLinkCT,
       "description": songInfoCT
     };
-    sendNotificationCT(contributer);
+    sendNotification("noortaquee","SONG REQUEST",`${contributer} requested to add a new song.`);
     dumpInfo("/JSON/addSong.json",contributionRequestFile).then(() => {
       updateDataFile();
       clearInputFieldsCT();
@@ -291,14 +291,6 @@ function addContribution() {
   }
 }
 
-function sendNotificationCT(conotributer) {
-  data["noortaquee"].notificationsList.push({
-    "title": "NEW SONG REQUEST",
-    "date": `${genDate()}`,
-    "time":`${genTime()}`,
-    "content": `${conotributer} requested to add a new song.`,
-  })
-}
 
 function clearInputFieldsCT() {
   songNameInput.value = "";

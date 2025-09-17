@@ -52,10 +52,6 @@
 #songInfoDiv {
   position: absolute;
   z-index: 2;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -129,6 +125,7 @@
 }
 
 #songInfoConDiv {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -281,10 +278,110 @@
   margin-top: 0.5vh;
   margin-bottom: 0.5vh;
 }
+
+#bnReportSongInfo {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  background: transparent;
+  height: 7vh;
+  width: 90%;
+  margin: 0;
+  margin-top: 3vh;
+  padding: 0;
+  gap: 2vw;
+  border: 0.5px solid rgba(255, 0, 0, 0.3);
+  border-radius: 2rem;
+}
+
 #songInfoDivSpace {
   background: transparent;
   min-height: 15vh;
   width: 100%;
+}
+
+#reportSongInfoPanel {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  background-color: rgb(27, 27, 27);
+  font-size: 1.5rem;
+  font-weight: 900;
+  height: fit-content;
+  width: 80vw;
+  margin: auto;
+  padding: 1rem;
+  gap: 1.5vh;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+}
+
+#reportSongInfoTitleP {
+  cursor: default;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 1rem;
+}
+
+#reportSongInfoInput {
+  margin: 0;
+  height: 6vh;
+  width: 90%;
+  color: white;
+  font-size: 1rem;
+  background: transparent;
+  margin: 0;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+}
+
+#reportSongInfoInput::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+}
+
+#reportSongInfoInput:focus {
+  outline: none;
+  border-width: 2px;
+}
+
+#bnReportSongInfoSubmit,
+#bnReportSongInfoCancel {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 6vh;
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  gap: 2vw;
+  border-radius: 0.5rem;
+}
+
+#bnReportSongInfoSubmit {
+  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  border: 0.5px solid rgb(255, 255, 255);
+}
+
+#bnReportSongInfoCancel {
+  color: white;
+  background: transparent;
+  border: 0.5px solid rgb(255, 255, 255);
 }
 
 #pictureDiv {

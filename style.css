@@ -77,11 +77,11 @@
 
 #bottomDiv {
   position: absolute;
+  z-index: 1;
   top: auto;
   right: 0;
   left: 0;
   bottom: 1rem;
-  z-index: 1;
   overflow-y: hidden;
   justify-self: center;
   align-self: flex-end;
