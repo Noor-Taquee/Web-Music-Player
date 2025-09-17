@@ -336,7 +336,6 @@ function checkFields() {
   }
 }
 
-
 function showMessage() {
   contributionInputDiv.appendChild(messageDivCT);
 }

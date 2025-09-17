@@ -13,6 +13,8 @@ bnBackLT.addEventListener("click", goBack);
 let backIcon = document.createElement("span");
 backIcon.className = "material-symbols-rounded";
 backIcon.textContent = "arrow_back_ios_new";
+// let backIcon = document.createElement("i");
+// backIcon.className = "ph ph-caret-left";
 bnBackLT.appendChild(backIcon);
 let bnBackP = document.createElement("p");
 bnBackLT.appendChild(bnBackP);
@@ -48,24 +50,30 @@ passInputSignIn.type = "password";
 passInputSignIn.placeholder = "PASSWORD";
 
 let eyeIcon = document.createElement("span");
-passDivSignIn.appendChild(eyeIcon);
 eyeIcon.className = "material-symbols-rounded";
 eyeIcon.textContent = "visibility";
+// let eyeIcon = document.createElement("i");
+// eyeIcon.className = "ph ph-eye";
+passDivSignIn.appendChild(eyeIcon);
 eyeIcon.id = "eyeIcon";
 eyeIcon.addEventListener("click", () => {
   if (passInputSignIn.type === "password") {
     passInputSignIn.type = "text";
     eyeIcon.textContent = "visibility_off";
+    // eyeIcon.className = "eye-slash";
   } else {
     passInputSignIn.type = "password";
     eyeIcon.textContent = "visibility";
+    // eyeIcon.className = "eye";
   }
   if (passInputSignUp.type === "password") {
     passInputSignUp.type = "text";
     eyeIcon.textContent = "visibility_off";
+    // eyeIcon.className = "eye-slash";
   } else {
     passInputSignUp.type = "password";
     eyeIcon.textContent = "visibility";
+    // eyeIcon.className = "eye";
   }
 });
 

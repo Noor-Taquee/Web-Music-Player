@@ -476,7 +476,6 @@ function f_backNotificationsPanel() {
 function f_removeNotification(notification) {
   notificationsList.splice(notificationsList.indexOf(notification), 1);
   loadNotifications();
-  updateDataFile();
 }
 
 
@@ -559,7 +558,6 @@ function stopHistory() {
     bnClearSearchHistory.style.display = "none";
     bnClearPlayedSongHistory.style.display = "none";
     userData.allowHistory = 0;
-    updateDataFile();
   }
 }
 
@@ -572,7 +570,6 @@ function keepHistory() {
     bnClearSearchHistory.style.display = "flex";
     bnClearPlayedSongHistory.style.display = "flex";
     userData.AllowHistory = 1;
-    updateDataFile();
   }
 }
 

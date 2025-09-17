@@ -210,4 +210,10 @@ function genTime() {
   return `${hours}:${minutes}:${seconds}`;
 }
 
+setInterval(() => {
+  if (signedIn) {
+    updateDataFile();
+  }
+}, 30000);
+
 attend();

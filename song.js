@@ -72,9 +72,6 @@ function registerSong() {
         recentlyPlayedSongList.pop();
       }
       loadRecentlyPlayedSongs();
-      if (signedIn) {
-        updateDataFile();
-      }
     }
   }
 }

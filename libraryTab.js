@@ -306,9 +306,9 @@ function f_confirmAddPlaylist() {
       "image": imageOfPlaylist,
       "songs": []
     });
+    updateDataFile();
     loadPlaylists();
     f_cancelAddPlaylist();
-    updateDataFile();
   }
 }
 
@@ -416,7 +416,6 @@ function f_delPlaylist() {
 function confirmDelPlaylist() {
   playlistList.splice(playlistList.indexOf(playlistInFocus),1);
   loadPlaylists();
-  updateDataFile();
   f_cancelDelPlaylist();
   f_cancel();
 }
