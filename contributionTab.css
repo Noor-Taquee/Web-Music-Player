@@ -48,6 +48,7 @@
   height: 90%;
   width: 40%;
   margin-right: 2vw;
+  border: none;
   border-radius: 0.5rem;
 }
 #contributionContent {

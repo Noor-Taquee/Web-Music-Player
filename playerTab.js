@@ -126,7 +126,7 @@ let autoPlayIcon = document.createElement("span");
 autoPlayIcon.className = "material-symbols-rounded";
 // let autoPlayIcon = document.createElement("i");
 // autoPlayIcon.className = "ph ph-arrows-left-right";
-autoPlayIcon.textContent = "trending_flat";
+autoPlayIcon.textContent = "sync_alt";
 autoPlayIcon.id = "autoPlayIcon";
 toggleAutoPlayOn.appendChild(autoPlayIcon);
 let toggleAutoPlayOff = document.createElement("button");
@@ -174,7 +174,7 @@ bnShare.id = "bnShare";
 bnShare.addEventListener("click",f_share);
 let shareIcon = document.createElement("span");
 shareIcon.className = "material-symbols-rounded";
-shareIcon.textContent = "share";
+shareIcon.textContent = "ios_share";
 // let shareIcon = document.createElement("i");
 // shareIcon.className = "ph ph-share-fat";
 bnShare.appendChild(shareIcon);
@@ -188,7 +188,7 @@ bnDownload.id = "bnDownload";
 bnDownload.addEventListener("click",f_download);
 let downloadIcon = document.createElement("span");
 downloadIcon.className = "material-symbols-rounded";
-downloadIcon.textContent = "download";
+downloadIcon.textContent = "place_item";
 // let downloadIcon = document.createElement("i");
 // downloadIcon.className = "ph ph-download";
 bnDownload.appendChild(downloadIcon);
@@ -307,14 +307,22 @@ function f_disfavourite() {
 }
 function showMore() {
   playerPanel.appendChild(moreDiv);
-  bnMore.removeEventListener("click", showMore);
-  bnMore.addEventListener("click", hideMore);
+  moreDiv.style.animation = "appear 0.3s ease-in-out";
+  moreDiv.addEventListener("animationend", function moreDivApp() {
+    moreDiv.removeEventListener("animationend", moreDivApp);
+    bnMore.removeEventListener("click", showMore);
+    bnMore.addEventListener("click", hideMore);
+  });
 }
 
 function hideMore() {
-  playerPanel.removeChild(moreDiv);
-  bnMore.removeEventListener("click", hideMore);
-  bnMore.addEventListener("click", showMore);
+  moreDiv.style.animation = "disappear 0.3s ease-in-out";
+  moreDiv.addEventListener("animationend", function moreDivDis() {
+    moreDiv.removeEventListener("animationend", moreDivDis);
+    bnMore.removeEventListener("click", hideMore);
+    bnMore.addEventListener("click", showMore);
+    playerPanel.removeChild(moreDiv);
+  });
 }
 
 function f_save() {
@@ -445,6 +453,13 @@ setInterval(() => {
 
 function showSongInfo() {
   playerPanel.appendChild(songInfoDiv);
+  songInfoDiv.style.animation = "slideUp 0.3s ease-in-out";
+  songInfoDiv.addEventListener("animationend", function songInfoDivSlideUp() {
+    songInfoDiv.removeEventListener("animationend", songInfoDivSlideUp);
+    bnSongInfo.removeEventListener("click", showSongInfo);
+    bnSongInfo.addEventListener("click", hideSongInfo);
+  });
+  // history.pushState(hideSongInfo, "", "./songInfo");
   if (songInfoDiv.contains(songInfoConDiv)) {
     songInfoDiv.replaceChild(songInfoLoader, songInfoConDiv);
   }
@@ -460,7 +475,13 @@ function showSongInfo() {
 }
 
 function hideSongInfo() {
-  playerPanel.removeChild(songInfoDiv);
+  songInfoDiv.style.animation = "slideDown 0.3s ease-in-out";
+  songInfoDiv.addEventListener("animationend", function songInfoDivSlideDown() {
+    songInfoDiv.removeEventListener("animationend", songInfoDivSlideDown);
+    bnSongInfo.removeEventListener("click", hideSongInfo);
+    bnSongInfo.addEventListener("click", showSongInfo);
+    playerPanel.removeChild(songInfoDiv);
+  });
 }
 
 function loadSondInfo() {
@@ -580,24 +601,39 @@ bnReportSongInfoCancelP.textContent = "CANCEL";
 
 let selectedSongToReport = null;
 function reportSong() {
-  selectedSongToReport = currentTrackName;
-  main.appendChild(reportSongInfoPanel);
+  if (signedIn) {
+    selectedSongToReport = currentTrackName;
+    main.appendChild(reportSongInfoPanel);
+    reportSongInfoPanel.style.animation = "appear 0.3s ease-in-out";
+    reportSongInfoPanel.addEventListener("animationend", function reportSongInfoPanelApp() {
+      reportSongInfoPanel.removeEventListener("animationend", reportSongInfoPanelApp);
+    });
+    // history.pushState(closeReportSongInfoPanel, "", "./reportSong");
+  }
 }
 
 function closeReportSongInfoPanel() {
-  main.removeChild(reportSongInfoPanel);
+  reportSongInfoPanel.style.animation = "disappear 0.3s ease-in-out";
+  reportSongInfoPanel.addEventListener("animationend", function reportSongInfoPanelDis() {
+    reportSongInfoPanel.removeEventListener("animationend", reportSongInfoPanelDis);
+    main.removeChild(reportSongInfoPanel);
+  });
 }
 
 function sendReportSongInfo() {
-  main.style.display = "none";
-  loadingDiv.style.display = "flex";
-  sendNotification("noortaquee","ERROR REPORT",`${userName} reported an issue with the song "${selectedSongToReport}": "${reportSongInfoInput.value}"`);
-  updateDataFile().then(() => {
-    loadingDiv.style.display = "none";
-    main.style.display = "flex";
-    main.removeChild(reportSongInfoPanel);
-    alert("Your report has been sent successfully.");
-  })
+  if (reportSongInfoInput.value.trim().length > 0) {
+    main.style.display = "none";
+    loadingDiv.style.display = "flex";
+    sendNotification("noortaquee","ERROR REPORT",`${userName} reported an issue with the song "${selectedSongToReport}": "${reportSongInfoInput.value}"`);
+    updateDataFile().then(() => {
+      loadingDiv.style.display = "none";
+      main.style.display = "flex";
+      main.removeChild(reportSongInfoPanel);
+      alert("Your report has been sent successfully.");
+    })
+  } else {
+    alert("Please enter the issue or error.");
+  }
 }
 
 attend();

@@ -126,6 +126,7 @@
   height: 6vh;
   border: none;
   border-radius: 2rem;
+  transition: all 0.3s ease;
 }
 
 #addPlaylistBtnDiv {
@@ -252,20 +253,6 @@
 }
 #bnOptions span {
   font-size: 1.5rem;
-}
-#optionPanel {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  gap: 0.5vh;
 }
 
 #playlistPanelHeader {
@@ -419,29 +406,36 @@
   font-size: 1.5rem;
 }
 
+#optionPanel {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  gap: 0.5vh;
+}
+
 #optionPanel button {
   cursor: pointer;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   font-size: 1rem;
   font-weight: 700;
-  height: 5vh;
-  width: 40%;
+  height: 7%;
+  width: 80%;
   border: none;
+  border-radius: 1rem;
 }
-#bnCancel {
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
-#bnRenamePlaylist {
-  color: rgba(255, 255, 255, 0.7);
-}
-#bnDelPlaylist {
-  color: rgb(255, 0, 0);
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-}
+
 #confirmPanelOuter {
   position: absolute;
   z-index: 2;
@@ -456,6 +450,7 @@
   margin: auto;
   gap: 0.5vh;
 }
+
 #confirmPanel {
   display: flex;
   flex-direction: column;
@@ -463,13 +458,14 @@
   align-items: center;
   font-size: 1rem;
   font-weight: 600;
-  background-color: rgb(0, 0, 0);
-  height: 30%;
+  background-color: rgb(30, 30, 30);
+  height: 35%;
   width: 80%;
   min-width: 10rem;
   border: none;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
 }
+
 #DelDisclaimerText {
   display: flex;
   justify-content: center;
@@ -478,6 +474,7 @@
   text-align: center;
   height: 70%;
 }
+
 #delConfirmButtonsDiv {
   display: flex;
   justify-content: space-around;
@@ -485,23 +482,27 @@
   height: 30%;
   width: 100%;
 }
+
 #delConfirmButtonsDiv button {
   height: 70%;
   border: none;
   border-radius: 1rem;
 }
+
 #bnCancelDel {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgb(255, 255, 255);
   color: black;
   width: 40%;
 }
+
 #bnConfirmDel {
   cursor: pointer;
   background-color: rgba(255, 47, 47, 0.7);
   color: white;
   width: 40%;
 }
+
 #libraryPanelSpace {
   height: 30vh;
   width: 100%;

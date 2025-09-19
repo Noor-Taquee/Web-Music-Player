@@ -53,6 +53,9 @@ function songAttendance() {
 }
 
 function updateDataFile() {
+  fetchUsersInfo().then(() => {
+      data[userNameKey] = userData;
+    });
   return dumpInfo("/JSON/UserFile.json", data);
 }
 function dumpInfo(path,data) {
@@ -209,11 +212,5 @@ function genTime() {
   let seconds = currentTime.getSeconds();
   return `${hours}:${minutes}:${seconds}`;
 }
-
-setInterval(() => {
-  if (signedIn) {
-    updateDataFile();
-  }
-}, 30000);
 
 attend();

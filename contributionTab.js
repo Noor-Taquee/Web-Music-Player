@@ -303,6 +303,7 @@ function clearInputFieldsCT() {
 function goToInput() {
   contributionContent.replaceChild(contributionInputDiv, contributionHelpDiv);
   bnContributeCT.style.display = "none";
+  // history.pushState(goToHelp, null, "/contributionTab");
 }
 function goToHelp() {
   contributionContent.replaceChild(contributionHelpDiv, contributionInputDiv);

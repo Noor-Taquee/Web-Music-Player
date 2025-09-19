@@ -79,7 +79,7 @@ changePassTextContainer.className = "buttonTextContainer";
 bnChangePass.appendChild(changePassTextContainer);
 let bnChangePassP = document.createElement("p");
 changePassTextContainer.appendChild(bnChangePassP);
-bnChangePassP.textContent = "CHANGE PASSWORD";
+bnChangePassP.textContent = "Change Password";
 let changePassSelectionIcon = document.createElement("span");
 changePassTextContainer.appendChild(changePassSelectionIcon);
 changePassSelectionIcon.className = "material-symbols-rounded";
@@ -105,7 +105,7 @@ notificationsTextContainer.className = "buttonTextContainer";
 bnNotifications.appendChild(notificationsTextContainer);
 let bnNotificationsP = document.createElement("p");
 notificationsTextContainer.appendChild(bnNotificationsP);
-bnNotificationsP.textContent = "NOTIFICATIONS";
+bnNotificationsP.textContent = "Notifications";
 let notificationsSelectionIcon = document.createElement("span");
 notificationsTextContainer.appendChild(notificationsSelectionIcon);
 notificationsSelectionIcon.className = "material-symbols-rounded";
@@ -131,7 +131,7 @@ manageHistoryTextContainer.className = "buttonTextContainer";
 bnManageHistory.appendChild(manageHistoryTextContainer);
 let bnManageHistoryP = document.createElement("p");
 manageHistoryTextContainer.appendChild(bnManageHistoryP);
-bnManageHistoryP.textContent = "MANAGE HISTORY";
+bnManageHistoryP.textContent = "Manage History";
 let manageHistorySelectionIcon = document.createElement("span");
 manageHistoryTextContainer.appendChild(manageHistorySelectionIcon);
 manageHistorySelectionIcon.className = "material-symbols-rounded";
@@ -157,7 +157,7 @@ changeThemeTextContainer.className = "buttonTextContainer";
 bnChangeTheme.appendChild(changeThemeTextContainer);
 let bnChangeThemeP = document.createElement("p");
 changeThemeTextContainer.appendChild(bnChangeThemeP);
-bnChangeThemeP.textContent = "THEME";
+bnChangeThemeP.textContent = "Theme";
 let changeThemeSelectionIcon = document.createElement("span");
 changeThemeTextContainer.appendChild(changeThemeSelectionIcon);
 changeThemeSelectionIcon.className = "material-symbols-rounded";
@@ -183,7 +183,7 @@ audioQualityTextContainer.className = "buttonTextContainer";
 bnAudioQuality.appendChild(audioQualityTextContainer);
 let bnAudioQualityP = document.createElement("p");
 audioQualityTextContainer.appendChild(bnAudioQualityP);
-bnAudioQualityP.textContent = "AUDIO QUALITY";
+bnAudioQualityP.textContent = "Audio Quality";
 let audioQualitySelectionIcon = document.createElement("span");
 audioQualityTextContainer.appendChild(audioQualitySelectionIcon);
 audioQualitySelectionIcon.className = "material-symbols-rounded";
@@ -210,7 +210,7 @@ contributeTextContainer.className = "buttonTextContainer";
 bnContribute.appendChild(contributeTextContainer);
 let bnContributeP = document.createElement("p");
 contributeTextContainer.appendChild(bnContributeP);
-bnContributeP.textContent = "ADD YOUR FAVOURITE SONG";
+bnContributeP.textContent = "Add Your Favourite Song";
 let contributeSelectionIcon = document.createElement("span");
 contributeTextContainer.appendChild(contributeSelectionIcon);
 contributeSelectionIcon.className = "material-symbols-rounded";
@@ -255,6 +255,7 @@ function f_login() {
     main.replaceChild(loginPanel,accountPanel);
     bottomDiv.style.display = "none";
     currentTab = loginPanel;
+    // history.pushState(goBack, "", "/login");
   } else {
     alert("Server is not responding!")
   }
@@ -341,12 +342,21 @@ confirmChangePassBtn.addEventListener("click", f_confirmChangePassword);
 
 function f_changePass() {
   if (signedIn) {
-    accountPanel.replaceChild(changePassPanel,settingsPanel)
+    accountPanel.replaceChild(changePassPanel,settingsPanel);
+    changePassPanel.style.animation = "slideLeft 0.3s ease-in-out";
+    changePassPanel.addEventListener("animationend", function changePassPanelSlideLeft() {
+      changePassPanel.removeEventListener("animationend", changePassPanelSlideLeft);
+    });
+    // history.pushState(f_backChangePassPanel, "", "/changePassword");
   }
 }
 
 function f_backChangePassPanel() {
-  accountPanel.replaceChild(settingsPanel, changePassPanel);
+  changePassPanel.style.animation = "slideRight 0.3s ease-in-out";
+  changePassPanel.addEventListener("animationend", function changePassPanelSlideRight() {
+    changePassPanel.removeEventListener("animationend", changePassPanelSlideRight);
+    accountPanel.replaceChild(settingsPanel, changePassPanel);
+  });
 }
 
 function f_cancelChangePassword() {
@@ -466,11 +476,20 @@ function loadNotifications() {
 function f_notifications() {
   if (signedIn) {
     accountPanel.replaceChild(notificationsPanel, settingsPanel);
+    notificationsPanel.style.animation = "slideLeft 0.3s ease-in-out";
+    notificationsPanel.addEventListener("animationend", function notificationsPanelSlideLeft() {
+      notificationsPanel.removeEventListener("animationend", notificationsPanelSlideLeft);
+    });
+    // history.pushState(f_backNotificationsPanel, "", "/notifications");
   }
 }
 
 function f_backNotificationsPanel() {
-  accountPanel.replaceChild(settingsPanel, notificationsPanel);
+  notificationsPanel.style.animation = "slideRight 0.3s ease-in-out";
+  notificationsPanel.addEventListener("animationend", function notificationsPanelSlideRight() {
+    notificationsPanel.removeEventListener("animationend", notificationsPanelSlideRight);
+    accountPanel.replaceChild(settingsPanel, notificationsPanel);
+  });
 }
 
 function f_removeNotification(notification) {
@@ -542,11 +561,20 @@ let manageHistoryListDiv = document.createElement("div");
 function f_manageHistory() {
   if (signedIn) {
     accountPanel.replaceChild(manageHistoryPanel, settingsPanel);
+    manageHistoryPanel.style.animation = "slideLeft 0.3s ease-in-out";
+    manageHistoryPanel.addEventListener("animationend", function manageHistoryPanelSlideLeft() {
+      manageHistoryPanel.removeEventListener("animationend", manageHistoryPanelSlideLeft);
+    });
+    // history.pushState(f_backManageHistoryPanel, "", "/manage-history");
   }
 }
 
 function f_backManageHistoryPanel() {
-  accountPanel.replaceChild(settingsPanel, manageHistoryPanel);
+  manageHistoryPanel.style.animation = "slideRight 0.3s ease-in-out";
+  manageHistoryPanel.addEventListener("animationend", function manageHistoryPanelSlideRight() {
+    manageHistoryPanel.removeEventListener("animationend", manageHistoryPanelSlideRight);
+    accountPanel.replaceChild(settingsPanel, manageHistoryPanel);
+  });
 }
 
 function stopHistory() {
@@ -693,11 +721,20 @@ changeBlurToggle.appendChild(changeBlurToggleBall);
 changeBlurToggleBall.id = "changeBlurToggleBall";
 
 function f_changeTheme() {
-  accountPanel.replaceChild(changeThemePanel, settingsPanel)
+  accountPanel.replaceChild(changeThemePanel, settingsPanel);
+  changeThemePanel.style.animation = "slideLeft 0.3s ease-in-out";
+  changeThemePanel.addEventListener("animationend", function changeThemePanelSlideLeft() {
+    changeThemePanel.removeEventListener("animationend", changeThemePanelSlideLeft);
+  });
+  // history.pushState(f_backChangeThemePanel,"","./themepanel");
 }
 
 function f_backChangeThemePanel() {
-  accountPanel.replaceChild(settingsPanel, changeThemePanel)
+  changeThemePanel.style.animation = "slideRight 0.3s ease-in-out";
+  changeThemePanel.addEventListener("animationend", function changeThemePanelSlideRight() {
+    changeThemePanel.removeEventListener("animationend", changeThemePanelSlideRight);
+    accountPanel.replaceChild(settingsPanel, changeThemePanel);
+  });
 }
 
 function f_changeThemeColor(color) {
@@ -778,11 +815,20 @@ audioQualityPanelConDiv.appendChild(audioQualityPanelP);
 audioQualityPanelP.textContent = "This feature will be available soon.";
 
 function f_audioQuality() {
-  accountPanel.replaceChild(audioQualityPanel, settingsPanel)
+  accountPanel.replaceChild(audioQualityPanel, settingsPanel);
+  audioQualityPanel.style.animation = "slideLeft 0.3s ease-in-out";
+  audioQualityPanel.addEventListener("animationend", function changeAudioQualityPanelSlideLeft() {
+    audioQualityPanel.removeEventListener("animationend", changeAudioQualityPanelSlideLeft);
+  });
+  // history.pushState(f_backAudioQualityPanel,"","./audioQualityPanel");
 }
 
 function f_backAudioQualityPanel() {
-  accountPanel.replaceChild(settingsPanel, audioQualityPanel)
+  audioQualityPanel.style.animation = "slideRight 0.3s ease-in-out";
+  audioQualityPanel.addEventListener("animationend", function changeAudioQualityPanelSlideRight() {
+    audioQualityPanel.removeEventListener("animationend", changeAudioQualityPanelSlideRight);
+    accountPanel.replaceChild(settingsPanel, audioQualityPanel);
+  });
 }
 
 
@@ -793,6 +839,7 @@ function f_contribute() {
   if (signedIn) {
     main.style.display = "none";
     loadingDiv.style.display = "flex";
+    // history.pushState(goBack,"","./contributionPanel");
     startContribution().then(() => {
       main.style.display = "flex";
       loadingDiv.style.display = "none";

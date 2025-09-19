@@ -139,7 +139,6 @@ function getPlaylistNames() {
 }
 
 function openPlaylist(playlist) {
-  libraryPanel.replaceChild(playlistPanel, libraryContent);
   clearContainer(playlistPanelContent);
 
   // Area to show playlist name and image
@@ -207,10 +206,20 @@ function openPlaylist(playlist) {
     playlistPanelSongDivP.textContent = "THE PLAYLIST IS EMPTY";
     libraryContent.appendChild(playlistPanelSongDivP);
   }
+  libraryPanel.replaceChild(playlistPanel, libraryContent);
+  playlistPanel.style.animation = "slideLeft 0.3s ease-in-out";
+  playlistPanel.addEventListener("animationend", function playlistPanelSlideLeft() {
+    playlistPanel.removeEventListener("animationend", playlistPanelSlideLeft);
+  });
+  // history.pushState(f_backPlaylistPanel, "", playlist.name);
 }
 
 function f_backPlaylistPanel() {
-  libraryPanel.replaceChild(libraryContent, playlistPanel);
+  playlistPanel.style.animation = "slideRight 0.3s ease-in-out";
+  playlistPanel.addEventListener("animationend", function playlistPanelSlideRight() {
+    playlistPanel.removeEventListener("animationend", playlistPanelSlideRight);
+    libraryPanel.replaceChild(libraryContent, playlistPanel);
+  });
 }
 
 
@@ -273,8 +282,8 @@ let privacy = "public";
 function f_AddPlaylist() {
   if (signedIn) {
     libraryPanel.appendChild(addPlaylistPanel);
-    addPlaylistPanel.style.animation = "appear";
-    addPlaylistPanel.style.animationDuration = "0.5s";
+    // history.pushState(f_cancelAddPlaylist,"","./addPlaylist");
+    addPlaylistPanel.style.animation = "appear 0.3s ease-in-out";
     addPlaylistPanel.addEventListener("animationend", function addPlaylistPanelA() {
       addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelA);
     });
@@ -284,8 +293,7 @@ function f_AddPlaylist() {
 }
 
 function f_cancelAddPlaylist() {
-  addPlaylistPanel.style.animation = "disappear";
-  addPlaylistPanel.style.animationDuration = "0.5s";
+  addPlaylistPanel.style.animation = "disappear 0.3s ease-in-out";
   addPlaylistPanel.addEventListener("animationend", function addPlaylistPanelD() {
     addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelD);
     libraryPanel.removeChild(addPlaylistPanel);
@@ -386,16 +394,15 @@ bnConfirmDel.addEventListener("click", confirmDelPlaylist);
 function f_options(selectedPlaylist) {
   playlistInFocus = selectedPlaylist;
   libraryPanel.appendChild(optionPanel);
-  optionPanel.style.animation = "appear";
-  optionPanel.style.animationDuration = "0.5s";
+  // history.pushState(f_cancel,"","./options");
+  optionPanel.style.animation = "appear 0.3s ease-in-out";
   optionPanel.addEventListener("animationend", function optionPanelA() {
     optionPanel.removeEventListener("animationend", optionPanelA);
   });
 }
 
 function f_cancel() {
-  optionPanel.style.animation = "disappear";
-  optionPanel.style.animationDuration = "0.5s";
+  optionPanel.style.animation = "disappear 0.3s ease-in-out";
   optionPanel.addEventListener("animationend", function optionPanelD() {
     optionPanel.removeEventListener("animationend", optionPanelD);
     libraryPanel.removeChild(optionPanel);
@@ -406,8 +413,8 @@ function f_renamePlaylist() {}
 
 function f_delPlaylist() {
   libraryContent.appendChild(confirmPanelOuter);
-  confirmPanelOuter.style.animation = "appear";
-  confirmPanelOuter.style.animationDuration = "0.5s";
+  // history.pushState(f_cancelDelPlaylist,"","./deletePlaylist");
+  confirmPanelOuter.style.animation = "appear 0.3s ease-in-out";
   confirmPanelOuter.addEventListener("animationend", function confirmPanelA() {
     confirmPanelOuter.removeEventListener("animationend", confirmPanelA);
   });
@@ -421,8 +428,7 @@ function confirmDelPlaylist() {
 }
 
 function f_cancelDelPlaylist() {
-  confirmPanelOuter.style.animation = "disappear";
-  confirmPanelOuter.style.animationDuration = "0.5s";
+  confirmPanelOuter.style.animation = "disappear 0.3s ease-in-out";
   confirmPanelOuter.addEventListener("animationend", function confirmPanelD() {
     confirmPanelOuter.removeEventListener("animationend", confirmPanelD);
     libraryContent.removeChild(confirmPanelOuter);

@@ -109,25 +109,30 @@ function switchTo(destination) {
   if (currentTab != destination) {
     if (destination == "homePanel") {
       main.replaceChild(homePanel,currentTab);
+      // history.pushState(switchTo(`${currentTab}`), null, `./${homePanel.id}`);
       currentTab = homePanel;
       currentBtn = bnHomePanel;
       miniPlayerRequired = true;
     } else if (destination == "playerPanel") {
       main.replaceChild(playerPanel,currentTab);
+      // history.pushState(switchTo(`${currentTab}`), null, `./${playerPanel.id}`);
       currentTab = playerPanel;
       miniPlayerRequired = false;
     } else if (destination == "searchPanel") {
       main.replaceChild(searchPanel,currentTab);
+      // history.pushState(switchTo(`${currentTab}`), null, `./${searchPanel.id}`);
       currentTab = searchPanel;
       currentBtn = bnSearchPanel;
       miniPlayerRequired = true;
     } else if (destination == "libraryPanel") {
       main.replaceChild(libraryPanel,currentTab);
+      // history.pushState(switchTo(`${currentTab}`), null, `./${libraryPanel.id}`);
       currentTab = libraryPanel;
       currentBtn = bnLibraryPanel;
       miniPlayerRequired = true;
     } else {
       main.replaceChild(accountPanel,currentTab);
+      // history.pushState(switchTo(`${currentTab}`), null, `./${accountPanel.id}`);
       currentTab = accountPanel;
       currentBtn = bnAccountPanel;
       miniPlayerRequired = true;
