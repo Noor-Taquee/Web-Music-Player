@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" /> -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"/>
-  <link rel="stylesheet" href="animation.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="homeTab.css">
-  <link rel="stylesheet" href="playerTab.css">
-  <link rel="stylesheet" href="searchTab.css">
-  <link rel="stylesheet" href="libraryTab.css">
-  <link rel="stylesheet" href="accountTab.css">
-  <link rel="stylesheet" href="loginTab.css">
-  <link rel="stylesheet" href="contributionTab.css">
-  <title>Music Player By Noor Taquee</title>
-</head>
-<body id="body">
-  <div id="loadingDiv">
-    <div class="bar" id="b1"></div>
-    <div class="bar" id="b2"></div>
-    <div class="bar" id="b3"></div>
-    <div class="bar" id="b4"></div>
-    <div class="bar" id="b5"></div>
-    <div class="bar" id="b6"></div>
-  </div>
-  <div id="main">
-    <div id="bottomDiv">
-      <div id="switchDiv">
-        <button id="bnHomePanel">
-          <span class="material-symbols-rounded">home</span>
-          <!-- <i class="ph ph-house"></i> -->
-        </button>
-        <button id="bnSearchPanel">
-          <span class="material-symbols-rounded">search</span>
-          <!-- <i class="ph ph-magnifying-glass"></i> -->
-        </button>
-        <button id="bnLibraryPanel">
-          <span class="material-symbols-rounded">library_music</span>
-          <!-- <i class="ph ph-user"></i> -->
-        </button>
-        <button id="bnAccountPanel">
-          <span class="material-symbols-rounded">account_circle</span>
-        </button>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
+    />
+    <link rel="stylesheet" href="animation.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="homeTab.css" />
+    <link rel="stylesheet" href="playerTab.css" />
+    <link rel="stylesheet" href="searchTab.css" />
+    <link rel="stylesheet" href="libraryTab.css" />
+    <link rel="stylesheet" href="accountTab.css" />
+    <link rel="stylesheet" href="loginTab.css" />
+    <link rel="stylesheet" href="contributionTab.css" />
+    <title>Music Player By Noor Taquee</title>
+  </head>
+  <body id="body">
+    <div id="loadingDiv">
+      <div class="bar" id="b1"></div>
+      <div class="bar" id="b2"></div>
+      <div class="bar" id="b3"></div>
+      <div class="bar" id="b4"></div>
+      <div class="bar" id="b5"></div>
+      <div class="bar" id="b6"></div>
+    </div>
+    <div id="main">
+      <div id="bottomDiv">
+        <div id="switchDiv">
+          <button id="bnHomePanel">
+            <span class="material-symbols-rounded">home</span>
+            <!-- <i class="ph ph-house"></i> -->
+          </button>
+          <button id="bnSearchPanel">
+            <span class="material-symbols-rounded">search</span>
+            <!-- <i class="ph ph-magnifying-glass"></i> -->
+          </button>
+          <button id="bnLibraryPanel">
+            <span class="material-symbols-rounded">library_music</span>
+            <!-- <i class="ph ph-user"></i> -->
+          </button>
+          <button id="bnAccountPanel">
+            <span class="material-symbols-rounded">account_circle</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <audio id="song"></audio>
-  <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
-  <script src="script.js"></script>
-  <script src="backend.js"></script>
-  <script src="song.js"></script>
-  <script src="homeTab.js"></script>
-  <script src="playerTab.js"></script>
-  <script src="searchTab.js"></script>
-  <script src="libraryTab.js"></script>
-  <script src="accountTab.js"></script>
-  <script src="loginTab.js"></script>
-  <script src="contributionTab.js"></script>
-  <script>
-    createScreen(homePanel,bnHomePanel);
-  </script>
-</body>
+    <audio id="song"></audio>
+    <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+    <script src="script.js"></script>
+    <script src="backend.js"></script>
+    <script src="song.js"></script>
+    <script src="homeTab.js"></script>
+    <script src="playerTab.js"></script>
+    <script src="searchTab.js"></script>
+    <script src="libraryTab.js"></script>
+    <script src="accountTab.js"></script>
+    <script src="loginTab.js"></script>
+    <script src="contributionTab.js"></script>
+    <script>
+      createScreen(homePanel, bnHomePanel);
+    </script>
+  </body>
 </html>

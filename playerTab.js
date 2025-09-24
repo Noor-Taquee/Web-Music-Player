@@ -16,9 +16,6 @@ bnSongInfoIcon.textContent = "info";
 // bnSongInfoIcon.className = "ph ph-info";
 bnSongInfo.appendChild(bnSongInfoIcon);
 
-
-
-
 let songInfoDiv = document.createElement("div");
 songInfoDiv.id = "songInfoDiv";
 let songInfoDivTopBar = document.createElement("div");
@@ -52,10 +49,6 @@ let songInfoConDiv = document.createElement("div");
 songInfoDiv.appendChild(songInfoConDiv);
 songInfoConDiv.id = "songInfoConDiv";
 
-
-
-
-
 let pictureDiv = document.createElement("div");
 playerPanel.appendChild(pictureDiv);
 pictureDiv.id = "pictureDiv";
@@ -68,7 +61,6 @@ lyricsDiv.id = "lyricsDiv";
 let lyrics = document.createElement("p");
 lyricsDiv.appendChild(lyrics);
 lyricsDiv.id = "lyrics";
-
 
 let secondaryDiv = document.createElement("div");
 playerPanel.appendChild(secondaryDiv);
@@ -83,12 +75,9 @@ let artistName = document.createElement("p");
 infoDiv.appendChild(artistName);
 artistName.id = "artistName";
 
-
-
 let secondaryControls = document.createElement("div");
 secondaryDiv.appendChild(secondaryControls);
 secondaryControls.id = "secondaryControls";
-
 
 let bnFavourite = document.createElement("button");
 secondaryControls.appendChild(bnFavourite);
@@ -104,7 +93,7 @@ bnFavourite.appendChild(favouriteIcon);
 let bnMore = document.createElement("button");
 secondaryControls.appendChild(bnMore);
 bnMore.id = "bnMore";
-bnMore.addEventListener("click",showMore);
+bnMore.addEventListener("click", showMore);
 let moreIcon = document.createElement("span");
 moreIcon.className = "material-symbols-rounded";
 moreIcon.textContent = "more_vert";
@@ -115,13 +104,13 @@ bnMore.appendChild(moreIcon);
 let moreDiv = document.createElement("div");
 moreDiv.id = "moreDiv";
 
-let toggleAPDiv = document.createElement("div")
+let toggleAPDiv = document.createElement("div");
 moreDiv.appendChild(toggleAPDiv);
 toggleAPDiv.id = "toggleAPDiv";
 let toggleAutoPlayOn = document.createElement("button");
 toggleAPDiv.appendChild(toggleAutoPlayOn);
 toggleAutoPlayOn.id = "toggleAutoPlayOn";
-toggleAutoPlayOn.addEventListener("click",() => focusAPOn("autoPlayOn"));
+toggleAutoPlayOn.addEventListener("click", () => focusAPOn("autoPlayOn"));
 let autoPlayIcon = document.createElement("span");
 autoPlayIcon.className = "material-symbols-rounded";
 // let autoPlayIcon = document.createElement("i");
@@ -132,7 +121,7 @@ toggleAutoPlayOn.appendChild(autoPlayIcon);
 let toggleAutoPlayOff = document.createElement("button");
 toggleAPDiv.appendChild(toggleAutoPlayOff);
 toggleAutoPlayOff.id = "toggleAutoPlayOff";
-toggleAutoPlayOff.addEventListener("click",() => focusAPOn("autoPlayOff"));
+toggleAutoPlayOff.addEventListener("click", () => focusAPOn("autoPlayOff"));
 
 let autoPlayOffIcon = document.createElement("span");
 toggleAutoPlayOff.appendChild(autoPlayOffIcon);
@@ -142,7 +131,7 @@ autoPlayOffIcon.id = "autoPlayOffIcon";
 let toggleRepeat = document.createElement("button");
 toggleAPDiv.appendChild(toggleRepeat);
 toggleRepeat.id = "toggleRepeat";
-toggleRepeat.addEventListener("click",() => focusAPOn("repeat"));
+toggleRepeat.addEventListener("click", () => focusAPOn("repeat"));
 let repeatIcon = document.createElement("span");
 repeatIcon.className = "material-symbols-rounded";
 // let repeatIcon = document.createElement("i");
@@ -157,7 +146,7 @@ toggleLayerAP.id = "toggleLayerAP";
 let bnSave = document.createElement("button");
 moreDiv.appendChild(bnSave);
 bnSave.id = "bnSave";
-bnSave.addEventListener("click",f_save);
+bnSave.addEventListener("click", f_save);
 let saveIcon = document.createElement("span");
 saveIcon.className = "material-symbols-rounded";
 saveIcon.textContent = "bookmark";
@@ -171,7 +160,7 @@ bnSaveText.textContent = "SAVE";
 let bnShare = document.createElement("button");
 moreDiv.appendChild(bnShare);
 bnShare.id = "bnShare";
-bnShare.addEventListener("click",f_share);
+bnShare.addEventListener("click", f_share);
 let shareIcon = document.createElement("span");
 shareIcon.className = "material-symbols-rounded";
 shareIcon.textContent = "ios_share";
@@ -185,7 +174,7 @@ bnShareText.textContent = "SHARE";
 let bnDownload = document.createElement("button");
 moreDiv.appendChild(bnDownload);
 bnDownload.id = "bnDownload";
-bnDownload.addEventListener("click",f_download);
+bnDownload.addEventListener("click", f_download);
 let downloadIcon = document.createElement("span");
 downloadIcon.className = "material-symbols-rounded";
 downloadIcon.textContent = "place_item";
@@ -233,7 +222,7 @@ playbackControls.id = "playbackControls";
 let bnPrev = document.createElement("button");
 playbackControls.appendChild(bnPrev);
 bnPrev.id = "bnPrev";
-bnPrev.addEventListener("click",() => changeSong("prev"));
+bnPrev.addEventListener("click", () => changeSong("prev"));
 let prevIcon = document.createElement("span");
 prevIcon.className = "material-symbols-rounded";
 prevIcon.textContent = "skip_previous";
@@ -256,7 +245,7 @@ playbackBtnIcon.textContent = "progress_activity";
 let bnNext = document.createElement("button");
 playbackControls.appendChild(bnNext);
 bnNext.id = "bnNext";
-bnNext.addEventListener("click",() => changeSong("next"));
+bnNext.addEventListener("click", () => changeSong("next"));
 let nextIcon = document.createElement("span");
 nextIcon.className = "material-symbols-rounded";
 // let nextIcon = document.createElement("i");
@@ -264,31 +253,28 @@ nextIcon.className = "material-symbols-rounded";
 nextIcon.textContent = "skip_next";
 bnNext.appendChild(nextIcon);
 
-
 //VARIABLES
 let currentFocusPL = "picture";
-
 
 //FUNCTIONS
 function updateSecondaryButtons() {
   if (favouriteSongList.includes(titleNames[currentSongIndex])) {
     favouriteIcon.style.fontVariationSettings = '"FILL" 1';
-    bnFavourite.removeEventListener("click",f_favourite);
-    bnFavourite.addEventListener("click",f_disfavourite);
+    bnFavourite.removeEventListener("click", f_favourite);
+    bnFavourite.addEventListener("click", f_disfavourite);
   } else {
     favouriteIcon.style.fontVariationSettings = '"FILL" 0';
-    bnFavourite.removeEventListener("click",f_disfavourite);
-    bnFavourite.addEventListener("click",f_favourite);
+    bnFavourite.removeEventListener("click", f_disfavourite);
+    bnFavourite.addEventListener("click", f_favourite);
   }
 }
-
 
 function f_favourite() {
   if (signedIn) {
     favouriteIcon.style.fontVariationSettings = '"FILL" 1';
     // favouriteIcon.className = "ph-fill ph-heart"
-    bnFavourite.removeEventListener("click",f_favourite);
-    bnFavourite.addEventListener("click",f_disfavourite);
+    bnFavourite.removeEventListener("click", f_favourite);
+    bnFavourite.addEventListener("click", f_disfavourite);
     favouriteSongList.push(titleNames[currentSongIndex]);
     updateDataFile();
     favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
@@ -299,9 +285,12 @@ function f_favourite() {
 function f_disfavourite() {
   favouriteIcon.style.fontVariationSettings = '"FILL" 0';
   // favouriteIcon.className = "ph ph-heart"
-  bnFavourite.removeEventListener("click",f_disfavourite);
-  bnFavourite.addEventListener("click",f_favourite);
-  favouriteSongList.splice(favouriteSongList.indexOf(titleNames[currentSongIndex]),1);
+  bnFavourite.removeEventListener("click", f_disfavourite);
+  bnFavourite.addEventListener("click", f_favourite);
+  favouriteSongList.splice(
+    favouriteSongList.indexOf(titleNames[currentSongIndex]),
+    1
+  );
   updateDataFile();
   favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
 }
@@ -328,31 +317,30 @@ function hideMore() {
 function f_save() {
   saveIcon.fontVariationSettings = '"FILL" 1';
   // saveIcon.className = "ph-fill ph-bookmark-simple"
-  bnSave.removeEventListener("click",f_save);
-  bnSave.addEventListener("click",f_unsave);
+  bnSave.removeEventListener("click", f_save);
+  bnSave.addEventListener("click", f_unsave);
 }
 function f_unsave() {
   saveIcon.fontVariationSettings = '"FILL" 0';
   // saveIcon.className = "ph ph-bookmark-simple"
-  bnSave.removeEventListener("click",f_unsave);
-  bnSave.addEventListener("click",f_save);
+  bnSave.removeEventListener("click", f_unsave);
+  bnSave.addEventListener("click", f_save);
 }
 
 function f_share() {}
 function f_download() {}
 
 function removeFocus(Opart) {
-  toggleLayerAP.style.transform = "translateX(0)"
+  toggleLayerAP.style.transform = "translateX(0)";
 }
-
 
 //BUTTON FUNCTIONS
 function focusPLOn() {
   if (currentFocusPL == "lyrics") {
     lyricsDiv.style.animationName = "disappear";
     lyricsDiv.style.animationDuration = "0.3s";
-    lyricsDiv.addEventListener("animationend",function lTop() {
-      lyricsDiv.removeEventListener("animationend",lTop);
+    lyricsDiv.addEventListener("animationend", function lTop() {
+      lyricsDiv.removeEventListener("animationend", lTop);
       pictureDiv.removeChild(lyricsDiv);
       pictureDiv.appendChild(albumArt);
       albumArt.style.animationName = "appear";
@@ -362,8 +350,8 @@ function focusPLOn() {
   } else {
     albumArt.style.animationName = "disappear";
     albumArt.style.animationDuration = "0.3s";
-    albumArt.addEventListener("animationend",function pTol() {
-      albumArt.removeEventListener("animationend",pTol);
+    albumArt.addEventListener("animationend", function pTol() {
+      albumArt.removeEventListener("animationend", pTol);
       pictureDiv.removeChild(albumArt);
       pictureDiv.appendChild(lyricsDiv);
       lyricsDiv.style.animationName = "appear";
@@ -373,7 +361,7 @@ function focusPLOn() {
   }
 }
 function focusAPOn(part) {
-  let move = 35/3;
+  let move = 35 / 3;
   if (part == "autoPlayOn") {
     removeFocus();
     playingMode = "autoPlayOn";
@@ -381,9 +369,9 @@ function focusAPOn(part) {
     removeFocus();
     toggleLayerAP.style.transform = `translateX(${move}vw)`;
     playingMode = "autoPlayOff";
-  } else if (part == "repeat"){
+  } else if (part == "repeat") {
     removeFocus();
-    toggleLayerAP.style.transform = `translateX(${2*move}vw)`;
+    toggleLayerAP.style.transform = `translateX(${2 * move}vw)`;
     playingMode = "repeat";
   }
 }
@@ -419,14 +407,10 @@ function initPlayer() {
   bnPlay.addEventListener("click", changeState);
 }
 
-
-
-timeSlider.addEventListener("input" ,() => {
+timeSlider.addEventListener("input", () => {
   setTimeTo(timeSlider.value);
   time1.textContent = coveredTime;
 });
-
-
 
 //KEY BINDINGS
 document.addEventListener("keydown", (event) => {
@@ -449,7 +433,6 @@ setInterval(() => {
   }
   timeSlider.value = song.currentTime;
 }, 1000);
-
 
 function showSongInfo() {
   playerPanel.appendChild(songInfoDiv);
@@ -497,7 +480,6 @@ function loadSondInfo() {
   let songReleaseP = document.createElement("p");
   songInfo.appendChild(songReleaseP);
   songReleaseP.textContent = `Release Date: ${currentSong.release}`;
-
 
   let songInfoArtists = document.createElement("div");
   songInfoConDiv.appendChild(songInfoArtists);
@@ -605,32 +587,48 @@ function reportSong() {
     selectedSongToReport = currentTrackName;
     main.appendChild(reportSongInfoPanel);
     reportSongInfoPanel.style.animation = "appear 0.3s ease-in-out";
-    reportSongInfoPanel.addEventListener("animationend", function reportSongInfoPanelApp() {
-      reportSongInfoPanel.removeEventListener("animationend", reportSongInfoPanelApp);
-    });
+    reportSongInfoPanel.addEventListener(
+      "animationend",
+      function reportSongInfoPanelApp() {
+        reportSongInfoPanel.removeEventListener(
+          "animationend",
+          reportSongInfoPanelApp
+        );
+      }
+    );
     // history.pushState(closeReportSongInfoPanel, "", "./reportSong");
   }
 }
 
 function closeReportSongInfoPanel() {
   reportSongInfoPanel.style.animation = "disappear 0.3s ease-in-out";
-  reportSongInfoPanel.addEventListener("animationend", function reportSongInfoPanelDis() {
-    reportSongInfoPanel.removeEventListener("animationend", reportSongInfoPanelDis);
-    main.removeChild(reportSongInfoPanel);
-  });
+  reportSongInfoPanel.addEventListener(
+    "animationend",
+    function reportSongInfoPanelDis() {
+      reportSongInfoPanel.removeEventListener(
+        "animationend",
+        reportSongInfoPanelDis
+      );
+      main.removeChild(reportSongInfoPanel);
+    }
+  );
 }
 
 function sendReportSongInfo() {
   if (reportSongInfoInput.value.trim().length > 0) {
     main.style.display = "none";
     loadingDiv.style.display = "flex";
-    sendNotification("noortaquee","ERROR REPORT",`${userName} reported an issue with the song "${selectedSongToReport}": "${reportSongInfoInput.value}"`);
+    sendNotification(
+      "noortaquee",
+      "ERROR REPORT",
+      `${userName} reported an issue with the song "${selectedSongToReport}": "${reportSongInfoInput.value}"`
+    );
     updateDataFile().then(() => {
       loadingDiv.style.display = "none";
       main.style.display = "flex";
       main.removeChild(reportSongInfoPanel);
       alert("Your report has been sent successfully.");
-    })
+    });
   } else {
     alert("Please enter the issue or error.");
   }

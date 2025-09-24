@@ -88,7 +88,6 @@ bnTunes.textContent = "TUNES";
 let tunesDiv = document.createElement("div");
 tunesDiv.id = "tunesDiv";
 
-
 let homeContentDiv = document.createElement("div");
 homePanel.appendChild(homeContentDiv);
 homeContentDiv.id = "homeContentDiv";
@@ -108,6 +107,16 @@ recentlyPlayedDivCon.appendChild(recentlyPlayedDivConText);
 recentlyPlayedDivConText.id = "recentlyPlayedDivConText";
 recentlyPlayedDivConText.textContent = "LOGIN TO SEE RECENTLY PLAYED SONGS";
 
+let qawwaliDiv = document.createElement("div");
+homeContentDiv.appendChild(qawwaliDiv);
+qawwaliDiv.className = "songDiv";
+let qawwaliDivText = document.createElement("p");
+qawwaliDiv.appendChild(qawwaliDivText);
+qawwaliDivText.className = "songDivText";
+qawwaliDivText.textContent = "QAWWALI";
+let qawwaliDivCon = document.createElement("p");
+qawwaliDiv.appendChild(qawwaliDivCon);
+qawwaliDivCon.className = "songDivCon";
 
 let hindiSongDiv = document.createElement("div");
 homeContentDiv.appendChild(hindiSongDiv);
@@ -179,8 +188,6 @@ let homePanelSpace = document.createElement("div");
 homeContentDiv.appendChild(homePanelSpace);
 homePanelSpace.id = "homePanelSpace";
 
-
-
 function loadRecentlyPlayedSongs() {
   clearContainer(recentlyPlayedDivCon);
   if (signedIn) {
@@ -213,7 +220,7 @@ function loadRecentlyPlayedSongs() {
   }
 }
 
-function loadHomeSongs(songList,songContainer) {
+function loadHomeSongs(songList, songContainer) {
   for (let songs of songList) {
     let suggestedSong = document.createElement("button");
     songContainer.appendChild(suggestedSong);
@@ -235,7 +242,5 @@ function loadHomeSongs(songList,songContainer) {
     suggestedSongName.textContent = songData[songs].name;
   }
 }
-
-
 
 attend();

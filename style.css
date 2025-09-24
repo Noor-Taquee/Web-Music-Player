@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter;
   background-image: none;
   background: transparent;
   background-size: contain;
@@ -54,7 +54,7 @@
   animation-delay: 0.8s;
 }
 .bar:nth-child(6) {
-  animation-delay: 1.0s;
+  animation-delay: 1s;
 }
 .bar:nth-child(7) {
   animation-delay: 0.8s;
@@ -72,7 +72,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  transition: all 1.0s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 #bottomDiv {
@@ -106,7 +106,7 @@
   padding: 0;
   border: none;
 }
-#miniInfoDiv{
+#miniInfoDiv {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -189,15 +189,13 @@
 }
 
 #miniPlaybackControlsDiv span {
-  font-variation-settings:
-  'FILL' 1;
+  font-variation-settings: "FILL" 1;
   font-size: 2rem;
 }
 
-
 #miniLoadingIcon {
   animation: spin;
-  animation-duration: 1.0s;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -233,17 +231,13 @@
   margin: 0;
 }
 #activeButton span {
-  font-variation-settings:
-  'FILL' 1;
+  font-variation-settings: "FILL" 1;
   font-size: 2rem;
   margin: 0;
 }
 .material-symbols-rounded {
-  font-family: 'Material Symbols Rounded';
+  font-family: "Material Symbols Rounded";
 }
-
-
-
 
 /* LIGHT MODE SETTINGS */
 .loadingDiv_lightMode {
@@ -263,14 +257,11 @@
   color: black;
 }
 .bottomDiv_lightMode #switchDiv span {
-  color: rgba(0,0,0,0.75);
+  color: rgba(0, 0, 0, 0.75);
 }
 .bottomDiv_lightMode #activeButton span {
-  color: rgba(0,0,0);
+  color: rgba(0, 0, 0);
 }
-
-
-
 
 /* DARK MODE SETTINGS */
 .loadingDiv_darkMode {
@@ -290,8 +281,8 @@
   color: white;
 }
 .bottomDiv_darkMode #switchDiv span {
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 .bottomDiv_darkMode #activeButton span {
-  color: rgba(255,255,255);
+  color: rgba(255, 255, 255);
 }

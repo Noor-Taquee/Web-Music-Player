@@ -27,6 +27,8 @@ searchP.textContent = "SEARCH";
 let searchResultDiv = document.createElement("div");
 searchResultDiv.id = "searchResultDiv";
 
+let searchResultDivText = document.createElement("p");
+searchResultDiv.appendChild(searchResultDivText);
 
 let searchHistoryTextDiv = document.createElement("div");
 searchPanel.appendChild(searchHistoryTextDiv);
@@ -61,8 +63,6 @@ searchedSongDivText.textContent = "LOGIN TO SEE YOUR HISTORY";
 let searchPanelSpace = document.createElement("div");
 searchPanel.appendChild(searchPanelSpace);
 searchPanelSpace.id = "searchPanelSpace";
-
-
 
 function loadSearchTextHistory() {
   clearContainer(searchedTextDiv);
@@ -100,7 +100,7 @@ function loadSearchSongHistory() {
         let searchedSong = document.createElement("button");
         searchedSongDiv.appendChild(searchedSong);
         searchedSong.id = "searchedSong";
-        searchedSong.addEventListener("click",() => playSong(songs));
+        searchedSong.addEventListener("click", () => playSong(songs));
 
         let searchedSongPic = document.createElement("p");
         searchedSong.appendChild(searchedSongPic);
@@ -138,7 +138,9 @@ function findSearchMatches() {
         resultList[songs] = songs.toLowerCase().indexOf(searchedStr);
       }
     }
-    let sortedResultList = Object.entries(resultList).sort((a, b) => a[1] - b[1]);
+    let sortedResultList = Object.entries(resultList).sort(
+      (a, b) => a[1] - b[1]
+    );
     resultList = [];
     for (let songs of sortedResultList) {
       resultList.push(songs[0]);
@@ -149,25 +151,30 @@ function findSearchMatches() {
 
 function showSearchResult(resultList) {
   if (searchPanel.contains(searchHistoryTextDiv)) {
-    searchPanel.replaceChild(searchResultDiv,searchHistoryTextDiv);
+    searchPanel.replaceChild(searchResultDiv, searchHistoryTextDiv);
   }
   clearContainer(searchResultDiv);
-  for (let songs of resultList) {
-    let searchResultBtn = document.createElement("button");
-    searchResultDiv.appendChild(searchResultBtn);
-    searchResultBtn.id = "searchResultBtn";
-    searchResultBtn.textContent = songs;
-    searchResultBtn.addEventListener("click", function () {
-      playSong(songs);
-      switchTo("playerPanel");
-      if (historyAllowed) {
-        if(searchedSongList.includes(songs)) {
-          searchedSongList.splice(searchedSongList.indexOf(songs),1);
+  if (resultList.length > 0) {
+    searchResultDivText.textContent = "";
+    for (let songs of resultList) {
+      let searchResultBtn = document.createElement("button");
+      searchResultDiv.appendChild(searchResultBtn);
+      searchResultBtn.id = "searchResultBtn";
+      searchResultBtn.textContent = songs;
+      searchResultBtn.addEventListener("click", function () {
+        playSong(songs);
+        switchTo("playerPanel");
+        if (historyAllowed) {
+          if (searchedSongList.includes(songs)) {
+            searchedSongList.splice(searchedSongList.indexOf(songs), 1);
+          }
+          searchedSongList.unshift(songs);
+          loadSearchSongHistory();
         }
-        searchedSongList.unshift(songs);
-        loadSearchSongHistory();
-      }
-    });
+      });
+    }
+  } else {
+    searchResultDivText.textContent = "No match!";
   }
 }
 
@@ -175,8 +182,8 @@ function addSearch() {
   if (historyAllowed) {
     let searchedStr = searchBox.value;
     if (searchedStr.length > 0) {
-      if(searchedTextList.includes(searchedStr)) {
-        searchedTextList.splice(searchedTextList.indexOf(searchedStr),1);
+      if (searchedTextList.includes(searchedStr)) {
+        searchedTextList.splice(searchedTextList.indexOf(searchedStr), 1);
       }
       searchedTextList.unshift(searchedStr);
       loadSearchTextHistory();
@@ -192,7 +199,7 @@ function clearContainer(container) {
 
 function showHistory() {
   if (searchPanel.contains(searchResultDiv)) {
-    searchPanel.replaceChild(searchHistoryTextDiv,searchResultDiv);
+    searchPanel.replaceChild(searchHistoryTextDiv, searchResultDiv);
   }
 }
 

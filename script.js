@@ -1,5 +1,5 @@
 //ELEMENTS==========================
-let loadingDiv  = document.getElementById("loadingDiv");
+let loadingDiv = document.getElementById("loadingDiv");
 let main = document.getElementById("main");
 let bottomDiv = document.getElementById("bottomDiv");
 let switchDiv = document.getElementById("switchDiv");
@@ -7,7 +7,6 @@ let bnHomePanel = document.getElementById("bnHomePanel");
 let bnSearchPanel = document.getElementById("bnSearchPanel");
 let bnLibraryPanel = document.getElementById("bnLibraryPanel");
 let bnAccountPanel = document.getElementById("bnAccountPanel");
-
 
 //CREATING ELEMENTS===================
 loadingDiv.className = "loadingDiv_darkMode";
@@ -19,7 +18,7 @@ miniPlayer.id = "miniPlayer";
 let miniInfoDiv = document.createElement("div");
 miniPlayer.appendChild(miniInfoDiv);
 miniInfoDiv.id = "miniInfoDiv";
-miniInfoDiv.addEventListener("click",expandToplayer);
+miniInfoDiv.addEventListener("click", expandToplayer);
 let miniAlbumArt = document.createElement("p");
 miniInfoDiv.appendChild(miniAlbumArt);
 miniAlbumArt.id = "miniAlbumArt";
@@ -38,16 +37,15 @@ miniPlayer.appendChild(miniPlaybackControlsDiv);
 miniPlaybackControlsDiv.id = "miniPlaybackControlsDiv";
 
 let miniBnPrev = document.createElement("button");
-miniPlaybackControlsDiv.appendChild(miniBnPrev)
+miniPlaybackControlsDiv.appendChild(miniBnPrev);
 miniBnPrev.id = "miniBnPrev";
 let miniPrevIcon = document.createElement("span");
 miniBnPrev.appendChild(miniPrevIcon);
 miniPrevIcon.className = "material-symbols-rounded";
 miniPrevIcon.textContent = "skip_previous";
 
-
 let miniBnPlay = document.createElement("button");
-miniPlaybackControlsDiv.appendChild(miniBnPlay)
+miniPlaybackControlsDiv.appendChild(miniBnPlay);
 miniBnPlay.id = "miniBnPlay";
 
 let miniPlaybackBtnIcon = document.createElement("span");
@@ -56,23 +54,17 @@ miniPlaybackBtnIcon.id = "miniLoadingIcon";
 miniPlaybackBtnIcon.className = "material-symbols-rounded";
 miniPlaybackBtnIcon.textContent = "progress_activity";
 
-
 let miniBnNext = document.createElement("button");
-miniPlaybackControlsDiv.appendChild(miniBnNext)
+miniPlaybackControlsDiv.appendChild(miniBnNext);
 miniBnNext.id = "miniBnNext";
 let miniNextIcon = document.createElement("span");
 miniBnNext.appendChild(miniNextIcon);
 miniNextIcon.className = "material-symbols-rounded";
 miniNextIcon.textContent = "skip_next";
 
-
-
-
 let currentTab = null;
 let currentBtn = null;
 let miniPlayerRequired = false;
-
-
 
 function initMiniPlayer() {
   miniAlbumArt.style.backgroundImage = `url(${currentAlbumArt})`;
@@ -87,7 +79,7 @@ function expandToplayer() {
   switchTo("playerPanel");
 }
 
-function createScreen(defaultTab,btn) {
+function createScreen(defaultTab, btn) {
   main.removeChild(bottomDiv);
   main.appendChild(defaultTab);
   main.appendChild(bottomDiv);
@@ -108,30 +100,30 @@ function switchTo(destination) {
   currentBtn.id = "nonActiveBtn";
   if (currentTab != destination) {
     if (destination == "homePanel") {
-      main.replaceChild(homePanel,currentTab);
+      main.replaceChild(homePanel, currentTab);
       // history.pushState(switchTo(`${currentTab}`), null, `./${homePanel.id}`);
       currentTab = homePanel;
       currentBtn = bnHomePanel;
       miniPlayerRequired = true;
     } else if (destination == "playerPanel") {
-      main.replaceChild(playerPanel,currentTab);
+      main.replaceChild(playerPanel, currentTab);
       // history.pushState(switchTo(`${currentTab}`), null, `./${playerPanel.id}`);
       currentTab = playerPanel;
       miniPlayerRequired = false;
     } else if (destination == "searchPanel") {
-      main.replaceChild(searchPanel,currentTab);
+      main.replaceChild(searchPanel, currentTab);
       // history.pushState(switchTo(`${currentTab}`), null, `./${searchPanel.id}`);
       currentTab = searchPanel;
       currentBtn = bnSearchPanel;
       miniPlayerRequired = true;
     } else if (destination == "libraryPanel") {
-      main.replaceChild(libraryPanel,currentTab);
+      main.replaceChild(libraryPanel, currentTab);
       // history.pushState(switchTo(`${currentTab}`), null, `./${libraryPanel.id}`);
       currentTab = libraryPanel;
       currentBtn = bnLibraryPanel;
       miniPlayerRequired = true;
     } else {
-      main.replaceChild(accountPanel,currentTab);
+      main.replaceChild(accountPanel, currentTab);
       // history.pushState(switchTo(`${currentTab}`), null, `./${accountPanel.id}`);
       currentTab = accountPanel;
       currentBtn = bnAccountPanel;
@@ -175,10 +167,9 @@ function attend() {
 }
 attend();
 
-
-miniBnNext.addEventListener("click",() => changeSong("next"));
-miniBnPrev.addEventListener("click",() => changeSong("prev"));
-bnHomePanel.addEventListener("click",() => switchTo("homePanel"));
-bnSearchPanel.addEventListener("click",() => switchTo("searchPanel"));
-bnLibraryPanel.addEventListener("click",() => switchTo("libraryPanel"));
-bnAccountPanel.addEventListener("click",() => switchTo("accountPanel"));
+miniBnNext.addEventListener("click", () => changeSong("next"));
+miniBnPrev.addEventListener("click", () => changeSong("prev"));
+bnHomePanel.addEventListener("click", () => switchTo("homePanel"));
+bnSearchPanel.addEventListener("click", () => switchTo("searchPanel"));
+bnLibraryPanel.addEventListener("click", () => switchTo("libraryPanel"));
+bnAccountPanel.addEventListener("click", () => switchTo("accountPanel"));

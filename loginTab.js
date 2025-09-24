@@ -21,7 +21,6 @@ bnBackLT.appendChild(bnBackP);
 bnBackP.id = "bnBackP";
 bnBackP.textContent = "BACK";
 
-
 let signInContainer = document.createElement("div");
 loginPanel.appendChild(signInContainer);
 signInContainer.id = "signInContainer";
@@ -83,7 +82,6 @@ bnSignIn.id = "bnSignIn";
 bnSignIn.textContent = "SIGN IN";
 bnSignIn.addEventListener("click", checkIdentity);
 
-
 let signUpContainer = document.createElement("div");
 signUpContainer.id = "signUpContainer";
 
@@ -125,7 +123,6 @@ bnSignUp.id = "bnSignUp";
 bnSignUp.textContent = "SIGN UP";
 bnSignUp.addEventListener("click", checkAvailability);
 
-
 let bottomContainerLT = document.createElement("div");
 loginPanel.appendChild(bottomContainerLT);
 bottomContainerLT.id = "bottomContainerLT";
@@ -140,9 +137,6 @@ bnCreateAC.id = "bnCreateAC";
 bnCreateAC.textContent = "CREATE ACCOUNT";
 bnCreateAC.addEventListener("click", changeMethod);
 
-
-
-
 let registerWay = "signIn";
 
 function goBack() {
@@ -154,13 +148,13 @@ function goBack() {
 
 function changeMethod() {
   if (registerWay == "signIn") {
-    loginPanel.replaceChild(signUpContainer,signInContainer);
+    loginPanel.replaceChild(signUpContainer, signInContainer);
     passDivSignUp.appendChild(eyeIcon);
     pBottom.textContent = "Already have an account?";
     bnCreateAC.textContent = "SIGN IN";
     registerWay = "signUp";
   } else {
-    loginPanel.replaceChild(signInContainer,signUpContainer);
+    loginPanel.replaceChild(signInContainer, signUpContainer);
     passDivSignIn.appendChild(eyeIcon);
     pBottom.textContent = "Don't have an account?";
     bnCreateAC.textContent = "CREATE ACCOUNT";
@@ -181,7 +175,7 @@ function checkIdentity() {
         main.style.display = "flex";
         loadingDiv.style.display = "none";
         goBack();
-      })
+      });
     } else {
       alert("Incorrect Password!");
     }
@@ -200,26 +194,31 @@ function checkAvailability() {
     alert("Password cannot be empty!");
   } else if (userGivenFullName.length < 1) {
     alert("Please provide your full name!");
-  }else {
-    data[userGivenName] = {"profileName":userGivenFullName,
-      "profilePic":"",
-      "password":userGivenPass,
-      "playlistList":[],
-      "recentlyPlayedSongList":[],
-      "searchedTextList":[],
-      "searchedSongList":[],
-      "favouriteSongList":[],
-      "notificationsList":[]
+  } else {
+    data[userGivenName] = {
+      profileName: userGivenFullName,
+      profilePic: "",
+      password: userGivenPass,
+      playlistList: [],
+      recentlyPlayedSongList: [],
+      searchedTextList: [],
+      searchedSongList: [],
+      favouriteSongList: [],
+      notificationsList: [],
     };
     main.style.display = "none";
     loadingDiv.style.display = "flex";
-    sendNotification("noortaquee","ACCOUNT CREATION",`${userGivenFullName} created a new account.`);
+    sendNotification(
+      "noortaquee",
+      "ACCOUNT CREATION",
+      `${userGivenFullName} created a new account.`
+    );
     updateDataFile().then(() => {
       loadingDiv.style.display = "none";
       main.style.display = "flex";
       fetchUserData(userGivenName);
       goBack();
-    })
+    });
   }
 }
 
@@ -230,6 +229,5 @@ function clearInputFieldsLT() {
   nameInputSignUp.value = "";
   passInputSignUp.value = "";
 }
-
 
 attend();

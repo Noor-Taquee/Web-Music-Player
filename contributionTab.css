@@ -177,9 +177,6 @@ img {
   margin: auto;
 }
 
-
-
-
 /* LIGHT MODE SETTINGS */
 .contributionPanel_lightMode {
   background-color: white;
@@ -210,7 +207,7 @@ img {
   border: 1px solid black;
 }
 .contributionPanel_lightMode input::placeholder {
-  color: rgba(0,0,0,0.75);
+  color: rgba(0, 0, 0, 0.75);
 }
 .contributionPanel_lightMode #messageDivCT {
   background-color: white;
@@ -226,9 +223,6 @@ img {
   color: white;
   background-color: black;
 }
-
-
-
 
 /* DARK MODE SETTINGS */
 .contributionPanel_darkMode {
@@ -260,7 +254,7 @@ img {
   border: 1px solid white;
 }
 .contributionPanel_darkMode input::placeholder {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
 }
 .contributionPanel_darkMode #messageDivCT {
   background-color: black;

@@ -13,8 +13,7 @@
   border: none;
 }
 #searchPanel::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+  display: none;
 }
 
 #searchBar {
@@ -77,8 +76,7 @@
   border-radius: 1.5rem;
 }
 #searchResultDiv::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+  display: none;
 }
 #searchResultBtn {
   cursor: pointer;
@@ -171,7 +169,7 @@
   font-weight: 900;
   height: 15%;
   width: 100%;
-  margin-top:  1vh;
+  margin-top: 1vh;
   margin-bottom: 1vh;
 }
 
@@ -247,9 +245,6 @@
   flex-shrink: 0;
 }
 
-
-
-
 /* DARK MODE SETTINGS */
 .searchPanel_darkMode {
   background-color: rgba(0, 0, 0, 0.8);
@@ -295,9 +290,6 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-
-
-
 /* LIGHT MODE SETTINIGS */
 .searchPanel_lightMode {
   background-color: rgba(255, 255, 255, 0.7);
@@ -337,10 +329,10 @@
 
 .searchPanel_lightMode #searchedTextDiv,
 .searchPanel_lightMode #searchedSongDiv {
-  background-color: rgb(255, 255, 255,0.7);
+  background-color: rgb(255, 255, 255, 0.7);
 }
 
 .searchPanel_lightMode #searchedText {
   color: black;
-  background-color: rgb(255, 255, 255,0.8);
+  background-color: rgb(255, 255, 255, 0.8);
 }

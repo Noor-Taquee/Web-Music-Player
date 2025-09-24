@@ -140,8 +140,6 @@
   border-radius: 1rem;
 }
 
-
-
 /* LIGHT MODE SETTINGS */
 .loginPanel_lightMode {
   background-color: white;
@@ -156,10 +154,10 @@
 .loginPanel_lightMode #signInContainer div {
   border: 1px solid black;
 }
-.loginPanel_lightMode input{
+.loginPanel_lightMode input {
   color: black;
 }
-.loginPanel_lightMode input::placeholder{
+.loginPanel_lightMode input::placeholder {
   color: black;
 }
 .loginPanel_lightMode #eyeIcon {
@@ -175,9 +173,6 @@
   color: white;
   background-color: black;
 }
-
-
-
 
 /* DARK MODE SETTINGS */
 .loginPanel_darkMode {

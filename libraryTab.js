@@ -3,7 +3,7 @@ let playlistNameList = [];
 //CREATING ELEMENTS
 let libraryPanel = document.createElement("div");
 libraryPanel.id = "libraryPanel";
-libraryPanel.className =  "libraryPanel_darkMode";
+libraryPanel.className = "libraryPanel_darkMode";
 
 let libraryHeader = document.createElement("div");
 libraryPanel.appendChild(libraryHeader);
@@ -25,7 +25,6 @@ let bnAddPlaylistP = document.createElement("p");
 bnAddPlaylist.appendChild(bnAddPlaylistP);
 bnAddPlaylistP.textContent = "ADD";
 
-
 let libraryContent = document.createElement("div");
 libraryPanel.appendChild(libraryContent);
 libraryContent.id = "libraryContent";
@@ -34,12 +33,8 @@ libraryContent.appendChild(libraryContentText);
 libraryContentText.id = "libraryContentText";
 libraryContentText.textContent = "LOGIN TO SEE YOUR PLAYLISTS";
 
-
-
 //VARIABLES
 let playlistInFocus = null;
-
-
 
 //FUNCTIONS
 function loadPlaylists() {
@@ -56,7 +51,9 @@ function loadPlaylists() {
         let playlistInfo = document.createElement("div");
         playlist.appendChild(playlistInfo);
         playlistInfo.id = "playlistInfo";
-        playlistInfo.addEventListener("click",() => openPlaylist(playlistList[i]));
+        playlistInfo.addEventListener("click", () =>
+          openPlaylist(playlistList[i])
+        );
         // Image of playlist
         let playlistPic = document.createElement("p");
         playlistInfo.appendChild(playlistPic);
@@ -89,7 +86,7 @@ function loadPlaylists() {
         let bnOptions = document.createElement("button");
         playlist.appendChild(bnOptions);
         bnOptions.id = "bnOptions";
-        bnOptions.addEventListener("click",() => {
+        bnOptions.addEventListener("click", () => {
           f_options(playlistList[i]);
         });
         let optionsIcon = document.createElement("span");
@@ -131,7 +128,6 @@ let playlistPanelContent = document.createElement("div");
 playlistPanel.appendChild(playlistPanelContent);
 playlistPanelContent.id = "playlistPanelContent";
 
-
 function getPlaylistNames() {
   for (playlist of playlistList) {
     playlistNameList.push(playlist.name);
@@ -172,7 +168,9 @@ function openPlaylist(playlist) {
       let playlistSongInfo = document.createElement("div");
       playlistSong.appendChild(playlistSongInfo);
       playlistSongInfo.id = "playlistSongInfo";
-      playlistSongInfo.addEventListener("click",() => playSong(playlist.songs[i]));
+      playlistSongInfo.addEventListener("click", () =>
+        playSong(playlist.songs[i])
+      );
       // Album art of song
       let playlistSongPic = document.createElement("p");
       playlistSongInfo.appendChild(playlistSongPic);
@@ -182,7 +180,9 @@ function openPlaylist(playlist) {
       playlistSongIcon.className = "material-symbols-rounded";
       playlistSongIcon.textContent = "headphones";
       if (songData[playlist.songs[i]].image.length > 0) {
-        playlistSongPic.style.backgroundImage = `url(${songData[playlist.songs[i]].image})`;
+        playlistSongPic.style.backgroundImage = `url(${
+          songData[playlist.songs[i]].image
+        })`;
       } else {
         playlistSongPic.appendChild(playlistSongIcon);
       }
@@ -196,7 +196,7 @@ function openPlaylist(playlist) {
       let bnPlaylistSongOptions = document.createElement("button");
       playlistSong.appendChild(bnPlaylistSongOptions);
       bnPlaylistSongOptions.id = "bnOptions";
-      bnPlaylistSongOptions.addEventListener("click",() => {});
+      bnPlaylistSongOptions.addEventListener("click", () => {});
       let playlistSongOptionsIcon = document.createElement("span");
       bnPlaylistSongOptions.appendChild(playlistSongOptionsIcon);
       playlistSongOptionsIcon.className = "material-symbols-rounded";
@@ -208,20 +208,28 @@ function openPlaylist(playlist) {
   }
   libraryPanel.replaceChild(playlistPanel, libraryContent);
   playlistPanel.style.animation = "slideLeft 0.3s ease-in-out";
-  playlistPanel.addEventListener("animationend", function playlistPanelSlideLeft() {
-    playlistPanel.removeEventListener("animationend", playlistPanelSlideLeft);
-  });
+  playlistPanel.addEventListener(
+    "animationend",
+    function playlistPanelSlideLeft() {
+      playlistPanel.removeEventListener("animationend", playlistPanelSlideLeft);
+    }
+  );
   // history.pushState(f_backPlaylistPanel, "", playlist.name);
 }
 
 function f_backPlaylistPanel() {
   playlistPanel.style.animation = "slideRight 0.3s ease-in-out";
-  playlistPanel.addEventListener("animationend", function playlistPanelSlideRight() {
-    playlistPanel.removeEventListener("animationend", playlistPanelSlideRight);
-    libraryPanel.replaceChild(libraryContent, playlistPanel);
-  });
+  playlistPanel.addEventListener(
+    "animationend",
+    function playlistPanelSlideRight() {
+      playlistPanel.removeEventListener(
+        "animationend",
+        playlistPanelSlideRight
+      );
+      libraryPanel.replaceChild(libraryContent, playlistPanel);
+    }
+  );
 }
-
 
 // ADD PLAYLISTS===========================
 let addPlaylistPanel = document.createElement("div");
@@ -275,18 +283,19 @@ bnConfirmAddPlaylist.appendChild(bnConfirmAddPlaylistP);
 bnConfirmAddPlaylistP.textContent = "ADD";
 bnConfirmAddPlaylist.addEventListener("click", f_confirmAddPlaylist);
 
-
 let privacy = "public";
-
 
 function f_AddPlaylist() {
   if (signedIn) {
     libraryPanel.appendChild(addPlaylistPanel);
     // history.pushState(f_cancelAddPlaylist,"","./addPlaylist");
     addPlaylistPanel.style.animation = "appear 0.3s ease-in-out";
-    addPlaylistPanel.addEventListener("animationend", function addPlaylistPanelA() {
-      addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelA);
-    });
+    addPlaylistPanel.addEventListener(
+      "animationend",
+      function addPlaylistPanelA() {
+        addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelA);
+      }
+    );
   } else {
     alert("Login to your account first!");
   }
@@ -294,10 +303,13 @@ function f_AddPlaylist() {
 
 function f_cancelAddPlaylist() {
   addPlaylistPanel.style.animation = "disappear 0.3s ease-in-out";
-  addPlaylistPanel.addEventListener("animationend", function addPlaylistPanelD() {
-    addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelD);
-    libraryPanel.removeChild(addPlaylistPanel);
-  });
+  addPlaylistPanel.addEventListener(
+    "animationend",
+    function addPlaylistPanelD() {
+      addPlaylistPanel.removeEventListener("animationend", addPlaylistPanelD);
+      libraryPanel.removeChild(addPlaylistPanel);
+    }
+  );
   clearInputFieldsLP();
 }
 
@@ -309,10 +321,10 @@ function f_confirmAddPlaylist() {
     return;
   } else {
     playlistList.push({
-      "name": nameOfPlaylist,
-      "privacy": privacy,
-      "image": imageOfPlaylist,
-      "songs": []
+      name: nameOfPlaylist,
+      privacy: privacy,
+      image: imageOfPlaylist,
+      songs: [],
     });
     updateDataFile();
     loadPlaylists();
@@ -324,7 +336,6 @@ function clearInputFieldsLP() {
   playlistNameInput.value = "";
   playlistImageInput.value = "";
 }
-
 
 // MODIFY PLAYLISTS===========================
 let optionPanel = document.createElement("div");
@@ -374,7 +385,8 @@ confirmPanel.id = "confirmPanel";
 let DelDisclaimerText = document.createElement("p");
 confirmPanel.appendChild(DelDisclaimerText);
 DelDisclaimerText.id = "DelDisclaimerText";
-DelDisclaimerText.textContent = "Are you sure you want to delete this playlist?";
+DelDisclaimerText.textContent =
+  "Are you sure you want to delete this playlist?";
 
 let delConfirmButtonsDiv = document.createElement("div");
 confirmPanel.appendChild(delConfirmButtonsDiv);
@@ -389,7 +401,6 @@ delConfirmButtonsDiv.appendChild(bnConfirmDel);
 bnConfirmDel.id = "bnConfirmDel";
 bnConfirmDel.textContent = "DELETE";
 bnConfirmDel.addEventListener("click", confirmDelPlaylist);
-
 
 function f_options(selectedPlaylist) {
   playlistInFocus = selectedPlaylist;
@@ -418,10 +429,10 @@ function f_delPlaylist() {
   confirmPanelOuter.addEventListener("animationend", function confirmPanelA() {
     confirmPanelOuter.removeEventListener("animationend", confirmPanelA);
   });
-};
+}
 
 function confirmDelPlaylist() {
-  playlistList.splice(playlistList.indexOf(playlistInFocus),1);
+  playlistList.splice(playlistList.indexOf(playlistInFocus), 1);
   loadPlaylists();
   f_cancelDelPlaylist();
   f_cancel();
@@ -435,8 +446,6 @@ function f_cancelDelPlaylist() {
   });
 }
 
-function f_confirmRenamePlaylist(newName,oldName) {
-}
-
+function f_confirmRenamePlaylist(newName, oldName) {}
 
 attend();

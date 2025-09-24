@@ -32,7 +32,7 @@ let bnLogin = document.createElement("button");
 profileName.appendChild(bnLogin);
 bnLogin.id = "bnLogin";
 bnLogin.textContent = "LOGIN";
-bnLogin.addEventListener("click",f_login);
+bnLogin.addEventListener("click", f_login);
 
 let separator = document.createElement("hr");
 profileInfoCard.appendChild(separator);
@@ -43,7 +43,7 @@ statsDiv.id = "statsDiv";
 
 let playlistsCount = document.createElement("button");
 statsDiv.appendChild(playlistsCount);
-playlistsCount.addEventListener("click",() => switchTo("libraryPanel"));
+playlistsCount.addEventListener("click", () => switchTo("libraryPanel"));
 let playlistsCountP = document.createElement("p");
 playlistsCount.appendChild(playlistsCountP);
 playlistsCountP.textContent = "playlists:";
@@ -53,7 +53,6 @@ statsDiv.appendChild(favouriteSongsCount);
 let favouriteSongsCountP = document.createElement("p");
 favouriteSongsCount.appendChild(favouriteSongsCountP);
 favouriteSongsCountP.textContent = "favourite songs:";
-
 
 let settingsPanel = document.createElement("div");
 accountPanel.appendChild(settingsPanel);
@@ -189,7 +188,6 @@ audioQualityTextContainer.appendChild(audioQualitySelectionIcon);
 audioQualitySelectionIcon.className = "material-symbols-rounded";
 audioQualitySelectionIcon.textContent = "arrow_forward_ios";
 
-
 let ContributeDiv = document.createElement("div");
 settingsPanel.appendChild(ContributeDiv);
 ContributeDiv.id = "buttonDiv";
@@ -215,7 +213,6 @@ let contributeSelectionIcon = document.createElement("span");
 contributeTextContainer.appendChild(contributeSelectionIcon);
 contributeSelectionIcon.className = "material-symbols-rounded";
 contributeSelectionIcon.textContent = "arrow_forward_ios";
-
 
 let LogOutDiv = document.createElement("div");
 settingsPanel.appendChild(LogOutDiv);
@@ -245,19 +242,17 @@ let accountPanelSpace = document.createElement("div");
 settingsPanel.appendChild(accountPanelSpace);
 accountPanelSpace.id = "accountPanelSpace";
 
-
 //VRIABLES
 let signedIn = false;
 
-
 function f_login() {
   if (usersList.length > 0) {
-    main.replaceChild(loginPanel,accountPanel);
+    main.replaceChild(loginPanel, accountPanel);
     bottomDiv.style.display = "none";
     currentTab = loginPanel;
     // history.pushState(goBack, "", "/login");
   } else {
-    alert("Server is not responding!")
+    alert("Server is not responding!");
   }
 }
 function showInfo() {
@@ -276,9 +271,6 @@ function showInfo() {
   playlistsCountP.textContent = `playlists: ${playlistList.length}`;
   favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
 }
-
-
-
 
 // CHANGEPASS DIV==================================
 let changePassPanel = document.createElement("div");
@@ -339,24 +331,35 @@ confirmChangePassBtn.id = "confirmChangePassBtn";
 confirmChangePassBtn.textContent = "CHANGE";
 confirmChangePassBtn.addEventListener("click", f_confirmChangePassword);
 
-
 function f_changePass() {
   if (signedIn) {
-    accountPanel.replaceChild(changePassPanel,settingsPanel);
+    accountPanel.replaceChild(changePassPanel, settingsPanel);
     changePassPanel.style.animation = "slideLeft 0.3s ease-in-out";
-    changePassPanel.addEventListener("animationend", function changePassPanelSlideLeft() {
-      changePassPanel.removeEventListener("animationend", changePassPanelSlideLeft);
-    });
+    changePassPanel.addEventListener(
+      "animationend",
+      function changePassPanelSlideLeft() {
+        changePassPanel.removeEventListener(
+          "animationend",
+          changePassPanelSlideLeft
+        );
+      }
+    );
     // history.pushState(f_backChangePassPanel, "", "/changePassword");
   }
 }
 
 function f_backChangePassPanel() {
   changePassPanel.style.animation = "slideRight 0.3s ease-in-out";
-  changePassPanel.addEventListener("animationend", function changePassPanelSlideRight() {
-    changePassPanel.removeEventListener("animationend", changePassPanelSlideRight);
-    accountPanel.replaceChild(settingsPanel, changePassPanel);
-  });
+  changePassPanel.addEventListener(
+    "animationend",
+    function changePassPanelSlideRight() {
+      changePassPanel.removeEventListener(
+        "animationend",
+        changePassPanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, changePassPanel);
+    }
+  );
 }
 
 function f_cancelChangePassword() {
@@ -399,7 +402,6 @@ function f_confirmChangePassword() {
   }
 }
 
-
 // NOTIFICATIONS DIV==============================
 let notificationsPanel = document.createElement("div");
 notificationsPanel.className = "accountPanel_subPanel";
@@ -424,7 +426,6 @@ let notificationsConDiv = document.createElement("div");
 notificationsPanel.appendChild(notificationsConDiv);
 notificationsConDiv.className = "accountPanel_subPanelConDiv";
 
-
 function loadNotifications() {
   clearContainer(notificationsConDiv);
   for (i in notificationsList) {
@@ -443,7 +444,9 @@ function loadNotifications() {
     let bnRemoveNotification = document.createElement("button");
     NotificationHeader.appendChild(bnRemoveNotification);
     bnRemoveNotification.id = "bnRemoveNotification";
-    bnRemoveNotification.addEventListener("click",() => f_removeNotification(notificationsList[i]));
+    bnRemoveNotification.addEventListener("click", () =>
+      f_removeNotification(notificationsList[i])
+    );
     let removeNotificationIcon = document.createElement("span");
     bnRemoveNotification.appendChild(removeNotificationIcon);
     removeNotificationIcon.className = "material-symbols-rounded";
@@ -463,7 +466,6 @@ function loadNotifications() {
     notificationTimeP.id = "notificationTime";
     notificationTimeP.textContent = notificationsList[i].time;
 
-
     let notificationContentP = document.createElement("p");
     notificationDiv.appendChild(notificationContentP);
     notificationContentP.textContent = notificationsList[i].content;
@@ -477,28 +479,37 @@ function f_notifications() {
   if (signedIn) {
     accountPanel.replaceChild(notificationsPanel, settingsPanel);
     notificationsPanel.style.animation = "slideLeft 0.3s ease-in-out";
-    notificationsPanel.addEventListener("animationend", function notificationsPanelSlideLeft() {
-      notificationsPanel.removeEventListener("animationend", notificationsPanelSlideLeft);
-    });
+    notificationsPanel.addEventListener(
+      "animationend",
+      function notificationsPanelSlideLeft() {
+        notificationsPanel.removeEventListener(
+          "animationend",
+          notificationsPanelSlideLeft
+        );
+      }
+    );
     // history.pushState(f_backNotificationsPanel, "", "/notifications");
   }
 }
 
 function f_backNotificationsPanel() {
   notificationsPanel.style.animation = "slideRight 0.3s ease-in-out";
-  notificationsPanel.addEventListener("animationend", function notificationsPanelSlideRight() {
-    notificationsPanel.removeEventListener("animationend", notificationsPanelSlideRight);
-    accountPanel.replaceChild(settingsPanel, notificationsPanel);
-  });
+  notificationsPanel.addEventListener(
+    "animationend",
+    function notificationsPanelSlideRight() {
+      notificationsPanel.removeEventListener(
+        "animationend",
+        notificationsPanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, notificationsPanel);
+    }
+  );
 }
 
 function f_removeNotification(notification) {
   notificationsList.splice(notificationsList.indexOf(notification), 1);
   loadNotifications();
 }
-
-
-
 
 // MANAGEHISTORY DIV==============================
 let manageHistoryPanel = document.createElement("div");
@@ -556,25 +567,36 @@ bnClearPlayedSongHistoryP.textContent = "CLEAR PLAYED SONG HISTORY";
 bnClearPlayedSongHistoryP.style.color = "red";
 bnClearPlayedSongHistory.addEventListener("click", f_clearPlayedSongHistory);
 
-
 let manageHistoryListDiv = document.createElement("div");
 function f_manageHistory() {
   if (signedIn) {
     accountPanel.replaceChild(manageHistoryPanel, settingsPanel);
     manageHistoryPanel.style.animation = "slideLeft 0.3s ease-in-out";
-    manageHistoryPanel.addEventListener("animationend", function manageHistoryPanelSlideLeft() {
-      manageHistoryPanel.removeEventListener("animationend", manageHistoryPanelSlideLeft);
-    });
+    manageHistoryPanel.addEventListener(
+      "animationend",
+      function manageHistoryPanelSlideLeft() {
+        manageHistoryPanel.removeEventListener(
+          "animationend",
+          manageHistoryPanelSlideLeft
+        );
+      }
+    );
     // history.pushState(f_backManageHistoryPanel, "", "/manage-history");
   }
 }
 
 function f_backManageHistoryPanel() {
   manageHistoryPanel.style.animation = "slideRight 0.3s ease-in-out";
-  manageHistoryPanel.addEventListener("animationend", function manageHistoryPanelSlideRight() {
-    manageHistoryPanel.removeEventListener("animationend", manageHistoryPanelSlideRight);
-    accountPanel.replaceChild(settingsPanel, manageHistoryPanel);
-  });
+  manageHistoryPanel.addEventListener(
+    "animationend",
+    function manageHistoryPanelSlideRight() {
+      manageHistoryPanel.removeEventListener(
+        "animationend",
+        manageHistoryPanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, manageHistoryPanel);
+    }
+  );
 }
 
 function stopHistory() {
@@ -658,7 +680,6 @@ function f_clearPlayedSongHistory() {
   }
 }
 
-
 // CHANGE THEME DIV================================
 let changeThemePanel = document.createElement("div");
 changeThemePanel.className = "accountPanel_subPanel";
@@ -723,25 +744,37 @@ changeBlurToggleBall.id = "changeBlurToggleBall";
 function f_changeTheme() {
   accountPanel.replaceChild(changeThemePanel, settingsPanel);
   changeThemePanel.style.animation = "slideLeft 0.3s ease-in-out";
-  changeThemePanel.addEventListener("animationend", function changeThemePanelSlideLeft() {
-    changeThemePanel.removeEventListener("animationend", changeThemePanelSlideLeft);
-  });
+  changeThemePanel.addEventListener(
+    "animationend",
+    function changeThemePanelSlideLeft() {
+      changeThemePanel.removeEventListener(
+        "animationend",
+        changeThemePanelSlideLeft
+      );
+    }
+  );
   // history.pushState(f_backChangeThemePanel,"","./themepanel");
 }
 
 function f_backChangeThemePanel() {
   changeThemePanel.style.animation = "slideRight 0.3s ease-in-out";
-  changeThemePanel.addEventListener("animationend", function changeThemePanelSlideRight() {
-    changeThemePanel.removeEventListener("animationend", changeThemePanelSlideRight);
-    accountPanel.replaceChild(settingsPanel, changeThemePanel);
-  });
+  changeThemePanel.addEventListener(
+    "animationend",
+    function changeThemePanelSlideRight() {
+      changeThemePanel.removeEventListener(
+        "animationend",
+        changeThemePanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, changeThemePanel);
+    }
+  );
 }
 
 function f_changeThemeColor(color) {
   if (color == "dark") {
     currentThemeColor = "DARK";
     currentThemeColorIcon = "dark_mode";
-    bnChangeColor.addEventListener("click",() => f_changeThemeColor("light"));
+    bnChangeColor.addEventListener("click", () => f_changeThemeColor("light"));
     loadingDiv.className = "loadingDiv_darkMode";
     bottomDiv.className = "bottomDiv_darkMode";
     homePanel.className = "homePanel_darkMode";
@@ -754,7 +787,7 @@ function f_changeThemeColor(color) {
   } else if (color == "light") {
     currentThemeColor = "LIGHT";
     currentThemeColorIcon = "light_mode";
-    bnChangeColor.addEventListener("click",() => f_changeThemeColor("dark"));
+    bnChangeColor.addEventListener("click", () => f_changeThemeColor("dark"));
     loadingDiv.className = "loadingDiv_lightMode";
     bottomDiv.className = "bottomDiv_lightMode";
     homePanel.className = "homePanel_lightMode";
@@ -784,8 +817,6 @@ function f_changeBlur() {
     BlurActive = true;
   }
 }
-
-
 
 // AUDIO QUALITY DIV================================
 let audioQualityPanel = document.createElement("div");
@@ -817,23 +848,31 @@ audioQualityPanelP.textContent = "This feature will be available soon.";
 function f_audioQuality() {
   accountPanel.replaceChild(audioQualityPanel, settingsPanel);
   audioQualityPanel.style.animation = "slideLeft 0.3s ease-in-out";
-  audioQualityPanel.addEventListener("animationend", function changeAudioQualityPanelSlideLeft() {
-    audioQualityPanel.removeEventListener("animationend", changeAudioQualityPanelSlideLeft);
-  });
+  audioQualityPanel.addEventListener(
+    "animationend",
+    function changeAudioQualityPanelSlideLeft() {
+      audioQualityPanel.removeEventListener(
+        "animationend",
+        changeAudioQualityPanelSlideLeft
+      );
+    }
+  );
   // history.pushState(f_backAudioQualityPanel,"","./audioQualityPanel");
 }
 
 function f_backAudioQualityPanel() {
   audioQualityPanel.style.animation = "slideRight 0.3s ease-in-out";
-  audioQualityPanel.addEventListener("animationend", function changeAudioQualityPanelSlideRight() {
-    audioQualityPanel.removeEventListener("animationend", changeAudioQualityPanelSlideRight);
-    accountPanel.replaceChild(settingsPanel, audioQualityPanel);
-  });
+  audioQualityPanel.addEventListener(
+    "animationend",
+    function changeAudioQualityPanelSlideRight() {
+      audioQualityPanel.removeEventListener(
+        "animationend",
+        changeAudioQualityPanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, audioQualityPanel);
+    }
+  );
 }
-
-
-
-
 
 function f_contribute() {
   if (signedIn) {
@@ -846,7 +885,7 @@ function f_contribute() {
       main.replaceChild(contributionPanel, accountPanel);
       currentTab = contributionPanel;
       bottomDiv.style.display = "none";
-    })
+    });
   } else {
     alert("You need to be logged in to contribute!");
   }

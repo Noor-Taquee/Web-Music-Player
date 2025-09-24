@@ -8,7 +8,11 @@
   overflow-x: hidden;
   overflow-y: hidden;
   backdrop-filter: blur(10vmax);
-  background-image: linear-gradient(to top,rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.2)
+  );
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -119,7 +123,7 @@
   margin: 0;
   padding: 0;
   animation: spin;
-  animation-duration: 1.0s;
+  animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -229,7 +233,11 @@
   font-size: 2rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.75);
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0,0.8));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.8)
+  );
   height: 40%;
   width: 96%;
   margin: 0;
@@ -246,7 +254,11 @@
   font-size: 1rem;
   font-weight: 400;
   color: white;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0,0.8),rgba(0, 0, 0));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0)
+  );
   height: 60%;
   width: 96%;
   margin: 0;
@@ -413,12 +425,10 @@
   transition: transform 0.3s ease-in-out;
 }
 #albumArt span {
-  font-variation-settings:
-  'FILL' 1;
+  font-variation-settings: "FILL" 1;
   font-size: 10vh;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
-
 
 #lyricsDiv {
   cursor: default;
@@ -710,7 +720,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Courier New', Courier, Monospace;
+  font-family: "Courier New", Courier, Monospace;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.7);
   background: transparent;
@@ -720,14 +730,13 @@
   transition: all 0.2s ease-in-out;
 }
 #playbackControls span {
-  font-variation-settings:
-  'FILL' 1;
+  font-variation-settings: "FILL" 1;
   font-size: 4rem;
 }
 
 #loadingIcon {
   animation: spin;
-  animation-duration: 1.0s;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }

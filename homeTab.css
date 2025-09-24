@@ -156,9 +156,6 @@
   flex-shrink: 0;
 }
 
-
-
-
 /* LIGHT MODE SETTINGS */
 .homePanel_lightMode {
   background-color: rgba(255, 255, 255, 0.75);
@@ -167,7 +164,7 @@
   color: black;
 }
 .homePanel_lightMode #homeHeaderDiv {
-  background-color: rgb(255, 255, 255,0.7);
+  background-color: rgb(255, 255, 255, 0.7);
 }
 .homePanel_lightMode #homeCategoryDiv button {
   color: black;
@@ -179,12 +176,14 @@
 }
 .homePanel_lightMode #suggestedSongName {
   color: black;
-  background: linear-gradient(to top,rgb(255, 255, 255),rgb(255, 255, 255),rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    to top,
+    rgb(255, 255, 255),
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0)
+  );
 }
-
-
-
-
 
 /* DARK MODE SETTINGS */
 .homePanel_darkMode {
@@ -206,5 +205,11 @@
 }
 .homePanel_darkMode #suggestedSongName {
   color: white;
-  background: linear-gradient(to top,rgb(0, 0, 0),rgb(0, 0, 0),rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    to top,
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0)
+  );
 }
