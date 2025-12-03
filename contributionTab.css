@@ -1,272 +1,241 @@
-#contributionPanel {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
+#contribution-panel .top-bar {
+  height: 7%;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  border: none;
-}
-#topBarCT {
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: transparent;
-  height: 7vh;
-  width: 100%;
-  margin: 0;
-  padding: 0;
 }
-#bnBackCT {
+
+.contribute-btn {
   cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 1rem;
-  background: transparent;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  gap: 0;
-  border: none;
-}
-#bnBackP {
-  font-size: 1rem;
-  margin: 0;
-}
-#bnBackCT span {
-  font-size: 1rem;
-  margin: 0;
-}
-#bnContribute {
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  height: 90%;
-  width: 40%;
-  margin-right: 2vw;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0 20px;
   border: none;
   border-radius: 0.5rem;
-}
-#contributionContent {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: transparent;
-  height: 93vh;
-  width: 100%;
-}
-#contributionInputDiv {
-  position: relative;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  font-weight: 900;
-  background: transparent;
-  height: 100%;
-  width: 100vw;
-  margin: 0;
+  font-size: 1rem;
+}
+
+#contribution-panel .content {
+  height: 93%;
+  width: 100%;
+  box-sizing: border-box;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+
+.contribution-form-div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contribution-form {
+  height: 90%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 100px 0;
   gap: 2vh;
   border: none;
-}
-#contributionInputDiv input {
-  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   background: transparent;
-  height: 7vh;
+}
+.contribution-form::-webkit-scrollbar {
+  width: 5px;
+  background: transparent;
+}
+.contribution-form::-webkit-scrollbar-thumb {
+  background-color: rgb(60,60,60);
+}
+
+.contribution-form-input-div {
+  flex-shrink: 0;
+  height: 55px;
   width: 90vw;
-  margin: 0;
+  max-width: 500px;
+  box-sizing: border-box;
   padding: 0;
-  padding-left: 2vw;
-  border-radius: 0.5rem;
-}
-#contributionInputDiv input::placeholder {
-  font-size: 1rem;
-}
-#buttonDivCT {
+  border: none;
+  border-radius: 0px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+}
+
+.contribution-form-input-div i {
+  width: 10%;
+  text-align: center;
+  font-size: 20px;
+}
+
+.artist-input-div {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.artist.contribute-btn {
+  width: 100%;
+  display: none;
+}
+
+.contribution-form-input {
+  height: 100%;
+  width: 90%;
+  border: none;
+  font-size: 18px;
   background: transparent;
-  height: 7vh;
+}
+.contribution-form-input::placeholder {
+  font-size: 18px;
+}
+.contribution-form-input:focus {
+  outline: none;
+}
+
+
+.button-div-input-div {
+  height: 10%;
   width: 95vw;
   margin: 0;
   padding: 0;
-}
-#buttonDivCT button {
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  height: 100%;
-  width: 48%;
-  border-radius: 0.5rem;
-}
-#messageDivCT {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  justify-self: center;
-  align-items: center;
-  align-self: center;
+  justify-content: center;
   background: transparent;
-  height: 40vh;
-  width: 80vw;
-  margin: auto;
-  padding: 0;
-  border-radius: 1rem;
 }
-#messageDivCTP1 {
-  font-size: 1.3rem;
-  font-weight: 900;
-  margin-top: 5vh;
-}
-#messageDivCTP2 {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 1vh;
-}
-#messageDivCT button {
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  height: 7vh;
-  width: 90%;
-  margin-top: 5vh;
-  margin-bottom: 2vh;
-  padding: 0;
-  border: none;
-  border-radius: 0.5rem;
+.button-div-input-div button {
+  width: 85vw;
+  margin: auto 0 20px 0;
+  border-radius: 25px;
 }
 
-#contributionHelpDiv {
+.message-div {
+  position: absolute;
+  z-index: 1;
+  top: auto;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  width: 95%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 30px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  backdrop-filter: blur(15vmax);
+}
+.message-text:nth-child(1) {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-top: 0 0 5px 0;
+}
+.message-text:nth-child(2) {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 40px 0;
+}
+.message-div button {
+  width: 100%;
+  border-radius: 25px;
+}
+
+.contribution-help-content-div {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px 200px 10px;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
   background: transparent;
-  height: 100%;
-  width: 95%;
 }
-#contributionHelpDiv::-webkit-scrollbar {
-  width: 0;
+.contribution-help-content-div::-webkit-scrollbar {
+  width: 5px;
   background: transparent;
 }
-#contributionHelpDiv p {
+.contribution-help-content-div::-webkit-scrollbar-thumb {
+  background-color: rgb(50,50,50);
+}
+
+.contribution-help-content-div p {
   cursor: default;
 }
-#stepP {
-  font-size: 1.5rem;
+.steps-text {
+  font-size: 20px;
   font-weight: 700;
-  margin-top: 3vh;
-  margin-bottom: 1vh;
+  margin: 30px 0 10px 0;
 }
 img {
-  align-self: center;
   height: 700px;
   width: 300px;
   margin: auto;
+  align-self: center;
 }
 
 /* LIGHT MODE SETTINGS */
-.contributionPanel_lightMode {
-  background-color: white;
-}
-.contributionPanel_lightMode p {
-  color: black;
-}
-.contributionPanel_lightMode .material-symbols-rounded {
-  color: black;
-}
-.contributionPanel_lightMode #bnContribute {
+#app.light-mode .contribute-btn {
   color: white;
   background-color: black;
 }
-.contributionPanel_lightMode #bnCancelCT {
-  color: black;
-  background-color: white;
-  border: 1px solid black;
-}
-.contributionPanel_lightMode #bnAddCT {
+#app.light-mode .contribute-btn i,
+#app.light-mode .contribute-btn p {
   color: white;
-  background-color: black;
-  border: 1px solid black;
 }
-.contributionPanel_lightMode input {
-  color: black;
-  background: transparent;
-  border: 1px solid black;
+#app.light-mode .contribution-form-input-div {
+  border-bottom: 2px solid black;
 }
-.contributionPanel_lightMode input::placeholder {
-  color: rgba(0, 0, 0, 0.75);
-}
-.contributionPanel_lightMode #messageDivCT {
-  background-color: white;
-  box-shadow: 0 0 10px black;
-}
-.contributionPanel_lightMode #messageDivCTP1 {
+#app.light-mode .contribution-form-input {
   color: black;
 }
-.contributionPanel_lightMode #messageDivCTP2 {
-  color: black;
+#app.light-mode .contribution-form-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
 }
-.contributionPanel_lightMode #messageDivCT button {
-  color: white;
-  background-color: black;
+#app.light-mode .message-div {
+  background-color: rgba(220,220,220);
 }
 
+
 /* DARK MODE SETTINGS */
-.contributionPanel_darkMode {
-  background-color: black;
+
+#app.dark-mode .contribute-btn {
+  background-color: rgba(240, 240, 240);
 }
-.contributionPanel_darkMode p {
-  color: white;
-}
-.contributionPanel_darkMode .material-symbols-rounded {
-  color: white;
-}
-.contributionPanel_darkMode #bnContribute {
+#app.dark-mode .contribute-btn p,
+#app.dark-mode .contribute-btn i {
   color: black;
-  background-color: white;
 }
-.contributionPanel_darkMode #bnCancelCT {
-  color: white;
-  background-color: black;
-  border: 1px solid white;
+#app.dark-mode .contribution-form-input-div {
+  border-bottom: 2px solid rgba(255, 255,255,0.9);
 }
-.contributionPanel_darkMode #bnAddCT {
-  color: black;
-  background-color: white;
-  border: 1px solid white;
-}
-.contributionPanel_darkMode input {
-  color: white;
-  background: transparent;
-  border: 1px solid white;
-}
-.contributionPanel_darkMode input::placeholder {
-  color: rgba(255, 255, 255, 0.75);
-}
-.contributionPanel_darkMode #messageDivCT {
-  background-color: black;
-  box-shadow: 0 0 10px white;
-}
-.contributionPanel_darkMode #messageDivCTP1 {
+#app.dark-mode .contribution-form-input {
   color: white;
 }
-.contributionPanel_darkMode #messageDivCTP2 {
-  color: white;
+#app.dark-mode .contribution-form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
-.contributionPanel_darkMode #messageDivCT button {
-  color: black;
-  background-color: white;
+#app.dark-mode .message-div {
+  background-color: rgba(70,70,70);
 }

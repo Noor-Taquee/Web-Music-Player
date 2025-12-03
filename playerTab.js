@@ -1,257 +1,187 @@
 //CREATING ELEMEMTS
-let playerPanel = document.createElement("div");
-playerPanel.id = "playerPanel";
+let playerPanel = document.getElementById("player-panel");
 
-let playerPanelTopBar = document.createElement("div");
+let playerPanelTopBar = createDiv("top-bar");
 playerPanel.appendChild(playerPanelTopBar);
-playerPanelTopBar.id = "playerPanelTopBar";
-let bnSongInfo = document.createElement("button");
+
+playerPanelTopBar.appendChild(
+  createButton(
+    "player-back-btn",
+    "back-btn",
+    createIcon("bold", "caret-down"),
+    null,
+    goBackPP
+  )
+);
+
+let bnSongInfo = createButton(
+  null,
+  "info-btn",
+  createIcon("bold", "info"),
+  null,
+  showSongInfo
+);
 playerPanelTopBar.appendChild(bnSongInfo);
-bnSongInfo.id = "bnSongInfo";
-bnSongInfo.addEventListener("click", showSongInfo);
-let bnSongInfoIcon = document.createElement("span");
-bnSongInfoIcon.className = "material-symbols-rounded";
-bnSongInfoIcon.textContent = "info";
-// let bnSongInfoIcon = document.createElement("i");
-// bnSongInfoIcon.className = "ph ph-info";
-bnSongInfo.appendChild(bnSongInfoIcon);
 
-let songInfoDiv = document.createElement("div");
-songInfoDiv.id = "songInfoDiv";
-let songInfoDivTopBar = document.createElement("div");
-songInfoDiv.appendChild(songInfoDivTopBar);
-songInfoDivTopBar.id = "songInfoDivTopBar";
-let bnBackSongInfoDiv = document.createElement("button");
-songInfoDivTopBar.appendChild(bnBackSongInfoDiv);
-bnBackSongInfoDiv.id = "bnBackSongInfoDiv";
-bnBackSongInfoDiv.addEventListener("click", hideSongInfo);
-let backSongInfoIcon = document.createElement("span");
-backSongInfoIcon.className = "material-symbols-rounded";
-backSongInfoIcon.textContent = "arrow_back_ios_new";
-// let backSongInfoIcon = document.createElement("i");
-// backSongInfoIcon.className = "ph ph-caret-left";
-bnBackSongInfoDiv.appendChild(backSongInfoIcon);
-let bnBackSongInfoDivP = document.createElement("p");
-bnBackSongInfoDiv.appendChild(bnBackSongInfoDivP);
-bnBackSongInfoDivP.textContent = "BACK";
 
-let songInfoLoader = document.createElement("div");
-songInfoLoader.id = "songInfoLoader";
-let songInfoLoadingIcon = document.createElement("span");
-songInfoLoader.className = "material-symbols-rounded";
-songInfoLoadingIcon.textContent = "progress_activity";
-songInfoLoadingIcon.id = "songInfoLoadingIcon";
-// let songInfoLoadingIcon = document.createElement("i");
-// songInfoLoader.className = "ph ph-spinner";
-songInfoLoader.appendChild(songInfoLoadingIcon);
-
-let songInfoConDiv = document.createElement("div");
-songInfoDiv.appendChild(songInfoConDiv);
-songInfoConDiv.id = "songInfoConDiv";
-
-let pictureDiv = document.createElement("div");
+// Area for album art and lyrics
+let pictureDiv = createDiv("album-art-div");
 playerPanel.appendChild(pictureDiv);
-pictureDiv.id = "pictureDiv";
 pictureDiv.addEventListener("click", focusPLOn);
-let albumArt = document.createElement("p");
+
+let albumArt = createTextField("album-art", null);
 pictureDiv.appendChild(albumArt);
-albumArt.id = "albumArt";
-let lyricsDiv = document.createElement("div");
-lyricsDiv.id = "lyricsDiv";
-let lyrics = document.createElement("p");
+albumArt.addEventListener("animationend", () => {
+  albumArt.style.animation = "none";
+});
+
+let lyricsDiv = createDiv("lyrics-div");
+let lyrics = createTextField("lyrics", null);
 lyricsDiv.appendChild(lyrics);
-lyricsDiv.id = "lyrics";
 
-let secondaryDiv = document.createElement("div");
+// Area for song info and secondary controls
+let secondaryDiv = createDiv("secondary-controls-outer-div");
 playerPanel.appendChild(secondaryDiv);
-secondaryDiv.id = "secondaryDiv";
-let infoDiv = document.createElement("div");
+
+// Song name and artist name
+let infoDiv = createDiv("info-div");
 secondaryDiv.appendChild(infoDiv);
-infoDiv.id = "infoDiv";
-let trackName = document.createElement("p");
+let trackName = createTextField("track-name", null);
 infoDiv.appendChild(trackName);
-trackName.id = "trackName";
-let artistName = document.createElement("p");
+let artistName = createTextField("artist-name", null);
 infoDiv.appendChild(artistName);
-artistName.id = "artistName";
 
-let secondaryControls = document.createElement("div");
+let secondaryControls = createDiv("secondary-controls-div");
 secondaryDiv.appendChild(secondaryControls);
-secondaryControls.id = "secondaryControls";
 
-let bnFavourite = document.createElement("button");
+let favouriteIcon = createIcon("bold", "star");
+let bnFavourite = createButton(
+  null,
+  "secondary-controls-btn ripple",
+  favouriteIcon,
+  null,
+  f_favourite
+);
 secondaryControls.appendChild(bnFavourite);
-bnFavourite.id = "bnFavourite";
-bnFavourite.addEventListener("click", f_favourite);
-let favouriteIcon = document.createElement("span");
-favouriteIcon.className = "material-symbols-rounded";
-favouriteIcon.textContent = "favorite";
-// let favouriteIcon = document.createElement("i");
-// favouriteIcon.className = "ph ph-heart";
-bnFavourite.appendChild(favouriteIcon);
 
-let bnMore = document.createElement("button");
+let bnMore = createButton(
+  null,
+  "secondary-controls-btn ripple",
+  createIcon("bold", "dots-three-vertical"),
+  null,
+  showMore
+);
 secondaryControls.appendChild(bnMore);
-bnMore.id = "bnMore";
-bnMore.addEventListener("click", showMore);
-let moreIcon = document.createElement("span");
-moreIcon.className = "material-symbols-rounded";
-moreIcon.textContent = "more_vert";
-// let moreIcon = document.createElement("i");
-// moreIcon.className = "ph ph-dots-three-outline-vertical";
-bnMore.appendChild(moreIcon);
 
-let moreDiv = document.createElement("div");
-moreDiv.id = "moreDiv";
+let moreDiv = createDiv(null, "player-song-options");
 
-let toggleAPDiv = document.createElement("div");
+let toggleAPDiv = createDiv(null, "toggleAPDiv");
 moreDiv.appendChild(toggleAPDiv);
-toggleAPDiv.id = "toggleAPDiv";
-let toggleAutoPlayOn = document.createElement("button");
+
+let toggleLayerAP = createDiv(null, "toggleLayerAP");
+toggleAPDiv.appendChild(toggleLayerAP);
+
+let toggleAutoPlayOn = createButton(
+  null,
+  "toggle",
+  createIcon("bold", "arrow-right")
+);
 toggleAPDiv.appendChild(toggleAutoPlayOn);
-toggleAutoPlayOn.id = "toggleAutoPlayOn";
 toggleAutoPlayOn.addEventListener("click", () => focusAPOn("autoPlayOn"));
-let autoPlayIcon = document.createElement("span");
-autoPlayIcon.className = "material-symbols-rounded";
-// let autoPlayIcon = document.createElement("i");
-// autoPlayIcon.className = "ph ph-arrows-left-right";
-autoPlayIcon.textContent = "sync_alt";
-autoPlayIcon.id = "autoPlayIcon";
-toggleAutoPlayOn.appendChild(autoPlayIcon);
-let toggleAutoPlayOff = document.createElement("button");
+
+let toggleAutoPlayOff = createButton(
+  null,
+  "toggle",
+  createIcon("bold", "arrow-line-right")
+);
 toggleAPDiv.appendChild(toggleAutoPlayOff);
-toggleAutoPlayOff.id = "toggleAutoPlayOff";
 toggleAutoPlayOff.addEventListener("click", () => focusAPOn("autoPlayOff"));
 
-let autoPlayOffIcon = document.createElement("span");
-toggleAutoPlayOff.appendChild(autoPlayOffIcon);
-autoPlayOffIcon.className = "material-symbols-rounded";
-autoPlayOffIcon.textContent = "play_disabled";
-autoPlayOffIcon.id = "autoPlayOffIcon";
-let toggleRepeat = document.createElement("button");
+let toggleRepeat = createButton(
+  null,
+  "toggle",
+  createIcon("bold", "repeat")
+);
 toggleAPDiv.appendChild(toggleRepeat);
-toggleRepeat.id = "toggleRepeat";
 toggleRepeat.addEventListener("click", () => focusAPOn("repeat"));
-let repeatIcon = document.createElement("span");
-repeatIcon.className = "material-symbols-rounded";
-// let repeatIcon = document.createElement("i");
-// repeatIcon.className = "ph ph-repeat";
-repeatIcon.textContent = "repeat_one";
-repeatIcon.id = "repeatIcon";
-toggleRepeat.appendChild(repeatIcon);
-let toggleLayerAP = document.createElement("div");
-toggleAPDiv.appendChild(toggleLayerAP);
-toggleLayerAP.id = "toggleLayerAP";
 
-let bnSave = document.createElement("button");
+let saveIcon = createIcon("bold", "bookmark-simple");
+let bnSave = createButton(null, "ripple", saveIcon, "Save", f_save);
 moreDiv.appendChild(bnSave);
-bnSave.id = "bnSave";
-bnSave.addEventListener("click", f_save);
-let saveIcon = document.createElement("span");
-saveIcon.className = "material-symbols-rounded";
-saveIcon.textContent = "bookmark";
-// let saveIcon = document.createElement("i");
-// saveIcon.className = "ph ph-bookmark-simple";
-bnSave.appendChild(saveIcon);
-let bnSaveText = document.createElement("p");
-bnSave.appendChild(bnSaveText);
-bnSaveText.textContent = "SAVE";
 
-let bnShare = document.createElement("button");
+let bnShare = createButton(
+  null,
+  "ripple",
+  createIcon("bold", "share-fat"),
+  "Share",
+  f_share
+);
 moreDiv.appendChild(bnShare);
-bnShare.id = "bnShare";
-bnShare.addEventListener("click", f_share);
-let shareIcon = document.createElement("span");
-shareIcon.className = "material-symbols-rounded";
-shareIcon.textContent = "ios_share";
-// let shareIcon = document.createElement("i");
-// shareIcon.className = "ph ph-share-fat";
-bnShare.appendChild(shareIcon);
-let bnShareText = document.createElement("p");
-bnShare.appendChild(bnShareText);
-bnShareText.textContent = "SHARE";
 
-let bnDownload = document.createElement("button");
+let bnDownload = createButton(
+  null,
+  "ripple",
+  createIcon("bold", "download-simple"),
+  "Download",
+  f_download
+);
 moreDiv.appendChild(bnDownload);
-bnDownload.id = "bnDownload";
-bnDownload.addEventListener("click", f_download);
-let downloadIcon = document.createElement("span");
-downloadIcon.className = "material-symbols-rounded";
-downloadIcon.textContent = "place_item";
-// let downloadIcon = document.createElement("i");
-// downloadIcon.className = "ph ph-download";
-bnDownload.appendChild(downloadIcon);
-let bnDownloadText = document.createElement("p");
-bnDownload.appendChild(bnDownloadText);
-bnDownloadText.textContent = "DOWNLOAD";
 
+// Area for primary controls
 let controlDiv = document.createElement("div");
+controlDiv.className = "primary-controls-outer-div";
 playerPanel.appendChild(controlDiv);
-controlDiv.id = "controlDiv";
 
-let primaryControls = document.createElement("div");
+let primaryControls = createDiv("primary-controls-div");
 controlDiv.appendChild(primaryControls);
-primaryControls.id = "primaryControls";
 
-let runBarInfo = document.createElement("div");
+// Time info
+let runBarInfo = createDiv("runtime-info-outer-div");
 primaryControls.appendChild(runBarInfo);
-runBarInfo.id = "runBarInfo";
+
 let timeSlider = document.createElement("input");
 runBarInfo.appendChild(timeSlider);
-timeSlider.id = "timeSlider";
+timeSlider.className = "time-bar-slider";
 timeSlider.type = "range";
 timeSlider.min = "0";
-timeSlider.max = "0";
+timeSlider.max = "10.000";
 timeSlider.step = "0.001";
 timeSlider.value = "0";
-let runtimeInfo = document.createElement("div");
+
+let runtimeInfo = createDiv("runtime-info-div");
 primaryControls.appendChild(runtimeInfo);
-runtimeInfo.id = "runtimeInfo";
-let time1 = document.createElement("p");
+let time1 = createTextField("time", "0:00");
 runtimeInfo.appendChild(time1);
-time1.id = "time1";
-time1.textContent = "0:00";
-let time2 = document.createElement("p");
+let time2 = createTextField("time", "0:00");
 runtimeInfo.appendChild(time2);
-time2.id = "time2";
-time2.textContent = "0:00";
 
-let playbackControls = document.createElement("div");
+let playbackControls = createDiv("playback-controls-div");
 primaryControls.appendChild(playbackControls);
-playbackControls.id = "playbackControls";
-let bnPrev = document.createElement("button");
+
+let bnPrev = createButton(
+  null,
+  "playback-control-btn",
+  createIcon("fill", "skip-back")
+);
 playbackControls.appendChild(bnPrev);
-bnPrev.id = "bnPrev";
 bnPrev.addEventListener("click", () => changeSong("prev"));
-let prevIcon = document.createElement("span");
-prevIcon.className = "material-symbols-rounded";
-prevIcon.textContent = "skip_previous";
-// let prevIcon = document.createElement("i");
-// prevIcon.className = "ph ph-skip-back";
-bnPrev.appendChild(prevIcon);
 
-let bnPlay = document.createElement("button");
+let playbackBtnIcon = createIcon("bold", "spinner");
+let bnPlay = createButton(
+  null,
+  "playback-control-btn do-spin",
+  playbackBtnIcon,
+  null
+);
 playbackControls.appendChild(bnPlay);
-bnPlay.id = "bnPlay";
 
-let playbackBtnIcon = document.createElement("span");
-playbackBtnIcon.className = "material-symbols-rounded";
-// let playbackBtnIcon = document.createElement("i");
-// playbackBtnIcon.className = "ph ph-play";
-bnPlay.appendChild(playbackBtnIcon);
-playbackBtnIcon.id = "loadingIcon";
-playbackBtnIcon.textContent = "progress_activity";
-
-let bnNext = document.createElement("button");
+let bnNext = createButton(
+  null,
+  "playback-control-btn",
+  createIcon("fill", "skip-forward")
+);
 playbackControls.appendChild(bnNext);
-bnNext.id = "bnNext";
 bnNext.addEventListener("click", () => changeSong("next"));
-let nextIcon = document.createElement("span");
-nextIcon.className = "material-symbols-rounded";
-// let nextIcon = document.createElement("i");
-// nextIcon.className = "ph ph-skip-forward";
-nextIcon.textContent = "skip_next";
-bnNext.appendChild(nextIcon);
 
 //VARIABLES
 let currentFocusPL = "picture";
@@ -259,11 +189,11 @@ let currentFocusPL = "picture";
 //FUNCTIONS
 function updateSecondaryButtons() {
   if (favouriteSongList.includes(titleNames[currentSongIndex])) {
-    favouriteIcon.style.fontVariationSettings = '"FILL" 1';
+    favouriteIcon.className = "ph-fill ph-star";
     bnFavourite.removeEventListener("click", f_favourite);
     bnFavourite.addEventListener("click", f_disfavourite);
   } else {
-    favouriteIcon.style.fontVariationSettings = '"FILL" 0';
+    favouriteIcon.className = "ph-bold ph-star";
     bnFavourite.removeEventListener("click", f_disfavourite);
     bnFavourite.addEventListener("click", f_favourite);
   }
@@ -271,20 +201,17 @@ function updateSecondaryButtons() {
 
 function f_favourite() {
   if (signedIn) {
-    favouriteIcon.style.fontVariationSettings = '"FILL" 1';
-    // favouriteIcon.className = "ph-fill ph-heart"
+    favouriteIcon.className = "ph-fill ph-star";
     bnFavourite.removeEventListener("click", f_favourite);
     bnFavourite.addEventListener("click", f_disfavourite);
     favouriteSongList.push(titleNames[currentSongIndex]);
     updateDataFile();
-    favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
   } else {
     alert("Login to your account first!");
   }
 }
 function f_disfavourite() {
-  favouriteIcon.style.fontVariationSettings = '"FILL" 0';
-  // favouriteIcon.className = "ph ph-heart"
+  favouriteIcon.className = "ph-bold ph-star";
   bnFavourite.removeEventListener("click", f_disfavourite);
   bnFavourite.addEventListener("click", f_favourite);
   favouriteSongList.splice(
@@ -292,37 +219,42 @@ function f_disfavourite() {
     1
   );
   updateDataFile();
-  favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
 }
 function showMore() {
   playerPanel.appendChild(moreDiv);
   moreDiv.style.animation = "appear 0.3s ease-in-out";
-  moreDiv.addEventListener("animationend", function moreDivApp() {
-    moreDiv.removeEventListener("animationend", moreDivApp);
-    bnMore.removeEventListener("click", showMore);
-    bnMore.addEventListener("click", hideMore);
-  });
+  moreDiv.addEventListener(
+    "animationend",
+    () => {
+      moreDiv.style.animation = "none";
+      bnMore.removeEventListener("click", showMore);
+      bnMore.addEventListener("click", hideMore);
+    },
+    { once: true }
+  );
 }
 
 function hideMore() {
   moreDiv.style.animation = "disappear 0.3s ease-in-out";
-  moreDiv.addEventListener("animationend", function moreDivDis() {
-    moreDiv.removeEventListener("animationend", moreDivDis);
-    bnMore.removeEventListener("click", hideMore);
-    bnMore.addEventListener("click", showMore);
-    playerPanel.removeChild(moreDiv);
-  });
+  moreDiv.addEventListener(
+    "animationend",
+    () => {
+      moreDiv.style.animation = "none";
+      bnMore.removeEventListener("click", hideMore);
+      bnMore.addEventListener("click", showMore);
+      playerPanel.removeChild(moreDiv);
+    },
+    { once: true }
+  );
 }
 
 function f_save() {
-  saveIcon.fontVariationSettings = '"FILL" 1';
-  // saveIcon.className = "ph-fill ph-bookmark-simple"
+  saveIcon.className = "ph-fill ph-bookmark-simple";
   bnSave.removeEventListener("click", f_save);
   bnSave.addEventListener("click", f_unsave);
 }
 function f_unsave() {
-  saveIcon.fontVariationSettings = '"FILL" 0';
-  // saveIcon.className = "ph ph-bookmark-simple"
+  saveIcon.className = "ph ph-bookmark-simple";
   bnSave.removeEventListener("click", f_unsave);
   bnSave.addEventListener("click", f_save);
 }
@@ -337,31 +269,32 @@ function removeFocus(Opart) {
 //BUTTON FUNCTIONS
 function focusPLOn() {
   if (currentFocusPL == "lyrics") {
-    lyricsDiv.style.animationName = "disappear";
-    lyricsDiv.style.animationDuration = "0.3s";
-    lyricsDiv.addEventListener("animationend", function lTop() {
-      lyricsDiv.removeEventListener("animationend", lTop);
-      pictureDiv.removeChild(lyricsDiv);
-      pictureDiv.appendChild(albumArt);
-      albumArt.style.animationName = "appear";
-      albumArt.style.animationDuration = "0.3s";
-    });
+    lyricsDiv.style.animation = "disappear 0.3s ease";
+    lyricsDiv.addEventListener(
+      "animationend",
+      () => {
+        pictureDiv.replaceChild(albumArt, lyricsDiv);
+        albumArt.style.animation = "appear 0.3s ease";
+      },
+      { once: true }
+    );
     currentFocusPL = "picture";
   } else {
-    albumArt.style.animationName = "disappear";
-    albumArt.style.animationDuration = "0.3s";
-    albumArt.addEventListener("animationend", function pTol() {
-      albumArt.removeEventListener("animationend", pTol);
-      pictureDiv.removeChild(albumArt);
-      pictureDiv.appendChild(lyricsDiv);
-      lyricsDiv.style.animationName = "appear";
-      lyricsDiv.style.animationDuration = "0.3s";
-    });
+    albumArt.style.animation = "disappear 0.3s ease";
+    albumArt.addEventListener(
+      "animationend",
+      () => {
+        pictureDiv.replaceChild(lyricsDiv, albumArt);
+        lyricsDiv.style.animationName = "appear 0.3s ease";
+      },
+      { once: true }
+    );
     currentFocusPL = "lyrics";
   }
 }
+
 function focusAPOn(part) {
-  let move = 35 / 3;
+  let move = 54 / 3;
   if (part == "autoPlayOn") {
     removeFocus();
     playingMode = "autoPlayOn";
@@ -401,10 +334,15 @@ function initPlayer() {
   albumArt.style.backgroundImage = `url(${currentAlbumArt})`;
   trackName.textContent = currentTrackName;
   artistName.textContent = currentArtistName;
-  playbackBtnIcon.textContent = "play_arrow";
-  // playbackBtnIcon.className = "ph-fill ph-play"
-  playbackBtnIcon.id = "any";
+  playbackBtnIcon.className = "ph-fill ph-play";
+  bnPlay.classList.remove("do-spin");
   bnPlay.addEventListener("click", changeState);
+}
+
+function updatePlayer() {
+  coveredTime = formatTime(song.currentTime);
+  time1.textContent = coveredTime;
+  timeSlider.value = song.currentTime;
 }
 
 timeSlider.addEventListener("input", () => {
@@ -414,7 +352,7 @@ timeSlider.addEventListener("input", () => {
 
 //KEY BINDINGS
 document.addEventListener("keydown", (event) => {
-  if (event.key === " ") {
+  if (event.key === "k") {
     changeState();
   } else if (event.key === "ArrowRight") {
     changeSong("next");
@@ -423,178 +361,182 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-setInterval(() => {
-  try {
-    updateDevicePlayerProgress();
-  } catch {}
-  if (musicPlaying) {
-    coveredTime = formatTime(song.currentTime);
-    time1.textContent = coveredTime;
-  }
-  timeSlider.value = song.currentTime;
-}, 1000);
+
+
+// SONG INFO PANEL==============================================
+// #region Song info panel
+let songInfoDiv = createDiv("song-info-div");
+playerPanel.appendChild(songInfoDiv);
+
+let songInfoDivTopBar = createDiv("top-bar");
+songInfoDiv.appendChild(songInfoDivTopBar);
+songInfoDivTopBar.appendChild(
+  createButton(
+    null,
+    "back-btn",
+    createIcon("bold", "arrow-left"),
+    null,
+    hideSongInfo
+  )
+);
+
+let songInfoConDiv = createDiv("content");
+
+let songInfoLoader = createDiv("song-info-loader");
+songInfoLoader.appendChild(createIcon("bold", "spinner"));
+songInfoDiv.appendChild(songInfoLoader);
 
 function showSongInfo() {
-  playerPanel.appendChild(songInfoDiv);
+  songInfoDiv.style.display = "flex";
   songInfoDiv.style.animation = "slideUp 0.3s ease-in-out";
-  songInfoDiv.addEventListener("animationend", function songInfoDivSlideUp() {
-    songInfoDiv.removeEventListener("animationend", songInfoDivSlideUp);
-    bnSongInfo.removeEventListener("click", showSongInfo);
-    bnSongInfo.addEventListener("click", hideSongInfo);
-  });
+  songInfoDiv.addEventListener(
+    "animationend",
+    () => {
+      songInfoDiv.style.animation = "none";
+      bnSongInfo.removeEventListener("click", showSongInfo);
+      bnSongInfo.addEventListener("click", hideSongInfo);
+      loadSongInfo();
+    },
+    { once: true }
+  );
   // history.pushState(hideSongInfo, "", "./songInfo");
-  if (songInfoDiv.contains(songInfoConDiv)) {
-    songInfoDiv.replaceChild(songInfoLoader, songInfoConDiv);
-  }
-  if (artistNames.length < 1) {
-    fetchArtistsData().then(() => {
-      loadSondInfo();
-      songInfoDiv.replaceChild(songInfoConDiv, songInfoLoader);
-    });
-  } else {
-    loadSondInfo();
-    songInfoDiv.replaceChild(songInfoConDiv, songInfoLoader);
-  }
+}
+
+function updateSongInfoUI() {
+  songInfoDiv.replaceChild(songInfoConDiv, songInfoLoader);
+  loadSongInfo();
 }
 
 function hideSongInfo() {
   songInfoDiv.style.animation = "slideDown 0.3s ease-in-out";
-  songInfoDiv.addEventListener("animationend", function songInfoDivSlideDown() {
-    songInfoDiv.removeEventListener("animationend", songInfoDivSlideDown);
-    bnSongInfo.removeEventListener("click", hideSongInfo);
-    bnSongInfo.addEventListener("click", showSongInfo);
-    playerPanel.removeChild(songInfoDiv);
-  });
+  songInfoDiv.addEventListener(
+    "animationend",
+    () => {
+      songInfoDiv.style.animation = "none";
+      songInfoDiv.style.display = "none";
+      bnSongInfo.removeEventListener("click", hideSongInfo);
+      bnSongInfo.addEventListener("click", showSongInfo);
+    },
+    { once: true }
+  );
 }
 
-function loadSondInfo() {
-  clearContainer(songInfoConDiv);
+  function loadSongInfo() {
+    if (songLoaded && artistLoaded) {
+    clearContainer(songInfoConDiv);
 
-  let songInfo = document.createElement("div");
-  songInfoConDiv.appendChild(songInfo);
-  songInfo.id = "songInfo";
-  let songInfoHeader = document.createElement("p");
-  songInfo.appendChild(songInfoHeader);
-  songInfoHeader.id = "songInfoHeader";
-  songInfoHeader.textContent = "ABOUT SONG";
-  let songReleaseP = document.createElement("p");
-  songInfo.appendChild(songReleaseP);
-  songReleaseP.textContent = `Release Date: ${currentSong.release}`;
+    let songInfo = createDiv("song-info-section song");
+    songInfoConDiv.appendChild(songInfo);
 
-  let songInfoArtists = document.createElement("div");
-  songInfoConDiv.appendChild(songInfoArtists);
-  songInfoArtists.id = "songInfoArtists";
+    songInfo.appendChild(createTextField("song-info-section-header", "About song"));
 
-  let songInfoArtistsHeader = document.createElement("p");
-  songInfoArtists.appendChild(songInfoArtistsHeader);
-  songInfoArtistsHeader.id = "songInfoArtistsHeader";
-  songInfoArtistsHeader.textContent = "ABOUT ARTIST ";
+    songInfo.appendChild(
+      createTextField(null, `Release Date: ${currentSong.release}`)
+    );
 
-  for (let artist of currentSong.artist) {
-    try {
-      let cArtistName = artist.trim();
-      let cArtistData = artistData[cArtistName];
+    let songInfoArtists = createDiv("song-info-section artist");
+    songInfoConDiv.appendChild(songInfoArtists);
 
-      let artistDiv = document.createElement("div");
-      songInfoArtists.appendChild(artistDiv);
-      artistDiv.id = "artistDiv";
+    songInfoArtists.appendChild(createTextField("song-info-section-header", "About artist"));
 
-      let artistPicture = document.createElement("img");
-      artistDiv.appendChild(artistPicture);
-      artistPicture.id = "artistPicture";
-      artistPicture.src = cArtistData.picture;
+    for (let artist of currentSong.artist) {
+      try {
+        let cArtistName = artist.trim();
+        let cArtistData = artistData[cArtistName];
 
-      let artistInfoDiv = document.createElement("div");
-      artistDiv.appendChild(artistInfoDiv);
-      artistInfoDiv.id = "artistInfoDiv";
-      let artistNameP = document.createElement("p");
-      artistInfoDiv.appendChild(artistNameP);
-      artistNameP.id = "artistNameP";
-      artistNameP.textContent = cArtistName;
-      let aboutArtistP = document.createElement("div");
-      artistInfoDiv.appendChild(aboutArtistP);
-      aboutArtistP.id = "aboutArtistP";
-      aboutArtistP.textContent = cArtistData.about;
-    } catch {}
+        let artistDiv = createDiv("artist-div");
+        songInfoArtists.appendChild(artistDiv);
+
+        let artistPicture;
+        if (cArtistData.picture.length > 0) {
+          artistPicture = document.createElement("img");
+          artistPicture.className = "artist-picture";
+          artistPicture.src = cArtistData.picture;
+        } else {
+          artistPicture = createIcon("", "user-sound");
+        }
+        artistDiv.appendChild(artistPicture);
+
+        let artistInfoDiv = createDiv("artist-div-info");
+        artistDiv.appendChild(artistInfoDiv);
+        artistInfoDiv.appendChild(createTextField("artist-name", cArtistName));
+        let aboutArtistP = createDiv("about-artist");
+        aboutArtistP.textContent = cArtistData.about;
+        artistInfoDiv.appendChild(aboutArtistP);
+      } catch {}
+    }
+
+    let songContributionInfoDiv = createDiv("song-info-section contribution");
+    songInfoConDiv.appendChild(songContributionInfoDiv);
+
+    songContributionInfoDiv.appendChild(
+      createTextField(
+        null,
+        `Contributed by ${currentSong.contributer} on ${currentSong.contributionDate}`
+      )
+    );
+
+    let bnReportSongInfo = createButton(
+      null,
+      "report-song-btn ripple",
+      createIcon("bold", "bug"),
+      "Report Error",
+      reportSong
+    );
+    songInfoConDiv.appendChild(bnReportSongInfo);
   }
-
-  let songContributionInfoDiv = document.createElement("div");
-  songInfoConDiv.appendChild(songContributionInfoDiv);
-  songContributionInfoDiv.id = "songContributionInfoDiv";
-  let songContributerP = document.createElement("p");
-  songContributionInfoDiv.appendChild(songContributerP);
-  songContributerP.textContent = `Contributed by ${currentSong.contributer} on ${currentSong.contributionDate}`;
-
-  let bnReportSongInfo = document.createElement("button");
-  songInfoConDiv.appendChild(bnReportSongInfo);
-  bnReportSongInfo.id = "bnReportSongInfo";
-  let reportIcon = document.createElement("span");
-  reportIcon.className = "material-symbols-rounded";
-  reportIcon.textContent = "feedback";
-  // let reportIcon = document.createElement("i");
-  // reportIcon.className = "ph ph-report";
-  bnReportSongInfo.appendChild(reportIcon);
-  reportIcon.style.color = "red";
-  let bnReportSongInfoP = document.createElement("p");
-  bnReportSongInfo.appendChild(bnReportSongInfoP);
-  bnReportSongInfoP.textContent = "REPORT ERROR";
-  bnReportSongInfo.style.color = "red";
-  bnReportSongInfo.addEventListener("click", reportSong);
-
-  let songInfoDivSpace = document.createElement("div");
-  songInfoConDiv.appendChild(songInfoDivSpace);
-  songInfoDivSpace.id = "songInfoDivSpace";
 }
 
-let reportSongInfoPanel = document.createElement("div");
-reportSongInfoPanel.id = "reportSongInfoPanel";
-let reportSongInfoTitleP = document.createElement("p");
-reportSongInfoPanel.appendChild(reportSongInfoTitleP);
-reportSongInfoTitleP.id = "reportSongInfoTitleP";
-reportSongInfoTitleP.textContent = "REPORT SONG";
 
-let reportSongInfoInput = document.createElement("input");
+// REPORTING ERROR IN A SONG =================================
+let reportSongInfoPanel = createDiv("added-panel report-panel");
+songInfoDiv.appendChild(reportSongInfoPanel);
+
+let reportSongInfoTitleP = createTextField("added-panel-header", "Report song");
+reportSongInfoPanel.appendChild(reportSongInfoTitleP);
+
+let reportSongInfoInput = document.createElement("textarea");
 reportSongInfoPanel.appendChild(reportSongInfoInput);
-reportSongInfoInput.id = "reportSongInfoInput";
+reportSongInfoInput.className = "report-song-input";
 reportSongInfoInput.type = "text";
 reportSongInfoInput.placeholder = "Please enter the issue or error...";
 
-let bnReportSongInfoSubmit = document.createElement("button");
-reportSongInfoPanel.appendChild(bnReportSongInfoSubmit);
-bnReportSongInfoSubmit.id = "bnReportSongInfoSubmit";
-bnReportSongInfoSubmit.addEventListener("click", sendReportSongInfo);
-let bnReportSongInfoSubmitP = document.createElement("p");
-bnReportSongInfoSubmit.appendChild(bnReportSongInfoSubmitP);
-bnReportSongInfoSubmitP.textContent = "SUBMIT";
-let reportIcon = document.createElement("span");
-reportIcon.className = "material-symbols-rounded";
-reportIcon.textContent = "send";
-// let reportIcon = document.createElement("i");
-// reportIcon.className = "ph ph-paper-plane-right";
-bnReportSongInfoSubmit.appendChild(reportIcon);
+let reportSongPanelBtnDiv = createDiv("added-panel-btn-div");
+reportSongInfoPanel.appendChild(reportSongPanelBtnDiv);
 
-let bnReportSongInfoCancel = document.createElement("button");
-reportSongInfoPanel.appendChild(bnReportSongInfoCancel);
-bnReportSongInfoCancel.id = "bnReportSongInfoCancel";
-bnReportSongInfoCancel.addEventListener("click", closeReportSongInfoPanel);
-let bnReportSongInfoCancelP = document.createElement("p");
-bnReportSongInfoCancel.appendChild(bnReportSongInfoCancelP);
-bnReportSongInfoCancelP.textContent = "CANCEL";
+reportSongPanelBtnDiv.appendChild(
+  createButton(
+    null,
+    "added-panel-btn",
+    null,
+    "cancel",
+    closeReportSongInfoPanel
+  )
+);
+
+reportSongPanelBtnDiv.appendChild(
+  createButton(
+    null,
+    "added-panel-btn",
+    null,
+    "submit",
+    sendReportSongInfo
+  )
+);
+
 
 let selectedSongToReport = null;
 function reportSong() {
   if (signedIn) {
     selectedSongToReport = currentTrackName;
-    main.appendChild(reportSongInfoPanel);
+    reportSongInfoPanel.style.display = "flex";
     reportSongInfoPanel.style.animation = "appear 0.3s ease-in-out";
     reportSongInfoPanel.addEventListener(
       "animationend",
-      function reportSongInfoPanelApp() {
-        reportSongInfoPanel.removeEventListener(
-          "animationend",
-          reportSongInfoPanelApp
-        );
-      }
+      () => {
+        reportSongInfoPanel.style.animation = "none";
+      },
+      { once: true }
     );
     // history.pushState(closeReportSongInfoPanel, "", "./reportSong");
   }
@@ -604,13 +546,11 @@ function closeReportSongInfoPanel() {
   reportSongInfoPanel.style.animation = "disappear 0.3s ease-in-out";
   reportSongInfoPanel.addEventListener(
     "animationend",
-    function reportSongInfoPanelDis() {
-      reportSongInfoPanel.removeEventListener(
-        "animationend",
-        reportSongInfoPanelDis
-      );
-      main.removeChild(reportSongInfoPanel);
-    }
+    () => {
+      reportSongInfoPanel.style.animation = "none";
+      reportSongInfoPanel.style.display = "none";
+    },
+    { once: true }
   );
 }
 
@@ -622,16 +562,28 @@ function sendReportSongInfo() {
       "noortaquee",
       "ERROR REPORT",
       `${userName} reported an issue with the song "${selectedSongToReport}": "${reportSongInfoInput.value}"`
-    );
-    updateDataFile().then(() => {
+    ).then(() => {
       loadingDiv.style.display = "none";
       main.style.display = "flex";
-      main.removeChild(reportSongInfoPanel);
+      closeReportSongInfoPanel();
       alert("Your report has been sent successfully.");
     });
   } else {
     alert("Please enter the issue or error.");
   }
 }
+
+function goBackPP() {
+  playerPanel.style.animation = "slideDown 0.3s ease";
+  playerPanel.addEventListener(
+    "animationend",
+    () => {
+      playerPanel.style.display = "none";
+      playerPanel.style.animation = "none";
+    },
+    { once: true }
+  );
+}
+// #endregion
 
 attend();

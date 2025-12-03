@@ -1,46 +1,86 @@
-#body {
+#app {
   position: relative;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter;
   background-image: none;
   background: transparent;
   background-size: contain;
-  min-height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
 }
-#body::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
+#app.horizontal {
+  gap: 5px;
+}
+#app::-webkit-scrollbar {
+  display: none;
 }
 
-#loadingDiv {
+#app.light-mode p {
+  color: black;
+}
+#app.light-mode i {
+  color: black;
+}
+#app.dark-mode p {
+  color: white;
+}
+#app.dark-mode i {
+  color: white;
+}
+
+a,
+button,
+input,
+div {
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.5s ease;
+}
+
+#loading-screen {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+#app.light-mode #loading-screen {
+  background-color: white;
+}
+#app.dark-mode #loading-screen {
+  background-color: black;
+}
+
+.loading-div {
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
+  gap: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  gap: 1vw;
+  background: transparent;
 }
 
-.bar {
-  justify-self: center;
-  align-self: center;
+.loading-div .bar {
+  flex-shrink: 0;
   height: 10%;
   width: 5%;
   border-radius: 1rem;
-  animation: shrink;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  animation: shrink 1.5s ease-in-out infinite;
 }
-
+#app.light-mode .bar {
+  background-color: black;
+}
+#app.dark-mode .bar {
+  background-color: white;
+}
 .bar:nth-child(2) {
   animation-delay: 0.2s;
 }
@@ -59,230 +99,439 @@
 .bar:nth-child(7) {
   animation-delay: 0.8s;
 }
-#main {
-  position: relative;
-  display: none;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background: transparent;
-  background-image: none;
-  background-size: contain;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  transition: all 1s ease-in-out;
-}
 
-#bottomDiv {
+.loading-status-div {
   position: absolute;
   z-index: 1;
   top: auto;
   right: 0;
+  bottom: 20px;
   left: 0;
-  bottom: 1rem;
-  overflow-y: hidden;
-  justify-self: center;
-  align-self: flex-end;
+  height: fit-content;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: stretch;
   align-items: center;
-  backdrop-filter: blur(5vmax);
-  height: 10vh;
-  max-height: 25vw;
-  width: 95%;
-  padding: 0;
-  border-radius: 2rem;
 }
-#miniPlayer {
+
+#loading-details {
+  width: 100%;
+  margin: 5px 0;
+  text-align: center;
+  font: 500 16px Arial;
+}
+
+.loading-progress-bar {
+  height: 10px;
+  width: 80%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: 0.5px solid grey;
+  border-radius: 5px;
+  background: transparent;
+}
+.loading-progress-bar div {
+  min-height: 100%;
+  width: 0%;
+  background-color: black;
+  transition: width 0.5s ease;
+}
+
+#app.vertical #main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  background-image: none;
+  background-size: contain;
+  transition: all 1s ease-in-out;
+}
+#app.horizontal #main {
+  position: relative;
+  height: 100%;
+  width: 70%;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: none;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  background: transparent;
+  background-image: none;
+  background-size: contain;
+  transition: all 1s ease-in-out;
+}
+
+#inner-app {
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+#inner-app::-webkit-scrollbar {
+  display: none;
+}
+
+.inner-app-panel {
+  position: relative;
+  flex-shrink: 0;
+  height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0 0 0;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+#app.blur-on .inner-app-panel {
+  backdrop-filter: blur(70px);
+}
+#app.light-mode .inner-app-panel {
+  background-color: rgb(230, 230, 230);
+}
+#app.dark-mode .inner-app-panel {
+  background-color: rgba(0, 0, 0);
+}
+#app.blur-on.light-mode .inner-app-panel {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+#app.blur-on.dark-mode .inner-app-panel {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.outer-app-panel::-webkit-scrollbar,
+.inner-app-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.outer-app-panel {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+#app.light-mode .outer-app-panel {
+  background: white;
+}
+#app.dark-mode .outer-app-panel {
+  background: black;
+}
+
+#app.vertical #navigation-div {
+  position: absolute;
+  z-index: 1;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 110px;
+  max-height: 17vh;
+  box-sizing: border-box;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#app.horizontal #navigation-div {
+  flex-shrink: 0;
+  height: 100%;
+  width: 100px;
+  box-sizing: border-box;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#app.blur-on #navigation-div {
+  backdrop-filter: blur(5vmax);
+}
+#app.light-mode #navigation-div {
+  background-color: rgb(255, 255, 255);
+}
+#app.vertical.light-mode #navigation-div {
+  border: 0.5px solid rgb(100, 100, 100);
+}
+#app.light-mode.blur-on #navigation-div {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#app.vartical.light-mode.blur-on #navigation-div {
+  border: 0.5px solid rgba(100, 100, 100);
+}
+#app.dark-mode #navigation-div {
+  background-color: rgba(0, 0, 0);
+}
+#app.vertical.dark-mode #navigation-div {
+  border: 0.5px solid rgba(100, 100, 100);
+}
+#app.dark-mode.blur-on #navigation-div {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#app.vertical.dark-mode.blur-on #navigation-div {
+  border: 0.1px solid rgba(255, 255, 255, 0.3);
+}
+
+#app.vertical #navigation-div.floating {
+  bottom: 20px;
+  width: 96%;
+  margin: 0 2%;
+  padding: 10px 0;
+  border-radius: 30px;
+}
+#app.vertical.light-mode #navigation-div.floating {
+  border: 0.5px solid rgb(100, 100, 100);
+}
+#app.vertical.light-mode.blur-on #navigation-div.floating {
+  border: 0.5px solid rgba(100, 100, 100);
+}
+#app.vertical.dark-mode #navigation-div.floating {
+  border: 0.5px solid rgba(100, 100, 100);
+}
+#app.vertical.dark-mode.blur-on #navigation-div.floating {
+  border: 0.1px solid rgba(255, 255, 255, 0.1);
+}
+
+#app.vertical #navigation-div.sticky {
+  height: 120px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 20px 0;
+}
+#app.light-mode #navigation-div.sticky {
+  border: none;
+}
+#app.vertical.light-mode #navigation-div.sticky {
+  border-top: 0.5px solid rgb(100, 100, 100);
+}
+#app.light-mode.blur-on #navigation-div.sticky {
+  border: none;
+}
+#app.vertical.light-mode.blur-on #navigation-div.sticky {
+  border-top: 0.5px solid rgba(100, 100, 100);
+}
+#app.dark-mode #navigation-div.sticky {
+  border: none;
+}
+#app.vertical.dark-mode #navigation-div.sticky {
+  border-top: 0.5px solid rgba(100, 100, 100);
+}
+#app.dark-mode.blur-on #navigation-div.sticky {
+  border: none;
+}
+#app.vertical.dark-mode.blur-on #navigation-div.sticky {
+  border-top: 0.1px solid rgba(255, 255, 255, 0.1);
+}
+
+#app.vertical .mini-player {
+  height: 50%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 10px;
+  border: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50%;
-  width: 90%;
+}
+
+#app.horizontal .mini-player {
+  display: none;
+}
+
+.mini-info-div {
+  height: 100%;
+  width: 70%;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  gap: 5px;
   border: none;
-}
-#miniInfoDiv {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 100%;
-  width: 70%;
-  margin: 0;
-  padding: 0;
-  padding-left: 1vw;
-  gap: 1vw;
-  border: none;
 }
-#miniAlbumArt {
+#navigation-div.floating .mini-info-div {
+  padding: 0 0 0 10px;
+}
+#navigation-div.floating .mini-info-div {
+  padding: 0 0 0 5px;
+}
+
+.mini-album-art {
+  height: 40px;
+  max-height: 12vw;
+  width: 40px;
+  max-width: 12vw;
+  border: none;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("");
   background-size: cover;
-  width: 4.5vh;
-  max-height: 12vw;
-  height: 4.5vh;
-  max-width: 12vw;
-  border: none;
-  border-radius: 1vh;
 }
-#miniAlbumArt span {
+
+#navigation-div.sticky .mini-album-art {
+  border-radius: 0;
+}
+
+.mini-album-art i {
   font-size: 4vmin;
 }
 
-#miniTrackInfoDiv {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  background: transparent;
+.mini-track-info-div {
   height: 100%;
   width: 80%;
   margin: 0;
   gap: 0;
   border: none;
-}
-#miniTrackName {
-  cursor: default;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 3.5vmin;
-  font-weight: 700;
-  height: fit-content;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-#miniArtistName {
-  cursor: default;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 2.5vmin;
-  height: fit-content;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-#miniPlaybackControlsDiv {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 100%;
-  width: 30%;
-}
-#miniPlaybackControlsDiv button {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  height: 100%;
-  width: 30%;
-  border: none;
-}
-
-#miniPlaybackControlsDiv span {
-  font-variation-settings: "FILL" 1;
-  font-size: 2rem;
-}
-
-#miniLoadingIcon {
-  animation: spin;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-#switchDiv {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: stretch;
-  height: 50%;
-  width: 100%;
-  padding: 0;
-  border: none;
-}
-
-#switchDiv button {
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  background: transparent;
+}
+
+.mini-track-name {
+  cursor: default;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  font-size: 3.5vmin;
+  font-weight: 700;
+}
+
+.mini-artist-name {
+  cursor: default;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  font-size: 2.5vmin;
+}
+
+.mini-playback-controls-div {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mini-playback-controls-div button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
   align-items: center;
   background: transparent;
-  height: 100%;
-  width: 25%;
+}
+.mini-playback-controls-div i {
+  font-size: 25px;
+}
+
+#app.vertical #navigation-button-div {
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#app.horizontal #navigation-button-div {
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#navigation-button-div button {
+  cursor: pointer;
   margin: 0;
   padding: 0;
   gap: 0;
   border: none;
-  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  background: transparent;
   transition: all 0.3s ease-in-out;
 }
+#app.vertical #navigation-button-div button {
+  height: 100%;
+  align-items: flex-end;
+}
+#app.horizontal #navigation-button-div button {
+  padding: 15px 0;
+}
 
-#switchDiv span {
-  font-size: 2rem;
+
+#navigation-button-div i {
+  font-size: 25px;
   margin: 0;
 }
-#activeButton span {
-  font-variation-settings: "FILL" 1;
-  font-size: 2rem;
-  margin: 0;
+#app.light-mode #navigation-button-div i {
+  color: rgba(0, 0, 0, 0.5);
 }
-.material-symbols-rounded {
-  font-family: "Material Symbols Rounded";
-}
-
-/* LIGHT MODE SETTINGS */
-.loadingDiv_lightMode {
-  background-color: white;
-}
-.loadingDiv_lightMode .bar {
-  background-color: black;
-}
-.bottomDiv_lightMode {
-  background-color: rgba(255, 255, 255, 0.65);
-  border: 0.1px solid rgba(0, 0, 0, 0.1);
-}
-.bottomDiv_lightMode p {
-  color: black;
-}
-.bottomDiv_lightMode span {
-  color: black;
-}
-.bottomDiv_lightMode #switchDiv span {
-  color: rgba(0, 0, 0, 0.75);
-}
-.bottomDiv_lightMode #activeButton span {
-  color: rgba(0, 0, 0);
-}
-
-/* DARK MODE SETTINGS */
-.loadingDiv_darkMode {
-  background-color: black;
-}
-.loadingDiv_darkMode .bar {
-  background-color: white;
-}
-.bottomDiv_darkMode {
-  background-color: rgba(0, 0, 0, 0.7);
-  border: 0.1px solid rgba(255, 255, 255, 0.1);
-}
-.bottomDiv_darkMode p {
-  color: white;
-}
-.bottomDiv_darkMode span {
-  color: white;
-}
-.bottomDiv_darkMode #switchDiv span {
+#app.dark-mode #navigation-button-div i {
   color: rgba(255, 255, 255, 0.5);
 }
-.bottomDiv_darkMode #activeButton span {
+#app.light-mode #navigation-button-div button.active i {
+  color: rgba(0, 0, 0);
+}
+#app.dark-mode #navigation-button-div button.active i {
   color: rgba(255, 255, 255);
+}
+
+button.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple-span {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
 }

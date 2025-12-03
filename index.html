@@ -2,11 +2,17 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" /> -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"
     />
     <link rel="stylesheet" href="animation.css" />
     <link rel="stylesheet" href="style.css" />
@@ -19,50 +25,104 @@
     <link rel="stylesheet" href="contributionTab.css" />
     <title>Music Player By Noor Taquee</title>
   </head>
-  <body id="body">
-    <div id="loadingDiv">
-      <div class="bar" id="b1"></div>
-      <div class="bar" id="b2"></div>
-      <div class="bar" id="b3"></div>
-      <div class="bar" id="b4"></div>
-      <div class="bar" id="b5"></div>
-      <div class="bar" id="b6"></div>
+  <body id="app" class="dark-mode vertical">
+    <div id="loading-screen" class="light-mode">
+      <div class="loading-div">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="loading-status-div">
+        <p id="loading-details">connecting...</p>
+        <div class="loading-progress-bar">
+          <div id="loading-progress-covered"></div>
+        </div>
+      </div>
     </div>
     <div id="main">
-      <div id="bottomDiv">
-        <div id="switchDiv">
-          <button id="bnHomePanel">
-            <span class="material-symbols-rounded">home</span>
-            <!-- <i class="ph ph-house"></i> -->
+      <div id="inner-app">
+        <div id="home-panel" class="inner-app-panel"></div>
+        <div id="search-panel" class="inner-app-panel"></div>
+        <div id="library-panel" class="inner-app-panel"></div>
+        <div id="account-panel" class="inner-app-panel"></div>
+      </div>
+      <div id="navigation-div" class="floating">
+        <div id="navigation-button-div">
+          <button id="home-panel-btn" class="active">
+            <i class="ph-fill ph-house" id="home-tab-icon"></i>
           </button>
-          <button id="bnSearchPanel">
-            <span class="material-symbols-rounded">search</span>
-            <!-- <i class="ph ph-magnifying-glass"></i> -->
+          <button id="search-panel-btn">
+            <i class="ph-bold ph-magnifying-glass" id="search-tab-icon"></i>
           </button>
-          <button id="bnLibraryPanel">
-            <span class="material-symbols-rounded">library_music</span>
-            <!-- <i class="ph ph-user"></i> -->
+          <button id="library-panel-btn">
+            <i class="ph-bold ph-playlist" id="library-tab-icon"></i>
           </button>
-          <button id="bnAccountPanel">
-            <span class="material-symbols-rounded">account_circle</span>
+          <button id="account-panel-btn">
+            <i class="ph-bold ph-user" id="account-tab-icon"></i>
           </button>
         </div>
       </div>
     </div>
+    <div id="player-panel" class="outer-app-panel"></div>
+    <div id="login-panel" class="outer-app-panel"></div>
+    <div id="contribution-panel" class="outer-app-panel"></div>
     <audio id="song"></audio>
-    <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
-    <script src="script.js"></script>
-    <script src="backend.js"></script>
-    <script src="song.js"></script>
-    <script src="homeTab.js"></script>
-    <script src="playerTab.js"></script>
-    <script src="searchTab.js"></script>
-    <script src="libraryTab.js"></script>
-    <script src="accountTab.js"></script>
-    <script src="loginTab.js"></script>
-    <script src="contributionTab.js"></script>
     <script>
-      createScreen(homePanel, bnHomePanel);
+let loadingDiv = document.getElementById("loading-screen");
+let loadingStatusDiv = document.querySelector(".loading-status-div")
+let loadingMessage = document.getElementById("loading-details");
+let loadingProgress = document.getElementById("loading-progress-covered");
+
+let app = document.getElementById("app");
+
+let main = document.getElementById("main");
+let innerApp = document.getElementById("inner-app");
+
+let bottomDiv = document.getElementById("navigation-div");
+let switchDiv = document.getElementById("navigation-button-div");
+
+let bnHomePanel = document.getElementById("home-panel-btn");
+let bnHomePanelI = document.getElementById("home-tab-icon");
+
+let bnSearchPanel = document.getElementById("search-panel-btn");
+let bnSearchPanelI = document.getElementById("search-tab-icon");
+
+let bnLibraryPanel = document.getElementById("library-panel-btn");
+let bnLibraryPanelI = document.getElementById("library-tab-icon");
+
+let bnAccountPanel = document.getElementById("account-panel-btn");
+let bnAccountPanelI = document.getElementById("account-tab-icon");
+
+let totalFiles = 10;
+let attendFiles = 0;
+function attend() {
+  loadingMessage.textContent = "progress: creating interface...";
+  loadingProgress.style.width = `${(parseFloat(loadingProgress.style.width) || 0) + 1}%`;
+  attendFiles++;
+  if (attendFiles == totalFiles) {
+    loadingMessage.textContent = "progress: interface ready";
+    startBackend();
+  }
+}
+
+function reloadPage() {
+  window.location.reload();
+}
     </script>
+    <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+    <script defer src="UIhelperFunctions.js" onerror="reloadPage()"></script>
+    <script defer src="script.js" onerror="reloadPage()"></script>
+    <script defer src="backend.js"  onerror="reloadPage()"></script>
+    <script defer src="song.js" onerror="reloadPage()"></script>
+    <script defer src="homeTab.js" onerror="reloadPage()"></script>
+    <script defer src="playerTab.js" onerror="reloadPage()"></script>
+    <script defer src="searchTab.js" onerror="reloadPage()"></script>
+    <script defer src="libraryTab.js" onerror="reloadPage()"></script>
+    <script defer src="loginTab.js" onerror="reloadPage()"></script>
+    <script defer src="contributionTab.js" onerror="reloadPage()"></script>
+    <script defer src="accountTab.js" onerror="reloadPage()"></script>
   </body>
 </html>
