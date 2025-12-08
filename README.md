@@ -18,6 +18,8 @@ mainly three classes
 - dark-theme
 - light-theme
 - blur-on
+- horizontal (for PCs)
+- vertical (for smartphones)
 
 ## Script
 All the tabs are created using JS files
