@@ -5,6 +5,8 @@ A single-page-application made for streaming music on the web.
 - stream audio
 - Modern minimal design
 
+---
+
 # Understanding the workflow
 ## Data
 Gets dynamic data from dropbox.
@@ -14,7 +16,7 @@ At the time of login after verification corresponding file is downloaded for cha
 Each user gets a unique ID, and the data after creation is fetched this ID.
 ## UI
 The state is controlled primarily by changing the class of app.
-mainly three classes
+mainly five classes
 - dark-theme
 - light-theme
 - blur-on
