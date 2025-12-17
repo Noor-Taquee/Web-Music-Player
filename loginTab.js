@@ -1,241 +1,180 @@
-let loginPanel = document.getElementById("login-panel");
+let loginPanel = document.createElement("div");
+loginPanel.id = "loginPanel";
+loginPanel.className = "loginPanel_darkMode";
 
 let topBarLT = document.createElement("div");
 loginPanel.appendChild(topBarLT);
-topBarLT.className = "top-bar";
+topBarLT.id = "topBarLT";
 
-topBarLT.appendChild(
-  createButton(
-    null,
-    "back-btn",
-    createIcon("bold", "arrow-left"),
-    null,
-    goBackLT
-  )
-);
-
-let formContainerLT = document.createElement("div");
-loginPanel.appendChild(formContainerLT);
-formContainerLT.className = "register-form-container";
+let bnBackLT = document.createElement("button");
+topBarLT.appendChild(bnBackLT);
+bnBackLT.id = "bnBackLT";
+bnBackLT.addEventListener("click", goBack);
+let backIcon = document.createElement("span");
+backIcon.className = "material-symbols-rounded";
+backIcon.textContent = "arrow_back_ios_new";
+// let backIcon = document.createElement("i");
+// backIcon.className = "ph ph-caret-left";
+bnBackLT.appendChild(backIcon);
+let bnBackP = document.createElement("p");
+bnBackLT.appendChild(bnBackP);
+bnBackP.id = "bnBackP";
+bnBackP.textContent = "BACK";
 
 let signInContainer = document.createElement("div");
-formContainerLT.appendChild(signInContainer);
-signInContainer.className = "register-form";
+loginPanel.appendChild(signInContainer);
+signInContainer.id = "signInContainer";
 
 let loginHeaderSignIn = document.createElement("p");
 signInContainer.appendChild(loginHeaderSignIn);
-loginHeaderSignIn.className = "register-form-header";
+loginHeaderSignIn.id = "loginHeaderSignIn";
 loginHeaderSignIn.textContent = "SIGN IN";
 
-let nameInputSignIn = createInput(
-  "text",
-  "Username",
-  "varify-username",
-  "register-form-input"
-);
-signInContainer.appendChild(
-  createInputDiv(
-    "register-form-input-div",
-    createIcon("bold", "user"),
-    nameInputSignIn
-  )
-);
+let nameDivSignIn = document.createElement("div");
+signInContainer.appendChild(nameDivSignIn);
+nameDivSignIn.id = "nameDivSignIn";
+let nameInputSignIn = document.createElement("input");
+nameDivSignIn.appendChild(nameInputSignIn);
+nameInputSignIn.id = "nameInputSignIn";
+nameInputSignIn.type = "text";
+nameInputSignIn.placeholder = "USERNAME";
 
-let signInPassEye = createIcon("bold", "eye-slash", f_signInPassEye);
-let passInputSignIn = createInput(
-  "password",
-  "Password",
-  "varify-password",
-  "register-form-input"
-);
-passInputSignIn.addEventListener("keypress", (e) => {
-  if (e.key == "Enter") {
-    checkIdentity();
+let passDivSignIn = document.createElement("div");
+signInContainer.appendChild(passDivSignIn);
+passDivSignIn.id = "paesDivSignIn";
+let passInputSignIn = document.createElement("input");
+passDivSignIn.appendChild(passInputSignIn);
+passInputSignIn.id = "passInputSignIn";
+passInputSignIn.type = "password";
+passInputSignIn.placeholder = "PASSWORD";
+
+let eyeIcon = document.createElement("span");
+eyeIcon.className = "material-symbols-rounded";
+eyeIcon.textContent = "visibility";
+// let eyeIcon = document.createElement("i");
+// eyeIcon.className = "ph ph-eye";
+passDivSignIn.appendChild(eyeIcon);
+eyeIcon.id = "eyeIcon";
+eyeIcon.addEventListener("click", () => {
+  if (passInputSignIn.type === "password") {
+    passInputSignIn.type = "text";
+    eyeIcon.textContent = "visibility_off";
+    // eyeIcon.className = "eye-slash";
+  } else {
+    passInputSignIn.type = "password";
+    eyeIcon.textContent = "visibility";
+    // eyeIcon.className = "eye";
+  }
+  if (passInputSignUp.type === "password") {
+    passInputSignUp.type = "text";
+    eyeIcon.textContent = "visibility_off";
+    // eyeIcon.className = "eye-slash";
+  } else {
+    passInputSignUp.type = "password";
+    eyeIcon.textContent = "visibility";
+    // eyeIcon.className = "eye";
   }
 });
-signInContainer.appendChild(
-  createInputDiv(
-    "register-form-input-div",
-    createIcon("bold", "key"),
-    passInputSignIn,
-    signInPassEye
-  )
-);
 
-let bnSignIn = createButton(
-  null,
-  "register-btn",
-  null,
-  "Sign in",
-  checkIdentity
-);
+let bnSignIn = document.createElement("button");
 signInContainer.appendChild(bnSignIn);
-let bnSignInCon = createDiv("register-btn-loader");
-bnSignInCon.appendChild(createIcon("bold", "circle-notch"));
-bnSignIn.appendChild(bnSignInCon);
+bnSignIn.id = "bnSignIn";
+bnSignIn.textContent = "SIGN IN";
+bnSignIn.addEventListener("click", checkIdentity);
 
 let signUpContainer = document.createElement("div");
-signUpContainer.className = "register-form";
+signUpContainer.id = "signUpContainer";
 
 let loginHeaderSignUp = document.createElement("p");
 signUpContainer.appendChild(loginHeaderSignUp);
-loginHeaderSignUp.className = "register-form-header";
+loginHeaderSignUp.id = "loginHeaderSignUp";
 loginHeaderSignUp.textContent = "SIGN UP";
 
-let fullNameInputSignUp = createInput(
-  "text",
-  "Name",
-  "full-name",
-  "register-form-input"
-);
-signUpContainer.appendChild(
-  createInputDiv(
-    "register-form-input-div",
-    createIcon("bold", "user-rectangle"),
-    fullNameInputSignUp
-  )
-);
+let fullNameDivSignUp = document.createElement("div");
+signUpContainer.appendChild(fullNameDivSignUp);
+fullNameDivSignUp.id = "fullNameDivSignUp";
+let fullNameInputSignUp = document.createElement("input");
+fullNameDivSignUp.appendChild(fullNameInputSignUp);
+fullNameInputSignUp.id = "fullNameInputSignUp";
+fullNameInputSignUp.type = "text";
+fullNameInputSignUp.placeholder = "FULL NAME";
 
-let nameInputSignUp = createInput(
-  "text",
-  "Username",
-  "create-username",
-  "register-form-input"
-);
-signUpContainer.appendChild(
-  createInputDiv(
-    "register-form-input-div",
-    createIcon("bold", "user"),
-    nameInputSignUp
-  )
-);
+let nameDivSignUp = document.createElement("div");
+signUpContainer.appendChild(nameDivSignUp);
+nameDivSignUp.id = "nameDivSignUp";
+let nameInputSignUp = document.createElement("input");
+nameDivSignUp.appendChild(nameInputSignUp);
+nameInputSignUp.id = "nameInputSignUp";
+nameInputSignUp.type = "text";
+nameInputSignUp.placeholder = "USERNAME";
 
-let signUpPassEye = createIcon("bold", "eye-slash", f_signUnPassEye);
-let passInputSignUp = createInput(
-  "password",
-  "Create Password",
-  "create-password",
-  "register-form-input"
-);
-signUpContainer.appendChild(
-  createInputDiv(
-    "register-form-input-div",
-    createIcon("bold", "key"),
-    passInputSignUp,
-    signUpPassEye
-  )
-);
+let passDivSignUp = document.createElement("div");
+signUpContainer.appendChild(passDivSignUp);
+passDivSignUp.id = "paesDivSignUp";
+let passInputSignUp = document.createElement("input");
+passDivSignUp.appendChild(passInputSignUp);
+passInputSignUp.id = "passInputUp";
+passInputSignUp.type = "password";
+passInputSignUp.placeholder = "PASSWORD";
 
-let conPassInputSignUp = createInput(
-  "password",
-  "Confirm password",
-  "confirm-password",
-  "register-form-input"
-);
-conPassInputSignUp.addEventListener("keypress", (e) => {
-  if (e.key == "Enter") {
-    checkAvailability();
-  }
-});
-signUpContainer.appendChild(
-  createInputDiv(
-    "register-form-input-div",
-    createIcon("bold", "key"),
-    conPassInputSignUp
-  )
-);
-
-let bnSignUp = createButton(
-  null,
-  "register-btn",
-  null,
-  "Create account",
-  checkAvailability
-);
+let bnSignUp = document.createElement("button");
 signUpContainer.appendChild(bnSignUp);
-let bnSignUpCon = createDiv("register-btn-loader");
-bnSignUpCon.appendChild(createIcon("bold", "circle-notch"));
-bnSignUp.appendChild(bnSignUpCon);
+bnSignUp.id = "bnSignUp";
+bnSignUp.textContent = "SIGN UP";
+bnSignUp.addEventListener("click", checkAvailability);
 
 let bottomContainerLT = document.createElement("div");
 loginPanel.appendChild(bottomContainerLT);
-bottomContainerLT.className = "login-panel-bottom-container";
+bottomContainerLT.id = "bottomContainerLT";
 
-let pBottom = createTextField(null, "Don't have an account?");
+let pBottom = document.createElement("p");
 bottomContainerLT.appendChild(pBottom);
+pBottom.textContent = "Don't have an account?";
 
-let bnCreateAC = createButton(
-  null,
-  "register-btn",
-  null,
-  "Create account",
-  changeMethod
-);
+let bnCreateAC = document.createElement("button");
 bottomContainerLT.appendChild(bnCreateAC);
+bnCreateAC.id = "bnCreateAC";
+bnCreateAC.textContent = "CREATE ACCOUNT";
+bnCreateAC.addEventListener("click", changeMethod);
 
-//VARIABLES ===========================
 let registerWay = "signIn";
 
-function goBackLT() {
-  loginPanel.style.animation = "slideDown 0.5s ease";
-  loginPanel.addEventListener(
-    "animationend",
-    () => {
-      loginPanel.style.display = "none";
-    },
-    { once: true }
-  );
+function goBack() {
+  switchTo("accountPanel");
+  clearInputFieldsLT();
+  clearInputFieldsCT();
+  bottomDiv.style.display = "flex";
 }
 
 function changeMethod() {
   if (registerWay == "signIn") {
-    formContainerLT.replaceChild(signUpContainer, signInContainer);
+    loginPanel.replaceChild(signUpContainer, signInContainer);
+    passDivSignUp.appendChild(eyeIcon);
     pBottom.textContent = "Already have an account?";
-    bnCreateAC.textContent = "Sign in";
+    bnCreateAC.textContent = "SIGN IN";
     registerWay = "signUp";
   } else {
-    formContainerLT.replaceChild(signInContainer, signUpContainer);
+    loginPanel.replaceChild(signInContainer, signUpContainer);
+    passDivSignIn.appendChild(eyeIcon);
     pBottom.textContent = "Don't have an account?";
-    bnCreateAC.textContent = "Create Account";
+    bnCreateAC.textContent = "CREATE ACCOUNT";
     registerWay = "signIn";
   }
   clearInputFieldsLT();
-}
-
-function f_signInPassEye() {
-  if (signInPassEye.classList.contains("ph-eye-slash")) {
-    signInPassEye.classList.remove("ph-eye-slash");
-    signInPassEye.classList.add("ph-eye");
-    passInputSignIn.type = "text";
-  } else {
-    signInPassEye.classList.remove("ph-eye");
-    signInPassEye.classList.add("ph-eye-slash");
-    passInputSignIn.type = "password";
-  }
-}
-
-function f_signUnPassEye() {
-  if (signUpPassEye.classList.contains("ph-eye-slash")) {
-    signUpPassEye.classList.remove("ph-eye-slash");
-    signUpPassEye.classList.add("ph-eye");
-    passInputSignUp.type = "text";
-  } else {
-    signUpPassEye.classList.remove("ph-eye");
-    signUpPassEye.classList.add("ph-eye-slash");
-    passInputSignUp.type = "password";
-  }
 }
 
 function checkIdentity() {
   let userGivenName = nameInputSignIn.value.trim();
   let userGivenPass = passInputSignIn.value;
   if (usersList.includes(userGivenName)) {
-    if (userUIDmap[userGivenName][1] == userGivenPass) {
-      bnSignInCon.style.display = "flex";
-      userUID = userUIDmap[userGivenName][0];
-      loginUser(userUID).then(() => {
-        clearInputFieldsLT();
-        goBackLT();
+    if (data[userGivenName].password == userGivenPass) {
+      userNameKey = userGivenName;
+      main.style.display = "none";
+      loadingDiv.style.display = "flex";
+      fetchUserData(userGivenName).then(() => {
+        main.style.display = "flex";
+        loadingDiv.style.display = "none";
+        goBack();
       });
     } else {
       alert("Incorrect Password!");
@@ -256,11 +195,29 @@ function checkAvailability() {
   } else if (userGivenFullName.length < 1) {
     alert("Please provide your full name!");
   } else {
-    bnSignUpCon.style.display = "flex";
-    createNewUser(userGivenFullName, userGivenName, userGivenPass).then(() => {
-      loginUser(userUID);
-      clearInputFieldsLT();
-      goBackLT();
+    data[userGivenName] = {
+      profileName: userGivenFullName,
+      profilePic: "",
+      password: userGivenPass,
+      playlistList: [],
+      recentlyPlayedSongList: [],
+      searchedTextList: [],
+      searchedSongList: [],
+      favouriteSongList: [],
+      notificationsList: [],
+    };
+    main.style.display = "none";
+    loadingDiv.style.display = "flex";
+    sendNotification(
+      "noortaquee",
+      "ACCOUNT CREATION",
+      `${userGivenFullName} created a new account.`
+    );
+    updateDataFile().then(() => {
+      loadingDiv.style.display = "none";
+      main.style.display = "flex";
+      fetchUserData(userGivenName);
+      goBack();
     });
   }
 }
@@ -271,8 +228,6 @@ function clearInputFieldsLT() {
   fullNameInputSignUp.value = "";
   nameInputSignUp.value = "";
   passInputSignUp.value = "";
-  bnSignInCon.style.display = "none";
-  bnSignUpCon.style.display = "none";
 }
 
 attend();

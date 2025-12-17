@@ -11,7 +11,7 @@
   }
 }
 
-/* Loading Icon */
+/* Loading Icon on play button */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -66,7 +66,11 @@
 @keyframes appear {
   0% {
     opacity: 0;
-    transform: scale(0.85);
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
   }
   100% {
     opacity: 1;
@@ -79,9 +83,13 @@
     opacity: 1;
     transform: scale(1);
   }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
   100% {
     opacity: 0;
-    transform: scale(0.85);
+    transform: scale(0.8);
   }
 }
 
@@ -124,20 +132,3 @@
     transform: translateX(100%);
   }
 }
-
-@keyframes flash {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* RIPPLE EFFECT */
-@keyframes ripple-animation {
-        to {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }

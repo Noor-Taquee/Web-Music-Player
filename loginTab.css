@@ -1,207 +1,209 @@
-#login-panel .top-bar {
-  height: 7%;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0 10px;
+#loginPanel {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
-.back-btn {
-  cursor: pointer;
-  padding: 0;
+#topBarLT {
+  display: flex;
+  background: transparent;
+  height: 5%;
+  width: 100%;
   margin: 0;
-  border: none;
+  padding: 0;
+}
+
+#bnBackLT {
+  cursor: pointer;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   font-size: 1rem;
   background: transparent;
-}
-.back-btn i {
-  font-size: 30px;
+  padding: 0;
+  margin: 0;
+  gap: 0.5vw;
+  border: none;
 }
 
-.register-form-container {
-  height: 80%;
-  width: 90%;
-  background: transparent;
-  transition: transform 0.5s ease-in-out;
+#bnBackLT span {
+  font-size: 1rem;
 }
-.register-form {
-  height: 100%;
-  width: 100%;
-  gap: 2lvh;
+
+#signInContainer,
+#signUpContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: transparent;
+  height: 80%;
+  width: 90%;
+  gap: 2vh;
   transition: all 0.5s ease-in-out;
 }
 
-.register-form-header {
+#loginHeaderSignIn,
+#loginHeaderSignUp {
   cursor: default;
-  margin: 2.5lvh;
-  font-size: 35px;
+  font-size: 2rem;
   font-weight: 900;
   background: transparent;
+  margin: 2.5vh;
 }
 
-.register-form-input-div {
-  height: 50px;
-  width: 100%;
-  max-width: 500px;
-  border: none;
+#signInContainer div,
+#signUpContainer div {
   display: flex;
+  justify-content: space-between;
+  overflow: hidden;
   background: transparent;
-}
-.register-form-input-div i {
-  width: 10%;
-  margin: auto;
-  font-size: 20px;
-  text-align: center;
-  background: transparent;
+  height: 7vh;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 1rem;
 }
 
-.register-form-input {
+#signInContainer input,
+#signUpContainer input {
+  display: flex;
+  font-size: 1rem;
+  background: transparent;
   height: 100%;
-  flex-grow: 1;
-  box-sizing: border-box;
+  width: 100%;
   padding-left: 1rem;
   border: none;
-  display: flex;
-  font-size: 18px;
-  background: transparent;
 }
-.register-form-input::placeholder {
-  font-size: 18px;
-}
-.register-form-input:focus {
+
+#signInContainer input:focus,
+#signUpContainer input:focus {
   outline: none;
 }
 
-.ph-eye,
-.ph-eye-slash {
-  cursor: pointer;
-  font-size: 25px;
-  text-align: left;
+#passDivSignIn,
+#passDivSignUp {
+  width: 90%;
 }
 
-.register-btn {
-  position: relative;
-  height: 55px;
-  width: 100%;
-  max-width: 500px;
-  overflow: hidden;
-  border: none;
-  border-radius: 30px;
+#eyeIcon {
+  cursor: pointer;
+  justify-self: center;
+  align-self: center;
+  background: transparent;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+#bnSignIn,
+#bnSignUp {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-}
-.register-btn p {
-  font-size: 18px;
-}
-
-.register-btn-loader {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 100%;
+  height: 7vh;
   width: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-.register-btn-loader i {
-  font-size: 18px;
-  animation: spin 1.5s linear infinite;
+  border-radius: 1rem;
 }
 
-.login-panel-bottom-container {
-  height: 15%;
-  width: 90%;
-  box-sizing: border-radius;
-  margin: 0;
-  padding: 0;
-  gap: 0;
+#bottomContainerLT {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: transparent;
+  height: 15%;
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  gap: 0;
 }
 
-.login-panel-bottom-container p {
+#bottomContainerLT p {
   cursor: default;
-  margin: 0.5lvh;
+  margin: 0.5vh;
+}
+
+#bnCreateAC {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  height: 7vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 1rem;
 }
 
 /* LIGHT MODE SETTINGS */
-#app.light-mode {
-  background-color: rgb(250, 250, 250);
+.loginPanel_lightMode {
+  background-color: white;
 }
-#app.light-mode p {
+.loginPanel_lightMode p {
   color: black;
 }
-#app.light-mode i {
+.loginPanel_lightMode #bnBackLT span {
   color: black;
 }
-#app.light-mode .register-form-input-div {
-  border-bottom: 2px solid black;
+.loginPanel_lightMode #signUpContainer div,
+.loginPanel_lightMode #signInContainer div {
+  border: 1px solid black;
 }
-#app.light-mode input {
+.loginPanel_lightMode input {
   color: black;
 }
-#app.light-mode input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+.loginPanel_lightMode input::placeholder {
+  color: black;
 }
-#app.light-mode .register-btn {
+.loginPanel_lightMode #eyeIcon {
+  color: black;
+}
+.loginPanel_lightMode #bnSignIn,
+.loginPanel_lightMode #bnSignUp {
+  color: white;
   background-color: black;
+  border: 1px solid black;
 }
-
-#app.light-mode .register-btn p {
+.loginPanel_lightMode #bnCreateAC {
   color: white;
-}
-
-#app.light-mode .register-btn-loader {
-  background-color: rgb(0, 0, 0);
-}
-
-#app.light-mode .register-btn-loader i {
-  color: white;
+  background-color: black;
 }
 
 /* DARK MODE SETTINGS */
-#app.dark-mode {
+.loginPanel_darkMode {
   background-color: black;
 }
-#app.dark-mode p {
+.loginPanel_darkMode p {
   color: white;
 }
-#app.dark-mode i {
+.loginPanel_darkMode #bnBackLT span {
   color: white;
 }
-#app.dark-mode .register-form-input-div {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+.loginPanel_darkMode #signUpContainer div,
+.loginPanel_darkMode #signInContainer div {
+  border: 1px solid white;
 }
-#app.dark-mode input {
-  color: rgba(255, 255, 255, 0.9);
+.loginPanel_darkMode input {
+  color: white;
 }
-#app.dark-mode input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+.loginPanel_darkMode input::placeholder {
+  color: white;
 }
-#app.dark-mode .register-btn p {
+.loginPanel_darkMode #eyeIcon {
+  color: white;
+}
+.loginPanel_darkMode #bnSignIn,
+.loginPanel_darkMode #bnSignUp {
   color: black;
+  background-color: white;
+  border: 1px solid white;
 }
-
-#app.dark-mode .register-btn-loader {
-  background-color: rgba(240, 240, 240);
-}
-#app.dark-mode .register-btn-loader i {
+.loginPanel_darkMode #bnCreateAC {
   color: black;
+  background-color: white;
 }
