@@ -1,294 +1,373 @@
-#libraryPanel {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  backdrop-filter: blur(10vmax);
-  width: 100vw;
-  height: 100vh;
+#library-panel .top-bar {
+  height: fit-content;
+  min-height: 4rem;
+  width: 100%;
+  box-sizing: border-box;
   margin: 0;
-  padding: 0;
-  border: none;
-}
-#libraryHeader {
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: transparent;
-  height: 10vh;
-  width: 95%;
-  min-height: 4rem;
-  margin: 0;
-  padding: 0;
-  border: none;
 }
-#libraryTitle {
+
+.library-title {
   cursor: default;
-  font-size: 2rem;
-  font-weight: 700;
   margin: 0;
   padding: 0;
+  font: 700 2rem "Segoe UI";
 }
-#bnAddPlaylist {
+
+.add-playlist-btn {
   cursor: pointer;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background: transparent;
-  height: 60%;
+  height: 80%;
   width: 40%;
   max-width: 6rem;
   min-width: 5vh;
+  border: 0.5px solid;
   border-radius: 0.8rem;
-}
-#bnAddPlaylist span {
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-#bnAddPlaylist p {
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-#addPlaylistPanel {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  justify-self: center;
-  align-items: center;
-  align-self: center;
-  margin: auto;
-  padding: 1rem;
-  gap: 2vh;
-  border-radius: 1rem;
-}
-
-#addPlaylistForm {
-  display: flex;
-  flex-direction: column;
-  gap: 2vh;
-}
-
-#addPlaylistPanel input {
-  display: flex;
-  height: 6vh;
-  width: 69vw;
-  font-size: 1rem;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  padding-left: 1vw;
-  border-radius: 0.5rem;
-}
-
-#privacyToggle {
-  position: relative;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  overflow: hidden;
-  height: 6vh;
-  width: 70vw;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 2rem;
+  background: transparent;
+}
+#app.light-mode .add-playlist-btn {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 0.5px solid rgba(0, 0, 0, 0.3);
+}
+#app.dark-mode .add-playlist-btn {
+  background-color: rgb(50, 50, 50);
+  border-color: rgb(50, 50, 50);
+}
+#app.dark-mode.blur-on .add-playlist-btn {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
 }
 
-#privacyToggle p {
+.add-playlist-btn p {
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  height: 100%;
-  width: 50%;
-  margin: 0;
-  padding: 0;
+  text-align: center;
+  font: 500 1rem sans-serif;
 }
 
-#privacyToggleLayer {
+/* ADD PLAYLIST FORM WINDOW */
+.add-playlist-panel {
   position: absolute;
+  z-index: 1;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  width: 50%;
-  height: 6vh;
-  border: none;
-  border-radius: 2rem;
-  transition: all 0.3s ease;
+  left: 0;
+  height: fit-content;
+  width: 80%;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 15px;
+  gap: 2vh;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+}
+#app.light-mode .add-playlist-panel {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 5px rgb(120, 120, 120);
+}
+#app.dark-mode .add-playlist-panel {
+  background-color: rgb(60, 60, 60);
 }
 
-#addPlaylistBtnDiv {
+.add-playlist-form {
+  height: 100%;
+  width: 100%;
+  gap: 2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playlist-form-input-div {
+  height: 50px;
+  width: 95%;
+  display: flex;
+  align-items: center;
+}
+#app.dark-mode .playlist-form-input-div {
+  border-bottom: 2px solid rgb(240, 240, 240);
+}
+#app.light-mode .playlist-form-input-div {
+  border-bottom: 2px solid black;
+}
+
+.playlist-form-input-div i {
+  width: 10%;
+  font-size: 20px;
+  text-align: center;
+}
+
+.add-playlist-panel input {
+  height: 100%;
+  width: 90%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 0 15px;
+  border: none;
+  display: flex;
+  font-size: 18px;
+  background: transparent;
+}
+#app.dark-mode .playlist-form-input {
+  color: white;
+}
+#app.light-mode .playlist-form-input {
+  color: black;
+}
+.add-playlist-panel input::placeholder {
+  font-size: 18px;
+}
+.add-playlist-panel input:focus {
+  outline: none;
+}
+
+.playlist-form-btn-div {
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: transparent;
-  height: 6vh;
-  width: 70vw;
+}
+
+.playlist-form-btn {
+  position: relative;
+  cursor: pointer;
+  height: 100%;
+  width: 150px;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   border: none;
-  border-radius: 0.5rem;
-}
-
-#addPlaylistBtnDiv button {
-  cursor: pointer;
+  border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 48%;
-  margin: 0;
-  padding: 0;
-  border-radius: 0.5rem;
+  background: transparent;
+}
+#app.light-mode .playlist-form-btn {
+  background: black;
+}
+#app.dark-mode .playlist-form-btn {
+  background: white;
 }
 
-#playlistPanel,
-#libraryContent {
+.playlist-form-btn p {
+  font: 500 17px Arial;
+}
+#app.dark-mode .playlist-form-btn p {
+  color: black;
+}
+#app.light-mode .playlist-form-btn p {
+  color: rgb(250, 250, 250);
+}
+
+
+#app.light-mode .playlist-form-btn.cancel {
+  background: transparent;
+}
+#app.dark-mode .playlist-form-btn.cancel {
+  background: transparent;
+}
+
+#app.light-mode .playlist-form-btn.cancel p {
+  color: black;
+}
+#app.dark-mode .playlist-form-btn.cancel p {
+  color: white;
+}
+
+.playlist-btn-loader {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+#app.light-mode .playlist-btn-loader {
+  background-color: black;
+}
+#app.dark-mode .playlist-btn-loader {
+  background-color: rgb(255, 255, 255);
+}
+
+.playlist-btn-loader i {
+  font-size: 18px;
+  animation: spin 1.5s linear infinite;
+}
+#app.light-mode .playlist-btn-loader i {
+  color: white;
+}
+#app.dark-mode .playlist-btn-loader i {
+  color: black;
+}
+
+/* AREA FOR PLAYLISTS */
+.playlist-panel,
+#library-panel .content {
   position: relative;
-  cursor: default;
+  flex-shrink: 0;
+  flex-grow: 1;
+  height: 90%;
+  width: 100%;
+  padding: 0;
+  gap: 3px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   font-size: 3vmin;
-  height: 85%;
-  width: 100%;
-  padding: 0;
-  gap: 0.5vh;
-  border: none;
-  border-radius: 1.5rem;
 }
-#libraryContent::-webkit-scrollbar {
+#app.light-mode .playlist-panel,
+#app.light-mode #library-panel .content {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+#app.dark-mode .playlist-panel,
+#app.dark-mode #library-panel .content {
+  background-color: rgba(30, 30, 30);
+}
+#app.dark-mode.blur-on .playlist-panel,
+#app.dark-mode.blur-on #library-panel .content {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.playlist-panel::-webkit-scrollbar,
+#library-panel .content::-webkit-scrollbar {
   display: none;
 }
-#libraryContentText {
-  justify-self: center;
-  align-self: center;
+
+#library-panel .content .text {
   margin: auto;
 }
-#playlist {
+
+/* PLAYLIST BUTTONS */
+.playlist-btn {
   position: relative;
-  z-index: 0;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
   height: 10%;
   width: 100%;
   min-height: 4rem;
   margin: 0;
   border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
 }
-#playlistInfo {
+
+.playlist-btn-info-div {
+  width: 90%;
+  gap: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 90%;
-  gap: 2vw;
 }
-#playlistPic {
+
+.playlist-btn-pic {
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover;
   height: 6vh;
   width: 6vh;
-  margin: 0;
-  margin-left: 1.5vw;
+  margin: 0 0 0 10px;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 3px;
 }
-#aboutPlaylistDiv {
+
+.playlist-btn-about-div {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  height: 100%;
-  gap: 0.2vh;
 }
 
-#aboutPlaylistDiv p {
+.playlist-btn-about-div p {
   height: fit-content;
   margin: 0;
   padding: 0;
 }
 
-#aboutPlaylistDiv #playlistName {
+.playlist-btn-about-div .playlist-btn-name {
   height: fit-content;
-  font-size: 1.5rem;
-  font-weight: 500;
   margin: 0;
   padding: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
-#aboutPlaylistDiv #aboutPlaylistP {
+
+.playlist-btn-about-div .playlist-btn-about {
   height: fit-content;
   font-size: 0.8rem;
   margin: 0;
   padding: 0;
 }
+#app.light-mode .playlist-btn-about {
+  color: rgba(0, 0, 0, 0.7);
+}
+#app.dark-mode .playlist-btn-about {
+  color: rgba(255, 255, 255, 0.7);
+}
 
-#bnOptions {
+.playlist-options-btn {
   cursor: pointer;
+  height: 7vh;
+  width: 7vh;
+  border: none;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
-  width: 10%;
-  border: none;
+  transition: all 0.2s ease-out;
 }
-#bnOptions span {
-  font-size: 1.5rem;
+.playlist-options-btn:active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.playlist-options-btn i {
+  font-size: 25px;
 }
 
-#playlistPanelHeader {
+/* PLAYLIST WINDOW */
+.playlist-panel-header {
   position: absolute;
   z-index: 2;
   top: 0;
-  left: 0;
   right: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-size: cover;
+  bottom: auto;
+  left: 0;
   height: 8%;
   width: 100%;
   margin: 0;
   padding: 0;
-  border: none;
-}
-
-#playlistPanelHeader button {
-  cursor: pointer;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 1rem;
-  background: transparent;
-  height: 100%;
-  width: fit-content;
-  border: none;
+  background-size: cover;
 }
 
-#playlistPanelHeader button p {
-  font-size: 1rem;
-}
-
-#playlistPanelContent {
+.playlist-panel-content {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -302,27 +381,27 @@
   gap: 0.5vh;
   border: none;
 }
-#playlistPanelContent::-webkit-scrollbar {
+.playlist-panel-content::-webkit-scrollbar {
   display: none;
 }
 
-#playlistInfoPanel {
+.playlist-info-panel {
   position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: hidden;
   height: 20vh;
   width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
   margin: 0;
-  margin-top: 15%;
   padding: 0;
   flex-shrink: 0;
   border: none;
   border-radius: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-#playlistPanelImage {
+.playlist-panel-image {
   background-size: cover;
   height: 100%;
   width: 100%;
@@ -330,388 +409,177 @@
   padding: 0;
 }
 
-#playlistPanelTitle {
+.playlist-panel-title {
   cursor: default;
   position: absolute;
   z-index: 1;
-  left: 0;
-  bottom: 0;
   top: auto;
   right: auto;
-  font-size: 2rem;
-  font-weight: 700;
-  background-size: cover;
+  bottom: 0;
+  left: 0;
   height: 30%;
   width: 100%;
   margin: 0;
-  padding: 0.5rem;
-  padding-bottom: 0;
+  padding: 0 0 10px 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  background-size: cover;
 }
 
-#playlistPanelSongDiv {
+.playlist-panel-song-div {
+  flex-shrink: 0;
+  min-height: 80vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 100px 0;
+  gap: 10px;
+  border: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   background: transparent;
-  height: fit-content;
-  min-height: 80vh;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  flex-shrink: 0;
-  border: none;
+}
+.playlist-panel-song-div::-webkit-scrollbar {
+  display: none;
 }
 
-#playlistSong {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-  height: 7vh;
-  width: 100%;
-  margin: 0;
-  padding: 1%;
-  border: none;
-}
 
-#playlistSongInfo {
-  display: flex;
-  height: 100%;
-  width: 90%;
-  gap: 2vw;
-}
-
-#playlistSongPic {
-  background-size: cover;
-  height: 5vh;
-  width: 5vh;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0.2rem;
-}
-
-#playlistSong button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 10%;
-  padding: 0;
-  margin: 0;
-}
-
-#playlistSong button span {
-  font-size: 1.5rem;
-}
-
-#optionPanel {
+/* OPTIONS FOR PLALYLISTS/SONGS */
+.option-panel {
   position: absolute;
   z-index: 1;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  height: fit-content;
+  width: 50%;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 15px;
+  gap: 0.5vh;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: auto;
-  height: 100%;
-  width: 100%;
-  gap: 0.5vh;
+}
+#app.light-mode .option-panel {
+  background: rgb(240, 240, 240);
+}
+#app.dark-mode .option-panel {
+  background: rgb(60, 60, 60);
 }
 
-#optionPanel button {
+.option-panel-btn {
   cursor: pointer;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 0 0 10px;
+  gap: 10px;
+  border: none;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-size: 1rem;
   font-weight: 700;
-  height: 7%;
-  width: 80%;
-  border: none;
-  border-radius: 1rem;
+  background: transparent;
+}
+.option-panel-btn i {
+  font-size: 20px;
+}
+.option-panel-btn p {
+  font-size: 18px;
+  margin: 0;
+}
+.option-panel-btn.cancel {
+  height: 20px;
+  justify-content: flex-end;
 }
 
-#confirmPanelOuter {
+.confirmation-panel {
   position: absolute;
   z-index: 2;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
+  height: fit-content;
+  width: 60vw;
+  overflow: hidden;
+  border: none;
+  border-radius: 20px;
   margin: auto;
-  gap: 0.5vh;
-}
-
-#confirmPanel {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: rgb(30, 30, 30);
-  height: 35%;
-  width: 80%;
-  min-width: 10rem;
-  border: none;
-  border-radius: 1.5rem;
 }
-
-#DelDisclaimerText {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  height: 70%;
+#app.light-mode.blur-on .confirmation-panel {
+  backdrop-filter: blur(50px);
+  background-color: rgba(255, 255, 255, 0.3);
 }
-
-#delConfirmButtonsDiv {
-  display: flex;
-  justify-content: space-around;
-  align-items: right;
-  height: 30%;
-  width: 100%;
+#app.dark-mode.blur-on .confirmation-panel {
+  backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.3);
 }
-
-#delConfirmButtonsDiv button {
-  height: 70%;
-  border: none;
-  border-radius: 1rem;
-}
-
-#bnCancelDel {
-  cursor: pointer;
-  background-color: rgb(255, 255, 255);
-  color: black;
-  width: 40%;
-}
-
-#bnConfirmDel {
-  cursor: pointer;
-  background-color: rgba(255, 47, 47, 0.7);
-  color: white;
-  width: 40%;
-}
-
-#libraryPanelSpace {
-  height: 30vh;
-  width: 100%;
-  background: transparent;
-  border: none;
-  flex-shrink: 0;
-}
-
-/* DARK MODE SETTINGS */
-.libraryPanel_darkMode {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-.libraryPanel_darkMode p {
-  color: white;
-}
-
-.libraryPanel_darkMode span {
-  color: white;
-}
-
-.libraryPanel_darkMode #bnAddPlaylist {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 0.5px solid rgba(255, 255, 255, 0.3);
-}
-
-.libraryPanel_darkMode #bnAddPlaylist span {
-  color: white;
-}
-
-.libraryPanel_darkMode #bnAddPlaylist p {
-  color: white;
-}
-
-.libraryPanel_darkMode #playlistPanel,
-.libraryPanel_darkMode #libraryContent {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.libraryPanel_darkMode #playlist span {
-  color: white;
-}
-
-.libraryPanel_darkMode #aboutPlaylistP {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.libraryPanel_darkMode #optionPanel {
-  background-color: rgb(0, 0, 0, 0.2);
-}
-
-.libraryPanel_darkMode #optionPanel button {
-  color: white;
-  background-color: rgba(25, 25, 25);
-}
-
-.libraryPanel_darkMode #addPlaylistPanel {
-  background-color: rgb(0, 0, 0);
-}
-
-.libraryPanel_darkMode #addPlaylistPanel input {
-  color: white;
-  border: 1px solid rgb(255, 255, 255);
-}
-
-.libraryPanel_darkMode #privacyToggle {
-  background-color: rgba(255, 255, 255, 0.07);
-}
-
-.libraryPanel_darkMode #privacyToggleLayer {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.libraryPanel_darkMode #bnCancelAddPlaylist {
-  background: transparent;
-  color: white;
-  border: 1px solid white;
-}
-
-.libraryPanel_darkMode #bnCancelAddPlaylist p {
-  color: white;
-}
-
-.libraryPanel_darkMode #bnConfirmAddPlaylist {
-  background: white;
-  color: rgb(0, 0, 0);
-  border: 1px solid white;
-}
-
-.libraryPanel_darkMode #bnConfirmAddPlaylist p {
-  color: rgb(0, 0, 0);
-}
-
-.libraryPanel_darkMode #playlistPanelHeader {
-  background: linear-gradient(
-    to bottom,
-    rgb(0, 0, 0),
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0)
-  );
-}
-
-.libraryPanel_darkMode #playlistPanelTitle {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0)
-  );
-}
-
-/* LIGHT MODE SETTINGS */
-.libraryPanel_lightMode {
-  background-color: rgba(255, 255, 255, 0.75);
-}
-.libraryPanel_lightMode p {
-  color: black;
-}
-
-.libraryPanel_lightMode span {
-  color: black;
-}
-
-.libraryPanel_lightMode #bnAddPlaylist {
-  color: black;
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 0.5px solid rgba(0, 0, 0, 0.3);
-}
-
-.libraryPanel_lightMode #bnAddPlaylist span {
-  color: black;
-}
-
-.libraryPanel_lightMode #bnAddPlaylist p {
-  color: black;
-}
-
-.libraryPanel_lightMode #playlistPanel,
-.libraryPanel_lightMode #libraryContent {
-  background-color: rgba(255, 255, 255, 0.6);
-}
-
-.libraryPanel_lightMode #playlist span {
-  color: black;
-}
-
-.libraryPanel_lightMode #aboutPlaylistP {
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.libraryPanel_lightMode #optionPanel {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.libraryPanel_lightMode #optionPanel button {
-  color: black;
+#app.light-mode .confirmation-panel {
   background-color: white;
+  box-shadow: 0 0 5px rgb(120, 120, 120);
+}
+#app.dark-mode .confirmation-panel {
+  background-color: black;
 }
 
-.libraryPanel_lightMode #addPlaylistPanel {
-  background-color: rgb(255, 255, 255);
+.confirmation-panel-header {
+  width: 100%;
+  padding: 10px 0;
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 0.5px solid rgb(150, 150, 150);
 }
 
-.libraryPanel_lightMode #addPlaylistPanel input {
+.confirmation-panel-content {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 15px 5px;
+  text-align: center;
+  border-bottom: 0.5px solid rgb(100, 100, 100);
+  font-size: 17px;
+  font-weight: 500;
+  color: white;
+}
+
+.confirmation-panel-btn {
+  cursor: pointer;
+  height: 50px;
+  width: 100%;
+  border: none;
+  border-bottom: 0.5px solid rgb(150, 150, 150);
   color: black;
-  border: 1px solid black;
+  background-color: transparent;
 }
-
-.libraryPanel_lightMode #privacyToggle {
-  color: black;
-  background-color: rgba(0, 0, 0, 0.2);
+.confirmation-panel-btn p {
+  font-size: 17px;
+  font-weight: 700;
 }
-
-.libraryPanel_lightMode #privacyToggleLayer {
-  background-color: rgba(0, 0, 0, 0.2);
+.confirmation-panel-btn p {
+  color: red !important;
 }
-
-.libraryPanel_lightMode #addPlaylistPanel {
-  background-color: rgb(255, 255, 255);
+.confirmation-panel-btn.cancel {
+  border: none;
 }
-
-.libraryPanel_lightMode #addPlaylistPanel button {
-  border: 1px solid black;
+#app.light-mode .confirmation-panel-btn.cancel p {
+  color: black !important;
 }
-
-.libraryPanel_lightMode #bnCancelAddPlaylist p {
-  color: black;
-}
-
-.libraryPanel_lightMode #bnConfirmAddPlaylist {
-  background-color: rgb(0, 0, 0);
-}
-
-.libraryPanel_lightMode #bnConfirmAddPlaylist p {
-  color: rgb(255, 255, 255);
-}
-
-.libraryPanel_lightMode #playlistPanelHeader {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255),
-    rgba(255, 255, 255, 0)
-  );
-}
-
-.libraryPanel_lightMode #playlistPanelTitle {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.7)
-  );
+#app.dark-mode .confirmation-panel-btn.cancel p {
+  color: white !important;
 }

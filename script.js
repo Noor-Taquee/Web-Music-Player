@@ -1,175 +1,168 @@
 //ELEMENTS==========================
-let loadingDiv = document.getElementById("loadingDiv");
-let main = document.getElementById("main");
-let bottomDiv = document.getElementById("bottomDiv");
-let switchDiv = document.getElementById("switchDiv");
-let bnHomePanel = document.getElementById("bnHomePanel");
-let bnSearchPanel = document.getElementById("bnSearchPanel");
-let bnLibraryPanel = document.getElementById("bnLibraryPanel");
-let bnAccountPanel = document.getElementById("bnAccountPanel");
 
-//CREATING ELEMENTS===================
-loadingDiv.className = "loadingDiv_darkMode";
-bottomDiv.className = "bottomDiv_darkMode";
+bnAccountPanel.addEventListener("click", () => switchTo(accountPanel));
+bnHomePanel.addEventListener("click", () => switchTo(homePanel));
+bnSearchPanel.addEventListener("click", () => switchTo(searchPanel));
+bnLibraryPanel.addEventListener("click", () => switchTo(libraryPanel));
 
-let miniPlayer = document.createElement("div");
-miniPlayer.id = "miniPlayer";
+// Setting up mini player
+let miniPlayer = createDiv("mini-player");
+bottomDiv.insertBefore(miniPlayer, switchDiv);
 
-let miniInfoDiv = document.createElement("div");
+let miniInfoDiv = createDiv("mini-info-div");
 miniPlayer.appendChild(miniInfoDiv);
-miniInfoDiv.id = "miniInfoDiv";
 miniInfoDiv.addEventListener("click", expandToplayer);
-let miniAlbumArt = document.createElement("p");
+
+// Album art
+let miniAlbumArt = createTextField("mini-album-art", null);
 miniInfoDiv.appendChild(miniAlbumArt);
-miniAlbumArt.id = "miniAlbumArt";
-let miniTrackInfoDiv = document.createElement("div");
+// If no album art, show icon
+let miniPlayerSongIcon = createIcon("bold", "headphones");
+
+// Song playing info
+let miniTrackInfoDiv = createDiv("mini-track-info-div");
 miniInfoDiv.appendChild(miniTrackInfoDiv);
-miniTrackInfoDiv.id = "miniTrackInfoDiv";
-let miniTrackName = document.createElement("p");
+
+// Track title and artist name
+let miniTrackName = createTextField("mini-track-name", null);
 miniTrackInfoDiv.appendChild(miniTrackName);
-miniTrackName.id = "miniTrackName";
-let miniArtistName = document.createElement("p");
+let miniArtistName = createTextField("mini-artist-name", null);
 miniTrackInfoDiv.appendChild(miniArtistName);
-miniArtistName.id = "miniArtistName";
 
-let miniPlaybackControlsDiv = document.createElement("div");
+// Playback controls for mini player
+let miniPlaybackControlsDiv = createDiv("mini-playback-controls-div");
 miniPlayer.appendChild(miniPlaybackControlsDiv);
-miniPlaybackControlsDiv.id = "miniPlaybackControlsDiv";
 
-let miniBnPrev = document.createElement("button");
+// skip back
+let miniBnPrev = createButton(
+  null,
+  "mini-playback-control-btn",
+  createIcon("fill", "skip-back")
+);
+miniBnPrev.addEventListener("click", () => changeSong("prev"));
 miniPlaybackControlsDiv.appendChild(miniBnPrev);
-miniBnPrev.id = "miniBnPrev";
-let miniPrevIcon = document.createElement("span");
-miniBnPrev.appendChild(miniPrevIcon);
-miniPrevIcon.className = "material-symbols-rounded";
-miniPrevIcon.textContent = "skip_previous";
 
-let miniBnPlay = document.createElement("button");
+let miniPlaybackBtnIcon = createIcon("bold", "spinner");
+let miniBnPlay = createButton(
+  null,
+  "mini-playback-control-btn do-spin",
+  miniPlaybackBtnIcon,
+  null
+);
 miniPlaybackControlsDiv.appendChild(miniBnPlay);
-miniBnPlay.id = "miniBnPlay";
+miniBnPlay.id = "mini-play-btn";
 
-let miniPlaybackBtnIcon = document.createElement("span");
-miniBnPlay.appendChild(miniPlaybackBtnIcon);
-miniPlaybackBtnIcon.id = "miniLoadingIcon";
-miniPlaybackBtnIcon.className = "material-symbols-rounded";
-miniPlaybackBtnIcon.textContent = "progress_activity";
-
-let miniBnNext = document.createElement("button");
+let miniBnNext = createButton(
+  null,
+  "mini-playback-control-btn",
+  createIcon("fill", "skip-forward")
+);
+miniBnNext.addEventListener("click", () => changeSong("next"));
 miniPlaybackControlsDiv.appendChild(miniBnNext);
-miniBnNext.id = "miniBnNext";
-let miniNextIcon = document.createElement("span");
-miniBnNext.appendChild(miniNextIcon);
-miniNextIcon.className = "material-symbols-rounded";
-miniNextIcon.textContent = "skip_next";
 
-let currentTab = null;
-let currentBtn = null;
-let miniPlayerRequired = false;
+// VARIABLES ===========================
+let modeChangeElements = [main, loadingDiv, bottomDiv];
 
+// FUNCTIONS ===========================
 function initMiniPlayer() {
   miniAlbumArt.style.backgroundImage = `url(${currentAlbumArt})`;
   miniTrackName.textContent = currentTrackName;
   miniArtistName.textContent = currentArtistName;
-  miniPlaybackBtnIcon.textContent = "play_arrow";
-  miniPlaybackBtnIcon.id = "any";
+  miniPlaybackBtnIcon.className = "ph-fill ph-play";
+  miniBnPlay.classList.remove("do-spin");
   miniBnPlay.addEventListener("click", changeState);
 }
 
 function expandToplayer() {
-  switchTo("playerPanel");
+  playerPanel.style.display = "flex";
+  playerPanel.style.animation = "slideUp 0.3s ease";
+  playerPanel.addEventListener(
+    "animationend",
+    () => {
+      playerPanel.style.animation = "none";
+    },
+    { once: true }
+  );
 }
 
-function createScreen(defaultTab, btn) {
-  main.removeChild(bottomDiv);
-  main.appendChild(defaultTab);
-  main.appendChild(bottomDiv);
-  btn.id = "activeButton";
-  currentTab = defaultTab;
-  currentBtn = btn;
-  bottomDiv.style.height = "35vw";
-  bottomDiv.removeChild(switchDiv);
-  bottomDiv.appendChild(miniPlayer);
-  bottomDiv.appendChild(switchDiv);
-  switchDiv.style.borderTopLeftRadius = "0";
-  switchDiv.style.borderTopRightRadius = "0";
-  switchDiv.style.borderBottomLeftRadius = "2rem";
-  switchDiv.style.borderBottomRightRadius = "2rem";
-  switchDiv.style.height = "50%";
-}
 function switchTo(destination) {
-  currentBtn.id = "nonActiveBtn";
-  if (currentTab != destination) {
-    if (destination == "homePanel") {
-      main.replaceChild(homePanel, currentTab);
-      // history.pushState(switchTo(`${currentTab}`), null, `./${homePanel.id}`);
-      currentTab = homePanel;
-      currentBtn = bnHomePanel;
-      miniPlayerRequired = true;
-    } else if (destination == "playerPanel") {
-      main.replaceChild(playerPanel, currentTab);
-      // history.pushState(switchTo(`${currentTab}`), null, `./${playerPanel.id}`);
-      currentTab = playerPanel;
-      miniPlayerRequired = false;
-    } else if (destination == "searchPanel") {
-      main.replaceChild(searchPanel, currentTab);
-      // history.pushState(switchTo(`${currentTab}`), null, `./${searchPanel.id}`);
-      currentTab = searchPanel;
-      currentBtn = bnSearchPanel;
-      miniPlayerRequired = true;
-    } else if (destination == "libraryPanel") {
-      main.replaceChild(libraryPanel, currentTab);
-      // history.pushState(switchTo(`${currentTab}`), null, `./${libraryPanel.id}`);
-      currentTab = libraryPanel;
-      currentBtn = bnLibraryPanel;
-      miniPlayerRequired = true;
-    } else {
-      main.replaceChild(accountPanel, currentTab);
-      // history.pushState(switchTo(`${currentTab}`), null, `./${accountPanel.id}`);
-      currentTab = accountPanel;
-      currentBtn = bnAccountPanel;
-      miniPlayerRequired = true;
-    }
-    if (currentTab != playerPanel) {
-      currentBtn.id = "activeButton";
-    }
-    if (miniPlayerRequired) {
-      if (!bottomDiv.contains(miniPlayer)) {
-        bottomDiv.style.height = "35vw";
-        bottomDiv.style.maxHeight = "15vh";
-        bottomDiv.removeChild(switchDiv);
-        bottomDiv.appendChild(miniPlayer);
-        bottomDiv.appendChild(switchDiv);
-        switchDiv.style.borderTopLeftRadius = "0";
-        switchDiv.style.borderTopRightRadius = "0";
-        switchDiv.style.borderBottomLeftRadius = "2rem";
-        switchDiv.style.borderBottomRightRadius = "2rem";
-        switchDiv.style.height = "50%";
-      }
-    } else {
-      if (bottomDiv.contains(miniPlayer)) {
-        bottomDiv.removeChild(miniPlayer);
-        bottomDiv.style.height = "17.5vw";
-        bottomDiv.style.maxHeight = "8vh";
-        switchDiv.style.borderRadius = "3rem";
-        switchDiv.style.height = "100%";
-      }
-    }
-  }
+  destination.scrollIntoView();
 }
 
-let totalFiles = 10;
-let attendFiles = 0;
-function attend() {
-  attendFiles++;
-  if (attendFiles == totalFiles) {
-    startBackend();
-  }
-}
 attend();
 
-miniBnNext.addEventListener("click", () => changeSong("next"));
-miniBnPrev.addEventListener("click", () => changeSong("prev"));
-bnHomePanel.addEventListener("click", () => switchTo("homePanel"));
-bnSearchPanel.addEventListener("click", () => switchTo("searchPanel"));
-bnLibraryPanel.addEventListener("click", () => switchTo("libraryPanel"));
-bnAccountPanel.addEventListener("click", () => switchTo("accountPanel"));
+let currentTabBtn = bnHomePanel;
+let currentTabBtnI = bnHomePanelI;
+innerApp.addEventListener("scroll", function checkTabInView() {
+  currentTabBtn.classList.remove("active");
+  currentTabBtnI.classList.remove("ph-fill");
+  currentTabBtnI.classList.add("ph-bold");
+  if (isElementCentered(homePanel)) {
+    currentTabBtn = bnHomePanel;
+    currentTabBtnI = bnHomePanelI;
+  } else if (isElementCentered(searchPanel)) {
+    currentTabBtn = bnSearchPanel;
+    currentTabBtnI = bnSearchPanelI;
+  } else if (isElementCentered(libraryPanel)) {
+    currentTabBtn = bnLibraryPanel;
+    currentTabBtnI = bnLibraryPanelI;
+  } else if (isElementCentered(accountPanel)) {
+    currentTabBtn = bnAccountPanel;
+    currentTabBtnI = bnAccountPanelI;
+  }
+  currentTabBtn.classList.add("active");
+  currentTabBtnI.classList.remove("ph-bold");
+  currentTabBtnI.classList.add("ph-fill");
+});
+tolerance = 10;
+scrollParent = innerApp;
+function isElementCentered(element) {
+  const containerRect = scrollParent.getBoundingClientRect();
+  const elementRect = element.getBoundingClientRect();
+
+  const containerCenter = containerRect.left + containerRect.width / 2;
+  const elementCenter = elementRect.left + elementRect.width / 2;
+
+  return Math.abs(containerCenter - elementCenter) <= tolerance;
+}
+
+function setRippleStyle() {
+  const buttons = document.querySelectorAll(".ripple");
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+      let circle = document.createElement("span");
+      circle.classList.add("ripple-span");
+
+      let rect = button.getBoundingClientRect();
+      let diameter = Math.max(rect.width, rect.height);
+      let radius = diameter / 2;
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+
+      circle.style.left = `${event.clientX - rect.left - radius}px`;
+      circle.style.top = `${event.clientY - rect.top - radius}px`;
+
+      let existingRipple = button.querySelector(".ripple-span");
+      if (existingRipple) {
+        existingRipple.remove();
+      }
+
+      button.appendChild(circle);
+
+      setTimeout(() => {
+        circle.remove();
+      }, 600);
+    });
+  });
+}
+
+function checkOrientation() {
+  if (window.innerHeight >= window.innerWidth) {
+    app.classList.remove("horizontal");
+    app.classList.add("vertical");
+  } else {
+    app.classList.remove("vertical");
+    app.classList.add("horizontal");
+  }
+}
+window.addEventListener("resize", checkOrientation);
