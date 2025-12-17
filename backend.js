@@ -1,12 +1,13 @@
-let data = null;
-let userData = null;
-let usersList = [];
+let userUIDmap = null; // {username: [UID, password]}
+let usersList = []; //[user1, user2]
+let userData = null; //{}
 
-let userNameKey = "";
+let userUID = "";
 let userName = "";
+let userProfileName = "";
 let accountPassword = "";
 let profilePicImage = "";
-let themeColorPref = "light";
+let themeColorPref = "";
 let historyPref = 1;
 let favouriteSongList = [];
 let searchedTextList = [];
@@ -22,46 +23,6 @@ let dropbox = new Dropbox.Dropbox({
     "tx6ls_Ky8d8AAAAAAAAAAU7Tdtu3uwsD7jwGOUW91scfyH-19uhb3D9meNfK72nL",
   clientSecret: "il7htvq6cz94oqm",
 });
-
-function startBackend() {
-  fetchUsersInfo().then(() => {
-    fetchSongData();
-  });
-}
-
-let count = 0;
-function songAttendance() {
-  count++;
-  if (count >= 6) {
-    updateSongInfo();
-    try {
-      setDevicePlayer();
-    } catch {}
-    let storedUserName = localStorage.getItem("username");
-    let storedPass = localStorage.getItem("password");
-    if (
-      storedUserName != null &&
-      usersList.includes(storedUserName) &&
-      storedPass == data[storedUserName].password
-    ) {
-      fetchUserData(localStorage.getItem("username")).then(() => {
-        loadingDiv.style.display = "none";
-        main.style.display = "flex";
-      });
-    } else {
-      loadingDiv.style.display = "none";
-      main.style.display = "flex";
-      f_changeThemeColor(themeColorPref);
-    }
-  }
-}
-
-function updateDataFile() {
-  fetchUsersInfo().then(() => {
-    data[userNameKey] = userData;
-  });
-  return dumpInfo("/JSON/UserFile.json", data);
-}
 function dumpInfo(path, data) {
   return dropbox.filesUpload({
     path: path,
@@ -71,7 +32,6 @@ function dumpInfo(path, data) {
     mute: true,
   });
 }
-
 function loadInfo(path) {
   return dropbox
     .filesDownload({ path: path })
@@ -80,7 +40,81 @@ function loadInfo(path) {
       return JSON.parse(text);
     });
 }
+
+function startBackend() {
+  // Collects data from database
+  fetchSongData();
+  fetchUsersInfo().then(() => {
+    checkLocalStorage();
+  });
+  fetchArtistsData();
+}
+
+function fetchUsersInfo() {
+  // Gets allUsers info from database
+  loadingMessage.textContent = "progress: Collecting users...";
+  return loadInfo("/JSON/UserList.json").then((response) => {
+    userUIDmap = response;
+    usersList = Object.keys(response);
+    loadingMessage.textContent = "progress: users collected";
+  });
+}
+
+function checkLocalStorage() {
+  loadingMessage.textContent = "progress: checking saved users";
+  let username = localStorage.getItem("username");
+  let password = localStorage.getItem("password");
+  if (
+    username !== null &&
+    userUIDmap[username] &&
+    userUIDmap[username][1] == password
+  ) {
+    loadingMessage.textContent = "progress: user found in device";
+    loadingProgress.style.width = "90%";
+    loginUser(userUIDmap[username][0]).then(() => {
+      loadingProgress.style.width = "100%";
+      loadingStatusDiv.style.display = "none";
+      loadingDiv.style.display = "none";
+      checkOrientation();
+      main.style.display = "flex";
+    });
+  } else {
+    loadingMessage.textContent = "progress: No users found in this device!";
+    loadingProgress.style.width = "100%";
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    loadingStatusDiv.style.display = "none";
+    loadingDiv.style.display = "none";
+    checkOrientation();
+    main.style.display = "flex";
+  }
+}
+
+function updateDataFile() {
+  console.log(userUID);
+  return dumpInfo(`/USERS/${userUID}.json`, userData).then(
+    console.log("data file updated!")
+  );
+}
+
+let songCount = 0;
+let songLoaded = false;
+function songAttendance() {
+  // Tracks if all song data has arrived
+  songCount++;
+  if (songCount >= 6) {
+    loadingMessage.textContent = "progress: getting user data...";
+    loadingProgress.style.width = "95%";
+    songLoaded = true;
+    updateUI();
+    updateSongInfo();
+    try {
+      setDevicePlayer();
+    } catch {}
+  }
+}
 function fetchSongData() {
+  loadingMessage.textContent = "progress: getting songs ready...";
   loadInfo("/JSON/HindiSongs.json").then((data) => {
     HindiTitles = Object.keys(data);
     Object.assign(songData, data);
@@ -116,7 +150,7 @@ function fetchSongData() {
     loadHomeSongs(SpanishTitles, spanishSongDivCon);
     songAttendance();
   });
-  return loadInfo("/JSON/Tunes.json").then((data) => {
+  loadInfo("/JSON/Tunes.json").then((data) => {
     TunesTitles = Object.keys(data);
     Object.assign(songData, data);
     titleNames.push(...TunesTitles);
@@ -124,91 +158,119 @@ function fetchSongData() {
     songAttendance();
   });
 }
+
+let artistCount = 0;
+let artistLoaded = false;
+function artistAttendance() {
+  // Tracks if all artist data has arrived
+  artistCount++;
+  if (artistCount >= 6) {
+    artistLoaded = true;
+    updateSongInfoUI();
+  }
+}
 function fetchArtistsData() {
   loadInfo("/JSON/hindiArtists.json").then((data) => {
     Object.assign(artistData, data);
     hindiArtists = Object.keys(data);
     artistNames.push(...hindiArtists);
+    artistAttendance();
   });
   loadInfo("/JSON/englishArtists.json").then((data) => {
     Object.assign(artistData, data);
     englishArtists = Object.keys(data);
     artistNames.push(...englishArtists);
+    artistAttendance();
   });
   loadInfo("/JSON/punjabiArtists.json").then((data) => {
     Object.assign(artistData, data);
     punjabiArtists = Object.keys(data);
     artistNames.push(...punjabiArtists);
+    artistAttendance();
   });
   loadInfo("/JSON/phonkArtists.json").then((data) => {
     Object.assign(artistData, data);
     phonkArtists = Object.keys(data);
     artistNames.push(...phonkArtists);
+    artistAttendance();
   });
   loadInfo("/JSON/spanishArtists.json").then((data) => {
     Object.assign(artistData, data);
     spanishArtists = Object.keys(data);
     artistNames.push(...spanishArtists);
+    artistAttendance();
   });
-  return loadInfo("/JSON/tunesArtists.json")
-    .then((data) => {
-      Object.assign(artistData, data);
-      tunesArtists = Object.keys(data);
-      artistNames.push(...tunesArtists);
-    })
-    .then(() => {});
-}
-
-function fetchUsersInfo() {
-  return loadInfo("/JSON/UserFile.json").then((response) => {
-    data = response;
-    usersList = Object.keys(data);
+  loadInfo("/JSON/tunesArtists.json").then((data) => {
+    Object.assign(artistData, data);
+    tunesArtists = Object.keys(data);
+    artistNames.push(...tunesArtists);
+    artistAttendance();
   });
 }
 
-function fetchUserData(userGivenName) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      userData = data[userGivenName];
-      userName = userData.profileName;
-      profilePicImage = userData.profilePic;
-      accountPassword = userData.password;
-      themeColorPref = userData.themeColor;
-      favouriteSongList = userData.favouriteSongList;
-      recentlyPlayedSongList = userData.recentlyPlayedSongList;
-      searchedTextList = userData.searchedTextList;
-      searchedSongList = userData.searchedSongList;
-      likedSongList = userData.likedSongList;
-      playlistList = userData.playlistList;
-      notificationsList = userData.notificationsList;
-      localStorage.setItem("username", userGivenName);
-      localStorage.setItem("password", accountPassword);
-      signedIn = true;
-      showInfo();
-      loadPlaylists();
-      loadRecentlyPlayedSongs();
-      loadSearchHistory();
-      loadNotifications();
-      resolve();
-      setHistoryPref(userData.allowPref);
-      f_changeThemeColor(userData.themeColor);
-    }, 1000);
+function loginUser(UID) {
+  // Gets data of a specific user
+  userUID = UID;
+  loadingMessage.textContent = "progress: logging you in...";
+  return loadInfo(`/USERS/${UID}.json`).then((data) => {
+    userData = data;
+    userName = userData.userName;
+    userProfileName = userData.profileName;
+    profilePicImage = userData.profilePic;
+    accountPassword = userData.password;
+    recentlyPlayedSongList = userData.recentlyPlayedSongList;
+    searchedTextList = userData.searchedTextList;
+    searchedSongList = userData.searchedSongList;
+    playlistList = userData.playlistList;
+    favouriteSongList = userData.favouriteSongList;
+    notificationsList = userData.notificationsList;
+    themeColorPref = userData.themeColor;
+    historyPref = userData.allowHistory;
+    localStorage.setItem("username", userName);
+    localStorage.setItem("password", accountPassword);
+    signedIn = true;
+    showInfo();
+    loadNotifications();
+    setHistoryPref(historyPref);
+    f_changeThemeColor(themeColorPref);
+    updateUI();
+    loadingMessage.textContent = "progress: login successful!";
   });
+}
+
+function updateUI() {
+  if (songLoaded && signedIn) {
+    loadingMessage.textContent =
+      "progress: preparing your songs and playlists...";
+    loadRecentlyPlayedSongs();
+    loadPlaylists();
+    loadSearchHistory();
+    setRippleStyle();
+  }
 }
 
 function sendNotification(receiver, title, content) {
-  data[receiver].notificationsList.unshift({
-    title: title,
-    date: `${genDate()}`,
-    time: `${genTime()}`,
-    content: content,
+  return loadInfo(`/USERS/${userUIDmap[receiver][0]}.json`).then((data) => {
+    data.notificationsList.unshift({
+      title: title,
+      date: `${genDate()}`,
+      time: `${genTime()}`,
+      content: content,
+    });
+    return dumpInfo(`/USERS/${userUIDmap[receiver][0]}.json`, data);
   });
 }
 
 function genDate() {
   let currentDate = new Date();
   let day = currentDate.getDate();
+  if (day < 10) {
+    day = `0${day}`;
+  }
   let month = currentDate.getMonth() + 1;
+  if (month < 10) {
+    month = `0${month}`;
+  }
   let year = currentDate.getFullYear();
   return `${day}/${month}/${year}`;
 }
@@ -216,9 +278,51 @@ function genDate() {
 function genTime() {
   let currentTime = new Date();
   let hours = currentTime.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
   let minutes = currentTime.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let seconds = currentTime.getSeconds();
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
   return `${hours}:${minutes}:${seconds}`;
+}
+
+function generateUID() {
+  let current = new Date();
+  return `user-${current.getFullYear()}${current.getDate()}-${current.getHours()}${current.getMinutes()}${current.getSeconds()}${current.getMilliseconds()}`;
+}
+
+function createNewUser(userGivenFullName, userGivenName, userGivenPass) {
+  userUID = generateUID();
+  userUIDmap[userGivenName] = [userUID, userGivenPass];
+  let newUserData = {
+    userName: userGivenName,
+    password: userGivenPass,
+    profileName: userGivenFullName,
+    profilePic: "",
+    playlistList: [],
+    recentlyPlayedSongList: [],
+    searchedTextList: [],
+    searchedSongList: [],
+    favouriteSongList: [],
+    notificationsList: [],
+    allowHistory: 1,
+    themeColor: "light",
+  };
+  return dumpInfo("/JSON/UserList.json", userUIDmap).then(() => {
+    return dumpInfo(`/USERS/${userUID}.json`, newUserData).then(() => {
+      return sendNotification(
+        "noortaquee",
+        "ACCOUNT CREATION",
+        `${userGivenFullName} created a new account.`
+      );
+    });
+  });
 }
 
 attend();
