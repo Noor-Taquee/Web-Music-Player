@@ -36,45 +36,38 @@ let artistNames = [];
 let PlayerSongIcon = createIcon("bold", "headphones");
 
 function updateSongInfo() {
-  currentSong = songData[titleNames[currentSongIndex]];
-  currentAlbumArt = currentSong.image;
-  currentTrackName = currentSong.name;
-  currentArtistName = "";
-  for (let artist of currentSong.artist) {
-    if (!currentArtistName == "") {
-      currentArtistName += ", ";
-    }
-    currentArtistName += `${artist}`;
+  // currentSong is now the Object from Postgres: { songname, songfile, songimage, etc. }
+  currentTrackName = currentSong.songname;
+  currentAlbumArt = currentSong.songimage;
+  currentArtistName = currentSong.artistname || "Unknown Artist";
+
+  // Handle Dropbox Direct Link: Replace dl=0 with raw=1
+  let streamUrl = currentSong.songfile;
+  if (streamUrl.includes("www.dropbox.com")) {
+    streamUrl = streamUrl.replace("dl=0", "raw=1");
   }
-  song.src = currentSong.audio;
+  
+  song.src = streamUrl;
   main.style.backgroundImage = `url(${currentAlbumArt})`;
+  
   updateSecondaryButtons();
-  if (artistNames.length > 0) {
+  if (artistsList.length > 0) {
     loadSongInfo();
   }
 }
 
-function registerSong() {
-  if (signedIn) {
-    if (userData.recentlyPlayedSongList[0] != titleNames[currentSongIndex]) {
-      if (userData.allowHistory == 1) {
-        if (
-          userData.recentlyPlayedSongList.includes(titleNames[currentSongIndex])
-        ) {
-          userData.recentlyPlayedSongList.splice(
-            userData.recentlyPlayedSongList.indexOf(
-              titleNames[currentSongIndex]
-            ),
-            1
-          );
-        }
-        userData.recentlyPlayedSongList.unshift(titleNames[currentSongIndex]);
-        if (userData.recentlyPlayedSongList.length > 30) {
-          userData.recentlyPlayedSongList.pop();
-        }
-        loadRecentlyPlayedSongs();
-        updateDataFile();
-      }
+async function registerSong() {
+  if (currentUser) {
+    // Optional: Send a request to your backend to update 'songStreams' 
+    // or add to a 'RecentlyPlayed' table.
+    try {
+      await apiRequest('register-play', 'POST', {
+        userID: currentUser.userid,
+        songID: currentSong.songid
+      });
+      console.log("Play history updated in Neon");
+    } catch (err) {
+      console.warn("Failed to save history to DB");
     }
   }
 }
@@ -125,25 +118,15 @@ function changePicture(partTochange) {
 }
 
 function nextSong() {
-  if (currentSongIndex < titleNames.length - 1) {
+  if (currentSongIndex < songsList.length - 1) {
     currentSongIndex++;
+    currentSong = songsList[currentSongIndex];
+    
     updateSongInfo();
     showLoading();
-    main.style.backgroundImage = `url(${currentAlbumArt})`;
+    // ... animation logic remains the same ...
     changePicture("miniPlayer");
-    if (main.contains(playerPanel) && pictureDiv.contains(albumArt)) {
-      pictureDiv.style.animation = "flash 0.2s ease";
-      pictureDiv.addEventListener(
-        "animationend",
-        () => {
-          changePicture("player");
-          pictureDiv.style.animation = "flash 0.2s ease";
-        },
-        { once: true }
-      );
-    } else {
-      changePicture("player");
-    }
+    changePicture("player");
   }
 }
 
@@ -151,11 +134,14 @@ function prevSong() {
   if (song.currentTime < 5) {
     if (currentSongIndex > 0) {
       currentSongIndex--;
-      recentlyPlayedSongList.push(titleNames[currentSongIndex]);
+      currentSong = songsList[currentSongIndex]; // Updated: use songsList
+      
       updateSongInfo();
       showLoading();
       main.style.backgroundImage = `url(${currentAlbumArt})`;
       changePicture("miniPlayer");
+      
+      // Animation logic
       if (main.contains(playerPanel) && pictureDiv.contains(albumArt)) {
         pictureDiv.style.animation = "fadeOutAhead 0.2s ease";
         pictureDiv.addEventListener(
@@ -189,26 +175,19 @@ function setTimeTo(newTime) {
   coveredTime = formatTime(song.currentTime);
 }
 
-function playSong(songToPlay) {
+function playSong(songObject) {
   if (musicPlaying) {
     stopMusic();
   }
-  currentSongIndex = titleNames.indexOf(songToPlay);
+  
+  // Set current song and find its index in the main list for Prev/Next logic
+  currentSong = songObject;
+  currentSongIndex = songsList.findIndex(s => s.songid === songObject.songid);
+  
   updateSongInfo();
   showLoading();
   songChanged = true;
 }
-song.addEventListener("loadedmetadata", () => {
-  totalTime = formatTime(song.duration);
-  initPlayer();
-  initMiniPlayer();
-  try {
-    updateDevicePlayer();
-  } catch {}
-  if (songChanged) {
-    startMusic();
-  }
-});
 
 // SETTING DEVICE PLAYER ================
 let DevicePlayer = true;

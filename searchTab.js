@@ -87,59 +87,66 @@ function loadSearchHistory() {
   loadSearchTextHistory();
   loadSearchSongHistory();
 }
-
+// --- MODIFIED INSTANT SEARCH ---
 function findSearchMatches() {
-  let searchedStr = searchBox.value.toLowerCase();
+  let searchedStr = searchBox.value.toLowerCase().trim();
+  
   if (searchedStr.length < 1) {
     showHistory();
   } else {
-    let resultList = {};
-    for (let songs of titleNames) {
-      if (songs.toLowerCase().includes(searchedStr)) {
-        resultList[songs] = songs.toLowerCase().indexOf(searchedStr);
-      }
-    }
-    let sortedResultList = Object.entries(resultList).sort(
-      (a, b) => a[1] - b[1]
+    // Filter the SQL objects list
+    let resultList = songsList.filter(song => 
+      song.songname.toLowerCase().includes(searchedStr) || 
+      (song.artistname && song.artistname.toLowerCase().includes(searchedStr))
     );
-    resultList = [];
-    for (let songs of sortedResultList) {
-      resultList.push(songs[0]);
-    }
+
+    // Sort results: matches starting with the search string come first
+    resultList.sort((a, b) => {
+      let aIndex = a.songname.toLowerCase().indexOf(searchedStr);
+      let bIndex = b.songname.toLowerCase().indexOf(searchedStr);
+      return aIndex - bIndex;
+    });
+
     showSearchResult(resultList);
   }
 }
 
+// --- MODIFIED RESULT DISPLAY ---
 function showSearchResult(resultList) {
   if (searchPanel.contains(searchHistoryTextDiv)) {
     searchPanel.replaceChild(searchResultDiv, searchHistoryTextDiv);
   }
   clearContainer(searchResultDiv);
+
   if (resultList.length > 0) {
     searchResultDivText.textContent = "";
-    for (let songs of resultList) {
+    resultList.forEach(songObj => {
+      // Create a button that displays "Song Name - Artist Name"
+      let displayText = `${songObj.songname} • ${songObj.artistname || 'Artist'}`;
+      
       let searchResultBtn = createButton(
         null,
         "search-text-btn",
         null,
-        songs,
+        displayText,
         null
       );
+      
       searchResultDiv.appendChild(searchResultBtn);
+      
       searchResultBtn.addEventListener("click", () => {
-        playSong(songs);
+        playSong(songObj); // Pass the whole SQL Object
         expandToplayer();
-        if (historyAllowed) {
-          if (searchedSongList.includes(songs)) {
-            searchedSongList.splice(searchedSongList.indexOf(songs), 1);
-          }
-          searchedSongList.unshift(songs);
-          loadSearchSongHistory();
+        
+        // Handle History via DB (Optional step)
+        if (currentUser && historyPref === 1) {
+          addSongToSearchHistory(songObj);
         }
       });
-    }
+    });
   } else {
-    searchResultDivText.textContent = "No match!";
+    searchResultDivText.textContent = "No match found in your library!";
+    searchResultDiv.appendChild(searchResultDivText);
   }
 }
 

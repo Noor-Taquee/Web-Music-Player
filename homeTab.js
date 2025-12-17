@@ -10,36 +10,43 @@ function createHomeTabSongDiv(parentDiv, hText) {
   return innerDiv;
 }
 
-function createSongBtn(songs, className = "rectangle") {
-  // button element
+// 1. Updated Song Button to use SQL Object structure
+function createSongBtn(songObj, className = "rectangle") {
+  // songObj now looks like: { songid: 1, songname: "Title", songimage: "url", ... }
+  
   let suggestedSong = document.createElement("button");
   suggestedSong.className = `suggested-song ${className}`;
-  suggestedSong.addEventListener("click", () => playSong(songs));
+  
+  // Pass the whole object to playSong
+  suggestedSong.addEventListener("click", () => playSong(songObj));
 
-  // album art or icon as a picture
+  // Image handling (Postgres uses lowercase column names by default)
   let pic = createTextField(`suggested-song-image ${className}`);
   suggestedSong.appendChild(pic);
-  if (songData[songs].image.length > 0) {
-    pic.style.backgroundImage = `url(${songData[songs].image})`;
+  
+  if (songObj.songimage && songObj.songimage.length > 0) {
+    pic.style.backgroundImage = `url(${songObj.songimage})`;
   } else {
     pic.appendChild(createIcon("bold", "music-note"));
   }
 
-  // div for button and info
   let sdiv = createDiv(`suggested-song-info-outer-div ${className}`);
   suggestedSong.appendChild(sdiv);
 
-  // Song name and artists div
   let aboutSongDiv = createDiv(`suggested-song-about-div ${className}`);
   sdiv.appendChild(aboutSongDiv);
+  
+  // Update: use songObj.songname (SQL column name)
   aboutSongDiv.appendChild(
-    createTextField(`suggested-song-name ${className}`, songData[songs].name)
+    createTextField(`suggested-song-name ${className}`, songObj.songname)
   );
+  
+  // Note: For artist name, you might need to join tables or 
+  // ensure your SQL query includes the artist name string.
   aboutSongDiv.appendChild(
-    createTextField(`suggested-song-artist ${className}`, songData[songs].artist)
+    createTextField(`suggested-song-artist ${className}`, songObj.artistname || "Unknown Artist")
   );
 
-  // options button
   let btn = createButton(null, `suggested-song-options-button ${className}`, createIcon("bold", "dots-three-vertical"), null, null);
   sdiv.appendChild(btn);
 
@@ -148,25 +155,28 @@ function loadRecentlyPlayedSongs() {
   }
 }
 
-function loadHomeSongs(songList, songContainer) {
+// 2. Updated Loader to filter the DB array
+function loadHomeSongs(fullSongList, songContainer, genre) {
+  // Clear container first
+  clearContainer(songContainer);
+  
+  // Filter the big array from SQL by the specific genre
+  const filteredList = fullSongList.filter(s => s.songgenre === genre);
+  
   let i = 0;
-  let f = songList.length;
-  while (true) {
-    if ((f-i) >= 3) {
-      songContainer.appendChild(createRsongContainer(songList[i], songList[i+1], songList[i+2]));
-      i+=3;
+  let f = filteredList.length;
+  
+  // Your original 3-per-column logic remains the same, just using filteredList
+  while (i < f) {
+    if ((f - i) >= 3) {
+      songContainer.appendChild(createRsongContainer(filteredList[i], filteredList[i+1], filteredList[i+2]));
+      i += 3;
+    } else if ((f - i) == 2) {
+      songContainer.appendChild(createRsongContainer(filteredList[i], filteredList[i+1]));
+      break;
     } else {
-      if ((f-i) == 2) {
-        songContainer.appendChild(createRsongContainer(songList[i], songList[i+1]))
-        break;
-      } else {
-        if ((f-i) == 1) {
-          songContainer.appendChild(createRsongContainer(songList[i]))
-          break;
-        } else {
-          break;
-        }
-      }
+      songContainer.appendChild(createRsongContainer(filteredList[i]));
+      break;
     }
   }
   songContainer.classList.add("rectangle-song-outer-container");
