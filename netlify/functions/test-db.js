@@ -2,7 +2,7 @@ import { neon } from '@neondatabase/serverless';
 
 export const handler = async (event, context) => {
   // This looks for a variable we will set in the Netlify Dashboard later
-  const sql = neon(process.env.DATABASE_URL);
+  const sql = neon(process.env.NETLIFY_DATABASE_URL);
 
   try {
     // A simple query to get the current time from Postgres
