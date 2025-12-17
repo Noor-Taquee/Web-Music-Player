@@ -1,404 +1,383 @@
-.account-info-div {
-  width: 100%;
-  padding: 15px 0;
-  gap: 10px;
+#accountPanel {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  backdrop-filter: blur(10vmax);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
-.profile-picture {
+#accountPanel .material-symbols-rounded {
+  font-variation-settings: "FILL" 1;
+}
+#accountInfoHeader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 18%;
+  width: 90%;
+  gap: 2vw;
+}
+#profilePic {
   cursor: default;
+  position: relative;
+  z-index: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  height: 10vh;
-  width: 10vh;
-  margin: 0;
-  border: 0.5px solid black;
-  border-radius: 50%;
-}
-.profile-picture i {
-  font-size: 50px;
-}
-
-.profile-info-card {
-  width: 100%;
+  height: 15vh;
+  width: 15vh;
   margin: 0;
   border: none;
+  border-radius: 50%;
+}
+#profilePicIcon {
+  font-size: 15vh;
+  border: none;
+  border-radius: 50%;
+}
+#profileInfoCard {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 90%;
+  width: 60%;
+  margin: 0;
+  border: none;
+  border-radius: 1rem;
 }
-
-.profile-name {
+#profileName {
   cursor: default;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 900;
+  height: 65%;
   width: 100%;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 900;
+  padding-left: 3vw;
 }
-
-.login-btn {
+#bnLogin {
   cursor: pointer;
-  width: 60%;
-  border: none;
-  border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3vmin;
   font-weight: 700;
+  height: 60%;
+  width: 90%;
+  border: none;
+  border-radius: 0.5rem;
 }
-
-.stats-div {
+#separator {
+  display: flex;
+  align-self: center;
+  height: 0.01px;
+  width: 95%;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0;
+}
+#statsDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: top;
+  height: 30%;
   width: 100%;
   margin: 0;
   padding: 0;
-  gap: 5px;
-  display: flex;
-  justify-content: center;
+  padding-left: 2vw;
+  gap: 5vw;
 }
-
-.stats-div button {
+#statsDiv button {
   cursor: pointer;
-  gap: 1vw;
-  border: none;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background: transparent;
+  height: 100%;
+  gap: 1vw;
+  border: none;
 }
-.stats-div button p {
-  margin: 5px 0;
+
+#statsDiv button p {
   font-size: 2.5vmin;
 }
 
-.settings-tab-panel {
-  flex-grow: 1;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0 0 200px 0;
-  gap: 2px;
-  border: none;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+#settingsPanel {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
-#app.light-mode .settings-tab-panel,
-#app.light-mode .settings-tab-inner-panel {
-  background-color: rgba(250, 250, 250);
-}
-#app.light-mode.blur-on .settings-tab-panel,
-#app.light-mode.blur-on .settings-tab-inner-panel {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-#app.dark-mode .settings-tab-panel,
-#app.dark-mode .settings-tab-inner-panel {
-  background-color: rgba(20, 20, 20);
-}
-#app.dark-mode.blur-on .settings-tab-panel,
-#app.dark-mode.blur-on .settings-tab-inner-panel {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.settings-tab-panel::-webkit-scrollbar,
-.settings-tab-inner-panel::-webkit-scrollbar {
-  display: none;
-}
-
-.settings-panel-button {
-  cursor: pointer;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 82%;
   width: 100%;
-  box-sizing: border-box;
-  padding: 20px 20px;
-  border: none;
-  display: flex;
-  align-items: center;
-  background: transparent;
-}
-.settings-panel-button p {
-  margin: 0 auto 0 20px;
-  font: 500 18px Arial;
-}
-.settings-panel-button i {
-  font: 500 22px Arial;
-}
-
-.logout-btn p {
-  color: red !important;
-}
-.logout-btn i {
-  color: red !important;
-}
-
-.settings-tab-inner-panel {
-  height: 80%;
-  width: 100%;
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   gap: 0.5vh;
   border: none;
   border-radius: 1.5rem;
+}
+#settingsPanel::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+#buttonDiv {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: fit-content;
+  min-height: 6vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  border: none;
+}
+#buttonDiv button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+#settingBtnIconDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 15%;
+  margin: 0;
+  padding: 0;
+}
+
+.buttonTextContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  height: 100%;
+}
+.buttonTextContainer p {
+  font-size: 1.2rem;
+}
+
+.buttonTextContainer span {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+#accountPanelSpace,
+#notificationContentSpace {
+  min-height: 30vh;
+  width: 100%;
+  background: transparent;
+  border: none;
+  flex-shrink: 0;
+}
+
+.accountPanel_subPanel {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 80%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 0.5vh;
+  border: none;
+  border-radius: 1.5rem;
 }
 
-.settings-tab-inner-panel .top-bar {
+.accountPanel_subPanelTopBar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;
   height: 8%;
   width: 100%;
-  box-sizing: border-box;
   margin: 0;
-  padding: 25px 20px;
+  padding: 0;
   gap: 0.5vw;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background: transparent;
 }
 
-.back-btn {
+.bnBack_accountPanel_subPanel {
   cursor: pointer;
-  gap: 5px;
-  border: none;
   display: flex;
+  justify-content: center;
   align-items: center;
   background: transparent;
+  border: none;
 }
-.back-btn span {
-  font-size: 22px;
-}
-.back-btn p {
-  font: 500 19px Arial;
-}
-
-.settings-tab-inner-panel .content {
-  height: 92%;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  margin: 0;
-  padding: 0 0 200px 0;
+.accountPanel_subPanelConDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background: transparent;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 92%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-.settings-tab-inner-panel .content::-webkit-scrollbar {
+
+.accountPanel_subPanelConDiv::-webkit-scrollbar {
   display: none;
 }
 
-.notification-div {
-  width: 90%;
-  box-sizing: border-box;
-  margin: 10px 0 10px 0;
-  padding: 10px 15px;
-  gap: 0;
-  border-radius: 20px;
+.notificationDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-}
-.notifications-div::-webkit-scrollbar {
-  display: none;
+  height: fit-content;
+  width: 85%;
+  margin: 0;
+  margin-top: 1vh;
+  padding: 1rem;
+  gap: 0;
+  border-radius: 1rem;
 }
 
-.notification-header {
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+#notificationHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
   background: transparent;
-}
-
-.notification-title {
+  height: 30%;
+  width: 100%;
   margin: 0;
-  font: 700 18px Arial;
+  padding: 0;
 }
 
-.remove-notification-btn {
+#bnRemoveNotification {
   cursor: pointer;
-  padding: 0 15px;
-  gap: 10px;
-  border: 0.2px solid rgba(255, 0, 0, 0.3);
-  border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
-  transition: all 0.2s ease;
-}
-.remove-notification-btn:hover {
-  background-color: rgba(255, 50, 50, 0.1);
-}
-.remove-notification-btn:active {
-  background-color: rgba(255, 50, 50, 0.1);
-}
-.remove-notification-btn span {
-  font-size: 1.2rem;
-  color: rgba(255, 50, 50) !important;
-}
-.remove-notification-btn p {
-  color: rgba(255, 50, 50) !important;
+  height: 80%;
+  width: 30%;
+  gap: 5%;
+  border-radius: 0.5rem;
 }
 
-.notification-meta-data-div {
+#bnRemoveNotification span {
+  font-size: 1.2rem;
+}
+
+#notificationDateP,
+#notificationTimeP {
   margin: 0;
   padding: 0;
-  gap: 5px;
-  display: flex;
-  align-items: baseline;
-}
-.notification-time {
-  margin: 0;
-  font: 300 12px Arial;
-}
-.notification-date {
-  margin: 0;
-  font: 300 14px Arial;
-}
-
-.notification-content {
-  margin: 15px 0 0 0;
-  font: 300 16px Arial-;
-}
-
-.toggle-div {
+  text-align: left;
+  height: fit-content;
   width: 100%;
-  box-sizing: border-box;
-  padding: 0 15px;
+}
+
+#bnRemoveNotification p {
+  font-size: 1rem;
+  height: fit-content;
+  margin: 0;
+}
+
+#ChangeBlurDiv,
+#AllowHistoryDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.toggle-element {
-  cursor: pointer;
-  height: 35px;
-  width: 60px;
-  box-sizing: border-box;
+  height: 10%;
+  width: 95%;
   margin: 0;
-  padding: 0;
-  border: 2px solid black;
-  border-radius: 17.5px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+#changeBlurToggle,
+#AllowHistoryToggle {
+  cursor: pointer;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  transition: all 0.2s ease-out;
-}
-#app.light-mode .toggle-element {
-  border: 2px solid rgba(80, 80, 80);
-  background: rgb(200, 200, 200);
-}
-
-.toggle-element.active {
-  justify-content: flex-end;
-}
-#app.light-mode .toggle-element.active {
-  border: 2px solid rgb(80, 80, 80);
-  background: rgb(80, 80, 80);
-}
-
-
-.toggle-ball {
-  height: 20px;
-  width: 20px;
-  margin: 5px;
-  border: none;
-  border-radius: 50%;
-  background-color: white;
-  transition: all 0.2s ease-out;
-}
-#app.light-mode .toggle-element .toggle-ball {
-  background: rgba(80, 80, 80);
-}
-
-.toggle-element.active .toggle-ball {
-  height: 25px;
-  width: 25px;
-  margin: 3.5px;
-}
-#app.light-mode .toggle-element.active .toggle-ball {
-  background: rgb(200, 200, 200);
-}
-
-.change-pass-form {
-  width: 100%;
+  background-color: blue;
+  height: 2vh;
+  width: 8vw;
   margin: 0;
   padding: 0;
-  gap: 10px;
+  border: none;
+  border-radius: 1vh;
+}
+#changeBlurToggleBall,
+#AllowHistoryToggleBall {
+  background-color: white;
+  height: 2vh;
+  width: 2vh;
+  border: none;
+  border-radius: 50%;
+  transform: translateX(4vw);
+  transition: all 0.2s ease-out;
+}
+#changePassFormDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
-.change-pass-input-div {
-  height: 55px;
-  width: 90%;
-  max-width: 500px;
+  height: 90%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  border: none;
+  gap: 2vh;
+}
+#changePassFormDiv input,
+#changePassFormDiv div {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-.change-pass-input-div i {
-  width: 10%;
-  margin: auto;
-  font-size: 20px;
-  text-align: center;
-  background: transparent;
-}
-
-.change-pass-input {
-  flex-grow: 1;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 0 15px;
-  border: none;
-  background: transparent;
-  font-size: 18px;
-}
-.change-pass-input::placeholder {
-  font-size: 18px;
-}
-.change-pass-input:focus {
-  outline: none;
-}
-
-.change-pass-btn {
-  cursor: pointer;
-  height: 55px;
-  width: 90%;
-  max-width: 500px;
+  height: 6vh;
+  width: 85%;
   margin: 0;
   padding: 0;
   border: none;
-  border-radius: 25px;
+  border-radius: 0.5rem;
+}
+#changePassFormDiv input {
+  width: 84%;
+  padding-left: 1%;
+  background: transparent;
+}
+#confirmChangePassBtn,
+#cancelChangePassBtn {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 500;
+  height: 100%;
+  width: 48%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0.5rem;
 }
-
 #bnClearSearchHistory,
 #bnClearPlayedSongHistory {
   cursor: pointer;
@@ -416,149 +395,121 @@
   border-radius: 0.5rem;
 }
 
-.theme-selection-panel {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: fit-content;
-  width: 60%;
-  overflow: hidden;
-  box-sizing: border-box;
-  padding: 15px;
-  margin: auto;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.theme-panel-btn {
-  height: 35px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0;
-  gap: 10px;
-  border: none;
-  background: transparent;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.theme-panel-btn p {
-  margin: 0;
-  font: 400 18px Arial;
-}
-
-.theme-panel-btn.cancel {
-  height: fit-content;
-  padding-right: 5px;
-  justify-content: flex-end;
-}
-
 /* DARK MODE SETTINGS */
-#app.dark-mode .profile-picture i {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-#app.dark-mode .login-btn {
-  background-color: rgba(50, 50, 50);
-}
-#app.dark-mode.blur-on .login-btn {
+.accountPanel_darkMode {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-
-
-#app.dark-mode .change-pass-input-div {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.9);
-}
-
-#app.dark-mode .change-pass-input {
+.accountPanel_darkMode p {
   color: white;
 }
-#app.dark-mode .change-pass-input::placeholder {
-  color: rgb(150, 150, 150);
+
+.accountPanel_darkMode span {
+  color: white;
 }
 
-#app.dark-mode .change-pass-btn {
-  background-color: white;
+.accountPanel_darkMode #profilePicIcon {
+  color: rgba(255, 255, 255, 0.8);
 }
-#app.dark-mode .change-pass-btn p {
+
+.accountPanel_darkMode #bnLogin {
   color: black;
-}
-
-#app.dark-mode .change-pass-btn.cancel {
-  background: transparent;
-}
-#app.dark-mode .change-pass-btn.cancel p {
-  color: white;
-}
-
-#app.dark-mode .notification-div {
-  background: rgba(50, 50, 50);
-}
-#app.dark-mode.blur-on .notification-div {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-#app.dark-mode .toggle-element {
-  border: 2px solid rgb(150, 150, 150);
-  background: rgb(50, 50, 50);
-}
-
-#app.dark-mode .toggle-element.active {
-  border: 2px solid rgb(100, 100, 100);
-  background: rgb(100, 100, 100);
-}
-
-#app.dark-mode .toggle-element.active .toggle-ball {
-  background: rgb(0, 0, 0);
-}
-
-/* LIGHT MODE SETTINGS */
-#app.light-mode .profile-picture i {
-  color: rgba(0, 0, 0, 0.8);
-}
-
-#app.light-mode .login-btn {
-  background-color: rgba(255, 255, 255);
-}
-#app.light-mode.blur-on .login-btn {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-
-#app.light-mode .change-pass-input-div {
-  border-bottom: 2px solid black;
-}
-#app.light-mode .change-pass-input {
-  color: black;
-}
-#app.light-mode .change-pass-input::placeholder {
-  color: rgb(100, 100, 100);
+.accountPanel_darkMode #profileInfoCard {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-#app.light-mode .change-pass-btn {
-  background-color: black;
+.accountPanel_darkMode #settingsPanel,
+.accountPanel_darkMode .accountPanel_subPanel {
+  background-color: rgba(0, 0, 0, 0.6);
 }
-#app.light-mode .change-pass-btn p {
+
+.accountPanel_darkMode #changePassFormDiv input {
+  color: white;
+  border: 1px solid white;
+}
+.accountPanel_darkMode #changePassFormDiv input::placeholder {
   color: white;
 }
 
-#app.light-mode .change-pass-btn.cancel {
+.accountPanel_darkMode #cancelChangePassBtn {
+  color: white;
   background: transparent;
-}
-#app.light-mode .change-pass-btn.cancel p {
-  color: rgb(0, 0, 0);
+  border: 1px solid white;
 }
 
-#app.light-mode .notification-div {
-  background: rgb(255, 255, 255);
-  box-shadow: 0 0 5px rgb(170, 170, 170);
+.accountPanel_darkMode #confirmChangePassBtn {
+  color: black;
+  background-color: white;
+  border: 1px solid white;
 }
-#app.light-mode.blur-on .notification-div {
+
+.accountPanel_darkMode .notificationDiv {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.accountPanel_darkMode #bnRemoveNotification {
+  border: 0.2px solid rgba(255, 0, 0, 0.3);
+}
+
+/* LIGHT MODE SETTINGS */
+.accountPanel_lightMode {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.accountPanel_lightMode p {
+  color: black;
+}
+
+.accountPanel_lightMode span {
+  color: black;
+}
+
+.accountPanel_lightMode #profilePicIcon {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.accountPanel_lightMode #bnLogin {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.accountPanel_lightMode #profileInfoCard {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.accountPanel_lightMode #settingsPanel,
+.accountPanel_lightMode .accountPanel_subPanel {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.accountPanel_lightMode #changePassFormDiv input {
+  color: black;
+  border: 1px solid black;
+}
+
+.accountPanel_lightMode #changePassFormDiv input::placeholder {
+  color: rgba(0, 0, 0);
+}
+
+.accountPanel_lightMode #cancelChangePassBtn {
+  color: black;
+  background: transparent;
+  border: 1px solid black;
+}
+
+.accountPanel_lightMode #confirmChangePassBtn {
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+}
+
+.accountPanel_lightMode .notificationDiv {
   background: rgba(0, 0, 0, 0.05);
+}
+
+.accountPanel_lightMode #bnRemoveNotification {
+  border: 0.2px solid rgba(255, 0, 0, 0.3);
 }

@@ -1,147 +1,101 @@
-let contributionPanel = document.getElementById("contribution-panel");
+let contributionPanel = document.createElement("div");
+contributionPanel.id = "contributionPanel";
+contributionPanel.className = "contributionPanel_darkMode";
 
-let topBarCT = createDiv("top-bar");
+let topBarCT = document.createElement("div");
 contributionPanel.appendChild(topBarCT);
+topBarCT.id = "topBarCT";
 
-let bnBackCT = createButton(
-  null,
-  "back-btn",
-  createIcon("bold", "arrow-left"),
-  null,
-  goBackCT
-);
+let bnBackCT = document.createElement("button");
 topBarCT.appendChild(bnBackCT);
+bnBackCT.id = "bnBackCT";
+bnBackCT.addEventListener("click", goBack);
+let backIconCT = document.createElement("span");
+bnBackCT.appendChild(backIconCT);
+backIconCT.className = "material-symbols-rounded";
+backIconCT.textContent = "arrow_back_ios_new";
+let bnBackPCT = document.createElement("p");
+bnBackCT.appendChild(bnBackPCT);
+bnBackPCT.id = "bnBackP";
+bnBackPCT.textContent = "BACK";
 
-let bnContributeCT = createButton(
-  null,
-  "contribute-btn",
-  null,
-  "Add song",
-  goToInput
-);
+let bnContributeCT = document.createElement("button");
 topBarCT.appendChild(bnContributeCT);
+bnContributeCT.id = "bnContribute";
+bnContributeCT.textContent = "CONTRIBUTE";
+bnContributeCT.addEventListener("click", goToInput);
 
-let contributionContent = createDiv("content");
+let contributionContent = document.createElement("div");
 contributionPanel.appendChild(contributionContent);
+contributionContent.id = "contributionContent";
 
-let contributionInputOuterDiv = createDiv("contribution-form-div");
+let contributionInputDiv = document.createElement("div");
+contributionInputDiv.id = "contributionInputDiv";
 
-let contributionInputDiv = createDiv("contribution-form");
-contributionInputOuterDiv.appendChild(contributionInputDiv);
+let songNameInput = document.createElement("input");
+contributionInputDiv.appendChild(songNameInput);
+songNameInput.type = "text";
+songNameInput.placeholder = "SONG NAME";
 
-let songNameInput = createInput(
-  "text",
-  "Title",
-  null,
-  "contribution-form-input"
-);
-contributionInputDiv.appendChild(
-  createInputDiv(
-    "contribution-form-input-div",
-    createIcon("bold", "music-notes-simple"),
-    songNameInput
-  )
-);
+let artistNameInput = document.createElement("input");
+contributionInputDiv.appendChild(artistNameInput);
+artistNameInput.type = "text";
+artistNameInput.placeholder = "ARTIST NAME";
 
-let artistNameInputOuterDiv = createDiv("artist-input-div");
-contributionInputDiv.appendChild(artistNameInputOuterDiv);
+let imageLinkInput = document.createElement("input");
+contributionInputDiv.appendChild(imageLinkInput);
+imageLinkInput.type = "text";
+imageLinkInput.placeholder = "IMAGE LINK";
 
-artistNameInputOuterDiv.appendChild(
-  createInputDiv(
-    "contribution-form-input-div",
-    createIcon("bold", "user"),
-    createInput("text", "Artist", "artist-1", "contribution-form-input artist")
-  )
-);
-let bnAddArtist = createButton(
-  null,
-  "contribute-btn artist",
-  createIcon("bold", "plus"),
-  null,
-  addArtist
-);
-artistNameInputOuterDiv.appendChild(bnAddArtist);
+let songLinkInput = document.createElement("input");
+contributionInputDiv.appendChild(songLinkInput);
+songLinkInput.type = "text";
+songLinkInput.placeholder = "SONG LINK";
 
-let imageLinkInput = createInput(
-  "text",
-  "Image link",
-  null,
-  "contribution-form-input"
-);
-contributionInputDiv.appendChild(
-  createInputDiv(
-    "contribution-form-input-div",
-    createIcon("bold", "link"),
-    imageLinkInput
-  )
-);
+let songInfoInput = document.createElement("input");
+contributionInputDiv.appendChild(songInfoInput);
+songInfoInput.type = "text";
+songInfoInput.placeholder = "ABOUT THE SONG";
 
-let songLinkInput = createInput(
-  "text",
-  "Song link",
-  null,
-  "contribution-form-input"
-);
-contributionInputDiv.appendChild(
-  createInputDiv(
-    "contribution-form-input-div",
-    createIcon("bold", "link"),
-    songLinkInput
-  )
-);
+let buttonDivCT = document.createElement("div");
+contributionInputDiv.appendChild(buttonDivCT);
+buttonDivCT.id = "buttonDivCT";
 
-let songInfoInput = createInput(
-  "text",
-  "About song",
-  null,
-  "contribution-form-input"
-);
-contributionInputDiv.appendChild(
-  createInputDiv(
-    "contribution-form-input-div",
-    createIcon("bold", "info"),
-    songInfoInput
-  )
-);
+let bnCancelCT = document.createElement("button");
+buttonDivCT.appendChild(bnCancelCT);
+bnCancelCT.id = "bnCancelCT";
+bnCancelCT.textContent = "CANCEL";
+bnCancelCT.addEventListener("click", goToHelp);
 
-let buttonDivCT = createDiv("button-div-input-div");
-contributionInputOuterDiv.appendChild(buttonDivCT);
-
-let bnAddCT = createButton(
-  null,
-  "contribute-btn",
-  null,
-  "Add",
-  addContribution
-);
+let bnAddCT = document.createElement("button");
 buttonDivCT.appendChild(bnAddCT);
+bnAddCT.id = "bnAddCT";
+bnAddCT.textContent = "ADD";
+bnAddCT.addEventListener("click", addContribution);
 
-let messageDivCT = createDiv("message-div");
-contributionInputOuterDiv.appendChild(messageDivCT);
-
-messageDivCT.appendChild(
-  createTextField("message-text", "Your song will be added soon!")
-);
-messageDivCT.appendChild(
-  createTextField("message-text", "It has been sent to review.")
-);
-let bnGotItCT = createButton(
-  null,
-  "contribute-btn",
-  null,
-  "Got it",
-  hideMessageCT
-);
+let messageDivCT = document.createElement("div");
+messageDivCT.id = "messageDivCT";
+let messageDivCTP1 = document.createElement("p");
+messageDivCT.appendChild(messageDivCTP1);
+messageDivCTP1.id = "messageDivCTP1";
+messageDivCTP1.textContent = "YOUR SONG WILL BE ADDED SOON!";
+let messageDivCTP2 = document.createElement("p");
+messageDivCT.appendChild(messageDivCTP2);
+messageDivCTP2.id = "messageDivCTP2";
+messageDivCTP2.textContent = "IT HAS BEEN SENT TO REVIEW";
+let bnGotItCT = document.createElement("button");
 messageDivCT.appendChild(bnGotItCT);
+bnGotItCT.id = "bnGotItCT";
+bnGotItCT.textContent = "GOT IT";
+bnGotItCT.addEventListener("click", f_gotIt);
 
-let contributionHelpDiv = createDiv("contribution-help-content-div");
+let contributionHelpDiv = document.createElement("div");
 contributionContent.appendChild(contributionHelpDiv);
+contributionHelpDiv.id = "contributionHelpDiv";
 
-let pThank = createTextField(
-  null,
-  "Thank you for contributing to our music library!"
-);
+let pThank = document.createElement("p");
 contributionHelpDiv.appendChild(pThank);
+pThank.textContent = "Thank you for contributing to our music library!";
 
 let p2 = document.createElement("p");
 contributionHelpDiv.appendChild(p2);
@@ -159,7 +113,7 @@ p4.textContent = "Before you start, make sure you have a dropbox account.";
 
 let p5 = document.createElement("p");
 contributionHelpDiv.appendChild(p5);
-p5.className = "steps-text";
+p5.id = "stepP";
 p5.textContent = "STEP 1: FILL OUT THE SONG DETAILS";
 
 let p6 = document.createElement("p");
@@ -182,7 +136,7 @@ p9.textContent =
 
 let p10 = document.createElement("p");
 contributionHelpDiv.appendChild(p10);
-p10.className = "steps-text";
+p10.id = "stepP";
 p10.textContent = "STEP 2: GET YOUR SONG LINK FROM DROPBOX";
 
 let p11 = document.createElement("p");
@@ -237,7 +191,7 @@ img4.src =
 
 let p18 = document.createElement("p");
 contributionHelpDiv.appendChild(p18);
-p18.className = "steps-text";
+p18.id = "stepP";
 p18.textContent = "STEP 3: FIND AN ALBUM ART";
 
 let p19 = document.createElement("p");
@@ -291,7 +245,7 @@ img8.src =
 
 let p26 = document.createElement("p");
 contributionHelpDiv.appendChild(p26);
-p26.className = "steps-text";
+p26.id = "stepP";
 p26.textContent = "STEP 4: SUBMIT YOUR CONTRIBUTION";
 
 let p27 = document.createElement("p");
@@ -299,106 +253,18 @@ contributionHelpDiv.appendChild(p27);
 p27.textContent =
   'Paste the SONG LINK and IMAGE LINK into the respective fields on the form. Review all the information to ensure it\'s correct. Click the "ADD" button.';
 
-// VARIABLES ============================
-let artistNumber = 2;
 let songNameCT = null;
-let artistNameCT = [];
+let artistNameCT = null;
 let songLinkCT = null;
 let imageLinkCT = null;
 let songInfoCT = null;
 let contributer = null;
 let contributionRequestFile = null;
 
-function goBackCT() {
-  contributionPanel.style.animation = "slideDown 0.5s ease";
-  contributionPanel.addEventListener(
-    "animationend",
-    () => {
-      contributionPanel.style.animation = "none";
-      contributionPanel.style.display = "none";
-    },
-    { once: true }
-  );
-}
-
-function goToInput() {
-  contributionContent.style.animation = "flash 0.2s ease";
-  contributionContent.addEventListener(
-    "animationend",
-    () => {
-      contributionContent.style.animation = "none";
-      bnBackCT.removeEventListener("click", goBackCT);
-      bnBackCT.addEventListener("click", goToHelp);
-      contributionContent.replaceChild(
-        contributionInputOuterDiv,
-        contributionHelpDiv
-      );
-      bnContributeCT.style.display = "none";
-      ELforArtists();
-    },
-    { once: true }
-  );
-  // history.pushState(goToHelp, null, "/contributionTab");
-}
-
-function goToHelp() {
-  contributionContent.style.animation = "flash 0.2s ease 1";
-  contributionContent.addEventListener(
-    "animationend",
-    () => {
-      contributionContent.style.animation = "none";
-      bnBackCT.removeEventListener("click", goToHelp);
-      bnBackCT.addEventListener("click", goBackCT);
-      contributionContent.replaceChild(
-        contributionHelpDiv,
-        contributionInputOuterDiv
-      );
-      bnContributeCT.style.display = "flex";
-    },
-    { once: true }
-  );
-}
-
 function startContribution() {
   return loadInfo("/JSON/addSong.json").then((data) => {
     contributionRequestFile = data;
   });
-}
-
-function addArtist() {
-  artistNameInputOuterDiv.insertBefore(
-    createInputDiv(
-      "contribution-form-input-div",
-      createIcon("bold", "user"),
-      createInput(
-        "text",
-        "Artist",
-        `artist-${artistNumber}`,
-        "contribution-form-input artist"
-      )
-    ),
-    bnAddArtist
-  );
-  artistNumber++;
-  ELforArtists();
-}
-function ELforArtists() {
-  let artistInputs = document.querySelectorAll(
-    ".contribution-form-input.artist"
-  );
-  for (let input of artistInputs) {
-    input.addEventListener("focus", () => {
-      bnAddArtist.style.display = "flex";
-    });
-    input.addEventListener("blur", () => {
-      setTimeout(() => {
-        let fE = document.activeElement;
-        if (!fE.classList.contains("artist")) {
-          bnAddArtist.style.display = "none";
-        }
-      }, 200);
-    });
-  }
 }
 
 function createID() {
@@ -416,9 +282,8 @@ function createID() {
 }
 
 function addContribution() {
-  showMessageCT(); // Temporary
   if (checkFields()) {
-    contributionPanel.style.display = "none";
+    main.style.display = "none";
     loadingDiv.style.display = "flex";
     contributionRequestFile[createID()] = {
       user: contributer,
@@ -437,17 +302,33 @@ function addContribution() {
       updateDataFile();
       clearInputFieldsCT();
       loadingDiv.style.display = "none";
-      contributionPanel.style.display = "flex";
-      showMessageCT();
+      main.style.display = "flex";
+      showMessage();
     });
   }
 }
 
+function clearInputFieldsCT() {
+  songNameInput.value = "";
+  artistNameInput.value = "";
+  songLinkInput.value = "";
+  imageLinkInput.value = "";
+  songInfoInput.value = "";
+}
+
+function goToInput() {
+  contributionContent.replaceChild(contributionInputDiv, contributionHelpDiv);
+  bnContributeCT.style.display = "none";
+  // history.pushState(goToHelp, null, "/contributionTab");
+}
+function goToHelp() {
+  contributionContent.replaceChild(contributionHelpDiv, contributionInputDiv);
+  bnContributeCT.style.display = "flex";
+}
+
 function checkFields() {
   songNameCT = songNameInput.value;
-  for (let i = 1; i <= artistNumber; i++) {
-    artistNameCT.unshift(document.getElementById(`artist-${i}`).value);
-  }
+  artistNameCT = artistNameInput.value;
   songLinkCT = songLinkInput.value;
   imageLinkCT = imageLinkInput.value;
   songInfoCT = songInfoInput.value;
@@ -472,31 +353,12 @@ function checkFields() {
   }
 }
 
-function clearInputFieldsCT() {
-  songNameInput.value = "";
-  artistNameInput.value = "";
-  songLinkInput.value = "";
-  imageLinkInput.value = "";
-  songInfoInput.value = "";
+function showMessage() {
+  contributionInputDiv.appendChild(messageDivCT);
 }
 
-function showMessageCT() {
-  messageDivCT.style.display = "flex";
-  messageDivCT.style.animation = "slideUp 0.5s ease 1";
-  setTimeout(() => {
-    messageDivCT.style.animation = "none";
-  }, 500);
-}
-
-function hideMessageCT() {
-  messageDivCT.style.animation = "slideDown 0.5s ease";
-  messageDivCT.addEventListener(
-    "animationend",
-    () => {
-      messageDivCT.style.display = "none";
-    },
-    { once: true }
-  );
+function f_gotIt() {
+  contributionInputDiv.removeChild(messageDivCT);
 }
 
 attend();

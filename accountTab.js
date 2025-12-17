@@ -1,126 +1,267 @@
-function createSettingsPanelBtn(
-  parentContainer,
-  iconName,
-  buttonText,
-  clickFunction
-) {
-  let btn = createButton(
-    null,
-    "settings-panel-button",
-    createIcon("bold", iconName),
-    buttonText,
-    clickFunction
-  );
-  parentContainer.appendChild(btn);
-  btn.appendChild(createIcon("bold", "caret-right"));
-  return btn;
-}
+//VARIABLES
+let currentThemeColor = "DARK";
+let currentThemeColorIcon = "dark_mode";
+let BlurActive = true;
 
 //CREATING ELEMENTS
-let accountPanel = document.getElementById("account-panel");
+let accountPanel = document.createElement("div");
+accountPanel.id = "accountPanel";
+accountPanel.className = "accountPanel_darkMode";
 
 let accountInfoHeader = document.createElement("div");
-accountInfoHeader.className = "account-info-div";
 accountPanel.appendChild(accountInfoHeader);
-
-let profilePic = createTextField("profile-picture", null);
+accountInfoHeader.id = "accountInfoHeader";
+let profilePic = document.createElement("p");
 accountInfoHeader.appendChild(profilePic);
-let profilePicIcon = createIcon("bold", "user");
+profilePic.id = "profilePic";
+let profilePicIcon = document.createElement("span");
 profilePic.appendChild(profilePicIcon);
+profilePicIcon.className = "material-symbols-rounded";
+profilePicIcon.textContent = "account_circle";
+profilePicIcon.id = "profilePicIcon";
 
-let profileInfoCard = createDiv("profile-info-card");
+let profileInfoCard = document.createElement("div");
 accountInfoHeader.appendChild(profileInfoCard);
+profileInfoCard.id = "profileInfoCard";
 
-let profileName = createTextField("profile-name", null);
+let profileName = document.createElement("p");
 profileInfoCard.appendChild(profileName);
+profileName.id = "profileName";
 
-let bnLogin = createButton(null, "login-btn", null, "Sign in", f_login);
+let bnLogin = document.createElement("button");
 profileName.appendChild(bnLogin);
+bnLogin.id = "bnLogin";
+bnLogin.textContent = "LOGIN";
+bnLogin.addEventListener("click", f_login);
 
-let statsDiv = createDiv("stats-div");
+let separator = document.createElement("hr");
+profileInfoCard.appendChild(separator);
+separator.id = "separator";
+let statsDiv = document.createElement("div");
 profileInfoCard.appendChild(statsDiv);
+statsDiv.id = "statsDiv";
 
 let playlistsCount = document.createElement("button");
 statsDiv.appendChild(playlistsCount);
-playlistsCount.addEventListener("click", () => switchTo(libraryPanel));
-let playlistsCountP = createTextField(null, "playlists: ");
+playlistsCount.addEventListener("click", () => switchTo("libraryPanel"));
+let playlistsCountP = document.createElement("p");
 playlistsCount.appendChild(playlistsCountP);
+playlistsCountP.textContent = "playlists:";
 
-let favouriteSongsCountP = null;
+let favouriteSongsCount = document.createElement("button");
+statsDiv.appendChild(favouriteSongsCount);
+let favouriteSongsCountP = document.createElement("p");
+favouriteSongsCount.appendChild(favouriteSongsCountP);
+favouriteSongsCountP.textContent = "favourite songs:";
 
-let settingsPanel = createTextField("settings-tab-panel");
+let settingsPanel = document.createElement("div");
 accountPanel.appendChild(settingsPanel);
+settingsPanel.id = "settingsPanel";
 
-let changePassBtn = createSettingsPanelBtn(
-  settingsPanel,
-  "key",
-  "Change Password",
-  f_changePass
-);
+let ChangePassDiv = document.createElement("div");
+settingsPanel.appendChild(ChangePassDiv);
+ChangePassDiv.id = "buttonDiv";
+let bnChangePass = document.createElement("button");
+ChangePassDiv.appendChild(bnChangePass);
+bnChangePass.id = "bnChangePass";
+bnChangePass.addEventListener("click", f_changePass);
+let bnChangePassIconDiv = document.createElement("div");
+bnChangePass.appendChild(bnChangePassIconDiv);
+bnChangePassIconDiv.id = "settingBtnIconDiv";
+let bnChangePassIcon = document.createElement("span");
+bnChangePassIconDiv.appendChild(bnChangePassIcon);
+bnChangePassIcon.className = "material-symbols-rounded";
+bnChangePassIcon.textContent = "password";
+bnChangePassIcon.id = "settingBtnIcon";
+let changePassTextContainer = document.createElement("div");
+changePassTextContainer.className = "buttonTextContainer";
+bnChangePass.appendChild(changePassTextContainer);
+let bnChangePassP = document.createElement("p");
+changePassTextContainer.appendChild(bnChangePassP);
+bnChangePassP.textContent = "Change Password";
+let changePassSelectionIcon = document.createElement("span");
+changePassTextContainer.appendChild(changePassSelectionIcon);
+changePassSelectionIcon.className = "material-symbols-rounded";
+changePassSelectionIcon.textContent = "arrow_forward_ios";
 
-let notificationsBtn = createSettingsPanelBtn(
-  settingsPanel,
-  "notification",
-  "Notifications",
-  f_notifications
-);
+let NotificationsDiv = document.createElement("div");
+settingsPanel.appendChild(NotificationsDiv);
+NotificationsDiv.id = "buttonDiv";
+let bnNotifications = document.createElement("button");
+NotificationsDiv.appendChild(bnNotifications);
+bnNotifications.id = "bnNotifications";
+bnNotifications.addEventListener("click", f_notifications);
+let bnNotificationsIconDiv = document.createElement("div");
+bnNotifications.appendChild(bnNotificationsIconDiv);
+bnNotificationsIconDiv.id = "settingBtnIconDiv";
+let bnNotificationsIcon = document.createElement("span");
+bnNotificationsIconDiv.appendChild(bnNotificationsIcon);
+bnNotificationsIcon.className = "material-symbols-rounded";
+bnNotificationsIcon.textContent = "notifications";
+bnNotificationsIcon.id = "settingBtnIcon";
+let notificationsTextContainer = document.createElement("div");
+notificationsTextContainer.className = "buttonTextContainer";
+bnNotifications.appendChild(notificationsTextContainer);
+let bnNotificationsP = document.createElement("p");
+notificationsTextContainer.appendChild(bnNotificationsP);
+bnNotificationsP.textContent = "Notifications";
+let notificationsSelectionIcon = document.createElement("span");
+notificationsTextContainer.appendChild(notificationsSelectionIcon);
+notificationsSelectionIcon.className = "material-symbols-rounded";
+notificationsSelectionIcon.textContent = "arrow_forward_ios";
 
-let manageHistoryBtn = createSettingsPanelBtn(
-  settingsPanel,
-  "clock-counter-clockwise",
-  "Manage History",
-  f_manageHistory
-);
+let ManageHistoryDiv = document.createElement("div");
+settingsPanel.appendChild(ManageHistoryDiv);
+ManageHistoryDiv.id = "buttonDiv";
+let bnManageHistory = document.createElement("button");
+ManageHistoryDiv.appendChild(bnManageHistory);
+bnManageHistory.id = "bnManageHistory";
+bnManageHistory.addEventListener("click", f_manageHistory);
+let bnManageHistoryIconDiv = document.createElement("div");
+bnManageHistory.appendChild(bnManageHistoryIconDiv);
+bnManageHistoryIconDiv.id = "settingBtnIconDiv";
+let bnManageHistoryIcon = document.createElement("span");
+bnManageHistoryIconDiv.appendChild(bnManageHistoryIcon);
+bnManageHistoryIcon.className = "material-symbols-rounded";
+bnManageHistoryIcon.textContent = "manage_history";
+bnManageHistoryIcon.id = "settingBtnIcon";
+let manageHistoryTextContainer = document.createElement("div");
+manageHistoryTextContainer.className = "buttonTextContainer";
+bnManageHistory.appendChild(manageHistoryTextContainer);
+let bnManageHistoryP = document.createElement("p");
+manageHistoryTextContainer.appendChild(bnManageHistoryP);
+bnManageHistoryP.textContent = "Manage History";
+let manageHistorySelectionIcon = document.createElement("span");
+manageHistoryTextContainer.appendChild(manageHistorySelectionIcon);
+manageHistorySelectionIcon.className = "material-symbols-rounded";
+manageHistorySelectionIcon.textContent = "arrow_forward_ios";
 
-let changeThemeBtn = createSettingsPanelBtn(
-  settingsPanel,
-  "sun-dim",
-  "Appearance",
-  openAppearancePanel
-);
+let ChangeThemeDiv = document.createElement("div");
+settingsPanel.appendChild(ChangeThemeDiv);
+ChangeThemeDiv.id = "buttonDiv";
+let bnChangeTheme = document.createElement("button");
+ChangeThemeDiv.appendChild(bnChangeTheme);
+bnChangeTheme.id = "bnChangeTheme";
+bnChangeTheme.addEventListener("click", f_changeTheme);
+let bnChangeThemeIconDiv = document.createElement("div");
+bnChangeTheme.appendChild(bnChangeThemeIconDiv);
+bnChangeThemeIconDiv.id = "settingBtnIconDiv";
+let bnChangeThemeIcon = document.createElement("span");
+bnChangeThemeIconDiv.appendChild(bnChangeThemeIcon);
+bnChangeThemeIcon.className = "material-symbols-rounded";
+bnChangeThemeIcon.textContent = "routine";
+bnChangeThemeIcon.id = "settingBtnIcon";
+let changeThemeTextContainer = document.createElement("div");
+changeThemeTextContainer.className = "buttonTextContainer";
+bnChangeTheme.appendChild(changeThemeTextContainer);
+let bnChangeThemeP = document.createElement("p");
+changeThemeTextContainer.appendChild(bnChangeThemeP);
+bnChangeThemeP.textContent = "Theme";
+let changeThemeSelectionIcon = document.createElement("span");
+changeThemeTextContainer.appendChild(changeThemeSelectionIcon);
+changeThemeSelectionIcon.className = "material-symbols-rounded";
+changeThemeSelectionIcon.textContent = "arrow_forward_ios";
 
-let audioQualityBtn = createSettingsPanelBtn(
-  settingsPanel,
-  "sliders",
-  "Audio Quality",
-  f_audioQuality
-);
+let AudioQualityDiv = document.createElement("div");
+settingsPanel.appendChild(AudioQualityDiv);
+AudioQualityDiv.id = "buttonDiv";
+let bnAudioQuality = document.createElement("button");
+AudioQualityDiv.appendChild(bnAudioQuality);
+bnAudioQuality.id = "bnAudioQuality";
+bnAudioQuality.addEventListener("click", f_audioQuality);
+let bnAudioQualityIconDiv = document.createElement("div");
+bnAudioQuality.appendChild(bnAudioQualityIconDiv);
+bnAudioQualityIconDiv.id = "settingBtnIconDiv";
+let bnAudioQualityIcon = document.createElement("span");
+bnAudioQualityIconDiv.appendChild(bnAudioQualityIcon);
+bnAudioQualityIcon.className = "material-symbols-rounded";
+bnAudioQualityIcon.textContent = "tune";
+bnAudioQualityIcon.id = "settingBtnIcon";
+let audioQualityTextContainer = document.createElement("div");
+audioQualityTextContainer.className = "buttonTextContainer";
+bnAudioQuality.appendChild(audioQualityTextContainer);
+let bnAudioQualityP = document.createElement("p");
+audioQualityTextContainer.appendChild(bnAudioQualityP);
+bnAudioQualityP.textContent = "Audio Quality";
+let audioQualitySelectionIcon = document.createElement("span");
+audioQualityTextContainer.appendChild(audioQualitySelectionIcon);
+audioQualitySelectionIcon.className = "material-symbols-rounded";
+audioQualitySelectionIcon.textContent = "arrow_forward_ios";
 
-let contributeBtn = createSettingsPanelBtn(
-  settingsPanel,
-  "music-notes-plus",
-  "Add Your Favourite Song",
-  f_contribute
-);
+let ContributeDiv = document.createElement("div");
+settingsPanel.appendChild(ContributeDiv);
+ContributeDiv.id = "buttonDiv";
+let bnContribute = document.createElement("button");
+ContributeDiv.appendChild(bnContribute);
+bnContribute.id = "bnContribute";
+bnContribute.addEventListener("click", f_contribute);
+let bnContributeIconDiv = document.createElement("div");
+bnContribute.appendChild(bnContributeIconDiv);
+bnContributeIconDiv.id = "settingBtnIconDiv";
+let bnContributeIcon = document.createElement("span");
+bnContributeIconDiv.appendChild(bnContributeIcon);
+bnContributeIcon.className = "material-symbols-rounded";
+bnContributeIcon.textContent = "volunteer_activism";
+bnContributeIcon.id = "settingBtnIcon";
+let contributeTextContainer = document.createElement("div");
+contributeTextContainer.className = "buttonTextContainer";
+bnContribute.appendChild(contributeTextContainer);
+let bnContributeP = document.createElement("p");
+contributeTextContainer.appendChild(bnContributeP);
+bnContributeP.textContent = "Add Your Favourite Song";
+let contributeSelectionIcon = document.createElement("span");
+contributeTextContainer.appendChild(contributeSelectionIcon);
+contributeSelectionIcon.className = "material-symbols-rounded";
+contributeSelectionIcon.textContent = "arrow_forward_ios";
 
-let logOutBtn = createSettingsPanelBtn(
-  settingsPanel,
-  "sign-out",
-  "Log out",
-  f_logOut
-);
-logOutBtn.classList.add("logout-btn");
+let LogOutDiv = document.createElement("div");
+settingsPanel.appendChild(LogOutDiv);
+LogOutDiv.id = "buttonDiv";
+let bnLogOut = document.createElement("button");
+LogOutDiv.appendChild(bnLogOut);
+bnLogOut.id = "bnLogOut";
+bnLogOut.addEventListener("click", f_logOut);
+let bnLogOutIconDiv = document.createElement("div");
+bnLogOut.appendChild(bnLogOutIconDiv);
+bnLogOutIconDiv.id = "settingBtnIconDiv";
+let bnLogOutIcon = document.createElement("span");
+bnLogOutIconDiv.appendChild(bnLogOutIcon);
+bnLogOutIcon.className = "material-symbols-rounded";
+bnLogOutIcon.textContent = "logout";
+bnLogOutIcon.id = "settingBtnIcon";
+bnLogOutIcon.style.color = "red";
+let logOutTextContainer = document.createElement("div");
+logOutTextContainer.className = "buttonTextContainer";
+bnLogOut.appendChild(logOutTextContainer);
+let bnLogOutP = document.createElement("p");
+logOutTextContainer.appendChild(bnLogOutP);
+bnLogOutP.textContent = "LOG OUT";
+bnLogOutP.style.color = "red";
+
+let accountPanelSpace = document.createElement("div");
+settingsPanel.appendChild(accountPanelSpace);
+accountPanelSpace.id = "accountPanelSpace";
 
 //VRIABLES
 let signedIn = false;
 
 function f_login() {
   if (usersList.length > 0) {
+    main.replaceChild(loginPanel, accountPanel);
+    bottomDiv.style.display = "none";
+    currentTab = loginPanel;
     // history.pushState(goBack, "", "/login");
-    loginPanel.style.display = "flex";
-    loginPanel.style.animation = "slideUp 0.5s ease";
   } else {
     alert("Server is not responding!");
   }
 }
-
 function showInfo() {
   if (signedIn) {
     profilePic.style.backgroundImage = `url(${profilePicImage})`;
     if (profileName.contains(bnLogin)) {
       profileName.removeChild(bnLogin);
     }
-    profileName.textContent = userProfileName;
+    profileName.textContent = userName;
   } else {
     profileName.textContent = "";
     if (!profileName.contains(bnLogin)) {
@@ -128,97 +269,67 @@ function showInfo() {
     }
   }
   playlistsCountP.textContent = `playlists: ${playlistList.length}`;
+  favouriteSongsCountP.textContent = `favourite songs:${favouriteSongList.length}`;
 }
 
 // CHANGEPASS DIV==================================
-let changePassPanel = createDiv("settings-tab-inner-panel");
+let changePassPanel = document.createElement("div");
+changePassPanel.className = "accountPanel_subPanel";
 
-let changePassPanelTopBar = createDiv("top-bar");
+let changePassPanelTopBar = document.createElement("div");
 changePassPanel.appendChild(changePassPanelTopBar);
+changePassPanelTopBar.className = "accountPanel_subPanelTopBar";
 
-changePassPanelTopBar.appendChild(
-  createButton(
-    null,
-    "back-btn",
-    createIcon("bold", "arrow-left"),
-    null,
-    f_backChangePassPanel
-  )
-);
+let bnBackChangePassPanel = document.createElement("button");
+changePassPanelTopBar.appendChild(bnBackChangePassPanel);
+bnBackChangePassPanel.className = "bnBack_accountPanel_subPanel";
+bnBackChangePassPanel.addEventListener("click", f_backChangePassPanel);
+let backChangePassIcon = document.createElement("span");
+bnBackChangePassPanel.appendChild(backChangePassIcon);
+backChangePassIcon.className = "material-symbols-rounded";
+backChangePassIcon.textContent = "arrow_back_ios_new";
+let bnBackChangePassPanelP = document.createElement("p");
+bnBackChangePassPanel.appendChild(bnBackChangePassPanelP);
+bnBackChangePassPanelP.textContent = "BACK";
 
-let changePassConDiv = createDiv("content");
+let changePassConDiv = document.createElement("div");
 changePassPanel.appendChild(changePassConDiv);
+changePassConDiv.className = "accountPanel_subPanelConDiv";
 
-let changePassFormDiv = createDiv("change-pass-form");
+let changePassFormDiv = document.createElement("div");
 changePassConDiv.appendChild(changePassFormDiv);
+changePassFormDiv.id = "changePassFormDiv";
 
-let oldPasswordInput = createInput(
-  "password",
-  "Current password",
-  "current-password",
-  "change-pass-input"
-);
-changePassFormDiv.appendChild(
-  createInputDiv(
-    "change-pass-input-div",
-    createIcon("bold", "key"),
-    oldPasswordInput
-  )
-);
+let oldPasswordInput = document.createElement("input");
+changePassFormDiv.appendChild(oldPasswordInput);
+oldPasswordInput.type = "password";
+oldPasswordInput.placeholder = "OLD PASSWORD";
 
-let newPasswordInputEye = createIcon(
-  "bold",
-  "eye-slash",
-  f_newPasswordInputEye
-);
-let newPasswordInput = createInput(
-  "password",
-  "New password",
-  "create-new-password",
-  "change-pass-input"
-);
-changePassFormDiv.appendChild(
-  createInputDiv(
-    "change-pass-input-div",
-    createIcon("bold", "key"),
-    newPasswordInput,
-    newPasswordInputEye
-  )
-);
+let newPasswordInput = document.createElement("input");
+changePassFormDiv.appendChild(newPasswordInput);
+newPasswordInput.type = "password";
+newPasswordInput.placeholder = "NEW PASSWORD";
 
-let confirmPasswordInput = createInput(
-  "password",
-  "Confirm password",
-  "confirm-create-new-password",
-  "change-pass-input"
-);
-changePassFormDiv.appendChild(
-  createInputDiv(
-    "change-pass-input-div",
-    createIcon("bold", "key"),
-    confirmPasswordInput
-  )
-);
+let confirmPasswordInput = document.createElement("input");
+changePassFormDiv.appendChild(confirmPasswordInput);
+confirmPasswordInput.type = "password";
+confirmPasswordInput.placeholder = "CONFIRM NEW PASSWORD";
 
-changePassFormDiv.appendChild(
-  createButton(
-    null,
-    "change-pass-btn",
-    null,
-    "Change password",
-    f_confirmChangePassword
-  )
-);
+let changePassFormBtnDiv = document.createElement("div");
+changePassFormDiv.appendChild(changePassFormBtnDiv);
+changePassFormBtnDiv.id = "changePassFormBtnDiv";
 
-changePassFormDiv.appendChild(
-  createButton(
-    null,
-    "change-pass-btn cancel",
-    null,
-    "Cancel",
-    f_cancelChangePassword
-  )
-);
+let cancelChangePassBtn = document.createElement("button");
+changePassFormBtnDiv.appendChild(cancelChangePassBtn);
+cancelChangePassBtn.id = "cancelChangePassBtn";
+cancelChangePassBtn.textContent = "CANCEL";
+cancelChangePassBtn.addEventListener("click", f_cancelChangePassword);
+
+let confirmChangePassBtn = document.createElement("button");
+changePassFormBtnDiv.appendChild(confirmChangePassBtn);
+confirmChangePassBtn.id = "confirmChangePassBtn";
+confirmChangePassBtn.textContent = "CHANGE";
+confirmChangePassBtn.addEventListener("click", f_confirmChangePassword);
 
 function f_changePass() {
   if (signedIn) {
@@ -226,39 +337,29 @@ function f_changePass() {
     changePassPanel.style.animation = "slideLeft 0.3s ease-in-out";
     changePassPanel.addEventListener(
       "animationend",
-      () => {
-        changePassPanel.style.animation = "none";
-      },
-      { once: true }
+      function changePassPanelSlideLeft() {
+        changePassPanel.removeEventListener(
+          "animationend",
+          changePassPanelSlideLeft
+        );
+      }
     );
     // history.pushState(f_backChangePassPanel, "", "/changePassword");
   }
 }
 
 function f_backChangePassPanel() {
-  if (accountPanel.contains(changePassPanel)) {
-    changePassPanel.style.animation = "slideRight 0.3s ease-in-out";
-    changePassPanel.addEventListener(
-      "animationend",
-      () => {
-        changePassPanel.style.animation = "none";
-        accountPanel.replaceChild(settingsPanel, changePassPanel);
-      },
-      { once: true }
-    );
-  }
-}
-
-function f_newPasswordInputEye() {
-  if (newPasswordInputEye.classList.contains("ph-eye-slash")) {
-    newPasswordInputEye.classList.remove("ph-eye-slash");
-    newPasswordInputEye.classList.add("ph-eye");
-    newPasswordInput.type = "text";
-  } else {
-    newPasswordInputEye.classList.remove("ph-eye");
-    newPasswordInputEye.classList.add("ph-eye-slash");
-    newPasswordInput.type = "password";
-  }
+  changePassPanel.style.animation = "slideRight 0.3s ease-in-out";
+  changePassPanel.addEventListener(
+    "animationend",
+    function changePassPanelSlideRight() {
+      changePassPanel.removeEventListener(
+        "animationend",
+        changePassPanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, changePassPanel);
+    }
+  );
 }
 
 function f_cancelChangePassword() {
@@ -282,7 +383,7 @@ function f_confirmChangePassword() {
         } else {
           main.style.display = "none";
           loadingDiv.style.display = "flex";
-          userData.password = newPassword;
+          data[userNameKey].password = newPassword;
           updateDataFile().then(() => {
             showInfo();
             localStorage.setItem("password", newPassword);
@@ -302,64 +403,76 @@ function f_confirmChangePassword() {
 }
 
 // NOTIFICATIONS DIV==============================
-let notificationsPanel = createDiv("settings-tab-inner-panel");
+let notificationsPanel = document.createElement("div");
+notificationsPanel.className = "accountPanel_subPanel";
 
-let notificationsPanelTopBar = createDiv("top-bar");
+let notificationsPanelTopBar = document.createElement("div");
 notificationsPanel.appendChild(notificationsPanelTopBar);
+notificationsPanelTopBar.className = "accountPanel_subPanelTopBar";
 
-notificationsPanelTopBar.appendChild(
-  createButton(
-    null,
-    "back-btn",
-    createIcon("bold", "arrow-left"),
-    null,
-    f_backNotificationsPanel
-  )
-);
+let bnBackNotificationsPanel = document.createElement("button");
+notificationsPanelTopBar.appendChild(bnBackNotificationsPanel);
+bnBackNotificationsPanel.className = "bnBack_accountPanel_subPanel";
+bnBackNotificationsPanel.addEventListener("click", f_backNotificationsPanel);
+let backNotificationsIcon = document.createElement("span");
+bnBackNotificationsPanel.appendChild(backNotificationsIcon);
+backNotificationsIcon.className = "material-symbols-rounded";
+backNotificationsIcon.textContent = "arrow_back_ios_new";
+let bnBackNotificationsPanelP = document.createElement("p");
+bnBackNotificationsPanel.appendChild(bnBackNotificationsPanelP);
+bnBackNotificationsPanelP.textContent = "BACK";
 
-let notificationsConDiv = createDiv("content");
+let notificationsConDiv = document.createElement("div");
 notificationsPanel.appendChild(notificationsConDiv);
+notificationsConDiv.className = "accountPanel_subPanelConDiv";
 
 function loadNotifications() {
   clearContainer(notificationsConDiv);
-  for (let notification of notificationsList) {
-    let notificationDiv = createDiv("notification-div");
+  for (i in notificationsList) {
+    let notificationDiv = document.createElement("div");
     notificationsConDiv.appendChild(notificationDiv);
+    notificationDiv.className = "notificationDiv";
 
-    let NotificationHeader = createDiv("notification-header");
+    let NotificationHeader = document.createElement("div");
     notificationDiv.appendChild(NotificationHeader);
+    NotificationHeader.id = "notificationHeader";
 
-    NotificationHeader.appendChild(
-      createTextField("notification-title", notification.title)
-    );
+    let notificationTitleP = document.createElement("p");
+    NotificationHeader.appendChild(notificationTitleP);
+    notificationTitleP.textContent = notificationsList[i].title;
 
-    let bnRemoveNotification = createButton(
-      null,
-      "remove-notification-btn",
-      createIcon("bold", "trash"),
-      "Delete",
-      null
-    );
+    let bnRemoveNotification = document.createElement("button");
     NotificationHeader.appendChild(bnRemoveNotification);
+    bnRemoveNotification.id = "bnRemoveNotification";
     bnRemoveNotification.addEventListener("click", () =>
-      f_removeNotification(notification)
+      f_removeNotification(notificationsList[i])
     );
+    let removeNotificationIcon = document.createElement("span");
+    bnRemoveNotification.appendChild(removeNotificationIcon);
+    removeNotificationIcon.className = "material-symbols-rounded";
+    removeNotificationIcon.textContent = "delete";
+    removeNotificationIcon.style.color = "red";
+    let removeNotificationP = document.createElement("p");
+    bnRemoveNotification.appendChild(removeNotificationP);
+    removeNotificationP.textContent = "REMOVE";
+    removeNotificationP.style.color = "red";
 
-    let notificationMetaDataDiv = createDiv("notification-meta-data-div");
-    notificationDiv.appendChild(notificationMetaDataDiv);
+    let notificationDateP = document.createElement("p");
+    notificationDiv.appendChild(notificationDateP);
+    notificationDateP.id = "notificationDate";
+    notificationDateP.textContent = notificationsList[i].date;
+    let notificationTimeP = document.createElement("p");
+    notificationDiv.appendChild(notificationTimeP);
+    notificationTimeP.id = "notificationTime";
+    notificationTimeP.textContent = notificationsList[i].time;
 
-    notificationMetaDataDiv.appendChild(
-      createTextField("notification-date", notification.date)
-    );
-
-    notificationMetaDataDiv.appendChild(
-      createTextField("notification-time", notification.time)
-    );
-
-    notificationDiv.appendChild(
-      createTextField("notification-content", notification.content)
-    );
+    let notificationContentP = document.createElement("p");
+    notificationDiv.appendChild(notificationContentP);
+    notificationContentP.textContent = notificationsList[i].content;
   }
+  let notificationContentSpace = document.createElement("div");
+  notificationsConDiv.appendChild(notificationContentSpace);
+  notificationContentSpace.id = "notificationContentSpace";
 }
 
 function f_notifications() {
@@ -368,67 +481,73 @@ function f_notifications() {
     notificationsPanel.style.animation = "slideLeft 0.3s ease-in-out";
     notificationsPanel.addEventListener(
       "animationend",
-      () => {
-        notificationsPanel.style.animation = "none";
-      },
-      { once: true }
+      function notificationsPanelSlideLeft() {
+        notificationsPanel.removeEventListener(
+          "animationend",
+          notificationsPanelSlideLeft
+        );
+      }
     );
     // history.pushState(f_backNotificationsPanel, "", "/notifications");
   }
 }
 
 function f_backNotificationsPanel() {
-  if (accountPanel.contains(notificationsPanel)) {
-    notificationsPanel.style.animation = "slideRight 0.3s ease-in-out";
-    notificationsPanel.addEventListener(
-      "animationend",
-      () => {
-        notificationsPanel.style.animation = "none";
-        accountPanel.replaceChild(settingsPanel, notificationsPanel);
-      },
-      { once: true }
-    );
-  }
+  notificationsPanel.style.animation = "slideRight 0.3s ease-in-out";
+  notificationsPanel.addEventListener(
+    "animationend",
+    function notificationsPanelSlideRight() {
+      notificationsPanel.removeEventListener(
+        "animationend",
+        notificationsPanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, notificationsPanel);
+    }
+  );
 }
 
 function f_removeNotification(notification) {
-  notificationsList.splice(notification, 1);
+  notificationsList.splice(notificationsList.indexOf(notification), 1);
   loadNotifications();
-  updateDataFile();
 }
 
-// MANAGE HISTORY DIV==============================
-let manageHistoryPanel = createDiv("settings-tab-inner-panel");
+// MANAGEHISTORY DIV==============================
+let manageHistoryPanel = document.createElement("div");
+manageHistoryPanel.className = "accountPanel_subPanel";
 
-let manageHistoryPanelTopBar = createDiv("top-bar");
+let manageHistoryPanelTopBar = document.createElement("div");
 manageHistoryPanel.appendChild(manageHistoryPanelTopBar);
+manageHistoryPanelTopBar.className = "accountPanel_subPanelTopBar";
 
-manageHistoryPanelTopBar.appendChild(
-  createButton(
-    null,
-    "back-btn",
-    createIcon("bold", "arrow-left"),
-    null,
-    f_backManageHistoryPanel
-  )
-);
+let bnBackManageHistoryPanel = document.createElement("button");
+manageHistoryPanelTopBar.appendChild(bnBackManageHistoryPanel);
+bnBackManageHistoryPanel.className = "bnBack_accountPanel_subPanel";
+bnBackManageHistoryPanel.addEventListener("click", f_backManageHistoryPanel);
+let backManageHistoryIcon = document.createElement("span");
+bnBackManageHistoryPanel.appendChild(backManageHistoryIcon);
+backManageHistoryIcon.className = "material-symbols-rounded";
+backManageHistoryIcon.textContent = "arrow_back_ios_new";
+let bnBackManageHistoryPanelP = document.createElement("p");
+bnBackManageHistoryPanel.appendChild(bnBackManageHistoryPanelP);
+bnBackManageHistoryPanelP.textContent = "BACK";
 
-let manageHistoryConDiv = createDiv("content");
+let manageHistoryConDiv = document.createElement("div");
 manageHistoryPanel.appendChild(manageHistoryConDiv);
+manageHistoryConDiv.className = "accountPanel_subPanelConDiv";
 
-let AllowHistoryDiv = createDiv("toggle-div");
+let AllowHistoryDiv = document.createElement("div");
 manageHistoryConDiv.appendChild(AllowHistoryDiv);
-
+AllowHistoryDiv.id = "AllowHistoryDiv";
 let AllowHistoryP = document.createElement("p");
-AllowHistoryDiv.appendChild(
-  createTextField("toggle-div-text", "Allow history")
-);
-
-let AllowHistoryToggle = createDiv("toggle-element");
+AllowHistoryDiv.appendChild(AllowHistoryP);
+AllowHistoryP.id = "AllowHistoryP";
+AllowHistoryP.textContent = "ALLOW HISTORY";
+let AllowHistoryToggle = document.createElement("div");
 AllowHistoryDiv.appendChild(AllowHistoryToggle);
-AllowHistoryToggle.addEventListener("click", keepHistory);
-let AllowHistoryToggleBall = createDiv("toggle-ball");
+AllowHistoryToggle.id = "AllowHistoryToggle";
+let AllowHistoryToggleBall = document.createElement("p");
 AllowHistoryToggle.appendChild(AllowHistoryToggleBall);
+AllowHistoryToggleBall.id = "AllowHistoryToggleBall";
 
 let bnClearSearchHistory = document.createElement("button");
 manageHistoryConDiv.appendChild(bnClearSearchHistory);
@@ -455,70 +574,82 @@ function f_manageHistory() {
     manageHistoryPanel.style.animation = "slideLeft 0.3s ease-in-out";
     manageHistoryPanel.addEventListener(
       "animationend",
-      () => {
-        manageHistoryPanel.style.animation = "none";
-      },
-      { once: true }
+      function manageHistoryPanelSlideLeft() {
+        manageHistoryPanel.removeEventListener(
+          "animationend",
+          manageHistoryPanelSlideLeft
+        );
+      }
     );
     // history.pushState(f_backManageHistoryPanel, "", "/manage-history");
   }
 }
 
 function f_backManageHistoryPanel() {
-  if (accountPanel.contains(manageHistoryPanel)) {
-    manageHistoryPanel.style.animation = "slideRight 0.3s ease-in-out";
-    manageHistoryPanel.addEventListener(
-      "animationend",
-      () => {
-        manageHistoryPanel.style.animation = "none";
-        accountPanel.replaceChild(settingsPanel, manageHistoryPanel);
-      },
-      { once: true }
-    );
-  }
+  manageHistoryPanel.style.animation = "slideRight 0.3s ease-in-out";
+  manageHistoryPanel.addEventListener(
+    "animationend",
+    function manageHistoryPanelSlideRight() {
+      manageHistoryPanel.removeEventListener(
+        "animationend",
+        manageHistoryPanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, manageHistoryPanel);
+    }
+  );
 }
 
-let currentHistoryToggleState = 0;
-
-function stopHistory(dontUpdateFile = false) {
-  if (signedIn) {
+function stopHistory() {
+  if (userData.allowHistory == 1) {
     AllowHistoryToggle.removeEventListener("click", stopHistory);
-    AllowHistoryToggle.classList.remove("active");
+    AllowHistoryToggle.addEventListener("click", keepHistory);
+    AllowHistoryToggleBall.style.transform = "translateX(0)";
+    AllowHistoryToggle.style.backgroundColor = "black";
     bnClearSearchHistory.style.display = "none";
     bnClearPlayedSongHistory.style.display = "none";
-    AllowHistoryToggle.addEventListener("click", keepHistory);
-    currentHistoryToggleState = 0;
-    if (!dontUpdateFile) {
-      userData.allowHistory = 0;
-      updateDataFile();
-    }
+    userData.allowHistory = 0;
   }
 }
 
-function keepHistory(dontUpdateFile = false) {
-  if (signedIn) {
+function keepHistory() {
+  if (userData.allowHistory == 0) {
     AllowHistoryToggle.removeEventListener("click", keepHistory);
-    AllowHistoryToggle.classList.add("active");
+    AllowHistoryToggle.addEventListener("click", stopHistory);
+    AllowHistoryToggleBall.style.transform = "translateX(4vw)";
+    AllowHistoryToggle.style.backgroundColor = "blue";
     bnClearSearchHistory.style.display = "flex";
     bnClearPlayedSongHistory.style.display = "flex";
-    AllowHistoryToggle.addEventListener("click", stopHistory);
-    currentHistoryToggleState = 1;
-    if (!dontUpdateFile) {
-      userData.allowHistory = 1;
-      updateDataFile();
-    }
+    userData.AllowHistory = 1;
   }
 }
 
 function setHistoryPref(pref) {
   if (pref == 1) {
-    if (currentHistoryToggleState == 0) {
-      keepHistory(true);
+    try {
+      AllowHistoryToggle.removeEventListener("click", keepHistory);
+    } catch {
+      try {
+        AllowHistoryToggle.removeEventListener("click", stopHistory);
+      } catch {}
     }
+    AllowHistoryToggle.addEventListener("click", stopHistory);
+    AllowHistoryToggleBall.style.transform = "translateX(4vw)";
+    AllowHistoryToggle.style.backgroundColor = "blue";
+    bnClearSearchHistory.style.display = "flex";
+    bnClearPlayedSongHistory.style.display = "flex";
   } else {
-    if (currentHistoryToggleState == 1) {
-      stopHistory(true);
+    try {
+      AllowHistoryToggle.removeEventListener("click", stopHistory);
+    } catch {
+      try {
+        AllowHistoryToggle.removeEventListener("click", keepHistory);
+      } catch {}
     }
+    AllowHistoryToggle.addEventListener("click", keepHistory);
+    AllowHistoryToggleBall.style.transform = "translateX(0)";
+    AllowHistoryToggle.style.backgroundColor = "black";
+    bnClearSearchHistory.style.display = "none";
+    bnClearPlayedSongHistory.style.display = "none";
   }
 }
 
@@ -526,8 +657,8 @@ function f_clearSearchHistory() {
   if (signedIn) {
     main.style.display = "none";
     loadingDiv.style.display = "flex";
-    userData.searchedTextList.splice(0, userData.searchedTextList.length);
-    userData.searchedSongList.splice(0, userData.searchedSongList.length);
+    searchedTextList.splice(0, searchedTextList.length);
+    searchedSongList.splice(0, searchedSongList.length);
     updateDataFile().then(() => {
       loadSearchHistory();
       loadingDiv.style.display = "none";
@@ -540,10 +671,7 @@ function f_clearPlayedSongHistory() {
   if (signedIn) {
     main.style.display = "none";
     loadingDiv.style.display = "flex";
-    userData.recentlyPlayedSongList.splice(
-      0,
-      userData.recentlyPlayedSongList.length
-    );
+    recentlyPlayedSongList.splice(0, recentlyPlayedSongList.length);
     updateDataFile().then(() => {
       loadRecentlyPlayedSongs();
       loadingDiv.style.display = "none";
@@ -553,291 +681,181 @@ function f_clearPlayedSongHistory() {
 }
 
 // CHANGE THEME DIV================================
-let appearancePanel = createDiv("settings-tab-inner-panel");
+let changeThemePanel = document.createElement("div");
+changeThemePanel.className = "accountPanel_subPanel";
 
-let appearancePanelTopBar = createDiv("top-bar");
-appearancePanel.appendChild(appearancePanelTopBar);
+let changeThemePanelTopBar = document.createElement("div");
+changeThemePanel.appendChild(changeThemePanelTopBar);
+changeThemePanelTopBar.className = "accountPanel_subPanelTopBar";
 
-appearancePanelTopBar.appendChild(
-  createButton(
-    null,
-    "back-btn",
-    createIcon("bold", "arrow-left"),
-    null,
-    closeAppearancePanel
-  )
-);
+let bnBackChangeThemePanel = document.createElement("button");
+changeThemePanelTopBar.appendChild(bnBackChangeThemePanel);
+bnBackChangeThemePanel.className = "bnBack_accountPanel_subPanel";
+bnBackChangeThemePanel.addEventListener("click", f_backChangeThemePanel);
+let backChangeThemeIcon = document.createElement("span");
+bnBackChangeThemePanel.appendChild(backChangeThemeIcon);
+backChangeThemeIcon.className = "material-symbols-rounded";
+backChangeThemeIcon.textContent = "arrow_back_ios_new";
+let bnBackChangeThemePanelP = document.createElement("p");
+bnBackChangeThemePanel.appendChild(bnBackChangeThemePanelP);
+bnBackChangeThemePanelP.textContent = "BACK";
 
-let appearancePanelConDiv = createDiv("content");
-appearancePanel.appendChild(appearancePanelConDiv);
+let changeThemeConDiv = document.createElement("div");
+changeThemePanel.appendChild(changeThemeConDiv);
+changeThemeConDiv.className = "accountPanel_subPanelConDiv";
 
-function openAppearancePanel() {
-  accountPanel.replaceChild(appearancePanel, settingsPanel);
-  appearancePanel.style.animation = "slideLeft 0.3s ease-in-out";
-  appearancePanel.addEventListener(
+let ChangeColorDiv = document.createElement("div");
+changeThemeConDiv.appendChild(ChangeColorDiv);
+ChangeColorDiv.id = "buttonDiv";
+let bnChangeColor = document.createElement("button");
+ChangeColorDiv.appendChild(bnChangeColor);
+bnChangeColor.id = "bnChangeColor";
+let bnChangeColorIcon = document.createElement("span");
+bnChangeColor.appendChild(bnChangeColorIcon);
+bnChangeColorIcon.className = "material-symbols-rounded";
+bnChangeColorIcon.textContent = currentThemeColorIcon;
+bnChangeColorIcon.id = "settingBtnIcon";
+let ChangeColorTextContainer = document.createElement("div");
+ChangeColorTextContainer.className = "buttonTextContainer";
+bnChangeColor.appendChild(ChangeColorTextContainer);
+let bnChangeColorP = document.createElement("p");
+ChangeColorTextContainer.appendChild(bnChangeColorP);
+bnChangeColorP.textContent = currentThemeColor;
+let ChangeColorSelectionIcon = document.createElement("span");
+ChangeColorTextContainer.appendChild(ChangeColorSelectionIcon);
+ChangeColorSelectionIcon.className = "material-symbols-rounded";
+ChangeColorSelectionIcon.textContent = "unfold_more";
+
+let ChangeBlurDiv = document.createElement("div");
+changeThemeConDiv.appendChild(ChangeBlurDiv);
+ChangeBlurDiv.id = "ChangeBlurDiv";
+let changeBlurP = document.createElement("p");
+ChangeBlurDiv.appendChild(changeBlurP);
+changeBlurP.id = "changeBlurP";
+changeBlurP.textContent = "BLUR EFFECT";
+let changeBlurToggle = document.createElement("div");
+ChangeBlurDiv.appendChild(changeBlurToggle);
+changeBlurToggle.id = "changeBlurToggle";
+// changeBlurToggle.addEventListener("click", f_changeBlur);
+let changeBlurToggleBall = document.createElement("p");
+changeBlurToggle.appendChild(changeBlurToggleBall);
+changeBlurToggleBall.id = "changeBlurToggleBall";
+
+function f_changeTheme() {
+  accountPanel.replaceChild(changeThemePanel, settingsPanel);
+  changeThemePanel.style.animation = "slideLeft 0.3s ease-in-out";
+  changeThemePanel.addEventListener(
     "animationend",
-    () => {
-      appearancePanel.style.animation = "none";
-    },
-    { once: true }
+    function changeThemePanelSlideLeft() {
+      changeThemePanel.removeEventListener(
+        "animationend",
+        changeThemePanelSlideLeft
+      );
+    }
   );
   // history.pushState(f_backChangeThemePanel,"","./themepanel");
 }
 
-function closeAppearancePanel() {
-  if (accountPanel.contains(appearancePanel)) {
-    appearancePanel.style.animation = "slideRight 0.3s ease-in-out";
-    appearancePanel.addEventListener(
-      "animationend",
-      () => {
-        appearancePanel.style.animation = "none";
-        accountPanel.replaceChild(settingsPanel, appearancePanel);
-      },
-      { once: true }
-    );
-  }
-}
-
-
-
-// THEME COLOR SETTINGS --------------
-let appliedThemeColor = "light-mode";
-let appliedThemeColorI = null;
-let selectedThemeColor = "light-mode";
-let selectedThemeColorI = null;
-
-let changeThemeColorBtn = createButton(
-  null,
-  "settings-panel-button",
-  createIcon("fill", "paint-roller"),
-  "Theme",
-  openThemeColorPanel
-);
-changeThemeColorBtn.appendChild(createIcon("bold", "caret-up-down"));
-appearancePanelConDiv.appendChild(changeThemeColorBtn);
-
-let themeColorSelectionPanel = createDiv("added-panel theme-selection-panel");
-themeColorSelectionPanel.appendChild(createTextField("added-panel-header", "Choose Theme"));
-
-let lightIcon = createIcon("fill", "radio-button");
-selectedThemeColorI = lightIcon;
-appliedThemeColorI = lightIcon;
-themeColorSelectionPanel.appendChild(
-  createButton(
-    null,
-    "added-panel-btn ripple",
-    lightIcon,
-    "Light",
-    selectLightTheme
-  )
-);
-
-let darkIcon = createIcon("bold", "circle");
-themeColorSelectionPanel.appendChild(
-  createButton(
-    null,
-    "added-panel-btn ripple",
-    darkIcon,
-    "Dark",
-    selectDarkTheme
-  )
-);
-
-let themePanelBtnDiv = createDiv("added-panel-btn-div");
-themeColorSelectionPanel.appendChild(themePanelBtnDiv);
-
-themePanelBtnDiv.appendChild(
-  createButton(
-    null,
-    null,
-    null,
-    "cancel",
-    closeThemeColorPanel
-  )
-);
-
-themePanelBtnDiv.appendChild(
-  createButton(
-    null,
-    null,
-    null,
-    "ok",
-    applyThemeColor
-  )
-);
-
-
-
-function selectLightTheme() {
-  selectedThemeColorI.className = "ph-bold ph-circle";
-  selectedThemeColor = "light-mode";
-  selectedThemeColorI = lightIcon;
-  selectedThemeColorI.className = "ph-fill ph-radio-button";
-}
-
-function selectDarkTheme() {
-  selectedThemeColorI.className = "ph-bold ph-circle";
-  selectedThemeColor = "dark-mode";
-  selectedThemeColorI = darkIcon;
-  selectedThemeColorI.className = "ph-fill ph-radio-button";
-}
-
-
-function applyThemeColor() {
-  app.classList.remove(appliedThemeColor);
-  appliedThemeColorI = selectedThemeColorI;
-  appliedThemeColor = selectedThemeColor;
-  app.classList.add(appliedThemeColor);
-  closeThemeColorPanel();
-  if (signedIn) {}
-}
-
-function openThemeColorPanel() {
-  changeThemeColorBtn.removeEventListener("click", openThemeColorPanel);
-  appearancePanel.appendChild(themeColorSelectionPanel);
-  themeColorSelectionPanel.style.animation = "appear 0.3s ease";
-  themeColorSelectionPanel.addEventListener(
+function f_backChangeThemePanel() {
+  changeThemePanel.style.animation = "slideRight 0.3s ease-in-out";
+  changeThemePanel.addEventListener(
     "animationend",
-    () => {
-      themeColorSelectionPanel.style.animation = "none";
-      changeThemeColorBtn.addEventListener("click", closeThemeColorPanel);
-    },
-    { once: true }
+    function changeThemePanelSlideRight() {
+      changeThemePanel.removeEventListener(
+        "animationend",
+        changeThemePanelSlideRight
+      );
+      accountPanel.replaceChild(settingsPanel, changeThemePanel);
+    }
   );
-}
-
-function closeThemeColorPanel() {
-  if (appearancePanel.contains(themeColorSelectionPanel)) {
-    selectedThemeColorI.className = "ph-bold ph-circle";
-    selectedThemeColorI = appliedThemeColorI;
-    selectedThemeColorI.className = "ph-fill ph-radio-button";
-    changeThemeColorBtn.removeEventListener("click", closeThemeColorPanel);
-    themeColorSelectionPanel.style.animation = "disappear 0.3s ease";
-    themeColorSelectionPanel.addEventListener(
-      "animationend",
-      () => {
-        themeColorSelectionPanel.style.animation = "none";
-        appearancePanel.removeChild(themeColorSelectionPanel);
-        changeThemeColorBtn.addEventListener("click", openThemeColorPanel);
-      },
-      { once: true }
-    );
-  }
 }
 
 function f_changeThemeColor(color) {
   if (color == "dark") {
-    if (appliedThemeColor == "light-mode") {
-      selectDarkTheme();
-      applyThemeColor()
-    }
+    currentThemeColor = "DARK";
+    currentThemeColorIcon = "dark_mode";
+    bnChangeColor.addEventListener("click", () => f_changeThemeColor("light"));
+    loadingDiv.className = "loadingDiv_darkMode";
+    bottomDiv.className = "bottomDiv_darkMode";
+    homePanel.className = "homePanel_darkMode";
+    playerPanel.className = "playerPanel_darkMode";
+    searchPanel.className = "searchPanel_darkMode";
+    libraryPanel.className = "libraryPanel_darkMode";
+    accountPanel.className = "accountPanel_darkMode";
+    loginPanel.className = "loginPanel_darkMode";
+    contributionPanel.className = "contributionPanel_darkMode";
   } else if (color == "light") {
-    if (appliedThemeColor == "dark-mode") {
-      selectLightTheme();
-      applyThemeColor();
-    }
+    currentThemeColor = "LIGHT";
+    currentThemeColorIcon = "light_mode";
+    bnChangeColor.addEventListener("click", () => f_changeThemeColor("dark"));
+    loadingDiv.className = "loadingDiv_lightMode";
+    bottomDiv.className = "bottomDiv_lightMode";
+    homePanel.className = "homePanel_lightMode";
+    playerPanel.className = "playerPanel_lightMode";
+    searchPanel.className = "searchPanel_lightMode";
+    libraryPanel.className = "libraryPanel_lightMode";
+    accountPanel.className = "accountPanel_lightMode";
+    loginPanel.className = "loginPanel_lightMode";
+    contributionPanel.className = "contributionPanel_lightMode";
+  }
+  bnChangeColorP.textContent = currentThemeColor;
+  bnChangeColorIcon.textContent = currentThemeColorIcon;
+  if (signedIn) {
+    userData.themeColor = color;
+    updateDataFile();
   }
 }
 
-
-
-// BACKGROUND BLUR SETTINGS --------------
-let BlurActive = false;
-
-let ChangeBlurDiv = createDiv("toggle-div");
-appearancePanelConDiv.appendChild(ChangeBlurDiv);
-ChangeBlurDiv.appendChild(createTextField("toggle-div-text", "Blur effect"));
-
-let changeBlurToggle = createDiv("toggle-element");
-ChangeBlurDiv.appendChild(changeBlurToggle);
-changeBlurToggle.addEventListener("click", f_changeBlur);
-let changeBlurToggleBall = createDiv("toggle-ball");
-changeBlurToggle.appendChild(changeBlurToggleBall);
-
 function f_changeBlur() {
   if (BlurActive) {
-    changeBlurToggle.classList.remove("active");
-    app.classList.remove("blur-on");
+    changeBlurToggleBall.style.transform = "translateX(0)";
+    changeBlurToggle.style.backgroundColor = "black";
     BlurActive = false;
   } else {
-    changeBlurToggle.classList.add("active");
-    app.classList.add("blur-on");
+    changeBlurToggleBall.style.transform = "translateX(4vw)";
+    changeBlurToggle.style.backgroundColor = "blue";
     BlurActive = true;
   }
 }
 
-// NAVIGATION DIV SETTINGS-------------
-let navBarStyle = "floating";
-
-let changeNavBarStyleDiv = createDiv("toggle-div");
-appearancePanelConDiv.appendChild(changeNavBarStyleDiv);
-changeNavBarStyleDiv.appendChild(createTextField("toggle-div-text", "Floating Navigation bar"));
-
-let changeNavBarStyleToggle = createDiv("toggle-element active");
-changeNavBarStyleDiv.appendChild(changeNavBarStyleToggle);
-changeNavBarStyleToggle.addEventListener("click", changeNavBarStyle);
-let changeNavBarStyleToggleBall = createDiv("toggle-ball");
-changeNavBarStyleToggle.appendChild(changeNavBarStyleToggleBall);
-
-function changeNavBarStyle() {
-  if (navBarStyle == "floating") {
-    changeNavBarStyleToggle.classList.remove("active");
-    bottomDiv.style.animation = "flash 0.2s ease";
-    bottomDiv.addEventListener("animationend", () => {
-      bottomDiv.classList.remove("floating");
-      bottomDiv.classList.add("sticky");
-      bottomDiv.style.animation = "none";
-    },{once: true});
-    navBarStyle = "sticky";
-  } else {
-    changeNavBarStyleToggle.classList.add("active");
-    bottomDiv.style.animation = "flash 0.2s ease";
-    bottomDiv.addEventListener("animationend", () => {
-      bottomDiv.classList.remove("sticky");
-      bottomDiv.classList.add("floating");
-      bottomDiv.style.animation = "none";
-    },{once: true});
-    navBarStyle = "floating";
-  }
-}
-
-
-
-
 // AUDIO QUALITY DIV================================
-let audioQualityPanel = createDiv("settings-tab-inner-panel");
+let audioQualityPanel = document.createElement("div");
+audioQualityPanel.className = "accountPanel_subPanel";
 
-let audioQualityPanelTopBar = createDiv("top-bar");
+let audioQualityPanelTopBar = document.createElement("div");
 audioQualityPanel.appendChild(audioQualityPanelTopBar);
+audioQualityPanelTopBar.className = "accountPanel_subPanelTopBar";
 
-audioQualityPanelTopBar.appendChild(
-  createButton(
-    null,
-    "back-btn",
-    createIcon("bold", "arrow-left"),
-    null,
-    f_backAudioQualityPanel
-  )
-);
+let bnBackAudioQualityPanel = document.createElement("button");
+audioQualityPanelTopBar.appendChild(bnBackAudioQualityPanel);
+bnBackAudioQualityPanel.className = "bnBack_accountPanel_subPanel";
+bnBackAudioQualityPanel.addEventListener("click", f_backAudioQualityPanel);
+let backAudioQualityIcon = document.createElement("span");
+bnBackAudioQualityPanel.appendChild(backAudioQualityIcon);
+backAudioQualityIcon.className = "material-symbols-rounded";
+backAudioQualityIcon.textContent = "arrow_back_ios_new";
+let bnBackAudioQualityPanelP = document.createElement("p");
+bnBackAudioQualityPanel.appendChild(bnBackAudioQualityPanelP);
+bnBackAudioQualityPanelP.textContent = "BACK";
 
-let audioQualityPanelConDiv = createDiv("content");
+let audioQualityPanelConDiv = document.createElement("div");
 audioQualityPanel.appendChild(audioQualityPanelConDiv);
-
-let audioQualityPanelP = createTextField(
-  null,
-  "This feature will be available soon!"
-);
+audioQualityPanelConDiv.className = "accountPanel_subPanelConDiv";
+let audioQualityPanelP = document.createElement("p");
 audioQualityPanelConDiv.appendChild(audioQualityPanelP);
+audioQualityPanelP.textContent = "This feature will be available soon.";
 
 function f_audioQuality() {
   accountPanel.replaceChild(audioQualityPanel, settingsPanel);
   audioQualityPanel.style.animation = "slideLeft 0.3s ease-in-out";
   audioQualityPanel.addEventListener(
     "animationend",
-    () => {
-      audioQualityPanel.style.animation = "none";
-    },
-    { once: true }
+    function changeAudioQualityPanelSlideLeft() {
+      audioQualityPanel.removeEventListener(
+        "animationend",
+        changeAudioQualityPanelSlideLeft
+      );
+    }
   );
   // history.pushState(f_backAudioQualityPanel,"","./audioQualityPanel");
 }
@@ -846,11 +864,13 @@ function f_backAudioQualityPanel() {
   audioQualityPanel.style.animation = "slideRight 0.3s ease-in-out";
   audioQualityPanel.addEventListener(
     "animationend",
-    () => {
-      audioQualityPanel.style.animation = "none";
+    function changeAudioQualityPanelSlideRight() {
+      audioQualityPanel.removeEventListener(
+        "animationend",
+        changeAudioQualityPanelSlideRight
+      );
       accountPanel.replaceChild(settingsPanel, audioQualityPanel);
-    },
-    { once: true }
+    }
   );
 }
 
@@ -860,10 +880,11 @@ function f_contribute() {
     loadingDiv.style.display = "flex";
     // history.pushState(goBack,"","./contributionPanel");
     startContribution().then(() => {
-      loadingDiv.style.display = "none";
       main.style.display = "flex";
-      contributionPanel.style.display = "flex";
-      contributionPanel.style.animation = "slideUp 0.5s ease";
+      loadingDiv.style.display = "none";
+      main.replaceChild(contributionPanel, accountPanel);
+      currentTab = contributionPanel;
+      bottomDiv.style.display = "none";
     });
   } else {
     alert("You need to be logged in to contribute!");
