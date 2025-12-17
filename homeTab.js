@@ -10,7 +10,7 @@ function createHomeTabSongDiv(parentDiv, hText) {
   return innerDiv;
 }
 
-function createSongBtn(songs, className = "rectangle") {
+function createSongBtn(songs, Name, artist, image, className = "rectangle") {
   // button element
   let suggestedSong = document.createElement("button");
   suggestedSong.className = `suggested-song ${className}`;
@@ -19,8 +19,8 @@ function createSongBtn(songs, className = "rectangle") {
   // album art or icon as a picture
   let pic = createTextField(`suggested-song-image ${className}`);
   suggestedSong.appendChild(pic);
-  if (songData[songs].image.length > 0) {
-    pic.style.backgroundImage = `url(${songData[songs].image})`;
+  if (image.length > 0) {
+    pic.style.backgroundImage = `url(${image})`;
   } else {
     pic.appendChild(createIcon("bold", "music-note"));
   }
@@ -33,10 +33,10 @@ function createSongBtn(songs, className = "rectangle") {
   let aboutSongDiv = createDiv(`suggested-song-about-div ${className}`);
   sdiv.appendChild(aboutSongDiv);
   aboutSongDiv.appendChild(
-    createTextField(`suggested-song-name ${className}`, songData[songs].name)
+    createTextField(`suggested-song-name ${className}`, Name)
   );
   aboutSongDiv.appendChild(
-    createTextField(`suggested-song-artist ${className}`, songData[songs].artist)
+    createTextField(`suggested-song-artist ${className}`, artist)
   );
 
   // options button
@@ -136,7 +136,7 @@ function loadRecentlyPlayedSongs() {
   if (signedIn) {
     if (recentlyPlayedSongList.length > 0) {
       for (let songs of recentlyPlayedSongList) {
-        recentlyPlayedDivCon.appendChild(createSongBtn(songs, "square"));
+        recentlyPlayedDivCon.appendChild(createSongBtn(songs, songData[songs].name, songData[songs].artist, songData[songs].image, "square"));
       }
     } else {
       recentlyPlayedDivConText.textContent = "NO SONGS PLAYED RECENTLY";
@@ -175,12 +175,12 @@ function loadHomeSongs(songList, songContainer) {
 function createRsongContainer(s1, s2 = null, s3 = null) {
   let div = createDiv("rectangle-song-container");
 
-  div.appendChild(createSongBtn(s1, "rectangle"));
+  div.appendChild(createSongBtn(s1, songData[s1].name, songData[s1].artist, songData[s1].image, "rectangle"));
 
   if (s2) {
-    div.appendChild(createSongBtn(s2, "rectangle"));
+    div.appendChild(createSongBtn(s2, songData[s2].name, songData[s2].artist, songData[s2].image, "rectangle"));
     if (s3) {
-      div.appendChild(createSongBtn(s3, "rectangle"));
+      div.appendChild(createSongBtn(s3, songData[s3].name, songData[s3].artist, songData[s3].image, "rectangle"));
     }
   }
 

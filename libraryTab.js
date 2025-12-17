@@ -140,7 +140,7 @@ function openPlaylist(playlist) {
   if (playlist.songs.length > 0) {
     for (let sng of playlist.songs) {
       playlistPanelSongDiv.appendChild(
-        createSongBtn(sng, "rectangle")
+        createSongBtn(sng, songData[sng].name, songData[sng].artist, songData[sng].image, "rectangle")
       );
     }
   } else {
