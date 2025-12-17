@@ -1,128 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css"
-    />
-    <link rel="stylesheet" href="animation.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="homeTab.css" />
-    <link rel="stylesheet" href="playerTab.css" />
-    <link rel="stylesheet" href="searchTab.css" />
-    <link rel="stylesheet" href="libraryTab.css" />
-    <link rel="stylesheet" href="accountTab.css" />
-    <link rel="stylesheet" href="loginTab.css" />
-    <link rel="stylesheet" href="contributionTab.css" />
-    <title>Music Player By Noor Taquee</title>
-  </head>
-  <body id="app" class="dark-mode vertical">
-    <div id="loading-screen" class="light-mode">
-      <div class="loading-div">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-      <div class="loading-status-div">
-        <p id="loading-details">connecting...</p>
-        <div class="loading-progress-bar">
-          <div id="loading-progress-covered"></div>
-        </div>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="description" content="Web based music player for streaming songs.">
+  <meta name="keywords" content="Music Player, song">
+  <meta name="author" content="Noor Taquee">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css" />
+  <link rel="stylesheet" href="animation.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="homeTab.css" />
+  <link rel="stylesheet" href="playerTab.css" />
+  <link rel="stylesheet" href="searchTab.css" />
+  <link rel="stylesheet" href="libraryTab.css" />
+  <link rel="stylesheet" href="accountTab.css" />
+  <link rel="stylesheet" href="loginTab.css" />
+  <link rel="stylesheet" href="contributionTab.css" />
+  <title>Music Player</title>
+</head>
+
+<body id="app" class="light-mode vertical">
+  <div id="loading-screen">
+    <div class="loading-div">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="loading-status-div">
+      <p id="loading-details">connecting...</p>
+      <div class="loading-progress-bar">
+        <div id="loading-progress-covered"></div>
       </div>
     </div>
-    <div id="main">
-      <div id="inner-app">
-        <div id="home-panel" class="inner-app-panel"></div>
-        <div id="search-panel" class="inner-app-panel"></div>
-        <div id="library-panel" class="inner-app-panel"></div>
-        <div id="account-panel" class="inner-app-panel"></div>
-      </div>
-      <div id="navigation-div" class="floating">
-        <div id="navigation-button-div">
-          <button id="home-panel-btn" class="active">
-            <i class="ph-fill ph-house" id="home-tab-icon"></i>
-          </button>
-          <button id="search-panel-btn">
-            <i class="ph-bold ph-magnifying-glass" id="search-tab-icon"></i>
-          </button>
-          <button id="library-panel-btn">
-            <i class="ph-bold ph-playlist" id="library-tab-icon"></i>
-          </button>
-          <button id="account-panel-btn">
-            <i class="ph-bold ph-user" id="account-tab-icon"></i>
-          </button>
-        </div>
+  </div>
+  <div id="main">
+    <div id="inner-app">
+      <div id="home-panel" class="inner-app-panel"></div>
+      <div id="search-panel" class="inner-app-panel"></div>
+      <div id="library-panel" class="inner-app-panel"></div>
+      <div id="account-panel" class="inner-app-panel"></div>
+    </div>
+    <div id="navigation-div" class="floating">
+      <div id="navigation-button-div">
+        <button id="home-panel-btn" class="active">
+          <i class="ph-fill ph-house" id="home-tab-icon"></i>
+        </button>
+        <button id="search-panel-btn">
+          <i class="ph-bold ph-magnifying-glass" id="search-tab-icon"></i>
+        </button>
+        <button id="library-panel-btn">
+          <i class="ph-bold ph-playlist" id="library-tab-icon"></i>
+        </button>
+        <button id="account-panel-btn">
+          <i class="ph-bold ph-user" id="account-tab-icon"></i>
+        </button>
       </div>
     </div>
-    <div id="player-panel" class="outer-app-panel"></div>
-    <div id="login-panel" class="outer-app-panel"></div>
-    <div id="contribution-panel" class="outer-app-panel"></div>
-    <audio id="song"></audio>
-    <script>
-let loadingDiv = document.getElementById("loading-screen");
-let loadingStatusDiv = document.querySelector(".loading-status-div")
-let loadingMessage = document.getElementById("loading-details");
-let loadingProgress = document.getElementById("loading-progress-covered");
+  </div>
+  <div id="player-panel" class="outer-app-panel"></div>
+  <div id="login-panel" class="outer-app-panel"></div>
+  <div id="contribution-panel" class="outer-app-panel"></div>
+  <audio id="song"></audio>
+  <script>
+    let loadingDiv = document.getElementById("loading-screen");
+    let loadingStatusDiv = document.querySelector(".loading-status-div")
+    let loadingMessage = document.getElementById("loading-details");
+    let loadingProgress = document.getElementById("loading-progress-covered");
 
-let app = document.getElementById("app");
+    let app = document.getElementById("app");
 
-let main = document.getElementById("main");
-let innerApp = document.getElementById("inner-app");
+    let main = document.getElementById("main");
+    let innerApp = document.getElementById("inner-app");
 
-let bottomDiv = document.getElementById("navigation-div");
-let switchDiv = document.getElementById("navigation-button-div");
+    let bottomDiv = document.getElementById("navigation-div");
+    let switchDiv = document.getElementById("navigation-button-div");
 
-let bnHomePanel = document.getElementById("home-panel-btn");
-let bnHomePanelI = document.getElementById("home-tab-icon");
+    let bnHomePanel = document.getElementById("home-panel-btn");
+    let bnHomePanelI = document.getElementById("home-tab-icon");
 
-let bnSearchPanel = document.getElementById("search-panel-btn");
-let bnSearchPanelI = document.getElementById("search-tab-icon");
+    let bnSearchPanel = document.getElementById("search-panel-btn");
+    let bnSearchPanelI = document.getElementById("search-tab-icon");
 
-let bnLibraryPanel = document.getElementById("library-panel-btn");
-let bnLibraryPanelI = document.getElementById("library-tab-icon");
+    let bnLibraryPanel = document.getElementById("library-panel-btn");
+    let bnLibraryPanelI = document.getElementById("library-tab-icon");
 
-let bnAccountPanel = document.getElementById("account-panel-btn");
-let bnAccountPanelI = document.getElementById("account-tab-icon");
+    let bnAccountPanel = document.getElementById("account-panel-btn");
+    let bnAccountPanelI = document.getElementById("account-tab-icon");
 
-let totalFiles = 10;
-let attendFiles = 0;
-function attend() {
-  loadingMessage.textContent = "progress: creating interface...";
-  loadingProgress.style.width = `${(parseFloat(loadingProgress.style.width) || 0) + 1}%`;
-  attendFiles++;
-  if (attendFiles == totalFiles) {
-    loadingMessage.textContent = "progress: interface ready";
-    startBackend();
-  }
-}
+    let totalFiles = 10;
+    let attendFiles = 0;
+    function attend() {
+      loadingMessage.textContent = "progress: creating interface...";
+      loadingProgress.style.width = `${(parseFloat(loadingProgress.style.width) || 0) + 1}%`;
+      attendFiles++;
+      if (attendFiles == totalFiles) {
+        loadingMessage.textContent = "progress: interface ready";
+        startBackend();
+      }
+    }
 
-function reloadPage() {
-  window.location.reload();
-}
-    </script>
-    <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
-    <script defer src="UIhelperFunctions.js" onerror="reloadPage()"></script>
-    <script defer src="script.js" onerror="reloadPage()"></script>
-    <script defer src="backend.js"  onerror="reloadPage()"></script>
-    <script defer src="song.js" onerror="reloadPage()"></script>
-    <script defer src="homeTab.js" onerror="reloadPage()"></script>
-    <script defer src="playerTab.js" onerror="reloadPage()"></script>
-    <script defer src="searchTab.js" onerror="reloadPage()"></script>
-    <script defer src="libraryTab.js" onerror="reloadPage()"></script>
-    <script defer src="loginTab.js" onerror="reloadPage()"></script>
-    <script defer src="contributionTab.js" onerror="reloadPage()"></script>
-    <script defer src="accountTab.js" onerror="reloadPage()"></script>
-  </body>
+    function reloadPage() {
+      window.location.reload();
+    }
+  </script>
+  <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+  <script defer src="UIhelperFunctions.js" onerror="reloadPage()"></script>
+  <script defer src="script.js" onerror="reloadPage()"></script>
+  <script defer src="backend.js" onerror="reloadPage()"></script>
+  <script defer src="song.js" onerror="reloadPage()"></script>
+  <script defer src="homeTab.js" onerror="reloadPage()"></script>
+  <script defer src="playerTab.js" onerror="reloadPage()"></script>
+  <script defer src="searchTab.js" onerror="reloadPage()"></script>
+  <script defer src="libraryTab.js" onerror="reloadPage()"></script>
+  <script defer src="loginTab.js" onerror="reloadPage()"></script>
+  <script defer src="contributionTab.js" onerror="reloadPage()"></script>
+  <script defer src="accountTab.js" onerror="reloadPage()"></script>
+</body>
+
 </html>
