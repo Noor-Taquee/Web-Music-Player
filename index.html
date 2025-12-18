@@ -18,64 +18,69 @@
   <link rel="stylesheet" href="accountTab.css" />
   <link rel="stylesheet" href="loginTab.css" />
   <link rel="stylesheet" href="contributionTab.css" />
+  <link rel="icon" href="Icons/favicon.ico">
   <title>Music Player</title>
 </head>
 
-<body id="app" class="light-mode vertical">
-  <div id="loading-screen">
-    <div class="loading-div">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <div class="loading-status-div">
-      <p id="loading-details">connecting...</p>
-      <div class="loading-progress-bar">
-        <div id="loading-progress-covered"></div>
+<body>
+  <div id="app" class="light-mode vertical">
+    <div id="loading-screen">
+      <div class="loading-div">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="loading-status-div">
+        <p id="loading-details">connecting...</p>
+        <div class="loading-progress-bar">
+          <div id="loading-progress-covered"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div id="main">
     <div id="inner-app">
-      <div id="home-panel" class="inner-app-panel"></div>
-      <div id="search-panel" class="inner-app-panel"></div>
-      <div id="library-panel" class="inner-app-panel"></div>
-      <div id="account-panel" class="inner-app-panel"></div>
-    </div>
-    <div id="navigation-div" class="floating">
-      <div id="navigation-button-div">
-        <button id="home-panel-btn" class="active">
-          <i class="ph-fill ph-house" id="home-tab-icon"></i>
-        </button>
-        <button id="search-panel-btn">
-          <i class="ph-bold ph-magnifying-glass" id="search-tab-icon"></i>
-        </button>
-        <button id="library-panel-btn">
-          <i class="ph-bold ph-playlist" id="library-tab-icon"></i>
-        </button>
-        <button id="account-panel-btn">
-          <i class="ph-bold ph-user" id="account-tab-icon"></i>
-        </button>
+      <div id="inner-app-wrapper">
+        <div id="inner-app-tab-container">
+          <div id="home-panel" class="inner-app-panel"></div>
+          <div id="search-panel" class="inner-app-panel"></div>
+          <div id="library-panel" class="inner-app-panel"></div>
+          <div id="account-panel" class="inner-app-panel"></div>
+        </div>
+        <div id="navigation-div" class="floating">
+          <div id="navigation-button-div">
+            <button id="home-panel-btn" class="active">
+              <i class="ph-fill ph-house" id="home-tab-icon"></i>
+            </button>
+            <button id="search-panel-btn">
+              <i class="ph-bold ph-magnifying-glass" id="search-tab-icon"></i>
+            </button>
+            <button id="library-panel-btn">
+              <i class="ph-bold ph-playlist" id="library-tab-icon"></i>
+            </button>
+            <button id="account-panel-btn">
+              <i class="ph-bold ph-user" id="account-tab-icon"></i>
+            </button>
+          </div>
+        </div>
+        <div id="player-panel" class="outer-app-panel"></div>
+        <div id="login-panel" class="outer-app-panel"></div>
+        <div id="contribution-panel" class="outer-app-panel"></div>
       </div>
+      <audio id="song"></audio>
     </div>
   </div>
-  <div id="player-panel" class="outer-app-panel"></div>
-  <div id="login-panel" class="outer-app-panel"></div>
-  <div id="contribution-panel" class="outer-app-panel"></div>
-  <audio id="song"></audio>
   <script>
     let loadingDiv = document.getElementById("loading-screen");
-    let loadingStatusDiv = document.querySelector(".loading-status-div")
+    let loadingStatusDiv = document.querySelector(".loading-status-div");
     let loadingMessage = document.getElementById("loading-details");
     let loadingProgress = document.getElementById("loading-progress-covered");
 
     let app = document.getElementById("app");
 
-    let main = document.getElementById("main");
-    let innerApp = document.getElementById("inner-app");
+    let main = document.getElementById("inner-app");
+    let innerApp = document.getElementById("inner-app-tab-container");
 
     let bottomDiv = document.getElementById("navigation-div");
     let switchDiv = document.getElementById("navigation-button-div");
@@ -92,7 +97,7 @@
     let bnAccountPanel = document.getElementById("account-panel-btn");
     let bnAccountPanelI = document.getElementById("account-tab-icon");
 
-    let totalFiles = 10;
+    let totalFiles = 8;
     let attendFiles = 0;
     function attend() {
       loadingMessage.textContent = "progress: creating interface...";

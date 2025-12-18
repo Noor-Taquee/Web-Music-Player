@@ -1,23 +1,31 @@
-#app {
-  position: relative;
+body {
   height: 100vh;
   width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  --primary-font: 400 16px Arial;
+}
+
+#app {
+  position: relative;
+  height: 100%;
+  width: 100%;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter;
+  font-family: "Segoe UI", Inter;
   background-image: none;
   background: transparent;
   background-size: contain;
 }
 #app.horizontal {
   gap: 5px;
-}
-#app::-webkit-scrollbar {
-  display: none;
 }
 
 #app.light-mode p {
@@ -138,7 +146,7 @@ div {
   transition: width 0.5s ease;
 }
 
-#app.vertical #main {
+#app.vertical #inner-app {
   position: relative;
   height: 100%;
   width: 100%;
@@ -153,10 +161,10 @@ div {
   background-size: contain;
   transition: all 1s ease-in-out;
 }
-#app.horizontal #main {
+#app.horizontal #inner-app {
   position: relative;
+  flex-grow: 1;
   height: 100%;
-  width: 70%;
   overflow: hidden;
   box-sizing: border-box;
   margin: 0;
@@ -170,7 +178,7 @@ div {
   transition: all 1s ease-in-out;
 }
 
-#inner-app {
+#inner-app-tab-container {
   flex-grow: 1;
   height: 100%;
   overflow-y: hidden;
@@ -182,7 +190,7 @@ div {
   padding: 0;
   display: flex;
 }
-#inner-app::-webkit-scrollbar {
+#inner-app-tab-container::-webkit-scrollbar {
   display: none;
 }
 

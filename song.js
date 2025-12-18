@@ -46,10 +46,10 @@ function updateSongInfo() {
   if (streamUrl.includes("www.dropbox.com")) {
     streamUrl = streamUrl.replace("dl=0", "raw=1");
   }
-  
+
   song.src = streamUrl;
   main.style.backgroundImage = `url(${currentAlbumArt})`;
-  
+
   updateSecondaryButtons();
   if (artistsList.length > 0) {
     loadSongInfo();
@@ -58,7 +58,7 @@ function updateSongInfo() {
 
 async function registerSong() {
   if (currentUser) {
-    // Optional: Send a request to your backend to update 'songStreams' 
+    // Optional: Send a request to your backend to update 'songStreams'
     // or add to a 'RecentlyPlayed' table.
     try {
       await apiRequest('register-play', 'POST', {
@@ -121,7 +121,7 @@ function nextSong() {
   if (currentSongIndex < songsList.length - 1) {
     currentSongIndex++;
     currentSong = songsList[currentSongIndex];
-    
+
     updateSongInfo();
     showLoading();
     // ... animation logic remains the same ...
@@ -135,12 +135,12 @@ function prevSong() {
     if (currentSongIndex > 0) {
       currentSongIndex--;
       currentSong = songsList[currentSongIndex]; // Updated: use songsList
-      
+
       updateSongInfo();
       showLoading();
       main.style.backgroundImage = `url(${currentAlbumArt})`;
       changePicture("miniPlayer");
-      
+
       // Animation logic
       if (main.contains(playerPanel) && pictureDiv.contains(albumArt)) {
         pictureDiv.style.animation = "fadeOutAhead 0.2s ease";
@@ -179,11 +179,11 @@ function playSong(songObject) {
   if (musicPlaying) {
     stopMusic();
   }
-  
+
   // Set current song and find its index in the main list for Prev/Next logic
   currentSong = songObject;
   currentSongIndex = songsList.findIndex(s => s.songid === songObject.songid);
-  
+
   updateSongInfo();
   showLoading();
   songChanged = true;
@@ -276,7 +276,8 @@ song.addEventListener("playing", () => {
   }
 });
 
-attend();
 loadingProgress.style.width = `${
   (parseFloat(loadingProgress.style.width) || 0) + 100 / totalFiles
 }%`;
+
+attend();

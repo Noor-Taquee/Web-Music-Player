@@ -4,14 +4,17 @@ let songsList = [];
 let artistsList = [];
 
 // --- API HELPERS ---
-async function apiRequest(endpoint, method = "GET", body = null) {
+async function apiRequest(endpoint, httpMethod = "GET", body = null) {
+  console.log("request");
+
   const options = {
-    method,
+    httpMethod,
     headers: { "Content-Type": "application/json" }
   };
+
   if (body) options.body = JSON.stringify(body);
 
-  const response = await fetch(`/.netlify/functions/${endpoint}`, options);
+  const response = await fetch(`/.netlify/functions/${endpoint}.js`, options);
   if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
   return await response.json();
 }
@@ -21,8 +24,8 @@ async function startBackend() {
   try {
     // Parallel loading for speed
     await Promise.all([
-      fetchAllSongs(),
-      fetchAllArtists()
+      fetchAllSongs()
+      // fetchAllArtists()
     ]);
 
     checkLocalStorage();
@@ -33,11 +36,9 @@ async function startBackend() {
 }
 async function fetchAllSongs() {
   loadingMessage.textContent = "progress: Collecting music library...";
-  // Gets all songs from your Neon 'Songs' table via Netlify
+  // Gets all songs from database
+  console.log('getting songs');
   songsList = await apiRequest('get-songs');
-
-  // Populate each container by filtering the main list
-  // Note: Ensure the genre strings match exactly what is in your DB (e.g., 'Hindi', 'Punjabi')
   loadHomeSongs(songsList, hindiSongDivCon, "Hindi");
   loadHomeSongs(songsList, punjabiSongDivCon, "Punjabi");
   loadHomeSongs(songsList, englishSongDivCon, "English");
@@ -66,7 +67,7 @@ let songLoaded = false;
 function songAttendance() {
   songLoaded = true;
   loadingMessage.textContent = "progress: Songs loaded!";
-  if (currentUser) updateUI(); 
+  if (currentUser) updateUI();
 }
 
 let artistLoaded = false;
@@ -99,6 +100,7 @@ async function checkLocalStorage() {
 
 async function loginUser(username, password) {
   loadingMessage.textContent = "progress: Authenticating...";
+  loadingProgress.style.width = "95%";
 
   const data = await apiRequest('login', 'POST', { username, password });
 

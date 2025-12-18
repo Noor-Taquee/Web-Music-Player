@@ -90,13 +90,13 @@ function loadSearchHistory() {
 // --- MODIFIED INSTANT SEARCH ---
 function findSearchMatches() {
   let searchedStr = searchBox.value.toLowerCase().trim();
-  
+
   if (searchedStr.length < 1) {
     showHistory();
   } else {
     // Filter the SQL objects list
-    let resultList = songsList.filter(song => 
-      song.songname.toLowerCase().includes(searchedStr) || 
+    let resultList = songsList.filter(song =>
+      song.songname.toLowerCase().includes(searchedStr) ||
       (song.artistname && song.artistname.toLowerCase().includes(searchedStr))
     );
 
@@ -123,7 +123,7 @@ function showSearchResult(resultList) {
     resultList.forEach(songObj => {
       // Create a button that displays "Song Name - Artist Name"
       let displayText = `${songObj.songname} • ${songObj.artistname || 'Artist'}`;
-      
+
       let searchResultBtn = createButton(
         null,
         "search-text-btn",
@@ -131,13 +131,13 @@ function showSearchResult(resultList) {
         displayText,
         null
       );
-      
+
       searchResultDiv.appendChild(searchResultBtn);
-      
+
       searchResultBtn.addEventListener("click", () => {
         playSong(songObj); // Pass the whole SQL Object
         expandToplayer();
-        
+
         // Handle History via DB (Optional step)
         if (currentUser && historyPref === 1) {
           addSongToSearchHistory(songObj);

@@ -89,8 +89,6 @@ function switchTo(destination) {
   destination.scrollIntoView();
 }
 
-attend();
-
 let currentTabBtn = bnHomePanel;
 let currentTabBtnI = bnHomePanelI;
 innerApp.addEventListener("scroll", function checkTabInView() {
@@ -166,3 +164,5 @@ function checkOrientation() {
   }
 }
 window.addEventListener("resize", checkOrientation);
+
+attend();
