@@ -1,14 +1,14 @@
 const { neon } = require('@neondatabase/serverless');
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== "GET") {
+  if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   const sql = neon(process.env.NETLIFY_DATABASE_URL);
 
   try {
-    const songs = await sql`SELECT * FROM Songs ORDER BY songID DESC`;
+    const songs = await sql``;
 
     return {
       statusCode: 200,

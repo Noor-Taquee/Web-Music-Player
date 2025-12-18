@@ -20,7 +20,8 @@ exports.handler = async (event) => {
       FROM songs s
       JOIN match m ON s.songid = m.songid
       JOIN artists ar ON m.artistid = ar.artistid
-      JOIN albums al ON m.albumid = al.albumid`;
+      JOIN albums al ON m.albumid = al.albumid
+      WHERE s.songlanguage = 'English'`;
 
     return {
       statusCode: 200,

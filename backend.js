@@ -14,13 +14,14 @@ async function apiRequest(endpoint, httpMethod = "GET", body = null) {
 
   if (body) options.body = JSON.stringify(body);
 
-  const response = await fetch(`/.netlify/functions/${endpoint}.js`, options);
+  const response = await fetch(`/.netlify/functions/${endpoint}`, options);
   if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
   return await response.json();
 }
 
 async function startBackend() {
   loadingMessage.textContent = "progress: Initializing system...";
+  loadingProgress.style.width = "30%";
   try {
     // Parallel loading for speed
     await Promise.all([
@@ -38,13 +39,14 @@ async function fetchAllSongs() {
   loadingMessage.textContent = "progress: Collecting music library...";
   // Gets all songs from database
   console.log('getting songs');
-  songsList = await apiRequest('get-songs');
-  loadHomeSongs(songsList, hindiSongDivCon, "Hindi");
-  loadHomeSongs(songsList, punjabiSongDivCon, "Punjabi");
-  loadHomeSongs(songsList, englishSongDivCon, "English");
-  loadHomeSongs(songsList, phonkSongDivCon, "Phonk");
-  loadHomeSongs(songsList, spanishSongDivCon, "Spanish");
-  loadHomeSongs(songsList, tuneDivCon, "Tunes");
+  // songsList = await apiRequest('get-songs');
+  const englishSongs = await apiRequest('get-english-songs');
+  loadHomeSongs(englishSongs, englishSongDivCon);
+  // loadHomeSongs(hindiSongs, hindiSongDivCon);
+  // loadHomeSongs(songsList, punjabiSongDivCon, "Punjabi");
+  // loadHomeSongs(songsList, phonkSongDivCon, "Phonk");
+  // loadHomeSongs(songsList, spanishSongDivCon, "Spanish");
+  // loadHomeSongs(songsList, tuneDivCon, "Tunes");
 
   songAttendance();
 }

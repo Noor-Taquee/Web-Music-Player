@@ -12,18 +12,15 @@ function createHomeTabSongDiv(parentDiv, hText) {
 
 // 1. Updated Song Button to use SQL Object structure
 function createSongBtn(songObj, className = "rectangle") {
-  // songObj now looks like: { songid: 1, songname: "Title", songimage: "url", ... }
-  
+
   let suggestedSong = document.createElement("button");
   suggestedSong.className = `suggested-song ${className}`;
-  
-  // Pass the whole object to playSong
+
   suggestedSong.addEventListener("click", () => playSong(songObj));
 
-  // Image handling (Postgres uses lowercase column names by default)
   let pic = createTextField(`suggested-song-image ${className}`);
   suggestedSong.appendChild(pic);
-  
+
   if (songObj.songimage && songObj.songimage.length > 0) {
     pic.style.backgroundImage = `url(${songObj.songimage})`;
   } else {
@@ -35,14 +32,11 @@ function createSongBtn(songObj, className = "rectangle") {
 
   let aboutSongDiv = createDiv(`suggested-song-about-div ${className}`);
   sdiv.appendChild(aboutSongDiv);
-  
-  // Update: use songObj.songname (SQL column name)
+
   aboutSongDiv.appendChild(
     createTextField(`suggested-song-name ${className}`, songObj.songname)
   );
-  
-  // Note: For artist name, you might need to join tables or 
-  // ensure your SQL query includes the artist name string.
+
   aboutSongDiv.appendChild(
     createTextField(`suggested-song-artist ${className}`, songObj.artistname || "Unknown Artist")
   );
@@ -131,9 +125,9 @@ let recentlyPlayedDivConText = createTextField(
   "Login to see your plaaylists"
 );
 // let qawwaliDivCon = createHomeTabSongDiv(homeContentDiv, "QAWWALI");
+let englishSongDivCon = createHomeTabSongDiv(homeContentDiv, "ENGLISH SONGS");
 let hindiSongDivCon = createHomeTabSongDiv(homeContentDiv, "HINDI SONGS");
 let punjabiSongDivCon = createHomeTabSongDiv(homeContentDiv, "PUNJABI SONGS");
-let englishSongDivCon = createHomeTabSongDiv(homeContentDiv, "ENGLISH SONGS");
 let phonkSongDivCon = createHomeTabSongDiv(homeContentDiv, "PHONK SONGS");
 let spanishSongDivCon = createHomeTabSongDiv(homeContentDiv, "SPANISH SONGS");
 let tuneDivCon = createHomeTabSongDiv(homeContentDiv, "TUNES");
@@ -156,16 +150,13 @@ function loadRecentlyPlayedSongs() {
 }
 
 // 2. Updated Loader to filter the DB array
-function loadHomeSongs(fullSongList, songContainer, genre) {
+function loadHomeSongs(filteredList, songContainer) {
   // Clear container first
   clearContainer(songContainer);
-  
-  // Filter the big array from SQL by the specific genre
-  const filteredList = fullSongList.filter(s => s.songgenre === genre);
-  
+
   let i = 0;
   let f = filteredList.length;
-  
+
   // Your original 3-per-column logic remains the same, just using filteredList
   while (i < f) {
     if ((f - i) >= 3) {
