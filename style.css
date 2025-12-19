@@ -1,20 +1,21 @@
-#app {
-  position: relative;
+body {
   height: 100vh;
   width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  position: relative;
+  height: 100%;
+  width: 100%;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter;
   background-image: none;
   background: transparent;
   background-size: contain;
-}
-#app.horizontal {
-  gap: 5px;
 }
 #app::-webkit-scrollbar {
   display: none;
@@ -138,39 +139,35 @@ div {
   transition: width 0.5s ease;
 }
 
-#app.vertical #main {
-  position: relative;
+#inner-app {
   height: 100%;
   width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  display: none;
-  flex-direction: column;
-  background: transparent;
-  background-image: none;
-  background-size: contain;
-  transition: all 1s ease-in-out;
+  display: flex;
 }
-#app.horizontal #main {
+
+#inner-app-wrapper {
   position: relative;
   height: 100%;
-  width: 70%;
   overflow: hidden;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  display: none;
+  display: flex;
+}
+
+#app.vertical #inner-app-wrapper {
+  width: 100%;
+  flex-direction: column;
+  transition: all 1s ease-in-out;
+}
+#app.horizontal #inner-app-wrapper {
+  width: 70%;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  background: transparent;
-  background-image: none;
-  background-size: contain;
   transition: all 1s ease-in-out;
 }
 
-#inner-app {
+#inner-app-tab-container {
   flex-grow: 1;
   height: 100%;
   overflow-y: hidden;
@@ -182,7 +179,7 @@ div {
   padding: 0;
   display: flex;
 }
-#inner-app::-webkit-scrollbar {
+#inner-app-tab-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -195,7 +192,7 @@ div {
   overflow-x: hidden;
   overflow-y: scroll;
   margin: 0;
-  padding: 0 0 0;
+  padding: 0;
   scroll-snap-align: center;
   scroll-snap-stop: always;
   display: flex;
