@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover" />
   <meta name="description" content="Web based music player for streaming songs.">
   <meta name="keywords" content="Music Player, song">
   <meta name="author" content="Noor Taquee">
-  <link rel="icon" href="Icons/favicon.ico">
+  <link rel="icon" href="src/logo light.svg">
+  <title>Music Player</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css" />
@@ -19,11 +20,10 @@
   <link rel="stylesheet" href="accountTab.css" />
   <link rel="stylesheet" href="loginTab.css" />
   <link rel="stylesheet" href="contributionTab.css" />
-  <title>Music Player</title>
 </head>
 
-<body>
-  <div id="app" class="light-mode vertical">
+<body id="app" class="light-mode vertical">
+  <div id="app-wrapper">
     <div id="loading-screen">
       <div class="loading-div">
         <div class="bar"></div>

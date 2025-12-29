@@ -663,6 +663,7 @@
 
 .time-bar-slider {
   cursor: pointer;
+  appearance: none;
   -webkit-appearance: none;
   width: 100%;
   background: transparent;

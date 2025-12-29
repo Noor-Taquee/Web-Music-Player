@@ -1,11 +1,11 @@
-body {
-  height: 100vh;
-  width: 100vw;
+html, body {
+  height: 100%;
+  width: 100%;
   padding: 0;
   margin: 0;
 }
 
-#app {
+#app-wrapper {
   position: relative;
   height: 100%;
   width: 100%;
@@ -17,20 +17,20 @@ body {
   background: transparent;
   background-size: contain;
 }
-#app::-webkit-scrollbar {
+#app-wrapper::-webkit-scrollbar {
   display: none;
 }
 
-#app.light-mode p {
+.light-mode p {
   color: black;
 }
-#app.light-mode i {
+.light-mode i {
   color: black;
 }
-#app.dark-mode p {
+.dark-mode p {
   color: white;
 }
-#app.dark-mode i {
+.dark-mode i {
   color: white;
 }
 
@@ -51,10 +51,10 @@ div {
   display: flex;
   flex-direction: column;
 }
-#app.light-mode #loading-screen {
+.light-mode #loading-screen {
   background-color: white;
 }
-#app.dark-mode #loading-screen {
+.dark-mode #loading-screen {
   background-color: black;
 }
 
@@ -76,10 +76,10 @@ div {
   border-radius: 1rem;
   animation: shrink 1.5s ease-in-out infinite;
 }
-#app.light-mode .bar {
+.light-mode .bar {
   background-color: black;
 }
-#app.dark-mode .bar {
+.dark-mode .bar {
   background-color: white;
 }
 .bar:nth-child(2) {
@@ -135,7 +135,7 @@ div {
 .loading-progress-bar div {
   min-height: 100%;
   width: 0%;
-  background-color: white;
+  background-color: rgb(0, 0, 0);
   transition: width 0.5s ease;
 }
 
@@ -155,12 +155,12 @@ div {
   display: flex;
 }
 
-#app.vertical #inner-app-wrapper {
+.vertical #inner-app-wrapper {
   width: 100%;
   flex-direction: column;
   transition: all 1s ease-in-out;
 }
-#app.horizontal #inner-app-wrapper {
+.horizontal #inner-app-wrapper {
   width: 70%;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -200,19 +200,19 @@ div {
   justify-content: flex-start;
   align-items: center;
 }
-#app.blur-on .inner-app-panel {
+.blur-on .inner-app-panel {
   backdrop-filter: blur(70px);
 }
-#app.light-mode .inner-app-panel {
+.light-mode .inner-app-panel {
   background-color: rgb(230, 230, 230);
 }
-#app.dark-mode .inner-app-panel {
+.dark-mode .inner-app-panel {
   background-color: rgba(0, 0, 0);
 }
-#app.blur-on.light-mode .inner-app-panel {
+.blur-on.light-mode .inner-app-panel {
   background-color: rgba(255, 255, 255, 0.4);
 }
-#app.blur-on.dark-mode .inner-app-panel {
+.blur-on.dark-mode .inner-app-panel {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .outer-app-panel::-webkit-scrollbar,
@@ -238,14 +238,14 @@ div {
   justify-content: flex-start;
   align-items: center;
 }
-#app.light-mode .outer-app-panel {
+.light-mode .outer-app-panel {
   background: white;
 }
-#app.dark-mode .outer-app-panel {
+.dark-mode .outer-app-panel {
   background: black;
 }
 
-#app.vertical #navigation-div {
+.vertical #navigation-div {
   position: absolute;
   z-index: 1;
   top: auto;
@@ -261,7 +261,7 @@ div {
   align-items: center;
 }
 
-#app.horizontal #navigation-div {
+.horizontal #navigation-div {
   flex-shrink: 0;
   height: 100%;
   width: 100px;
@@ -271,86 +271,86 @@ div {
   flex-direction: column;
   align-items: center;
 }
-#app.blur-on #navigation-div {
+.blur-on #navigation-div {
   backdrop-filter: blur(5vmax);
 }
-#app.light-mode #navigation-div {
+.light-mode #navigation-div {
   background-color: rgb(255, 255, 255);
 }
-#app.vertical.light-mode #navigation-div {
+.vertical.light-mode #navigation-div {
   border: 0.5px solid rgb(100, 100, 100);
 }
-#app.light-mode.blur-on #navigation-div {
+.light-mode.blur-on #navigation-div {
   background-color: rgba(255, 255, 255, 0.3);
 }
-#app.vartical.light-mode.blur-on #navigation-div {
+.vartical.light-mode.blur-on #navigation-div {
   border: 0.5px solid rgba(100, 100, 100);
 }
-#app.dark-mode #navigation-div {
+.dark-mode #navigation-div {
   background-color: rgba(0, 0, 0);
 }
-#app.vertical.dark-mode #navigation-div {
+.vertical.dark-mode #navigation-div {
   border: 0.5px solid rgba(100, 100, 100);
 }
-#app.dark-mode.blur-on #navigation-div {
+.dark-mode.blur-on #navigation-div {
   background-color: rgba(0, 0, 0, 0.3);
 }
-#app.vertical.dark-mode.blur-on #navigation-div {
+.vertical.dark-mode.blur-on #navigation-div {
   border: 0.1px solid rgba(255, 255, 255, 0.3);
 }
 
-#app.vertical #navigation-div.floating {
+.vertical #navigation-div.floating {
   bottom: 20px;
   width: 96%;
   margin: 0 2%;
   padding: 10px 0;
   border-radius: 30px;
 }
-#app.vertical.light-mode #navigation-div.floating {
+.vertical.light-mode #navigation-div.floating {
   border: 0.5px solid rgb(100, 100, 100);
 }
-#app.vertical.light-mode.blur-on #navigation-div.floating {
+.vertical.light-mode.blur-on #navigation-div.floating {
   border: 0.5px solid rgba(100, 100, 100);
 }
-#app.vertical.dark-mode #navigation-div.floating {
+.vertical.dark-mode #navigation-div.floating {
   border: 0.5px solid rgba(100, 100, 100);
 }
-#app.vertical.dark-mode.blur-on #navigation-div.floating {
+.vertical.dark-mode.blur-on #navigation-div.floating {
   border: 0.1px solid rgba(255, 255, 255, 0.1);
 }
 
-#app.vertical #navigation-div.sticky {
+.vertical #navigation-div.sticky {
   height: 120px;
   width: 100%;
   margin: 0;
   padding: 10px 0 20px 0;
 }
-#app.light-mode #navigation-div.sticky {
+.light-mode #navigation-div.sticky {
   border: none;
 }
-#app.vertical.light-mode #navigation-div.sticky {
+.vertical.light-mode #navigation-div.sticky {
   border-top: 0.5px solid rgb(100, 100, 100);
 }
-#app.light-mode.blur-on #navigation-div.sticky {
+.light-mode.blur-on #navigation-div.sticky {
   border: none;
 }
-#app.vertical.light-mode.blur-on #navigation-div.sticky {
+.vertical.light-mode.blur-on #navigation-div.sticky {
   border-top: 0.5px solid rgba(100, 100, 100);
 }
-#app.dark-mode #navigation-div.sticky {
+.dark-mode #navigation-div.sticky {
   border: none;
 }
-#app.vertical.dark-mode #navigation-div.sticky {
+.vertical.dark-mode #navigation-div.sticky {
   border-top: 0.5px solid rgba(100, 100, 100);
 }
-#app.dark-mode.blur-on #navigation-div.sticky {
+.dark-mode.blur-on #navigation-div.sticky {
   border: none;
 }
-#app.vertical.dark-mode.blur-on #navigation-div.sticky {
+.vertical.dark-mode.blur-on #navigation-div.sticky {
   border-top: 0.1px solid rgba(255, 255, 255, 0.1);
 }
 
-#app.vertical .mini-player {
+.vertical .mini-player {
   height: 50%;
   width: 100%;
   box-sizing: border-box;
@@ -362,7 +362,7 @@ div {
   align-items: center;
 }
 
-#app.horizontal .mini-player {
+.horizontal .mini-player {
   display: none;
 }
 
@@ -461,7 +461,7 @@ div {
   font-size: 25px;
 }
 
-#app.vertical #navigation-button-div {
+.vertical #navigation-button-div {
   flex-grow: 1;
   width: 100%;
   box-sizing: border-box;
@@ -472,7 +472,7 @@ div {
   align-items: center;
 }
 
-#app.horizontal #navigation-button-div {
+.horizontal #navigation-button-div {
   flex-grow: 1;
   width: 100%;
   box-sizing: border-box;
@@ -495,11 +495,11 @@ div {
   background: transparent;
   transition: all 0.3s ease-in-out;
 }
-#app.vertical #navigation-button-div button {
+.vertical #navigation-button-div button {
   height: 100%;
   align-items: flex-end;
 }
-#app.horizontal #navigation-button-div button {
+.horizontal #navigation-button-div button {
   padding: 15px 0;
 }
 
@@ -508,16 +508,16 @@ div {
   font-size: 25px;
   margin: 0;
 }
-#app.light-mode #navigation-button-div i {
+.light-mode #navigation-button-div i {
   color: rgba(0, 0, 0, 0.5);
 }
-#app.dark-mode #navigation-button-div i {
+.dark-mode #navigation-button-div i {
   color: rgba(255, 255, 255, 0.5);
 }
-#app.light-mode #navigation-button-div button.active i {
+.light-mode #navigation-button-div button.active i {
   color: rgba(0, 0, 0);
 }
-#app.dark-mode #navigation-button-div button.active i {
+.dark-mode #navigation-button-div button.active i {
   color: rgba(255, 255, 255);
 }
 
