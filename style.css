@@ -1,45 +1,58 @@
+/* #region variables */
+.light-mode {
+  --primary-bg: #ffffff;
+  --secondary-bg: #dddddd;
+  --primary-text-color: #000;
+  --secondary-text-color: #303030;
+  --border-color: #525252;
+}
+.light-mode.blur-on {
+  --primary-bg: #ffffffb4;
+  --secondary-bg: #ddddddb4;
+}
+
+.dark-mode {
+  --primary-bg: #000000;
+  --secondary-bg: #252525;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #c5c5c5;
+  --border-color: #b8b8b8;
+}
+.dark-mode.blur-on {
+  --primary-bg: #000000b0;
+  --secondary-bg: #252525b0;
+}
+
+/* #endregion variables */
+
+
 html, body {
   height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
+  background: var(--primary-bg);
 }
 
 #app-wrapper {
   position: relative;
   height: 100dvh;
-  width: 100dvh;
+  width: 100dvw;
   box-sizing: border-box;
   margin: 0;
   padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom) 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter;
   background-image: none;
   background: transparent;
   background-size: contain;
 }
-#app-wrapper::-webkit-scrollbar {
-  display: none;
+
+p, i {
+  color: var(--secondary-text-color);
 }
 
-.light-mode p {
-  color: black;
-}
-.light-mode i {
-  color: black;
-}
-.dark-mode p {
-  color: white;
-}
-.dark-mode i {
-  color: white;
-}
-
-a,
-button,
-input,
-div {
+* {
   -webkit-tap-highlight-color: transparent;
-  transition: background 0.5s ease;
+  transition: background 0.5s ease, color 0.5s ease, background-color 0.5s ease;
 }
 
 #loading-screen {
@@ -50,12 +63,7 @@ div {
   padding: 0;
   display: flex;
   flex-direction: column;
-}
-.light-mode #loading-screen {
-  background-color: white;
-}
-.dark-mode #loading-screen {
-  background-color: black;
+  background-color: var(--primary-bg);
 }
 
 .loading-div {
@@ -75,12 +83,7 @@ div {
   width: 5%;
   border-radius: 1rem;
   animation: shrink 1.5s ease-in-out infinite;
-}
-.light-mode .bar {
-  background-color: black;
-}
-.dark-mode .bar {
-  background-color: white;
+  background: var(--primary-text-color);
 }
 .bar:nth-child(2) {
   animation-delay: 0.2s;
@@ -128,14 +131,14 @@ div {
   overflow: hidden;
   padding: 0;
   margin: 0;
-  border: 0.5px solid grey;
+  border: 0.5px solid var(--border-color);
   border-radius: 5px;
   background: transparent;
 }
 .loading-progress-bar div {
   min-height: 100%;
   width: 0%;
-  background-color: rgb(0, 0, 0);
+  background: var(--primary-text-color);
   transition: width 0.5s ease;
 }
 
@@ -199,21 +202,10 @@ div {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background: var(--primary-bg);
 }
 .blur-on .inner-app-panel {
   backdrop-filter: blur(70px);
-}
-.light-mode .inner-app-panel {
-  background-color: rgb(230, 230, 230);
-}
-.dark-mode .inner-app-panel {
-  background-color: rgba(0, 0, 0);
-}
-.blur-on.light-mode .inner-app-panel {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.blur-on.dark-mode .inner-app-panel {
-  background-color: rgba(0, 0, 0, 0.5);
 }
 .outer-app-panel::-webkit-scrollbar,
 .inner-app-panel::-webkit-scrollbar {
@@ -237,12 +229,19 @@ div {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background: var(--primary-bg);
 }
-.light-mode .outer-app-panel {
-  background: white;
-}
-.dark-mode .outer-app-panel {
-  background: black;
+
+/* #region navigation div */
+#navigation-div {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--primary-bg);
+  border-color: var(--border-color);
 }
 
 .vertical #navigation-div {
@@ -254,49 +253,14 @@ div {
   left: 0;
   height: 110px;
   max-height: 17vh;
-  box-sizing: border-box;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .horizontal #navigation-div {
-  flex-shrink: 0;
   height: 100%;
   width: 100px;
-  box-sizing: border-box;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 .blur-on #navigation-div {
   backdrop-filter: blur(5vmax);
-}
-.light-mode #navigation-div {
-  background-color: rgb(255, 255, 255);
-}
-.vertical.light-mode #navigation-div {
-  border: 0.5px solid rgb(100, 100, 100);
-}
-.light-mode.blur-on #navigation-div {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-.vartical.light-mode.blur-on #navigation-div {
-  border: 0.5px solid rgba(100, 100, 100);
-}
-.dark-mode #navigation-div {
-  background-color: rgba(0, 0, 0);
-}
-.vertical.dark-mode #navigation-div {
-  border: 0.5px solid rgba(100, 100, 100);
-}
-.dark-mode.blur-on #navigation-div {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.vertical.dark-mode.blur-on #navigation-div {
-  border: 0.1px solid rgba(255, 255, 255, 0.3);
 }
 
 .vertical #navigation-div.floating {
@@ -306,19 +270,9 @@ div {
   padding: 10px 0;
   border-radius: 30px;
 }
-.vertical.light-mode #navigation-div.floating {
-  border: 0.5px solid rgb(100, 100, 100);
+.vertical #navigation-div.floating {
+  border: 0.5px solid var(--border-color);
 }
-.vertical.light-mode.blur-on #navigation-div.floating {
-  border: 0.5px solid rgba(100, 100, 100);
-}
-.vertical.dark-mode #navigation-div.floating {
-  border: 0.5px solid rgba(100, 100, 100);
-}
-.vertical.dark-mode.blur-on #navigation-div.floating {
-  border: 0.1px solid rgba(255, 255, 255, 0.1);
-}
-
 .vertical #navigation-div.sticky {
   height: 120px;
   width: 100%;
@@ -328,26 +282,8 @@ div {
 .light-mode #navigation-div.sticky {
   border: none;
 }
-.vertical.light-mode #navigation-div.sticky {
-  border-top: 0.5px solid rgb(100, 100, 100);
-}
-.light-mode.blur-on #navigation-div.sticky {
-  border: none;
-}
-.vertical.light-mode.blur-on #navigation-div.sticky {
-  border-top: 0.5px solid rgba(100, 100, 100);
-}
-.dark-mode #navigation-div.sticky {
-  border: none;
-}
-.vertical.dark-mode #navigation-div.sticky {
-  border-top: 0.5px solid rgba(100, 100, 100);
-}
-.dark-mode.blur-on #navigation-div.sticky {
-  border: none;
-}
-.vertical.dark-mode.blur-on #navigation-div.sticky {
-  border-top: 0.1px solid rgba(255, 255, 255, 0.1);
+.vertical #navigation-div.sticky {
+  border-top: 0.5px solid var(--border-color);
 }
 
 .vertical .mini-player {
@@ -520,6 +456,7 @@ div {
 .dark-mode #navigation-button-div button.active i {
   color: rgba(255, 255, 255);
 }
+/* #endregion navigation div */
 
 button.ripple {
   position: relative;
