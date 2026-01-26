@@ -1,0 +1,126 @@
+.register-form-container {
+  height: 80%;
+  width: 90%;
+  background: transparent;
+  transition: transform 0.5s ease-in-out;
+}
+
+.register-form {
+  height: 100%;
+  width: 100%;
+  gap: 2lvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  transition: all 0.5s ease-in-out;
+}
+
+.register-form-header {
+  cursor: default;
+  margin: 2.5lvh;
+  font: var(--primary-header-font);
+  background: transparent;
+}
+
+.register-form-input-div {
+  height: 50px;
+  width: 100%;
+  max-width: 500px;
+  border: none;
+  border-bottom: 2px solid var(--primary-text-color);
+  display: flex;
+  background: transparent;
+}
+
+.register-form-input-div i {
+  width: 10%;
+  margin: auto;
+  font-size: var(--medium-icon);
+  text-align: center;
+  background: transparent;
+}
+
+.register-form-input {
+  flex-grow: 1;
+  height: 100%;
+  box-sizing: border-box;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  display: flex;
+  font: var(--primary-text-font);
+  background: transparent;
+}
+.register-form-input::placeholder {
+  font: var(--primary-text-font);
+}
+
+.ph-eye,
+.ph-eye-slash {
+  cursor: pointer;
+  font-size: var(--medium-icon);
+  text-align: left;
+}
+
+.register-btn {
+  --button-height: 55px;
+  
+  cursor: pointer;
+  position: relative;
+  height: var(--button-height);
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  border: none;
+  border-radius: calc(var(--button-height) / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-text-color);
+}
+.register-btn p {
+  color: var(--primary-bg);
+  font: var(--primary-text-font) !important;
+}
+
+.register-btn-loader {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-text-color);
+}
+.register-btn-loader i {
+  color: var(--primary-bg);
+  font-size: var(--medium-icon);
+  animation: spin 1.5s linear infinite;
+}
+
+.login-panel-bottom-container {
+  height: 15%;
+  width: 90%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  background: transparent;
+}
+
+.login-panel-bottom-container p {
+  cursor: default;
+  margin: 0.5lvh;
+  font: var(--secondary-text-font);
+}

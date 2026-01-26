@@ -7,13 +7,13 @@
     "background_color": "#ffffff",
     "icons": [
         {
-            "src": "/src/logo light.svg",
+            "src": "logo light.svg",
             "sizes": "any",
             "type": "image/svg+xml",
             "purpose": "any"
         },
         {
-            "src": "/src/logo light.svg",
+            "src": "logo light.svg",
             "sizes": "any",
             "type": "image/svg+xml",
             "purpose": "maskable"

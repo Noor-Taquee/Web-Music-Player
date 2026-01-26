@@ -1,0 +1,135 @@
+.search-bar {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to bottom, var(--primary-bg), transparent);
+}
+
+.search-box {
+  width: 95%;
+  height: 60px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary-bg);
+}
+
+.search-input {
+  flex-grow: 1;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin: 0;
+  border: none;
+  outline: none;
+  font: var(--primary-text-font);
+  background: transparent;
+}
+
+.search-input::placeholder {
+  font: var(--primary-text-font);
+  color: var(--secondary-text-color);
+}
+
+.search-btn {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  margin: auto 5px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--tertiary-bg);
+}
+.search-btn i {
+  font-size: var(--medium-icon);
+}
+
+.search-history-title {
+  font: var(--secondary-header-font);
+  margin: 10px auto 10px 15px;
+}
+
+.search-content-div {
+  flex-shrink: 0;
+  height: 51%;
+  min-height: 10rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: transparent;
+}
+
+.search-history-text-list {
+  flex-grow: 1;
+  width: 95%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.search-history-text-list::-webkit-scrollbar {
+  display: none;
+}
+
+.search-text-btn {
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 60px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 20px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--secondary-bg);
+}
+.search-text-btn:active {
+  border-radius: 30px;
+}
+
+.search-text-btn p {
+  font: var(--primary-text-font);
+}
+
+.search-history-song-list {
+  cursor: default;
+  height: 85%;
+  width: 95%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+  border: none;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 3vmin;
+}
