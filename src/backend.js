@@ -231,46 +231,6 @@ function fetchArtistsData() {
   });
 }
 
-/** 
- * Gets data of a specific user 
- * @param {string} username 
- * @param {string} password 
- */
-async function loginUser(username, password) {
-  // Brings the whole database
-  const users = await loadInfo("/JSON/UserList.json");
-  const usernames = Object.keys(users);
-
-  if (!usernames.includes(username)) { return "username"; }
-  if (users[username][1] != password) { return "password"; }
-
-  const UID = users[username][0];
-
-  const data = await loadInfo(`/USERS/${UID}.json`);
-
-  currentUser = new user();
-  currentUser.UID = UID;
-  currentUser.username = data.userName;
-  currentUser.name = data.profileName;
-  currentUser.profilePic = data.profilePic;
-  currentUser.password = data.password;
-  currentUser.recentlyPlayedSongList = data.recentlyPlayedSongList;
-  currentUser.searchedTextList = data.searchedTextList;
-  currentUser.searchedSongList = data.searchedSongList;
-  currentUser.playlistList = data.playlistList;
-  currentUser.favouriteSongList = data.favouriteSongList;
-  currentUser.notificationsList = data.notificationsList;
-  currentUser.theme = data.themeColor;
-  currentUser.allowHistory = data.allowHistory;
-  localStorage.setItem("username", currentUser.username);
-  localStorage.setItem("password", currentUser.password);
-  
-  signedIn = true;
-  updateUI();
-  
-  return true;
-}
-
 function updateUI() {
   if (songLoaded && signedIn) {
     loadingMessage.textContent = "progress: preparing your songs and playlists...";
@@ -339,7 +299,53 @@ function generateUID() {
   return `user-${current.getFullYear()}${current.getDate()}-${current.getHours()}${current.getMinutes()}${current.getSeconds()}${current.getMilliseconds()}`;
 }
 
-//#region account creation
+//MARK: login
+/** 
+ * Gets data of a specific user 
+ * @param {string} username 
+ * @param {string} password 
+ */
+async function loginUser(username, password) {
+  // Brings the whole database
+  const users = await loadInfo("/JSON/UserList.json");
+  const usernames = Object.keys(users);
+
+  if (!usernames.includes(username)) { return "username"; }
+  if (users[username][1] != password) { return "password"; }
+
+  const UID = users[username][0];
+
+  const data = await loadInfo(`/USERS/${UID}.json`);
+
+  currentUser = new user();
+  currentUser.UID = UID;
+  currentUser.username = data.userName;
+  currentUser.name = data.profileName;
+  currentUser.profilePic = data.profilePic;
+  currentUser.password = data.password;
+  currentUser.recentlyPlayedSongList = data.recentlyPlayedSongList;
+  currentUser.searchedTextList = data.searchedTextList;
+  currentUser.searchedSongList = data.searchedSongList;
+  currentUser.playlistList = data.playlistList;
+  currentUser.favouriteSongList = data.favouriteSongList;
+  currentUser.notificationsList = data.notificationsList;
+  currentUser.theme = data.themeColor;
+  currentUser.allowHistory = data.allowHistory;
+  localStorage.setItem("username", currentUser.username);
+  localStorage.setItem("password", currentUser.password);
+  
+  signedIn = true;
+  updateUI();
+  
+  return true;
+}
+
+//MARK: account creation
+/**
+ * @param {string} userGivenFullName 
+ * @param {string} userGivenName 
+ * @param {string} userGivenPass 
+ */
 async function createNewUser(userGivenFullName, userGivenName, userGivenPass) {
   const userUID = generateUID();
   
@@ -361,6 +367,5 @@ async function createNewUser(userGivenFullName, userGivenName, userGivenPass) {
   updateUI();
   return true;
 }
-//#endregion account creation
 
 
