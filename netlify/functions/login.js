@@ -1,19 +1,19 @@
 const { neon } = require('@neondatabase/serverless');
+const sql = neon(process.env.NETLIFY_DATABASE_URL);
 
 exports.handler = async (event) => {
+  
   // Only allow POST requests for security
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const sql = neon(process.env.NETLIFY_DATABASE_URL);
-
   try {
     const { username, password } = JSON.parse(event.body);
 
-    const userData = await sql``;
+    const userData = await sql`select * from users where username = ${username}`;
 
-    // 2. Check if user exists
+    // Check if user exists
     if (userData.length === 0) {
       return {
         statusCode: 401,

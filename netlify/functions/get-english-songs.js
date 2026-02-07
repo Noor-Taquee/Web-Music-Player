@@ -1,4 +1,5 @@
 const { neon } = require('@neondatabase/serverless');
+const sql = neon(process.env.NETLIFY_DATABASE_URL);
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "GET") {
@@ -9,7 +10,6 @@ exports.handler = async (event) => {
     };
   }
 
-  const sql = neon(process.env.NETLIFY_DATABASE_URL);
 
   try {
     const songs = await sql`
