@@ -1,12 +1,11 @@
 const { neon } = require('@neondatabase/serverless');
+const sql = neon(process.env.NETLIFY_DATABASE_URL);
 
 exports.handler = async (event, context) => {
   // Only allow POST requests
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
-
-  const sql = neon(process.env.NETLIFY_DATABASE_URL);
 
   try {
     // Parse the data sent from your frontend

@@ -1,16 +1,16 @@
 const { neon } = require('@neondatabase/serverless');
+const sql = neon(process.env.NETLIFY_DATABASE_URL);
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") return { statusCode: 405 };
 
-  const sql = neon(process.env.NETLIFY_DATABASE_URL);
   const { playlistID, songID } = JSON.parse(event.body);
 
   try {
     await sql`
       INSERT INTO PlaylistSongs (playlistID, songID)
       VALUES (${playlistID}, ${songID})
-      ON CONFLICT DO NOTHING; -- Simply skips if the link already exists
+      ON CONFLICT DO NOTHING;
     `;
 
     return {

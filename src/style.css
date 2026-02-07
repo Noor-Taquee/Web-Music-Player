@@ -1,0 +1,577 @@
+/*#region animations */
+
+@keyframes shrink {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/*#region slide animations */
+@keyframes slide-in-top {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slide-out-top {
+  to { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slide-out-right {
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes slide-in-bottom {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slide-out-bottom {
+  to { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slide-out-left {
+  to { transform: translateX(-100%); opacity: 0; }
+}
+/*#endregion slide animations */
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes disappear {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.85); }
+}
+
+@keyframes flash {
+  from { opacity: 1; } to { opacity: 0; }
+}
+
+@keyframes ripple-animation {
+  from { opacity: 1; transform: scale(1); }
+  to { transform: scale(4); opacity: 0; }
+}
+
+/*#endregion animations */
+
+/*#region variables */
+.light-mode {
+  --primary-bg: #ffffff;
+  --secondary-bg: #dddddd;
+  --primary-text-color: #000;
+  --secondary-text-color: #303030;
+  --border-color: #525252;
+}
+
+.light-mode.blur-on {
+  --primary-bg: #ffffffb4;
+  --secondary-bg: #ddddddb4;
+}
+
+.dark-mode {
+  --primary-bg: #000000;
+  --secondary-bg: #252525;
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #c5c5c5;
+  --border-color: #b8b8b8;
+}
+
+.dark-mode.blur-on {
+  --primary-bg: #000000b0;
+  --secondary-bg: #252525b0;
+}
+
+/*#endregion variables */
+
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: var(--primary-bg);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  color: var(--secondary-text-color);
+  transition: background 0.5s ease, color 0.5s ease, background-color 0.5s ease;
+}
+
+#app-wrapper {
+  position: relative;
+  height: 100dvh;
+  width: 100dvw;
+  box-sizing: border-box;
+  margin: 0;
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom) 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  background-image: none;
+  background: transparent;
+  background-size: contain;
+}
+
+/*#region loading-screen */
+#loading-screen {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-bg);
+}
+
+.loading-div {
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
+  gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.loading-div .bar {
+  flex-shrink: 0;
+  height: 10%;
+  width: 5%;
+  border-radius: 1rem;
+  animation: shrink 1.5s ease-in-out infinite;
+  background: var(--primary-text-color);
+}
+
+.bar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.bar:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.bar:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.bar:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.bar:nth-child(6) {
+  animation-delay: 1s;
+}
+
+.bar:nth-child(7) {
+  animation-delay: 0.8s;
+}
+
+.loading-status-div {
+  position: absolute;
+  z-index: 1;
+  top: auto;
+  right: 0;
+  bottom: 20px;
+  left: 0;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loading-details {
+  width: 100%;
+  margin: 5px 0;
+  text-align: center;
+  font: 500 16px Arial;
+}
+
+.loading-progress-bar {
+  height: 10px;
+  width: 80%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  border: 0.5px solid var(--border-color);
+  border-radius: 5px;
+  background: transparent;
+}
+
+.loading-progress-bar div {
+  min-height: 100%;
+  width: 0%;
+  background: var(--primary-text-color);
+  transition: width 0.5s ease;
+}
+/*#endregion loading screen */
+
+/*#region inner-app */
+#inner-app {
+  z-index: -1;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+#inner-app-wrapper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.vertical #inner-app-wrapper {
+  width: 100%;
+  flex-direction: column;
+  transition: all 1s ease-in-out;
+}
+
+.horizontal #inner-app-wrapper {
+  width: 70%;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  transition: all 1s ease-in-out;
+}
+
+#inner-app-tab-container {
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+#inner-app-tab-container::-webkit-scrollbar {
+  display: none;
+}
+
+.inner-app-panel {
+  position: relative;
+  flex-shrink: 0;
+  height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--primary-bg);
+}
+
+.blur-on .inner-app-panel {
+  backdrop-filter: blur(70px);
+}
+
+.outer-app-panel::-webkit-scrollbar,
+.inner-app-panel::-webkit-scrollbar {
+  display: none;
+}
+
+.outer-app-panel {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: var(--primary-bg);
+}
+
+/*#region navigation div */
+#navigation-div {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--primary-bg);
+  border-color: var(--border-color);
+}
+
+.vertical #navigation-div {
+  position: absolute;
+  z-index: 1;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 110px;
+  max-height: 17vh;
+}
+
+.horizontal #navigation-div {
+  height: 100%;
+  width: 100px;
+}
+
+.blur-on #navigation-div {
+  backdrop-filter: blur(5vmax);
+}
+
+.vertical #navigation-div.floating {
+  bottom: 20px;
+  width: 96%;
+  margin: 0 2%;
+  padding: 10px 0;
+  border-radius: 30px;
+}
+
+.vertical #navigation-div.floating {
+  border: 0.5px solid var(--border-color);
+}
+
+.vertical #navigation-div.sticky {
+  height: 120px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0 20px 0;
+}
+
+.light-mode #navigation-div.sticky {
+  border: none;
+}
+
+.vertical #navigation-div.sticky {
+  border-top: 0.5px solid var(--border-color);
+}
+
+.vertical .mini-player {
+  height: 50%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 10px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.horizontal .mini-player {
+  display: none;
+}
+
+.mini-info-div {
+  height: 100%;
+  width: 70%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  gap: 5px;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#navigation-div.floating .mini-info-div {
+  padding: 0 0 0 10px;
+}
+
+#navigation-div.floating .mini-info-div {
+  padding: 0 0 0 5px;
+}
+
+.mini-album-art {
+  height: 40px;
+  max-height: 12vw;
+  width: 40px;
+  max-width: 12vw;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+}
+
+#navigation-div.sticky .mini-album-art {
+  border-radius: 0;
+}
+
+.mini-album-art i {
+  font-size: 4vmin;
+}
+
+.mini-track-info-div {
+  height: 100%;
+  width: 80%;
+  margin: 0;
+  gap: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background: transparent;
+}
+
+.mini-track-name {
+  cursor: default;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  font-size: 3.5vmin;
+  font-weight: 700;
+}
+
+.mini-artist-name {
+  cursor: default;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  font-size: 2.5vmin;
+}
+
+.mini-playback-controls-div {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mini-playback-controls-div button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.mini-playback-controls-div i {
+  font-size: 25px;
+}
+
+.vertical #navigation-button-div {
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.horizontal #navigation-button-div {
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#navigation-button-div button {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.vertical #navigation-button-div button {
+  height: 100%;
+  align-items: flex-end;
+}
+
+.horizontal #navigation-button-div button {
+  padding: 15px 0;
+}
+
+
+#navigation-button-div i {
+  font-size: 25px;
+  margin: 0;
+}
+
+.light-mode #navigation-button-div i {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode #navigation-button-div i {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.light-mode #navigation-button-div button.active i {
+  color: rgba(0, 0, 0);
+}
+
+.dark-mode #navigation-button-div button.active i {
+  color: rgba(255, 255, 255);
+}
+
+/*#endregion navigation div */
+
+button.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-span {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+}
+
+/*#endregion inner-app */
