@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-/*#region animations */
+/*#region MARK: animations */
 @keyframes shrink {
   50% { height: var(--loading-bar-min-height); }
   100% { height: var(--loading-bar-max-height); }
@@ -34,7 +34,7 @@
   to { transform: scale(4); opacity: 0; }
 }
 
-/*#region slide animations */
+/*#region MARK: slide animations */
 @keyframes slide-in-top {
   from { transform: translateY(-100%); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
@@ -78,7 +78,7 @@
   animation: slide-in-right 200ms ease;
 }
 
-/*#region variables */
+/*#region MARK: variables */
 :root {
   --primary-header-font: 800 25px "Nunito";
   --secondary-header-font: 700 21px "Nunito";
@@ -167,7 +167,7 @@ html, body {
   background: transparent;
 }
 
-/*#region loading-screen */
+/*#region MARK: loading-screen */
 #loading-screen {
   position: relative;
   z-index: 1;
@@ -274,7 +274,7 @@ html, body {
 }
 /*#endregion loading screen */
 
-/*#region inner-app */
+/*#region MARK: inner-app */
 
 #inner-app {
   position: relative;
@@ -367,7 +367,7 @@ html, body {
   background: var(--primary-bg);
 }
 
-/*#region navigation div */
+/*#region MARK: navigation div */
 #navigation-div {
   flex-shrink: 0;
   overflow: hidden;
@@ -416,7 +416,7 @@ html, body {
   background: transparent !important;
 }
 
-/*#region mini-player */
+/*#region MARK: mini-player */
 [data-orientation="vertical"] .mini-player {
   height: 50%;
   width: 100%;
@@ -614,9 +614,9 @@ html, body {
 
 /*#endregion inner-app */
 
-/*#region global styling */
+/*#region MARK: global styling */
 
-button.ripple {
+.ripple {
   position: relative;
   overflow: hidden;
 }
@@ -648,6 +648,11 @@ button.ripple {
   align-items: center;
   gap: 10px;
   background: transparent;
+}
+
+.top-bar.flow {
+  position: static;
+  z-index: auto;
 }
 
 .toggle {
@@ -724,7 +729,7 @@ button.ripple {
   background: var(--overlay-color);
 }
 
-/*#region confirmation panel */
+/*#region MARK: confirmation panel */
 .confirmation-panel {
   height: fit-content;
   width: 60%;
@@ -780,7 +785,7 @@ button.ripple {
 }
 /*#endregion confirmation panel */
 
-/*#region radio open */
+/*#region MARK: radio open */
 .radio-open {
   width: 100%;
   padding: 10px;
