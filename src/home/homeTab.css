@@ -1,12 +1,4 @@
-#home-panel .top-bar {
-  height: 7%;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+/*#region top bar */
 .utility-div {
   display: none !important;
   padding: 10px;
@@ -61,6 +53,7 @@
   border-radius: 10px;
 }
 /*#endregion category div */
+/*#endregion top bar */
 
 .home-tab-content-div {
   flex-grow: 1;

@@ -8,7 +8,7 @@ searchBar.appendChild(searchBox);
 const searchInput = createElement("input", {
   type: "search",
   placeholder: "Search song",
-  autocomplete: false,
+  autocomplete: "off",
   id: "search-in-player",
   className: "search-input"
 });

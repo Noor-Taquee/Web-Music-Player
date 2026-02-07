@@ -1,13 +1,10 @@
 //#region helper functions
 function createHomeTabSongDiv(parentDiv, hText) {
-  const innerDiv = createElement("div", {
-    className: "song-container-content"
-  });
+  const innerDiv = createElement("div", { className: "song-container-content" });
   
   const div = createElement("div", {
     className: "song-container-div"
-    },
-    [createElement("p", {
+    }, [createElement("p", {
       className: "song-container-header",
       textContent: hText
     }), innerDiv]
@@ -44,16 +41,13 @@ function createSongBtn(songs, Name, artist, image, className = "rectangle") {
   // Song name and artists div
   const aboutSongDiv = createElement("div", {
     className:`suggested-song-about-div ${className}`
-  },
-  [createElement("p", {
+  }, [createElement("p", {
     className: `suggested-song-name ${className}`,
     textContent: Name
-  }),
-  createElement("p", {
+  }), createElement("p", {
     className: `suggested-song-artist ${className}`,
     textContent: artist
-  })
-  ]
+  })]
   );
   sdiv.appendChild(aboutSongDiv);
 
@@ -71,11 +65,19 @@ function createSongBtn(songs, Name, artist, image, className = "rectangle") {
 //#endregion helper functions
 
 //#region UI
-const homeHeaderDiv = createElement("div", { className: "top-bar" });
-homePanel.appendChild(homeHeaderDiv);
+
+const homeContentDiv = createElement("div", { className: "home-tab-content-div" });
+homePanel.appendChild(homeContentDiv);
+
+//#region Header
+const homeHeaderDiv = createElement("div", { className: "top-bar flow" });
+homeContentDiv.appendChild(homeHeaderDiv);
 
 const appNameDiv = createElement("div", { className: "app-name-div" });
-appNameDiv.appendChild(createElement("p", { className: "Name", textContent: "MusicPlayer" }));
+appNameDiv.appendChild(createElement("p", {
+  className: "Name",
+  textContent: "MusicPlayer"
+}));
 homeHeaderDiv.appendChild(appNameDiv);
 
 const utilityDiv = createElement("div", { className: "utility-div" });
@@ -86,7 +88,7 @@ utilityDiv.appendChild(homeSearchButton);
 
 const homeAccountButton = createElement("button", {}, [createElement("i", { className: "ph-bold ph-user" })]);
 utilityDiv.appendChild(homeAccountButton);
-
+//#endregion Header
 
 //#region song category bar
 const homeCategoryDiv = createElement("div", { className: "home-song-category-div" });
@@ -146,9 +148,6 @@ const bnChillSongs = createElement("button", { onclick: null }, [createElement("
 homeCategoryDiv.appendChild(bnChillSongs);
 const chillSongsDiv = createElement("div", { className: "home-tab-content-div" });
 //#endregion song category bar
-
-const homeContentDiv = createElement("div", { className: "home-tab-content-div" });
-homePanel.appendChild(homeContentDiv);
 
 const recentlyPlayedDivCon = createHomeTabSongDiv(
   homeContentDiv,

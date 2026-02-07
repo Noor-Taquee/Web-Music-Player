@@ -12,60 +12,94 @@ const changePassPanel = createElement("div", { className: "settings-tab-inner-pa
 const changePassPanelTopBar = createElement("div", { className: "top-bar" });
 changePassPanel.appendChild(changePassPanelTopBar);
 
-changePassPanelTopBar.appendChild(createElement("button", { className: "back-btn toggle", onclick: closeChangePasswordPanel }, [ createElement("i", { className: "ph-bold ph-arrow-left" }) ]));
-changePassPanelTopBar.appendChild(createElement("p", { className: "top-bar-text", textContent: "Change password" }));
+changePassPanelTopBar.appendChild(createElement("button", {
+  className: "back-btn toggle",
+  onclick: closeChangePasswordPanel
+}, [ createElement("i", { className: "ph-bold ph-arrow-left" }) ]));
+
+changePassPanelTopBar.appendChild(createElement("p", {
+  className: "top-bar-text",
+  textContent: "Change password"
+}));
 
 const changePassConDiv = createElement("div", { className: "content" });
 changePassPanel.appendChild(changePassConDiv);
 
-const changePassFormDiv = createElement("div", { className: "change-pass-form" });
-changePassConDiv.appendChild(changePassFormDiv);
+const changePassForm = createElement("form", {
+  name: "change password",
+  autocomplete: "on",
+  className: "change-pass-form",
+  action: "javascript:void(0)"
+});
+changePassForm.addEventListener("submit", f_confirmChangePassword);
+changePassConDiv.appendChild(changePassForm);
 
-const oldPasswordInputEye = createElement("i", { className: "ph-bold ph-eye-slash", onclick: () => { togglePasswordVisibilty(oldPasswordInputEye, oldPasswordInput) }, style: { cursor: "pointer" } });
+const oldPasswordInputEye = createElement("i", {
+  className: "ph-bold ph-eye-slash",
+  style: { cursor: "pointer" },
+  onclick: () => { togglePasswordVisibilty(oldPasswordInputEye, oldPasswordInput) },
+});
+
 const oldPasswordInput = createElement("input", {
+  name: "current password",
   type: "password",
+  autocomplete: "current-password",
+  required: true,
   placeholder: "Current password",
   id: "current-password",
   className: "change-pass-input"
 });
-changePassFormDiv.appendChild(
-  createElement("div", { className: "change-pass-input-div" }, [
-    createElement("i", { className: "ph-bold ph-key" }),
-    oldPasswordInput
-  ])
+changePassForm.appendChild(
+  createElement("div", {
+    className: "change-pass-input-div"
+  }, [ createElement("i", { className: "ph-bold ph-key" }), oldPasswordInput ])
 );
 
-const newPasswordInputEye = createElement("i", { className: "ph-bold ph-eye-slash", onclick: () => { togglePasswordVisibilty(newPasswordInputEye, newPasswordInput) }, style: { cursor: "pointer" } });
+const newPasswordInputEye = createElement("i", {
+  className: "ph-bold ph-eye-slash",
+  style: { cursor: "pointer" },
+  onclick: () => { togglePasswordVisibilty(newPasswordInputEye, newPasswordInput) },
+});
+
 const newPasswordInput = createElement("input", {
+  nam: "new password",
   type: "password",
+  autocomplete: "new-password",
+  required: true,
   placeholder: "New password",
   id: "create-new-password",
   className: "change-pass-input"
 });
-changePassFormDiv.appendChild(
-  createElement("div", { className: "change-pass-input-div" }, [
-    createElement("i", { className: "ph-bold ph-key" }),
-    newPasswordInput,
-    newPasswordInputEye
-  ])
+changePassForm.appendChild(
+  createElement("div", {
+    className: "change-pass-input-div"
+  }, [ createElement("i", { className: "ph-bold ph-key" }), newPasswordInput, newPasswordInputEye ])
 );
 
 const confirmPasswordInput = createElement("input", {
+  name: "confirm password",
   type: "password",
+  autocomplete: "off",
+  required: true,
   placeholder: "Confirm password",
   id: "confirm-create-new-password",
   className: "change-pass-input"
 });
-changePassFormDiv.appendChild(
-  createElement("div", { className: "change-pass-input-div" }, [
-    createElement("i", { className: "ph-bold ph-key" }),
-    confirmPasswordInput
-  ])
+changePassForm.appendChild(
+  createElement("div", {
+    className: "change-pass-input-div"
+  }, [ createElement("i", { className: "ph-bold ph-key" }), confirmPasswordInput ])
 );
 
-changePassFormDiv.appendChild(createElement("button", { className: "change-pass-btn", onclick: f_confirmChangePassword }, [ createElement("p", { textContent: "Change password" }) ]));
+changePassForm.appendChild(createElement("button", {
+  type: "submit",
+  className: "change-pass-btn",
+}, [ createElement("p", { textContent: "Change Password" }) ]));
 
-changePassFormDiv.appendChild(createElement("button", { className: "change-pass-btn cancel", onclick: () => { clearInputFields(changePassFormDiv); closeChangePasswordPanel(); } }, [ createElement("p", { textContent: "Cancel" }) ]));
+changePassForm.appendChild(createElement("button", {
+  className: "change-pass-btn cancel",
+  onclick: () => { clearInputFields(changePassForm); closeChangePasswordPanel(); }
+}, [ createElement("p", { textContent: "Cancel" }) ]));
 //#endregion UI
 
 function f_confirmChangePassword() {

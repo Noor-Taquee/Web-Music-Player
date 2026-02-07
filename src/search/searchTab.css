@@ -54,7 +54,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--tertiary-bg);
+  background: transparent;
 }
 .search-btn i {
   font-size: var(--medium-icon);
