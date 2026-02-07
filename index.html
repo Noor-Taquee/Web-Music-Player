@@ -7,7 +7,7 @@
   <meta name="description" content="Web based music player for streaming songs.">
   <meta name="keywords" content="Music Player, song">
   <meta name="author" content="Noor Taquee">
-  <link rel="icon" href="public/logo light.svg">
+  <link rel="icon" href="public/light/logo.svg">
   <link rel="manifest" href="public/manifest.json">
   <title>Music Player</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
@@ -79,21 +79,23 @@
       <audio id="song"></audio>
     </div>
   </div>
+  <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
+  <script defer src="src/main.js"></script>
+  <script defer src="src/backend.js"></script>
+  <script defer src="src/song.js"></script>
+  <script defer src="src/player/playerTab.js"></script>
+  <script defer src="src/home/homeTab.js"></script>
+  <script defer src="src/search/searchTab.js"></script>
+  <script defer src="src/library/libraryTab.js"></script>
+  <script defer src="src/account/accountTab.js"></script>
+  <script defer src="src/settings/settingsTab.js"></script>
   <script>
-    function reloadPage() {
-      // window.location.reload();
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+      });
     }
   </script>
-  <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
-  <script defer src="src/main.js" onerror="reloadPage()"></script>
-  <script defer src="src/backend.js" onerror="reloadPage()"></script>
-  <script defer src="src/song.js" onerror="reloadPage()"></script>
-  <script defer src="src/player/playerTab.js" onerror="reloadPage()"></script>
-  <script defer src="src/home/homeTab.js" onerror="reloadPage()"></script>
-  <script defer src="src/search/searchTab.js" onerror="reloadPage()"></script>
-  <script defer src="src/library/libraryTab.js" onerror="reloadPage()"></script>
-  <script defer src="src/account/accountTab.js" onerror="reloadPage()"></script>
-  <script defer src="src/settings/settingsTab.js" onerror="reloadPage()"></script>
 </body>
 
 </html>

@@ -1,19 +1,21 @@
 {
     "name": "Music Player",
     "short_name": "Music Player",
+    "start_url": "./../",
+    "scope": "./../",
     "description": "Listen Music",
     "display": "standalone",
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "icons": [
         {
-            "src": "logo light.svg",
+            "src": "./light/logo.svg",
             "sizes": "any",
             "type": "image/svg+xml",
             "purpose": "any"
         },
         {
-            "src": "logo light.svg",
+            "src": "./light/logo.svg",
             "sizes": "any",
             "type": "image/svg+xml",
             "purpose": "maskable"
