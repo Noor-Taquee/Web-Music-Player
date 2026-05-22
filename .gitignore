@@ -1,4 +1,8 @@
 # Local Netlify folder
 .netlify
 
+# dependencies
+node_modules/
+
+# windows folder
 desktop.ini
