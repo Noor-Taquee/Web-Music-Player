@@ -45,16 +45,30 @@ function updateSongInfo() {
   song.src = currentSong.audio;
   app.style.backgroundImage = `url(${currentAlbumArt})`;
   updateSecondaryButtons();
-  
-  if (artistNames.length > 0) { loadSongInfo(); }
+
+  if (artistNames.length > 0) {
+    loadSongInfo();
+  }
 }
 
 /** Adds the song to users played song history */
 function registerSong() {
-  if (!signedIn || currentUser.allowHistory != 1 || (currentUser.recentlyPlayedSongList.length >= 0 && songData[currentUser.recentlyPlayedSongList[0]] == titleNames[currentSongIndex])) return;
+  if (
+    !signedIn ||
+    currentUser.allowHistory != 1 ||
+    (currentUser.recentlyPlayedSongList.length >= 0 &&
+      songData[currentUser.recentlyPlayedSongList[0]] ==
+        titleNames[currentSongIndex])
+  )
+    return;
 
-  if (currentUser.recentlyPlayedSongList.includes(titleNames[currentSongIndex])) {
-    currentUser.recentlyPlayedSongList.splice(currentUser.recentlyPlayedSongList.indexOf(titleNames[currentSongIndex]), 1);
+  if (
+    currentUser.recentlyPlayedSongList.includes(titleNames[currentSongIndex])
+  ) {
+    currentUser.recentlyPlayedSongList.splice(
+      currentUser.recentlyPlayedSongList.indexOf(titleNames[currentSongIndex]),
+      1,
+    );
   }
   currentUser.recentlyPlayedSongList.unshift(titleNames[currentSongIndex]);
   if (currentUser.recentlyPlayedSongList.length > 30) {
@@ -65,7 +79,9 @@ function registerSong() {
 
 function formatTime(seconds) {
   let min = Math.floor(seconds / 60);
-  let sec = Math.floor(seconds % 60).toString().padStart(2, "0");
+  let sec = Math.floor(seconds % 60)
+    .toString()
+    .padStart(2, "0");
   return `${min}:${sec}`;
 }
 
@@ -73,12 +89,12 @@ function startMusic() {
   playbackBtnIcon.className = "ph-fill ph-pause";
   miniPlaybackBtnIcon.className = "ph-fill ph-pause";
   albumArt.style.transform = "scale(1)";
-  
+
   song.play();
   musicPlaying = true;
   navigator.mediaSession.playbackState = "playing";
   updateDevicePlayerProgress(song.currentTime);
-  
+
   registerSong();
 }
 
@@ -86,7 +102,7 @@ function stopMusic() {
   playbackBtnIcon.className = "ph-fill ph-play";
   miniPlaybackBtnIcon.className = "ph-fill ph-play";
   albumArt.style.transform = "scale(0.9)";
-  
+
   song.pause();
   musicPlaying = false;
   navigator.mediaSession.playbackState = "paused";
@@ -127,7 +143,7 @@ function nextSong() {
           changePicture("player");
           pictureDiv.style.animation = "flash 0.2s ease";
         },
-        { once: true }
+        { once: true },
       );
     } else {
       changePicture("player");
@@ -136,10 +152,14 @@ function nextSong() {
 }
 
 function prevSong() {
+  if (song.currentTime > 3) {
+    setTimeTo(0);
+    return;
+  }
 
-  if (song.currentTime > 3) { setTimeTo(0); return; }
-
-  if (currentSongIndex <= 0) { return; }
+  if (currentSongIndex <= 0) {
+    return;
+  }
 
   currentSongIndex--;
   updateSongInfo();
@@ -147,14 +167,17 @@ function prevSong() {
   changePicture("miniPlayer");
   if (main.contains(playerPanel) && pictureDiv.contains(albumArt)) {
     pictureDiv.style.animation = "slide-out-right 0.2s ease";
-    pictureDiv.addEventListener("animationend", () => {
-      changePicture("player");
-      pictureDiv.style.animation = "slide-in-left 0.2s ease";
-    }, { once: true });
+    pictureDiv.addEventListener(
+      "animationend",
+      () => {
+        changePicture("player");
+        pictureDiv.style.animation = "slide-in-left 0.2s ease";
+      },
+      { once: true },
+    );
   } else {
     changePicture("player");
   }
-
 }
 
 function showLoading() {
@@ -172,7 +195,9 @@ function setTimeTo(newTime) {
 }
 
 function playSong(songToPlay) {
-  if (musicPlaying) { stopMusic(); }
+  if (musicPlaying) {
+    stopMusic();
+  }
   currentSongIndex = titleNames.indexOf(songToPlay);
   updateSongInfo();
   showLoading();
@@ -183,7 +208,11 @@ function playSong(songToPlay) {
 let devicePlayer = true;
 
 function setDevicePlayer() {
-  if ("mediaSession" in navigator) { } else { devicePlayer = false; return; }
+  if ("mediaSession" in navigator) {
+  } else {
+    devicePlayer = false;
+    return;
+  }
 
   navigator.mediaSession.setActionHandler("play", () => {
     startMusic();
@@ -204,7 +233,11 @@ function setDevicePlayer() {
 }
 
 function updateDevicePlayer() {
-  if ("mediaSession" in navigator) { } else { devicePlayer = false; return; }
+  if ("mediaSession" in navigator) {
+  } else {
+    devicePlayer = false;
+    return;
+  }
 
   navigator.mediaSession.metadata = new MediaMetadata({
     title: currentTrackName,
@@ -218,7 +251,11 @@ function updateDevicePlayer() {
 }
 
 function updateDevicePlayerProgress(position) {
-  if ( "mediaSession" in navigator && isFinite(song.duration) && song.duration >= 0) {
+  if (
+    "mediaSession" in navigator &&
+    isFinite(song.duration) &&
+    song.duration >= 0
+  ) {
     navigator.mediaSession.setPositionState({
       duration: song.duration,
       playbackRate: song.playbackRate,
@@ -240,8 +277,12 @@ song.addEventListener("loadedmetadata", () => {
   totalTime = formatTime(song.duration);
   initPlayer();
   initMiniPlayer();
-  try { updateDevicePlayer(); } catch { }
-  if (songChanged) { startMusic(); }
+  try {
+    updateDevicePlayer();
+  } catch {}
+  if (songChanged) {
+    startMusic();
+  }
 });
 
 song.addEventListener("timeupdate", () => {
@@ -252,23 +293,21 @@ song.addEventListener("ended", () => {
   if (playingMode == "autoPlayOn") {
     nextSong();
     songChanged = true;
-  }
-
-  else if (playingMode == "autoPlayOff") {
+  } else if (playingMode == "autoPlayOff") {
     stopMusic();
     songChanged = false;
     playbackBtnIcon.className = "ph-bold ph-arrow-counter-clockwise";
     miniPlaybackBtnIcon.className = "ph-bold ph-arrow-counter-clockwise";
-  }
-
-  else if (playingMode == "repeat") {
+  } else if (playingMode == "repeat") {
     stopMusic();
     startMusic();
   }
 });
 
 song.addEventListener("waiting", () => {
-  if (musicPlaying) { showLoading(); }
+  if (musicPlaying) {
+    showLoading();
+  }
 });
 
 song.addEventListener("playing", () => {

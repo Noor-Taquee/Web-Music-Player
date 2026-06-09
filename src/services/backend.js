@@ -2,7 +2,8 @@
 class user {
   constructor() {
     /** identifier of the user in the logic @type {string} */ this.UID = "";
-    /** identifier of the user known to user @type {string} */ this.username = "";
+    /** identifier of the user known to user @type {string} */ this.username =
+      "";
     /** @type {string} */ this.password = "";
     /** display name of user @type {string} */ this.name = "";
     /** url of the picture @type {string} */ this.profilePic = "";
@@ -16,8 +17,8 @@ class user {
     /** @type {string} */ this.theme = "light";
   }
   /**
-   * Syncs user data with the cloud 
-   * @returns 
+   * Syncs user data with the cloud
+   * @returns
    */
   async sync() {
     const userData = {
@@ -33,7 +34,7 @@ class user {
       notificationsList: this.notificationsList,
       allowHistory: this.allowHistory,
       themeColor: this.theme,
-    }
+    };
     await dumpInfo(`/USERS/${this.UID}.json`, userData);
   }
 }
@@ -51,20 +52,21 @@ let userUIDmap = null;
 let usersList = [];
 
 //#region dropbox
-/** 
- * @type {Dropbox} 
+/**
+ * @type {Dropbox}
  */
 const dropbox = new Dropbox.Dropbox({
   clientId: "t8wj3k9vzx9thyg",
   fetch: window.fetch.bind(window),
-  refreshToken: "tx6ls_Ky8d8AAAAAAAAAAU7Tdtu3uwsD7jwGOUW91scfyH-19uhb3D9meNfK72nL",
+  refreshToken:
+    "tx6ls_Ky8d8AAAAAAAAAAU7Tdtu3uwsD7jwGOUW91scfyH-19uhb3D9meNfK72nL",
   clientSecret: "il7htvq6cz94oqm",
 });
 
 /**
- * Uploads data into the `path` in the cloud storage **Dropbox** 
- * @param {string} path be careful while entering path 
- * @param {Object} data it stringifies the json 
+ * Uploads data into the `path` in the cloud storage **Dropbox**
+ * @param {string} path be careful while entering path
+ * @param {Object} data it stringifies the json
  * @returns {Promise<void>}
  */
 async function dumpInfo(path, data) {
@@ -80,11 +82,11 @@ async function dumpInfo(path, data) {
 /**
  * Gets data from dropbox
  * @param {string} path path to storage in the cloud
- * @returns {Promise<object>} 
+ * @returns {Promise<object>}
  */
 async function loadInfo(path) {
   const response = await dropbox.filesDownload({ path: path });
-  const text = await response.result.fileBlob.text()
+  const text = await response.result.fileBlob.text();
   return JSON.parse(text);
 }
 //#endregion dropbox
@@ -113,12 +115,14 @@ async function checkLocalStorage() {
   loadingMessage.textContent = "progress: checking saved users";
   const username = localStorage.getItem("username");
   const password = localStorage.getItem("password");
-  
-  if (username != null) { await loginUser(username,  password); } 
-  
-  else { localStorage.removeItem("username"); localStorage.removeItem("password"); }
-}
 
+  if (username != null) {
+    await loginUser(username, password);
+  } else {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+  }
+}
 
 let songCount = 0;
 let songLoaded = false;
@@ -133,7 +137,7 @@ function songAttendance() {
     updateSongInfo();
     try {
       setDevicePlayer();
-    } catch { }
+    } catch {}
   }
 }
 function fetchSongData() {
@@ -233,7 +237,8 @@ function fetchArtistsData() {
 
 function updateUI() {
   if (songLoaded && signedIn) {
-    loadingMessage.textContent = "progress: preparing your songs and playlists...";
+    loadingMessage.textContent =
+      "progress: preparing your songs and playlists...";
     showInfo();
     settingsPanel_accountSettings_buttonContainer.style.display = "flex";
     loadRecentlyPlayedSongs();
@@ -243,15 +248,17 @@ function updateUI() {
 }
 
 /**
- * 
- * @param {string} receiver username of the receiver 
+ *
+ * @param {string} receiver username of the receiver
  * @param {string} title title of notification
  * @param {string} content body of notification
- * @returns 
+ * @returns
  */
 async function sendNotification(receiver, title, content) {
   const users = await loadInfo("/JSON/UserList.json");
-  if (!Object.keys(users).includes(receiver)) { return; }
+  if (!Object.keys(users).includes(receiver)) {
+    return;
+  }
 
   const data = await loadInfo(`/USERS/${users[receiver][0]}.json`);
   data.notificationsList.unshift({
@@ -300,18 +307,22 @@ function generateUID() {
 }
 
 //MARK: login
-/** 
- * Gets data of a specific user 
- * @param {string} username 
- * @param {string} password 
+/**
+ * Gets data of a specific user
+ * @param {string} username
+ * @param {string} password
  */
 async function loginUser(username, password) {
   // Brings the whole database
   const users = await loadInfo("/JSON/UserList.json");
   const usernames = Object.keys(users);
 
-  if (!usernames.includes(username)) { return "username"; }
-  if (users[username][1] != password) { return "password"; }
+  if (!usernames.includes(username)) {
+    return "username";
+  }
+  if (users[username][1] != password) {
+    return "password";
+  }
 
   const UID = users[username][0];
 
@@ -333,24 +344,26 @@ async function loginUser(username, password) {
   currentUser.allowHistory = data.allowHistory;
   localStorage.setItem("username", currentUser.username);
   localStorage.setItem("password", currentUser.password);
-  
+
   signedIn = true;
   updateUI();
-  
+
   return true;
 }
 
 //MARK: account creation
 /**
- * @param {string} userGivenFullName 
- * @param {string} userGivenName 
- * @param {string} userGivenPass 
+ * @param {string} userGivenFullName
+ * @param {string} userGivenName
+ * @param {string} userGivenPass
  */
 async function createNewUser(userGivenFullName, userGivenName, userGivenPass) {
   const userUID = generateUID();
-  
+
   const users = await loadInfo("/JSON/UserList.json");
-  if (Object.keys(users).includes(userGivenName)) { return "username"; }
+  if (Object.keys(users).includes(userGivenName)) {
+    return "username";
+  }
   users[userGivenName] = [userUID, userGivenPass];
   await dumpInfo("/JSON/UserList.json", users);
 
@@ -361,11 +374,13 @@ async function createNewUser(userGivenFullName, userGivenName, userGivenPass) {
   currentUser.password = userGivenPass;
 
   await currentUser.sync();
-  await sendNotification( "noortaquee", "ACCOUNT CREATION", `${userGivenFullName} created a new account.`);
+  await sendNotification(
+    "noortaquee",
+    "ACCOUNT CREATION",
+    `${userGivenFullName} created a new account.`,
+  );
 
   signedIn = true;
   updateUI();
   return true;
 }
-
-

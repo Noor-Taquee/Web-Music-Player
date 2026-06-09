@@ -12,22 +12,26 @@ function addScript(id, src, type = null) {
   const script = document.createElement("script");
   script.id = id;
   script.src = src;
-  if (type) { script.type = type }
+  if (type) {
+    script.type = type;
+  }
   document.body.appendChild(script);
   return script;
 }
 
 /**
- * Creates an element 
+ * Creates an element
  * @template {keyof HTMLElementTagNameMap} K
- * @param {K} elementName 
- * @param {Partial<HTMLElementTagNameMap[K]>} properties 
- * @param {Array<Node>} children 
+ * @param {K} elementName
+ * @param {Partial<HTMLElementTagNameMap[K]>} properties
+ * @param {Array<Node>} children
  */
 function createElement(elementName, properties = {}, children = []) {
   const element = document.createElement(elementName);
   Object.assign(element, properties);
-  children.forEach(child => { if (child) element.appendChild(child) });
+  children.forEach((child) => {
+    if (child) element.appendChild(child);
+  });
   return element;
 }
 
@@ -49,39 +53,56 @@ function addLink(id, href, rel = "stylesheet") {
   return newStyle;
 }
 
-
 /**
  * Creates a dialogue box for confirmation, query selector -> .confirmation-panel
  * @param {string} header title for confirmation, query selector -> .confirmation-panel-header
  * @param {string} content confirmation message, query selector -> .confirmation-panel-content
- * @param {('Confirm'|'Yes'|'Delete'|'Clear'|'Log out')} btnText 
+ * @param {('Confirm'|'Yes'|'Delete'|'Clear'|'Log out')} btnText
  * @param {function} btnFunction query selector for positive button -> .confirmation-panel-btn.confirm
  * @param {function} cancelFunction query selector for negative button -> .confirmation-panel-btn.cancel
  * @returns {HTMLDivElement}
  */
-function createConfirmationPanel(header, content, btnText, btnFunction, cancelFunction) {
+function createConfirmationPanel(
+  header,
+  content,
+  btnText,
+  btnFunction,
+  cancelFunction,
+) {
   const overlay = createElement("div", { className: "overlay" });
-  
-  const div = createElement("div", {
-    className: "confirmation-panel"
-  }, [
-    createElement("p", {
-      className: "confirmation-panel-header",
-      textContent: header
-    }),
-    createElement("p", {
-      className: "confirmation-panel-content",
-      textContent: content
-    }),
-    createElement("button", {
-      className: "confirmation-panel-btn confirm",
-      onclick: btnFunction
-    }, [ createElement("p", { textContent: btnText }) ]),
-    createElement("button", {
-      className: "confirmation-panel-btn cancel",
-      onclick: cancelFunction
-    }, [ createElement("p", { textContent: "Cancel" }) ])
-  ]);
+
+  const div = createElement(
+    "div",
+    {
+      className: "confirmation-panel",
+    },
+    [
+      createElement("p", {
+        className: "confirmation-panel-header",
+        textContent: header,
+      }),
+      createElement("p", {
+        className: "confirmation-panel-content",
+        textContent: content,
+      }),
+      createElement(
+        "button",
+        {
+          className: "confirmation-panel-btn confirm",
+          onclick: btnFunction,
+        },
+        [createElement("p", { textContent: btnText })],
+      ),
+      createElement(
+        "button",
+        {
+          className: "confirmation-panel-btn cancel",
+          onclick: cancelFunction,
+        },
+        [createElement("p", { textContent: "Cancel" })],
+      ),
+    ],
+  );
   overlay.appendChild(div);
 
   return overlay;
@@ -89,7 +110,7 @@ function createConfirmationPanel(header, content, btnText, btnFunction, cancelFu
 
 /**
  * Clears all the inner contents of the container
- * @param {HTMLElement} container 
+ * @param {HTMLElement} container
  */
 function clearContainer(container) {
   while (container.firstChild) {
@@ -99,19 +120,19 @@ function clearContainer(container) {
 
 /**
  * Clears value of all inputs present in the container
- * @param {HTMLDivElement} container 
+ * @param {HTMLDivElement} container
  */
 function clearInputFields(container) {
-  container.querySelectorAll("input").forEach(input => {
+  container.querySelectorAll("input").forEach((input) => {
     input.value = "";
   });
 }
 /**
  * Creates radio buttons that are open means they don't appear after any interaction
- * @param {string} id 
- * @param {string} headerText 
- * @param {Array<Object.property>} radioOptions 
- * @returns {HTMLDivElement} 
+ * @param {string} id
+ * @param {string} headerText
+ * @param {Array<Object.property>} radioOptions
+ * @returns {HTMLDivElement}
  * @example createRadioOpen( "theme-selection", "Choose Theme",[ {id:"light-input", text: "Light", clickFunction: () => { app.dataset.theme = "light" }}, {id:"dark-input", text:"Dark", clickFunction: () => { app.dataset.theme = "dark" }} ])
  */
 function createRadioOpen(id, headerText, radioOptions) {
@@ -120,15 +141,20 @@ function createRadioOpen(id, headerText, radioOptions) {
   const topDiv = createElement("div", { className: "radio-open-top" });
   div.appendChild(topDiv);
 
-  const headerTextp = createElement("p", { textContent: headerText, className: "radio-open-header-text" });
+  const headerTextp = createElement("p", {
+    textContent: headerText,
+    className: "radio-open-header-text",
+  });
   topDiv.appendChild(headerTextp);
-
 
   const radioDiv = createElement("div", { className: "radio-open-container" });
   div.appendChild(radioDiv);
 
   for (let i of radioOptions) {
-    const option = createElement("div", { className: "radio-open-option", id: `option-${i.id}` });
+    const option = createElement("div", {
+      className: "radio-open-option",
+      id: `option-${i.id}`,
+    });
 
     const icon = createElement("i");
     if (i.selected) {
@@ -142,7 +168,10 @@ function createRadioOpen(id, headerText, radioOptions) {
     icon.id = `radio-open-icon-${i.id}`;
     option.appendChild(icon);
 
-    const text = createElement("p", { textContent: i.text, className: "radio-open-option-label" });
+    const text = createElement("p", {
+      textContent: i.text,
+      className: "radio-open-option-label",
+    });
     option.appendChild(text);
 
     option.addEventListener("click", () => {
@@ -172,16 +201,13 @@ function createRadioOpen(id, headerText, radioOptions) {
     radioDiv.appendChild(option);
   }
 
-
   return div;
 }
 
-
-
 /**
  * Makes the input content visible/invisible according the icon
- * @param {HTMLElement} icon 
- * @param {HTMLInputElement} input 
+ * @param {HTMLElement} icon
+ * @param {HTMLInputElement} input
  */
 function togglePasswordVisibilty(icon, input) {
   if (icon.classList.contains("ph-eye-slash")) {
@@ -200,7 +226,6 @@ const loadingDiv = document.getElementById("loading-screen");
 const loadingStatusDiv = document.querySelector(".loading-status-div");
 const loadingMessage = document.getElementById("loading-details");
 const loadingProgress = document.getElementById("loading-progress-covered");
-
 
 const appWrapper = document.getElementById("app-wrapper");
 
@@ -241,13 +266,15 @@ const bnSettingsPanelI = document.getElementById("settings-tab-icon");
 
 //#region Mini Player
 
-
 function expandToplayer() {
   playerPanel.style.display = "flex";
   playerPanel.style.animation = "slide-in-bottom 0.3s ease";
-  playerPanel.addEventListener("animationend", () => {
-    playerPanel.style.animation = "none";
-  }, { once: true }
+  playerPanel.addEventListener(
+    "animationend",
+    () => {
+      playerPanel.style.animation = "none";
+    },
+    { once: true },
   );
 }
 //#endregion mini Player
@@ -259,7 +286,9 @@ bnLibraryPanel.addEventListener("click", () => switchTo(libraryPanel));
 bnAccountPanel.addEventListener("click", () => switchTo(accountPanel));
 bnSettingsPanel.addEventListener("click", () => switchTo(settingsPanel));
 
-function switchTo(destination) { destination.scrollIntoView() }
+function switchTo(destination) {
+  destination.scrollIntoView();
+}
 
 let currentTabBtn = bnHomePanel;
 let currentTabBtnI = bnHomePanelI;
@@ -304,8 +333,8 @@ function isElementCentered(element) {
 //#endregion bottom div
 
 /**
- * 
- * @param {HTMLButtonElement} button 
+ *
+ * @param {HTMLButtonElement} button
  */
 function setRippleStyle(button) {
   button.addEventListener("click", (event) => {
@@ -326,7 +355,9 @@ function setRippleStyle(button) {
 
     button.appendChild(circle);
 
-    setTimeout(() => { circle.remove() }, 600);
+    setTimeout(() => {
+      circle.remove();
+    }, 600);
   });
 }
 
@@ -337,7 +368,8 @@ function initApp() {
 }
 
 function checkOrientation() {
-  app.dataset.orientation = (window.innerHeight >= window.innerWidth) ? "vertical" : "horizontal";
+  app.dataset.orientation =
+    window.innerHeight >= window.innerWidth ? "vertical" : "horizontal";
 }
 
 const colorSchemeQuery = window.matchMedia("(prefers-color-scheme:dark)");
@@ -358,6 +390,12 @@ window.addEventListener("DOMContentLoaded", async () => {
   updateDeviceColor();
   await startBackend();
   initApp();
-  document.querySelectorAll(".panel").forEach((panel) => { panel.addEventListener("animationend", () => { panel.style.animation = "none" }) });
-  document.querySelectorAll(".ripple").forEach((button) => { setRippleStyle(button) });
+  document.querySelectorAll(".panel").forEach((panel) => {
+    panel.addEventListener("animationend", () => {
+      panel.style.animation = "none";
+    });
+  });
+  document.querySelectorAll(".ripple").forEach((button) => {
+    setRippleStyle(button);
+  });
 });

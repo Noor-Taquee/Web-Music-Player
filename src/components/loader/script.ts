@@ -7,15 +7,14 @@ export const loaderPanel = createElement("div", {
   className: "app-panel",
 });
 
-const loadingDiv = createElement("div", {
-});
+const loadingDiv = createElement("div", {});
 
 const barNum = 7;
 for (let i = 0; i < barNum; i++) {
   const bar = createElement("span", {
     className: "bar",
   });
-  loadingDiv.appendChild( bar );
+  loadingDiv.appendChild(bar);
 }
 
 const statusDiv = createElement("div", {
@@ -32,8 +31,8 @@ const progressBar = createElement("div", {
 const progressCovered = createElement("span", {
   className: "progress-covered",
 });
-progressBar.appendChild( progressCovered );
+progressBar.appendChild(progressCovered);
 
-statusDiv.append( loadingDetail, progressBar );
+statusDiv.append(loadingDetail, progressBar);
 
-loaderPanel.append( loadingDiv, statusDiv );
+loaderPanel.append(loadingDiv, statusDiv);

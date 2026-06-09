@@ -60,7 +60,7 @@
   box-sizing: border-box;
   padding: 0;
   border: none;
-  border-bottom: 2px  solid var(--primary-text-color);
+  border-bottom: 2px solid var(--primary-text-color);
   border-radius: 0px;
   display: flex;
   justify-content: space-evenly;
@@ -167,7 +167,7 @@
 }
 .contribution-help-content-div::-webkit-scrollbar-thumb {
   background: var(--tertiary-bg);
-  border-radius: calc(var(--scrollbar-width)/2);
+  border-radius: calc(var(--scrollbar-width) / 2);
 }
 
 .contribution-help-content-div p {

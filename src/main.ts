@@ -7,7 +7,6 @@ import { searchPanel } from "./pages/search-panel/page.js";
 import { libraryPanel } from "./pages/library-panel/page.js";
 import { settingsPanel } from "./pages/settings-panel/page.js";
 
-
 homePanel.dataset.index = "0";
 searchPanel.dataset.index = "1";
 libraryPanel.dataset.index = "2";

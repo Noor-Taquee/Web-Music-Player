@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 /*#region MARK: variables */
 :root {
@@ -9,7 +9,7 @@
   --primary-text-font: 500 18px "Nunito";
   --secondary-text-font: 400 15px "Nunito";
   --tertiary-text-font: 400 12px "Nunito";
-  
+
   --small-icon: 20px;
   --medium-icon: 25px;
   --large-icon: 35px;
@@ -23,13 +23,13 @@
   --primary-bg: #dddddd;
   --secondary-bg: #ffffff;
   --tertiary-bg: #cfcfcf;
-  
+
   --overlay-color: #00000050;
-  
+
   --absolute-text-color: #000000;
   --primary-text-color: #000000;
   --secondary-text-color: #303030;
-  
+
   --border-color: #505050;
 }
 
@@ -46,11 +46,11 @@
   --tertiary-bg: #505050;
 
   --overlay-color: #00000050;
-  
+
   --absolute-text-color: #ffffff;
   --primary-text-color: #ffffff;
   --secondary-text-color: #c5c5c5;
-  
+
   --border-color: #b8b8b8;
 }
 
@@ -63,16 +63,24 @@
 /*#endregion variables */
 
 * {
-  padding: 0; margin: 0;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  user-select: none; -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
   color: var(--primary-text-color);
-  transition: background 0.5s ease, color 0.5s ease, background-color 0.5s ease;
-  &::-webkit-scrollbar { display: none; }
+  transition:
+    background 0.5s ease,
+    color 0.5s ease,
+    background-color 0.5s ease;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   padding: 0;
@@ -82,10 +90,10 @@ html, body {
 
 #app {
   position: relative;
-  
+
   height: 100dvh;
   width: 100dvw;
-  
+
   padding: env(safe-area-inset-top) 0 0 0;
 
   display: flex;
@@ -104,9 +112,9 @@ html, body {
   flex-shrink: 0;
   height: 100%;
   width: 100%;
-  
+
   overflow: hidden;
-  
+
   display: flex;
   flex-direction: column;
   background-color: transparent;
@@ -115,11 +123,12 @@ html, body {
 .panel-bar {
   position: absolute;
   z-index: 10;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
 
   height: fit-content;
   width: 100%;
-  
+
   padding: 5px 15px;
 
   display: flex;
@@ -143,7 +152,7 @@ html, body {
   overflow-y: auto;
 
   padding-top: 60px;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -193,19 +202,21 @@ html, body {
 .toggle-btn {
   --size: 45px;
   cursor: pointer;
-  
+
   height: var(--size);
   width: var(--size);
-  
+
   border: none;
   border-radius: 50%;
-  
+
   display: grid;
   place-items: center;
-  
+
   background: var(--secondary-bg);
-  
-  >i { font-size: var(--medium-icon); }
+
+  > i {
+    font-size: var(--medium-icon);
+  }
 }
 
 .content {

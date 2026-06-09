@@ -566,22 +566,22 @@
   appearance: none;
   -webkit-appearance: none;
   width: 100%;
-  margin: calc(var(--thumb-height)/2) 0;
+  margin: calc(var(--thumb-height) / 2) 0;
   outline: none;
   background: transparent;
 }
 .time-bar-slider::-webkit-slider-runnable-track {
   width: 100%;
   height: var(--track-height);
-  border-radius: calc(var(--track-height)/2);
+  border-radius: calc(var(--track-height) / 2);
   background: var(--secondary-text-color);
 }
 .time-bar-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: var(--thumb-height);
   width: var(--thumb-width);
-  margin: calc(calc(var(--track-height)/2) + var(--thumb-height) / -2) 0 0 0;
-  border-radius: calc(var(--thumb-width)/2);
+  margin: calc(calc(var(--track-height) / 2) + var(--thumb-height) / -2) 0 0 0;
+  border-radius: calc(var(--thumb-width) / 2);
   transition: all 0.3s ease;
   background: var(--primary-text-color);
 }
@@ -617,7 +617,9 @@
   cursor: pointer;
   border: none;
   background: transparent;
-  transition: transform 150ms ease-in-out, background 300ms ease;
+  transition:
+    transform 150ms ease-in-out,
+    background 300ms ease;
 }
 
 .playback-control-btn i {

@@ -10,52 +10,73 @@ const searchInput = createElement("input", {
   placeholder: "Search song",
   autocomplete: "off",
   id: "search-in-player",
-  className: "search-input"
+  className: "search-input",
 });
 searchInput.addEventListener("input", findSearchMatches);
 searchBox.appendChild(searchInput);
 
-searchBox.appendChild(createElement("button", {
-  className: "search-btn",
-  onclick: addSearch
-},
-[createElement("i", {
-  className: "ph-bold ph-magnifying-glass"
-})
-]));
+searchBox.appendChild(
+  createElement(
+    "button",
+    {
+      className: "search-btn",
+      onclick: addSearch,
+    },
+    [
+      createElement("i", {
+        className: "ph-bold ph-magnifying-glass",
+      }),
+    ],
+  ),
+);
 
-const searchResultDiv = createElement("div", { className: "search-history-text-list result" });
+const searchResultDiv = createElement("div", {
+  className: "search-history-text-list result",
+});
 
 const searchResultDivText = createElement("p");
 searchResultDiv.appendChild(searchResultDivText);
 
-const searchHistoryTextDiv = createElement("div", { className: "search-content-div text" });
+const searchHistoryTextDiv = createElement("div", {
+  className: "search-content-div text",
+});
 searchPanel.appendChild(searchHistoryTextDiv);
 searchHistoryTextDiv.appendChild(
-  createElement("p", { className: "search-history-title", textContent: "Recent searches" })
+  createElement("p", {
+    className: "search-history-title",
+    textContent: "Recent searches",
+  }),
 );
-const searchedTextDiv = createElement("div", { className: "search-history-text-list" });
+const searchedTextDiv = createElement("div", {
+  className: "search-history-text-list",
+});
 searchHistoryTextDiv.appendChild(searchedTextDiv);
 const searchedTextDivText = createElement("p", {
   className: "div-text",
-  textContent: "Login to see your history"
+  textContent: "Login to see your history",
 });
 searchedTextDiv.appendChild(searchedTextDivText);
 
-const searchHistorySongDiv = createElement("div", { className: "search-content-div song" });
+const searchHistorySongDiv = createElement("div", {
+  className: "search-content-div song",
+});
 searchPanel.appendChild(searchHistorySongDiv);
 
-searchHistorySongDiv.appendChild(createElement("p", {
-  className: "search-history-title",
-  textContent: "Recently searched songs"
-}));
+searchHistorySongDiv.appendChild(
+  createElement("p", {
+    className: "search-history-title",
+    textContent: "Recently searched songs",
+  }),
+);
 
-const searchedSongDiv = createElement("div", { className: "search-history-song-list" });
+const searchedSongDiv = createElement("div", {
+  className: "search-history-song-list",
+});
 searchHistorySongDiv.appendChild(searchedSongDiv);
 
 const searchedSongDivText = createElement("p", {
   className: "div-text",
-  textContent: "Login to see your history"
+  textContent: "Login to see your history",
 });
 searchedSongDiv.appendChild(searchedSongDivText);
 
@@ -65,7 +86,8 @@ function loadSearchTextHistory() {
   clearContainer(searchedTextDiv);
   if (signedIn) {
     if (currentUser.searchedTextList.length > 0) {
-      for (let songs of currentUser.searchedTextList) { }
+      for (let songs of currentUser.searchedTextList) {
+      }
     } else {
       searchedTextDivText.textContent = "Nothing searched yet";
       searchedTextDiv.appendChild(searchedTextDivText);
@@ -83,9 +105,10 @@ function loadSearchSongHistory() {
     searchedSongDiv.appendChild(searchedSongDivText);
     return;
   }
-  
+
   if (currentUser.searchedSongList.length > 0) {
-    for (let songs of currentUser.searchedSongList) { }
+    for (let songs of currentUser.searchedSongList) {
+    }
   } else {
     searchedSongDivText.textContent = "Nothing searched yet";
     searchedSongDiv.appendChild(searchedSongDivText);
@@ -109,7 +132,7 @@ function findSearchMatches() {
       }
     }
     let sortedResultList = Object.entries(resultList).sort(
-      (a, b) => a[1] - b[1]
+      (a, b) => a[1] - b[1],
     );
     resultList = [];
     for (let songs of sortedResultList) {
@@ -127,7 +150,11 @@ function showSearchResult(resultList) {
   if (resultList.length > 0) {
     searchResultDivText.textContent = "";
     for (let songs of resultList) {
-      let searchResultBtn = createElement("button", { className: "search-text-btn" }, [ createElement("p", { textContent: songs }) ]);
+      let searchResultBtn = createElement(
+        "button",
+        { className: "search-text-btn" },
+        [createElement("p", { textContent: songs })],
+      );
       searchResultDiv.appendChild(searchResultBtn);
       searchResultBtn.addEventListener("click", () => {
         playSong(songs);
@@ -164,4 +191,3 @@ function showHistory() {
     searchPanel.replaceChild(searchHistoryTextDiv, searchResultDiv);
   }
 }
-
