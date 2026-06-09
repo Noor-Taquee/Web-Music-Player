@@ -1,0 +1,44 @@
+
+/*#region MARK: radio open */
+.radio-open {
+  width: 100%;
+  padding: 10px;
+}
+
+.radio-open-top {
+  width: 100%;
+}
+
+.radio-open-header-text {
+  margin: 5px 0;
+  font: var(--secondary-header-font);
+}
+
+.radio-open-container {
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-open-option {
+  padding: 10px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.radio-open-option i {
+  font-size: var(--medium-icon);
+}
+.radio-open-option.selected i {
+  color: var(--accent);
+}
+
+.radio-open-option-label {
+  margin: 0;
+  font: var(--primary-text-font);
+}
+/*#endregion radio open */

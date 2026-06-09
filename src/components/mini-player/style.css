@@ -1,0 +1,117 @@
+
+/*#region MARK: mini-player */
+[data-orientation="vertical"] .mini-player {
+  height: 50%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 10px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+
+[data-orientation="horizontal"] .mini-player {
+  display: none;
+}
+
+.mini-info-div {
+  height: 100%;
+  width: 70%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  gap: 5px;
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#navigation-div[data-style="floating"] .mini-info-div {
+  padding: 0 0 0 5px;
+}
+
+.mini-album-art {
+  height: 40px;
+  max-height: 12vw;
+  width: 40px;
+  max-width: 12vw;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  animation: spin 10s linear infinite;
+}
+
+#navigation-div[data-style="sticky"] .mini-album-art {
+  border-radius: 0;
+  animation: none;
+}
+
+.mini-album-art i {
+  font-size: 4vmin;
+}
+
+.mini-track-info-div {
+  height: 100%;
+  width: 80%;
+  margin: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px;
+  background: transparent;
+}
+
+.mini-track-name {
+  cursor: default;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  font: var(--primary-text-font);
+  font-weight: 700;
+}
+
+.mini-artist-name {
+  cursor: default;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
+  font: var(--secondary-text-font);
+  opacity: 0.7;
+}
+
+.mini-playback-controls-div {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mini-playback-controls-div button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.mini-playback-controls-div i {
+  font-size: 25px;
+}
+/*#endregion mini-player */

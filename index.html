@@ -13,89 +13,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css" />
-  <link rel="stylesheet" href="src/main.css" />
-  <link rel="stylesheet" href="src/player/playerTab.css" />
-  <link rel="stylesheet" href="src/home/homeTab.css" />
-  <link rel="stylesheet" href="src/search/searchTab.css" />
-  <link rel="stylesheet" href="src/library/libraryTab.css" />
-  <link rel="stylesheet" href="src/account/accountTab.css" />
 </head>
 
-<body id="app" data-theme="light" data-blur="false" data-orientation="vertical">
-  <div id="app-wrapper" class="panel blur">
-    <div id="loading-screen" class="panel">
-      <div class="loading-div">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-      <div class="loading-status-div">
-        <p id="loading-details">connecting...</p>
-        <div class="loading-progress-bar">
-          <div id="loading-progress-covered"></div>
-        </div>
-      </div>
-    </div>
-    <div id="inner-app" class="panel blur" style="display: none;">
-      <div id="inner-app-wrapper" class="panel blur">
-        <div id="inner-app-tab-container" class="panel">
-          <div id="home-panel" class="panel inner-app-panel"></div>
-          <div id="search-panel" class="panel inner-app-panel"></div>
-          <div id="library-panel" class="panel inner-app-panel"></div>
-          <div id="account-panel" class="panel inner-app-panel"></div>
-          <div id="settings-panel" class="panel inner-app-panel"></div>
-        </div>
-        <div id="navigation-div" class="blur" data-style="floating">
-          <div id="navigation-button-div">
-            <button id="home-panel-btn" class="navigation-button">
-              <i class="ph-fill ph-house" id="home-tab-icon"></i>
-              <p class="navigation-button-label">Home</p>
-            </button>
-            <button id="search-panel-btn" class="navigation-button">
-              <i class="ph-bold ph-magnifying-glass" id="search-tab-icon"></i>
-              <p class="navigation-button-label">Search</p>
-            </button>
-            <button id="library-panel-btn" class="navigation-button">
-              <i class="ph-bold ph-playlist" id="library-tab-icon"></i>
-              <p class="navigation-button-label">Library</p>
-            </button>
-            <button id="account-panel-btn" class="navigation-button">
-              <i class="ph-bold ph-user" id="account-tab-icon"></i>
-              <p class="navigation-button-label">Account</p>
-            </button>
-            <button id="settings-panel-btn" class="navigation-button">
-              <i class="ph-bold ph-gear-fine" id="settings-tab-icon"></i>
-              <p class="navigation-button-label">Settings</p>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div id="player-panel" class="panel blur outer-app-panel"></div>
-      <div id="login-panel" class="panel outer-app-panel"></div>
-      <div id="contribution-panel" class="panel outer-app-panel"></div>
-      <audio id="song"></audio>
-    </div>
-  </div>
+<body>
+  <div id="app"></div>
   <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
-  <script defer src="src/main.js"></script>
-  <script defer src="src/backend.js"></script>
-  <script defer src="src/song.js"></script>
-  <script defer src="src/player/playerTab.js"></script>
-  <script defer src="src/home/homeTab.js"></script>
-  <script defer src="src/search/searchTab.js"></script>
-  <script defer src="src/library/libraryTab.js"></script>
-  <script defer src="src/account/accountTab.js"></script>
-  <script defer src="src/settings/settingsTab.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-      });
-    }
-  </script>
+  <script type="module" src="src/main.ts"></script>
 </body>
 
 </html>
