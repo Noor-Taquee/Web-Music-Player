@@ -2,27 +2,29 @@ import { navBar } from "./components/navigation/navigation.js";
 
 import { panelContainer } from "./app.js";
 
-import { homePanel } from "./pages/home-panel/page.js";
+import { homePanel as homePanel } from "./pages/home-panel/page.js";
 
-import { searchPanel } from "./pages/search-panel/page.js";
+import { searchPanel as searchPanel } from "./pages/search-panel/page.js";
 
-import { libraryPanel } from "./pages/library-panel/page.js";
+import { libraryPanel as libraryPanel } from "./pages/library-panel/page.js";
 
-import { settingsPanel } from "./pages/settings-panel/page.js";
+import { settingsPanel as settingsPanel } from "./pages/settings-panel/page.js";
+import { apperancePanel as appearancePanel } from "./pages/settings-panel/appearance-panel/page.js";
 
-import { playerPanel } from "./pages/player-panel/page.js";
+import { playerPanel as playerPanel } from "./pages/player-panel/page.js";
 
-import { accountPanel } from "./pages/account-panel/page.js";
+import { accountPanel as accountPanel } from "./pages/account-panel/page.js";
 
-import { loginPanel } from "./pages/login-panel/page.js";
+import { loginPanel as loginPanel } from "./pages/login-panel/page.js";
 
-import { contributionPanel } from "./pages/contribution-panel/page.js";
+import { contributionPanel as contributionPanel } from "./pages/contribution-panel/page.js";
 
 type HashHandler = (attr: string[]) => void;
 type Route = Record<string, [HTMLDivElement, Route?, HashHandler?]>;
 
 const settingsRoute: Route = {
   "": [settingsPanel],
+  appearance: [appearancePanel],
 };
 
 const mainRoute: Route = {
